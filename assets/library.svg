@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true">
+  <!--
+    Shared symbol library. Every symbol uses the same rig space: head centred on 0,0,
+    body starting at y=95. Draw with <use href="#id" x="0" y="0" width="320" height="460"/>.
+    Head fill uses currentColor, so set color="#D94040" (red) or color="#FFFFFF" (white) on the <use>.
+    Outlines are black. Colors are palette hexes only (harness/palette.js).
+    Scene files inline the symbols they use via harness/inline-library.js.
+  -->
+  <defs>
+    <symbol id="rig-head" viewBox="-160 -110 320 460">
+      <circle cx="0" cy="0" r="90" fill="currentColor" stroke="#000000" stroke-width="6"/>
+    </symbol>
+
+    <symbol id="rig-eyes-neutral" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-10" r="7" fill="#000000"/>
+      <circle cx="30" cy="-10" r="7" fill="#000000"/>
+    </symbol>
+    <symbol id="rig-eyes-shock" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-10" r="13" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="30" cy="-10" r="13" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="-30" cy="-10" r="4" fill="#000000"/>
+      <circle cx="30" cy="-10" r="4" fill="#000000"/>
+    </symbol>
+    <symbol id="rig-eyes-sly" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-10" r="7" fill="#000000"/>
+      <path d="M18,-10 Q30,-20 42,-10" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-eyes-sweat" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-10" r="7" fill="#000000"/>
+      <circle cx="30" cy="-10" r="7" fill="#000000"/>
+      <path d="M62,-62 Q52,-44 62,-36 Q72,-44 62,-62Z" fill="#2D5FBF" stroke="#000000" stroke-width="3"/>
+    </symbol>
+    <symbol id="rig-eyes-confused" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-10" r="7" fill="#000000"/>
+      <circle cx="30" cy="-18" r="7" fill="#000000"/>
+    </symbol>
+    <symbol id="rig-eyes-angry" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-6" r="7" fill="#000000"/>
+      <circle cx="30" cy="-6" r="7" fill="#000000"/>
+      <path d="M-46,-30 L-14,-20 M46,-30 L14,-20" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="rig-brows-neutral" viewBox="-160 -110 320 460">
+      <path d="M-44,-30 L-16,-30 M16,-30 L44,-30" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-mouth-neutral" viewBox="-160 -110 320 460">
+      <path d="M-20,34 L20,34" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-mouth-open" viewBox="-160 -110 320 460">
+      <ellipse cx="0" cy="38" rx="14" ry="10" fill="#000000"/>
+    </symbol>
+
+    <symbol id="rig-body" viewBox="-160 -110 320 460">
+      <path d="M0,95 L0,240" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-limb-idle" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-50,200 M0,130 L50,200 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-limb-point" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-120,112 M0,130 L50,200 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-limb-shrug" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-64,102 M0,130 L64,102 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-limb-carry" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-30,190 M0,130 L30,190 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-limb-row" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-20,190 M0,130 L-90,160 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="arrow-diag" viewBox="-160 -110 320 460">
+      <path d="M-120,-60 L60,40" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <path d="M60,40 L30,38 M60,40 L38,14" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="bubble-cloud" viewBox="-160 -110 320 460">
+      <path d="M-80,40 A40,40 0 0 1 -60,-30 A50,50 0 0 1 20,-60 A40,40 0 0 1 80,-20 A34,34 0 0 1 70,40 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+    </symbol>
+  </defs>
+</svg>

@@ -47,7 +47,7 @@ git clone https://github.com/blixvip/html-anime.git
 cd html-anime
 ```
 
-Open the folder in the agent you already use and paste a sheet as the first message. The site builds the sheet in the browser. `harness/compile.js` builds the same sheet in Node.
+Open the folder in the agent you already use and paste a sheet as the first message. The site builds the sheet in the browser.
 
 Serve the site from this folder, then open the address it prints:
 
@@ -56,21 +56,6 @@ python -m http.server
 ```
 
 Opening `index.html` as a file shows that same instruction. The sheet will not run until the folder is served.
-
-Or build a sheet in Node (no dependencies):
-
-```js
-import { compileBrief } from "./harness/compile.js";
-
-const sheet = compileBrief({
-  logline: "On a roof in the rain, a red moon opens and a line of light falls.",
-  seconds: 8,          // 8, 12, or 20
-  aspect: "16:9",      // or "9:16"
-  script: "indigo",    // indigo, eclipse, noon, or festival
-  dialogue: "The rain hid the sound of the blade.",
-});
-console.log(sheet.ok ? sheet.markdown : sheet.error);
-```
 
 | Agent | What it reads | Open |
 | --- | --- | --- |
@@ -82,12 +67,9 @@ console.log(sheet.ok ? sheet.markdown : sheet.error);
 ## What is in the repo
 
 - `index.html` — the site
-- `skills/html-anime-direct/SKILL.md` — which shots exist
-- `skills/html-anime-cel/SKILL.md` — how a frame is painted
-- `skills/html-anime-timing/SKILL.md` — twos, holds, the smear
-- `skills/html-anime-camera/SKILL.md` — the cut and the frame
-- `skills/html-anime-render/SKILL.md` — the HyperFrames file
-- `harness/compile.js` — logline to sheet
+- `skills/doodle-*/SKILL.md` — the doodle pipeline's skills (direct, style, motion, camera, render)
+- `harness/` — ingest, compile, film gates and library inliner for the pipeline
+- `legacy/` — the retired anime skills and harness
 - `media/film.mp4` — Kokuyō, the film
 - `media/city.jpg`, `media/moon.jpg`, `media/fight.jpg`, `media/helm.jpg`, `media/ren.jpg` — stills from it
 - `films/roof/` — an 8 second reference. File shape and the color-dip cut, not a film to remix
@@ -99,7 +81,7 @@ console.log(sheet.ok ? sheet.markdown : sheet.error);
 npm test
 ```
 
-Checks that every runtime sums exactly and has one sakuga shot, and that the sheet carries the size, frame count, and dialogue.
+Checks the transcript and sheet parsers, every hard error, the frame math, caption correction, the film gates and the library inliner.
 
 ## Render the reference
 
@@ -115,12 +97,12 @@ npx hyperframes lint
 npx hyperframes validate
 ```
 
-## Sheet rules the agent is not allowed to break
+## Pipeline rules the agent is not allowed to break
 
-- Shot times sum to 8, 12, or 20 seconds
-- One sakuga shot. The others stay on three drawings
-- Acting on twos. Rain and a blade on ones
-- Only the hexes printed on the sheet
+- Scene frames sum to the audio's frame count at 24 fps
+- No sakuga. At most three poses per character per scene
+- Zero gradients, shadows or blurs
+- Only the hexes in `harness/palette.js`
 - The line you wrote, verbatim, or no dialogue at all
 
 ## Community
@@ -130,3 +112,14 @@ npx hyperframes validate
 ## License
 
 [MIT](LICENSE). The reference film's font keeps its own license: see [films/roof/fonts/NOTICE.txt](films/roof/fonts/NOTICE.txt).
+
+## Doodle pipeline (narration to MP4)
+
+The repo now also builds a doodle cartoon from three inputs: `projects/<slug>/audio/narration.mp3`, `transcript.txt`, `script.txt` and `scene_sheet.md`. The scene-sheet grammar is in [docs/scene-sheet-spec.md](docs/scene-sheet-spec.md). The contract is [AGENTS.md](AGENTS.md).
+
+```
+npm test
+node -e "import('./harness/compile.js').then(m => m.compileProject('projects/<slug>'))"
+```
+
+The compile step writes `build/brief.md`, `build/timeline.json`, `build/captions-diff.md` and `captions.srt`. The old anime pipeline lives in `legacy/`.

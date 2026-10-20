@@ -1,4 +1,4 @@
-import { SCRIPTS, compileBrief } from "./harness/compile.js";
+import { SCRIPTS, compileBrief } from "./legacy/harness/compile.js";
 
 document.body.classList.add("is-live");
 

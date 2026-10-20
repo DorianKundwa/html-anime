@@ -1,251 +1,149 @@
 /**
- * Turns a scene into an html-anime sheet.
- * Drawing budgets match skills/html-anime-timing/SKILL.md.
- * Color scripts are the only paints an agent may use.
+ * Compiles a doodle project into frame-exact build files.
+ *
+ *   node harness/compile.js projects/<slug>
+ *
+ * Writes (only when there are no hard errors):
+ *   build/timeline.json     scenes, beats, headlines and cues as integer frames
+ *   build/brief.md          the per-scene brief the agent draws from
+ *   build/captions-diff.md  every caption substitution, for review
+ *   captions.srt            corrected subtitles
  */
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { basename, join } from "node:path";
+import { pathToFileURL } from "node:url";
+import { PALETTE } from "./palette.js";
+import {
+  FPS,
+  audioDuration,
+  buildTimeline,
+  checkSheet,
+  correctCues,
+  parseSceneSheet,
+  parseTranscript,
+  toSrt,
+} from "./ingest.js";
 
-export const FPS = 24;
+const pad = (n) => String(n).padStart(2, "0");
 
-export const ASPECTS = {
-  "16:9": { w: 1920, h: 1080 },
-  "9:16": { w: 1080, h: 1920 },
-};
-
-export const SCRIPTS = {
-  indigo: {
-    id: "indigo",
-    name: "Indigo moon",
-    colors: {
-      sky: "#1b2d6b",
-      ink: "#101628",
-      moon: "#d5e2ff",
-      accent: "#e23b4a",
-      practical: "#f0c36a",
-      iris: "#e7a04a",
-      skin: "#f0c2ae",
-      hair: "#16141c",
-      sclera: "#f6f3ee",
-      line: "#e7eefc",
-    },
-  },
-  eclipse: {
-    id: "eclipse",
-    name: "Vermilion eclipse",
-    colors: {
-      sky: "#2a1016",
-      ink: "#14080c",
-      moon: "#100608",
-      accent: "#ff3b3b",
-      practical: "#f3f6ff",
-      iris: "#ff5a4a",
-      skin: "#e8b8a8",
-      hair: "#1a1014",
-      sclera: "#f6f3ee",
-      line: "#f6e4e4",
-    },
-  },
-  noon: {
-    id: "noon",
-    name: "Paper noon",
-    colors: {
-      sky: "#f2d7ae",
-      ink: "#2c261f",
-      moon: "#fff6e4",
-      accent: "#c4452d",
-      practical: "#fffaf2",
-      iris: "#5c3d32",
-      skin: "#f0c2ae",
-      hair: "#241c16",
-      sclera: "#f6f3ee",
-      line: "#241c16",
-    },
-  },
-  festival: {
-    id: "festival",
-    name: "Festival",
-    colors: {
-      sky: "#24143a",
-      ink: "#140c1c",
-      moon: "#ffd7a1",
-      accent: "#ff4d6d",
-      practical: "#ffb020",
-      iris: "#ffd0a1",
-      skin: "#f0c2ae",
-      hair: "#1a1020",
-      sclera: "#f6f3ee",
-      line: "#fff1ea",
-    },
-  },
-};
-
-const PLANS = {
-  8: [
-    { id: "establish", label: "Establish", dur: 2.4, sakuga: false },
-    { id: "sakuga", label: "Sakuga", dur: 3.6, sakuga: true },
-    { id: "button", label: "Button", dur: 2, sakuga: false },
-  ],
-  12: [
-    { id: "establish", label: "Establish", dur: 2.5, sakuga: false },
-    { id: "approach", label: "Approach", dur: 2.5, sakuga: false },
-    { id: "sakuga", label: "Sakuga", dur: 4, sakuga: true },
-    { id: "button", label: "Button", dur: 3, sakuga: false },
-  ],
-  20: [
-    { id: "establish", label: "Establish", dur: 3, sakuga: false },
-    { id: "approach", label: "Approach", dur: 3, sakuga: false },
-    { id: "turn", label: "Turn", dur: 3, sakuga: false },
-    { id: "sakuga", label: "Sakuga", dur: 5, sakuga: true },
-    { id: "aftermath", label: "Aftermath", dur: 3.5, sakuga: false },
-    { id: "button", label: "Button", dur: 2.5, sakuga: false },
-  ],
-};
-
-const DIRECTION = {
-  establish:
-    "The place in the logline. The figure is small, or not in it yet. One camera move: scale 100% to 106%, power1.inOut. Three drawings.",
-  approach:
-    "A cut closer. Who is there. Do not push past 106%, and do not add a second camera move. Three drawings.",
-  turn:
-    "The moment before the verb. Four frames of anticipation, then a hold. Three drawings. Camera locked.",
-  sakuga:
-    "The verb in the logline. The only shot that may use 8 unique drawings. Anticipate, play the action, one or two smear frames, then the settled drawing. Camera locked.",
-  aftermath:
-    "The result, already settled. Hold at least 12 frames. A blink or a hair follow-through may happen inside the hold. Three drawings. Camera locked.",
-  button:
-    "The line, if there is one, in the clear, bottom third, off the eyes. Then a hold. Fade the last 8 frames to ink. Three drawings.",
-};
-
-const STOP = new Set("a,an,the,of,to,and,in,on,for,with,as,at,from,by,into,over".split(","));
-
-/**
- * The fixed shot list for a runtime. Each shot gets its direction text.
- * @param {number} seconds 8, 12, or 20
- * @returns {Array<object>} shots whose `dur` values sum to `seconds`, exactly one with `sakuga: true`
- * @throws {Error} for any other runtime
- */
-export function shotPlan(seconds) {
-  const plan = PLANS[seconds];
-  if (!plan) {
-    throw new Error("Runtime must be 8, 12, or 20 seconds.");
+function findAudio(dir) {
+  for (const name of ["narration.mp3", "narration.wav"]) {
+    const p = join(dir, "audio", name);
+    if (existsSync(p)) return p;
   }
-  return plan.map((shot) => ({ ...shot, direction: DIRECTION[shot.id] }));
+  return null;
 }
 
-/**
- * A folder-safe slug from the first four meaningful words of a logline ("untitled" if none).
- * @param {string} logline
- * @returns {string}
- */
-export function slugFrom(logline) {
-  const words = logline
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, " ")
-    .split(/\s+/)
-    .filter((word) => word && !STOP.has(word));
-  return words.slice(0, 4).join("-") || "untitled";
-}
+/** Runs ingest and checks. Returns { ok, errors, warnings, counts, timeline }. */
+export async function compileProject(dir, { audioSeconds } = {}) {
+  const errors = [];
+  const warnings = [];
+  const audioPath = findAudio(dir);
+  if (!audioPath && audioSeconds == null) errors.push("missing audio/narration.mp3 (or .wav)");
+  const transcriptPath = join(dir, "transcript.txt");
+  const sheetPath = join(dir, "scene_sheet.md");
+  if (!existsSync(transcriptPath)) errors.push("missing transcript.txt");
+  if (!existsSync(sheetPath)) errors.push("missing scene_sheet.md");
+  if (errors.length) return { ok: false, errors, warnings, counts: null, timeline: null };
 
-function clock(seconds) {
-  return seconds.toFixed(2);
-}
+  const scriptPath = join(dir, "script.txt");
+  const scriptText = existsSync(scriptPath) ? readFileSync(scriptPath, "utf8") : null;
+  if (scriptText == null) warnings.push("no script.txt: captions keep the transcript's spelling (loud: check captions-diff)");
 
-/**
- * Build the shot sheet an agent follows.
- * @param {{logline: string, seconds: number|string, aspect: "16:9"|"9:16", script: string, dialogue?: string}} input
- * @returns {{ok: true, markdown: string, slug: string, seconds: number, frames: number, width: number, height: number, script: string} | {ok: false, error: string}}
- *   `ok: false` with a readable `error` when the input breaks a sheet rule; nothing throws.
- */
-export function compileBrief(input) {
-  const logline = String(input.logline ?? "").trim().replace(/\s+/g, " ");
-  if (!logline) {
-    return { ok: false, error: "Write the scene first." };
-  }
-  if (logline.length > 400) {
-    return { ok: false, error: "Keep the scene under 400 characters." };
-  }
+  const rawCues = parseTranscript(readFileSync(transcriptPath, "utf8"));
+  const sheet = parseSceneSheet(readFileSync(sheetPath, "utf8"));
+  const seconds = audioSeconds ?? (await audioDuration(audioPath));
 
-  const seconds = Number(input.seconds);
-  if (!PLANS[seconds]) {
-    return { ok: false, error: "Length has to be 8, 12, or 20 seconds." };
-  }
+  const { cues, diffs, warnings: cueWarnings } = correctCues(rawCues, scriptText);
+  warnings.push(...cueWarnings);
 
-  const aspect = ASPECTS[input.aspect];
-  if (!aspect) {
-    return { ok: false, error: "Frame has to be 16:9 or 9:16." };
-  }
+  const check = checkSheet({ cues: rawCues, scenes: sheet.scenes, audioSeconds: seconds, cast: sheet.cast, props: sheet.props });
+  errors.push(...check.errors);
+  warnings.push(...check.warnings);
 
-  const script = SCRIPTS[input.script];
-  if (!script) {
-    return { ok: false, error: "Pick a color script." };
-  }
-
-  const dialogue = String(input.dialogue ?? "").trim();
-  if (dialogue.length > 180) {
-    return { ok: false, error: "Keep the line under 180 characters." };
-  }
-
-  const shots = shotPlan(seconds);
-  const slug = slugFrom(logline);
-  const frameLine =
-    input.aspect === "9:16"
-      ? "Compose the tall frame. The head sits in the upper half. Type sits in the lower fifth."
-      : "Compose the wide frame. Put the eyes on a third, with room in front of the gaze.";
-
-  let t = 0;
-  const shotBlocks = shots.map((shot, index) => {
-    const start = t;
-    t += shot.dur;
-    const name = shot.sakuga ? `${shot.label} — the expensive shot` : shot.label;
-    return [`### ${index + 1} · ${name} · ${clock(start)}–${clock(t)}`, shot.direction].join("\n");
-  });
-
-  const dialogueBlock = dialogue
-    ? ["Set this line verbatim on the button shot. Do not translate it.", "", `> ${dialogue}`].join("\n")
-    : "No dialogue. No mouth shapes. No captions.";
-
-  const paints = Object.entries(script.colors)
-    .map(([name, hex]) => `- ${name} ${hex}`)
-    .join("\n");
-
-  const markdown = [
-    "# html-anime",
-    "",
-    logline,
-    "",
-    `${seconds}s · ${FPS}fps · ${seconds * FPS} frames · ${aspect.w}×${aspect.h}`,
-    `Color script: ${script.name}`,
-    paints,
-    "",
-    frameLine,
-    "",
-    "## Drawing budget",
-    "Character acting is on twos. Rain, sparks, and a blade are on ones.",
-    "The sakuga shot may use 8 unique drawings. Every other shot uses 3.",
-    "A hold after a settle lasts at least 12 frames.",
-    "",
-    "## Shots",
-    shotBlocks.join("\n\n"),
-    "",
-    "## Dialogue",
-    dialogueBlock,
-    "",
-    "## Build",
-    `Write films/${slug}/index.html.`,
-    "Read, in order: skills/html-anime-direct/SKILL.md, skills/html-anime-cel/SKILL.md, skills/html-anime-timing/SKILL.md, skills/html-anime-camera/SKILL.md, skills/html-anime-render/SKILL.md.",
-    "films/roof/index.html shows the file shape and the color-dip cut. Draw this sheet, not a remix of that film.",
-    "Use only the hexes above. One sakuga shot.",
-    "Done when `npx hyperframes lint` and `npx hyperframes validate` pass in that film's directory.",
-    "",
-  ].join("\n");
-
-  return {
-    ok: true,
-    markdown,
-    slug,
-    seconds,
-    frames: seconds * FPS,
-    width: aspect.w,
-    height: aspect.h,
-    script: script.id,
+  const counts = {
+    cues: cues.length,
+    scenes: sheet.scenes.length,
+    audioSeconds: seconds,
+    totalFrames: Math.round(seconds * FPS),
+    captionSubstitutions: diffs.length,
   };
+  if (errors.length) return { ok: false, errors, warnings, counts, timeline: null };
+
+  const timeline = buildTimeline({ cues, scenes: sheet.scenes, audioSeconds: seconds, cast: sheet.cast, props: sheet.props });
+  const build = join(dir, "build");
+  mkdirSync(build, { recursive: true });
+  writeFileSync(join(build, "timeline.json"), JSON.stringify(timeline, null, 2) + "\n");
+  writeFileSync(join(build, "brief.md"), renderBrief(timeline, basename(dir)));
+  writeFileSync(join(build, "captions-diff.md"), renderDiff(diffs, scriptText == null));
+  writeFileSync(join(dir, "captions.srt"), toSrt(timeline.captions));
+  return { ok: true, errors, warnings, counts, timeline };
+}
+
+const clock = (frame) => {
+  const sec = frame / FPS;
+  const m = Math.floor(sec / 60);
+  const s = (sec % 60).toFixed(2).padStart(5, "0");
+  return `${m}:${s}`;
+};
+
+export function renderDiff(diffs, noScript) {
+  const head = "# Caption substitutions\n\nReview each line. Every change is cue n: old → new.\n\n";
+  if (noScript) return head + "No script.txt was given, so no substitutions were made.\n";
+  if (!diffs.length) return head + "None. The transcript already matches the script.\n";
+  return head + diffs.map((d) => `- cue ${d.n}: ${d.old} → ${d.new}`).join("\n") + "\n";
+}
+
+export function renderBrief(tl, slug) {
+  const lines = [];
+  lines.push(`# Brief: ${slug}`, "");
+  lines.push(`Size 1920×1080, ${FPS} fps. Audio ${tl.audioSeconds.toFixed(2)} s = ${tl.totalFrames} frames. All frame numbers are root frames.`, "");
+  lines.push("## Palette (the only colors in film/)", "");
+  for (const [k, v] of Object.entries(PALETTE)) lines.push(`- ${k} ${v}`);
+  lines.push("");
+  lines.push("## Rules", "");
+  lines.push("- Stick figures, bold black outline, flat fills, zero gradients, shadows, glows, blurs.");
+  lines.push("- At most 3 poses per character per scene; 5 in a scene with SHAKE or CROSS.");
+  lines.push("- Cuts are hard unless OUT says color-dip(token). PUSH is the only camera move; CAMERA lock means none.");
+  lines.push("- Headlines ALL CAPS, top 150 px. Subtitles y 864–1030. Nothing important below y 864.");
+  lines.push("- Do not add, merge, reorder or drop scenes, and do not add beats that are not on a card.");
+  lines.push("");
+  for (const s of tl.scenes) {
+    lines.push(`## ${s.id}: frames ${s.startF}–${s.endF} (${clock(s.startF)}–${clock(s.endF)}), ${s.frames} frames, bg=${s.bg}`, "");
+    lines.push(`- Cast: ${s.cast.join(", ") || "none"}`);
+    lines.push(`- Props: ${s.props.join(", ") || "none"}`);
+    lines.push(`- Layout: ${s.layout || "none given"}`);
+    lines.push(`- Camera: ${s.camera}   Out: ${s.out}`);
+    lines.push(`- Cues: ${s.cueFirst}–${s.cueLast}`);
+    for (const tx of s.texts) lines.push(`- Headline (${tx.color}, frame ${tx.frame}): "${tx.text}"`);
+    if (s.beats.length) {
+      lines.push("- Beats:");
+      for (const b of s.beats) lines.push(`  - frame ${b.frame} ${b.verb} ${b.text}`.trimEnd());
+    } else {
+      lines.push("- Beats: none on the card (idle life only)");
+    }
+    lines.push("");
+  }
+  return lines.join("\n");
+}
+
+const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+if (isMain) {
+  const dir = process.argv[2];
+  if (!dir) {
+    console.error("usage: node harness/compile.js projects/<slug>");
+    process.exit(2);
+  }
+  const res = await compileProject(dir);
+  if (res.counts) {
+    const c = res.counts;
+    console.log(`cues ${c.cues} | scenes ${c.scenes} | audio ${c.audioSeconds.toFixed(2)} s | frames ${c.totalFrames} | caption substitutions ${c.captionSubstitutions}`);
+  }
+  for (const w of res.warnings) console.warn(`warning: ${w}`);
+  for (const e of res.errors) console.error(`error: ${e}`);
+  if (!res.ok) {
+    console.error(`${res.errors.length} error(s). Nothing was written.`);
+    process.exit(1);
+  }
+  console.log(`ok: wrote ${join(dir, "build")} and ${join(dir, "captions.srt")}`);
 }

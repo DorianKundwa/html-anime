@@ -1,6 +1,6 @@
 ---
-description: Draw an html-anime film in code when the user pastes a sheet or asks for an anime made as HTML.
+description: Build a doodle film from a narration, transcript and scene sheet.
 alwaysApply: true
 ---
 
-Follow AGENTS.md. Read the five skills in `skills/` before drawing. The sheet is the brief.
+Follow AGENTS.md. Read the skills in `skills/doodle-*` before drawing. The scene sheet is the brief.

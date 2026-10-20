@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Doodle pipeline</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Doodle pipeline</h1>
+    <button id="test-btn" type="button">Run npm test</button>
+    <pre id="test-out" class="out" hidden></pre>
+  </header>
+
+  <div class="layout">
+    <aside class="side">
+      <h2>Projects</h2>
+      <ul id="project-list" class="list"></ul>
+      <p id="empty" class="note" hidden>
+        No projects yet. Create <code>projects/&lt;slug&gt;/</code> with the audio, transcript and scene sheet.
+      </p>
+    </aside>
+
+    <main id="main" class="main">
+      <p id="pick" class="note">Pick a project on the left.</p>
+
+      <section id="detail" hidden>
+        <h2 id="slug"></h2>
+
+        <table class="status">
+          <tbody id="status-rows"></tbody>
+        </table>
+
+        <div class="actions">
+          <button type="button" data-action="compile">Compile</button>
+          <button type="button" data-action="film-gate">Film gate</button>
+          <button type="button" data-action="lint">Lint</button>
+          <button type="button" data-action="check">Check</button>
+          <button type="button" data-action="render">Render MP4</button>
+        </div>
+
+        <div id="result" class="result" hidden>
+          <p id="result-title" class="result-title"></p>
+          <ul id="result-errors" class="errors"></ul>
+          <ul id="result-warnings" class="warnings"></ul>
+          <pre id="result-counts" class="out" hidden></pre>
+          <pre id="result-output" class="out" hidden></pre>
+        </div>
+
+        <details>
+          <summary>build/brief.md</summary>
+          <pre id="brief" class="out">Not built yet.</pre>
+        </details>
+        <details>
+          <summary>build/captions-diff.md</summary>
+          <pre id="diff" class="out">Not built yet.</pre>
+        </details>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
