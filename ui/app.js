@@ -114,13 +114,50 @@ async function selectProject(slug) {
   await refreshList();
 }
 
+/** POSTs with ?stream=1. Calls onOutput(text) as output arrives and resolves with the final result. */
+async function postStreaming(path, onOutput) {
+  const res = await fetch(`${path}?stream=1`, { method: "POST" });
+  if (!res.headers.get("content-type")?.includes("ndjson")) return res.json();
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let result = null;
+  for (;;) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    let newline;
+    while ((newline = buffer.indexOf("\n")) >= 0) {
+      const line = buffer.slice(0, newline);
+      buffer = buffer.slice(newline + 1);
+      if (!line.trim()) continue;
+      const msg = JSON.parse(line);
+      if (msg.type === "output") onOutput(msg.text);
+      else result = msg;
+    }
+  }
+  return result ?? { ok: false, errors: ["the server closed the stream without a result"] };
+}
+
 async function runAction(action) {
   if (!state.slug || state.busy) return;
   setBusy(true);
   const path = `/api/projects/${encodeURIComponent(state.slug)}/${action}`;
+  const box = $("#result");
+  const live = $("#result-output");
+  box.hidden = false;
+  box.classList.remove("pass", "fail");
+  $("#result-title").textContent = `${action}: running`;
+  fillList($("#result-errors"), []);
+  fillList($("#result-warnings"), []);
+  showPre($("#result-counts"), "");
+  showPre(live, "");
   try {
-    const { body } = await api(path, "POST");
-    showResult(body);
+    const run = await postStreaming(path, (text) => {
+      live.hidden = false;
+      live.textContent += text;
+    });
+    showResult(run);
     await selectProject(state.slug);
   } finally {
     setBusy(false);
@@ -131,9 +168,12 @@ async function runTests() {
   if (state.busy) return;
   setBusy(true);
   const out = $("#test-out");
+  out.hidden = false;
+  out.textContent = "npm test: running\n";
   try {
-    const { body } = await api("/api/test", "POST");
-    out.hidden = false;
+    const body = await postStreaming("/api/test", (text) => {
+      out.textContent += text;
+    });
     out.textContent = `npm test: ${body.ok ? "passed" : "failed"} (exit ${body.code})\n${[body.stdout, body.stderr].filter(Boolean).join("\n")}`;
   } finally {
     setBusy(false);

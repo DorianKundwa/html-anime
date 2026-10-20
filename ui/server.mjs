@@ -192,6 +192,17 @@ function sendError(res, status, message) {
   sendJson(res, status, { ok: false, errors: [message] });
 }
 
+/** Starts an NDJSON reply. Returns emit(text), which sends one output line as it arrives. */
+function startStream(res) {
+  res.writeHead(200, { "content-type": "application/x-ndjson; charset=utf-8", "cache-control": "no-store" });
+  return (text) => res.write(`${JSON.stringify({ type: "output", text })}\n`);
+}
+
+/** Ends an NDJSON reply with the final result line. */
+function endStream(res, result) {
+  res.end(`${JSON.stringify({ type: "result", ...result })}\n`);
+}
+
 function sendStatic(res, [file, type]) {
   res.writeHead(200, { "content-type": type, "cache-control": "no-store" });
   res.end(readFileSync(join(UI_DIR, file)));
@@ -217,10 +228,13 @@ function projectOr(res, root, slug) {
 export function createUiServer({ root = ROOT } = {}) {
   const state = { busy: null, lastRuns: new Map() };
 
-  async function runTests(res) {
+  async function runTests(res, stream) {
     state.busy = "npm test";
+    const emit = stream ? startStream(res) : null;
     try {
-      sendJson(res, 200, await runCommand("npm", ["test"], root, 900_000));
+      const result = await runCommand("npm", ["test"], root, 900_000, emit);
+      if (stream) endStream(res, result);
+      else sendJson(res, 200, result);
     } finally {
       state.busy = null;
     }
@@ -252,9 +266,10 @@ export function createUiServer({ root = ROOT } = {}) {
       req.resume();
       const origin = req.headers.origin;
       if (origin && origin !== `http://${req.headers.host}`) return sendError(res, 403, "cross-origin request refused");
+      const stream = url.searchParams.get("stream") === "1";
       if (path === "/api/test") {
         if (state.busy) return sendError(res, 409, `busy: ${state.busy} is running`);
-        return runTests(res);
+        return runTests(res, stream);
       }
       const m = /^\/api\/projects\/([^/]+)\/([a-z-]+)$/.exec(path);
       if (!m || !ACTIONS[m[2]]) return sendError(res, 404, `no action for ${path}`);
@@ -266,9 +281,10 @@ export function createUiServer({ root = ROOT } = {}) {
 
       const key = `${slug}:${action}`;
       state.busy = key;
+      const emit = stream ? startStream(res) : null;
       let result;
       try {
-        result = await ACTIONS[action].run({ dir, slug });
+        result = await ACTIONS[action].run({ dir, slug, emit });
       } catch (err) {
         result = { ok: false, errors: [String(err?.message ?? err)] };
       } finally {
@@ -276,6 +292,7 @@ export function createUiServer({ root = ROOT } = {}) {
       }
       const run = { action, at: new Date().toISOString(), ...result };
       state.lastRuns.set(key, run);
+      if (stream) return endStream(res, run);
       return sendJson(res, 200, run);
     }
 
