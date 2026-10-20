@@ -6,7 +6,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 import { PALETTE } from "../harness/palette.js";
-import { createUiServer, isValidSlug, listProjects } from "./server.mjs";
+import { createUiServer, isValidSlug, listProjects, runCommand } from "./server.mjs";
 
 function makeRoot() {
   const root = mkdtempSync(join(tmpdir(), "ui-test-"));
@@ -38,7 +38,7 @@ function call(port, { method = "GET", path, host = `127.0.0.1:${port}`, origin }
       res.on("data", (c) => (data += c));
       res.on("end", () => {
         let body = data;
-        if ((res.headers["content-type"] ?? "").includes("json")) body = JSON.parse(data);
+        if ((res.headers["content-type"] ?? "").includes("application/json")) body = JSON.parse(data);
         done({ status: res.statusCode, type: res.headers["content-type"] ?? "", body });
       });
     });
@@ -150,6 +150,43 @@ test("the last run is returned with the project detail", async () => {
     assert.equal(detail.body.runs.length, 1);
     assert.equal(detail.body.runs[0].action, "film-gate");
     assert.equal(detail.body.runs[0].ok, true);
+  });
+});
+
+function parseNdjson(text) {
+  return text.trim().split("\n").map((line) => JSON.parse(line));
+}
+
+test("runCommand hands stdout and stderr to onOutput as they arrive", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "ui-emit-"));
+  try {
+    writeFileSync(join(dir, "emit.mjs"), "process.stdout.write('out-line\\n'); process.stderr.write('err-line\\n');");
+    const chunks = [];
+    const run = await runCommand("node", ["emit.mjs"], dir, undefined, (text) => chunks.push(text));
+    assert.equal(run.ok, true);
+    const streamed = chunks.join("");
+    assert.ok(streamed.includes("out-line"), streamed);
+    assert.ok(streamed.includes("err-line"), streamed);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("streamed actions reply as NDJSON that ends with a result line", async () => {
+  const root = makeRoot();
+  await withServer(root, async (port) => {
+    const pass = await call(port, { method: "POST", path: "/api/projects/alpha/film-gate?stream=1" });
+    assert.equal(pass.status, 200);
+    assert.match(pass.type, /application\/x-ndjson/);
+    const lines = parseNdjson(pass.body);
+    assert.equal(lines.at(-1).type, "result");
+    assert.equal(lines.at(-1).action, "film-gate");
+    assert.equal(lines.at(-1).ok, true);
+
+    const missing = await call(port, { method: "POST", path: "/api/projects/gamma/render?stream=1" });
+    const failLines = parseNdjson(missing.body);
+    assert.equal(failLines.at(-1).type, "result");
+    assert.equal(failLines.at(-1).ok, false);
   });
 });
 
