@@ -174,6 +174,10 @@ async function runTests() {
     const body = await postStreaming("/api/test", (text) => {
       out.textContent += text;
     });
+    if (body.errors) {
+      out.textContent = `npm test: ${body.errors.join("; ")}`;
+      return;
+    }
     out.textContent = `npm test: ${body.ok ? "passed" : "failed"} (exit ${body.code})\n${[body.stdout, body.stderr].filter(Boolean).join("\n")}`;
   } finally {
     setBusy(false);
