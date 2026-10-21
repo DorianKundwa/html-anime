@@ -63,7 +63,7 @@ const EXPRESSION_WORDS = [
   [/\b(sweat\w*|nervous|worr\w*)\b/i, "sweat"],
   [/\b(confus\w*|puzzl\w*|doubt\w*|unsure)\b/i, "confused"],
   [/\b(shock\w*|raise[ds]?|surpris\w*|startl\w*|wide)\b/i, "shock"],
-  [/\b(calm\w*|neutral|relax\w*|flat|normal)\b/i, "neutral"],
+  [/\b(calm\w*|neutral|relax\w*|flat|normal|soft\w*|warm\w*|smil\w*|glance\w*|slide\w*|slid\w*|blink\w*|hover\w*)\b/i, "neutral"],
 ];
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -83,6 +83,17 @@ function namesIn(text, ents) {
   for (const e of ents) {
     const m = nameRe(e.name).exec(text);
     if (m) hits.push({ ent: e, at: m.index });
+  }
+  if (hits.length === 0) {
+    for (const e of ents) {
+      const parts = e.name.toLowerCase().split(/[^a-z0-9]+/);
+      for (const p of parts) {
+        if (p.length >= 4 && new RegExp(`\\b${p}s?\\b`, "iu").test(text)) {
+          hits.push({ ent: e, at: 0 });
+          break;
+        }
+      }
+    }
   }
   return hits.sort((a, b) => a.at - b.at).map((h) => h.ent);
 }
@@ -335,11 +346,20 @@ function placeEntries(ents, layout) {
 
 /** Beats in frame order, each with its named entries and its verb's arguments. Problems go to errors. */
 function resolveBeats(s, ents, errors) {
+  const actors = ents.filter((e) => e.kind === "actor");
   return [...s.beats]
     .sort((a, b) => a.frame - b.frame)
     .map((b) => {
       const hits = namesIn(b.text, ents);
-      const item = { L: b.frame - s.startF, verb: b.verb, text: b.text, hits, first: hits[0] };
+      let first = hits[0] ?? null;
+      if (!first) {
+        if (actors.length === 1 && /\b(thumb|hand|face|eye|head|brow|arm)\b/i.test(b.text)) {
+          first = actors[0];
+        } else if (ents.length === 1) {
+          first = ents[0];
+        }
+      }
+      const item = { L: b.frame - s.startF, verb: b.verb, text: b.text, hits, first };
       const bad = (msg) => errors.push(`${s.id} frame ${b.frame} ${b.verb}: ${msg}`);
       switch (b.verb) {
         case "POP":
@@ -350,24 +370,35 @@ function resolveBeats(s, ents, errors) {
           if (!item.first) bad("the text must name a CAST or PROPS entry on this card");
           break;
         case "SWAP": {
-          const hit = EXPRESSION_WORDS.find(([re]) => re.test(stripNames(b.text, hits)));
-          if (!item.first || item.first.kind !== "actor") bad("the text must name the CAST entry whose face changes");
-          if (!hit) bad("no known expression word (angry, sly, sweat, confused, shock, tired, panic, or calm)");
-          else item.expr = hit[1];
+          if (!item.first) {
+            bad("the text must name the CAST or PROPS entry");
+            break;
+          }
+          if (item.first.kind === "actor") {
+            const hit = EXPRESSION_WORDS.find(([re]) => re.test(stripNames(b.text, hits)));
+            if (!hit) bad("no known expression word (angry, sly, sweat, confused, shock, tired, panic, or calm)");
+            else item.expr = hit[1];
+          } else {
+            item.propSwap = true;
+          }
           break;
         }
         case "DRAW":
-          if (hits.length < 2) bad("the text must name two entries: from X to Y");
-          else {
+          if (hits.length >= 2) {
             item.from = hits[0];
             item.to = hits[1];
+          } else if (hits.length === 1 || item.first) {
+            item.target = hits[0] || item.first;
+            const labelMatch = /["\u201C\u201D]([^"\u201C\u201D]+)["\u201C\u201D]|label\s+["'“]?([a-zA-Z0-9_-]+)["'”]?/i.exec(b.text);
+            item.calloutLabel = labelMatch ? (labelMatch[1] || labelMatch[2]).toUpperCase() : "";
+          } else {
+            bad("the text must name at least one CAST or PROPS entry");
           }
           break;
         case "CALLOUT": {
           // CALLOUT: "LABEL" -> ENTRY   or   CALLOUT: "LABEL" pointing at ENTRY
           const labelMatch = /["\u201C\u201D]([^"\u201C\u201D]+)["\u201C\u201D]/.exec(b.text);
           item.calloutLabel = labelMatch ? labelMatch[1].toUpperCase() : "";
-          // The entry the arrow points at is the first named hit; if none, it's an absolute callout.
           item.first = hits[0] ?? null;
           break;
         }
@@ -627,7 +658,7 @@ function buildScene(s, dict, symbols) {
   const enter = new Map();
   let pushStart = s.camera === "push" ? 0 : null;
   for (const b of beats) {
-    if (b.verb === "SWAP" && b.expr) b.first.exprKeys.add(b.expr);
+    if (b.verb === "SWAP" && b.expr && b.first?.kind === "actor") b.first.exprKeys.add(b.expr);
     if (ENTER_VERBS.includes(b.verb) && !enter.has(b.first)) enter.set(b.first, b.L);
     if (b.verb === "PUSH" && pushStart === null) pushStart = b.L;
   }
@@ -672,21 +703,53 @@ function buildScene(s, dict, symbols) {
         ops.push(`tl.set("#${t.id}", { x: 0 }, ${a(8)});`);
         break;
       case "SWAP":
-        for (const k of t.exprKeys) ops.push(`tl.set("#${t.id}-x-${k}", { opacity: ${k === b.expr ? 1 : 0} }, ${at(L)});`);
-        t.state.expr = b.expr;
-        t.poses.add(poseKey(t.state));
+        if (t && t.kind === "actor" && b.expr) {
+          for (const k of t.exprKeys) ops.push(`tl.set("#${t.id}-x-${k}", { opacity: ${k === b.expr ? 1 : 0} }, ${at(L)});`);
+          t.state.expr = b.expr;
+          t.poses.add(poseKey(t.state));
+        } else if (t) {
+          ops.push(`tl.fromTo("#${t.id}", { scale: 1.08 }, { scale: 1, duration: ${at(2)}, ease: "power1.out" }, ${at(L)});`);
+        }
         break;
       case "DRAW": {
-        const from = b.from;
-        if (from.kind === "actor") {
-          ops.push(`tl.set("#${from.id}-limb-idle", { opacity: 0 }, ${at(L)});`);
-          ops.push(`tl.set("#${from.id}-limb-point", { opacity: 1 }, ${at(L)});`);
-          from.state.limb = "point";
-          from.poses.add(poseKey(from.state));
+        if (b.from && b.to) {
+          const from = b.from;
+          if (from.kind === "actor") {
+            ops.push(`tl.set("#${from.id}-limb-idle", { opacity: 0 }, ${at(L)});`);
+            ops.push(`tl.set("#${from.id}-limb-point", { opacity: 1 }, ${at(L)});`);
+            from.state.limb = "point";
+            from.poses.add(poseKey(from.state));
+          }
+          const id = `${sid}-arrow${arrowN++}`;
+          arrows.push(`<path id="${id}" class="draw" pathLength="1" d="${arrowD(from, b.to)}"/>`);
+          ops.push(`tl.fromTo("#${id}", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: ${at(14)}, ease: "power1.out" }, ${at(L)});`);
+        } else if (b.target) {
+          const tgt = b.target;
+          const ga = geom(tgt);
+          const cx = tgt.cx;
+          const cy = ga.cy;
+          const id = `${sid}-draw${arrowN++}`;
+          if (/checkmark|check/i.test(b.text)) {
+            const chk = `M${cx - 24} ${cy} L${cx - 6} ${cy + 20} L${cx + 28} ${cy - 20}`;
+            arrows.push(`<path id="${id}" class="draw" pathLength="1" stroke="${PALETTE.green}" stroke-width="14" d="${chk}"/>`);
+            ops.push(`tl.fromTo("#${id}", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: ${at(8)}, ease: "power1.out" }, ${at(L)});`);
+          } else {
+            const tx1 = Math.max(60, cx - 180);
+            const ty1 = Math.max(80, cy - 140);
+            const dx = cx - tx1;
+            const dy = cy - ty1;
+            const len = Math.hypot(dx, dy) || 1;
+            const ux = dx / len; const uy = dy / len;
+            const ex = cx - ux * 40; const ey = cy - uy * 40;
+            const arr = `M${Math.round(tx1)} ${Math.round(ty1)} L${Math.round(ex)} ${Math.round(ey)}`;
+            const labelFill = PALETTE[labelColor(s.bg)];
+            const svg = `<path id="${id}-line" class="draw" pathLength="1" stroke="${PALETTE.yellow}" stroke-width="8" d="${arr}"/>` +
+              (b.calloutLabel ? `<text id="${id}-txt" class="callout-label" x="${Math.round(tx1 - 10)}" y="${Math.round(ty1 - 10)}" text-anchor="end" font-family="Permanent Marker, Arial, sans-serif" font-weight="400" font-size="44" fill="${labelFill}" style="-webkit-text-stroke:4px ${PALETTE.black};paint-order:stroke fill">${esc(b.calloutLabel)}</text>` : "");
+            arrows.push(svg);
+            ops.push(`tl.fromTo("#${id}-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: ${at(10)}, ease: "power1.out" }, ${at(L)});`);
+            if (b.calloutLabel) ops.push(`tl.fromTo("#${id}-txt", { opacity: 0 }, { opacity: 1, duration: ${at(3)}, ease: "power1.out" }, ${at(L + 8)});`);
+          }
         }
-        const id = `${sid}-arrow${arrowN++}`;
-        arrows.push(`<path id="${id}" class="draw" pathLength="1" d="${arrowD(from, b.to)}"/>`);
-        ops.push(`tl.fromTo("#${id}", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: ${at(14)}, ease: "power1.out" }, ${at(L)});`);
         break;
       }
       case "CALLOUT": {

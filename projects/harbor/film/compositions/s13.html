@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .fill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+        .actor { position: absolute; transform-origin: 50% 50%; }
+        .ttl {
+          position: absolute; top: 60px; left: 0; width: 1920px; margin: 0; text-align: center;
+          font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
+          transform-origin: 50% 50%;
+          -webkit-text-stroke: 12px #000000; paint-order: stroke fill;
+          letter-spacing: 2px;
+        }
+        .draw { stroke-dasharray: 1 1; }
+        .callout-label { pointer-events: none; }
+      </style>
+
+<div id="root" data-composition-id="s13" data-width="1920" data-height="1080">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<filter id="s13-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s13-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s13-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<symbol id="rig-body" viewBox="-160 -110 320 460">
+      <path d="M0,95 L0,240" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <path d="M3,97 L2.5,238" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M-35,320 L-62,320 M35,320 L62,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-limb-idle" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-50,200 M0,130 L50,200 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-point" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-120,112 M0,130 L50,200 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-120" cy="112" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-walk" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-40,188 M0,130 L36,188 M-40,188 L-54,298 M36,188 L22,296" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-40" cy="188" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="36" cy="188" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-clipboard" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-30,190 M0,130 L50,160 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-30" cy="190" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <!-- small clipboard icon at the raised arm's end -->
+      <rect x="46" y="138" width="36" height="46" rx="3" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="52" y="132" width="22" height="10" rx="3" fill="#4A4A4A" stroke="#000000" stroke-width="4"/>
+      <path d="M52,156 L76,156 M52,168 L70,168" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-limb-crossed" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-60,175 M0,130 L60,175 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <!-- crossing forearms -->
+      <path d="M-60,175 Q-20,192 30,175 M60,175 Q20,192 -30,175" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-60" cy="175" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="60" cy="175" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-panic" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-80,80 M0,130 L80,80 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-80" cy="80" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="80" cy="80" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-head" viewBox="-160 -110 320 460">
+      <clipPath id="rig-head-clip"><circle cx="0" cy="0" r="90"/></clipPath>
+      <circle cx="0" cy="0" r="90" style="fill:var(--tone-head, var(--tone, #9B9B9B))"/>
+      <circle cx="-12" cy="-12" r="90" fill="currentColor" clip-path="url(#rig-head-clip)"/>
+      <circle cx="0" cy="0" r="90" fill="none" stroke="#000000" stroke-width="6"/>
+      <circle cx="3" cy="-2" r="92" fill="none" stroke="#000000" stroke-width="2.5"/>
+    </symbol>
+<symbol id="rig-brows-neutral" viewBox="-160 -110 320 460">
+      <path d="M-44,-30 L-16,-30 M16,-30 L44,-30" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-eyes-neutral" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-10" r="7" fill="#000000"/>
+      <circle cx="30" cy="-10" r="7" fill="#000000"/>
+    </symbol>
+<symbol id="rig-mouth-neutral" viewBox="-160 -110 320 460">
+      <path d="M-20,34 L20,34" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-torso" viewBox="-160 -110 320 460">
+      <path d="M-44,104 Q0,88 44,104 L52,150 L46,252 L-46,252 L-52,150 Z" fill="var(--c-garment, #F5820D)"/>
+      <path d="M18,98 L44,104 L52,150 L46,252 L24,252 Z" style="fill:var(--tone, #AC5B09)"/>
+      <path d="M-44,104 Q0,88 44,104 L52,150 L46,252 L-46,252 L-52,150 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M-44,104 Q0,88 44,104" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(4,3)"/>
+      <path d="M0,142 L0,250" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-brows-raised" viewBox="-160 -110 320 460">
+      <path d="M-46,-42 L-16,-42 M16,-42 L46,-42" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-eyes-shock" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-10" r="13" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="30" cy="-10" r="13" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="-30" cy="-10" r="4" fill="#000000"/>
+      <circle cx="30" cy="-10" r="4" fill="#000000"/>
+    </symbol>
+<symbol id="rig-mouth-open" viewBox="-160 -110 320 460">
+      <ellipse cx="0" cy="38" rx="14" ry="10" fill="#000000"/>
+    </symbol>
+<symbol id="rig-hair-bun" viewBox="-160 -110 320 460">
+      <path d="M-88,-26 A88,88 0 0 1 88,-26 L74,-44 Q40,-84 0,-84 Q-40,-84 -74,-44 Z" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <circle cx="34" cy="-92" r="26" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5"/>
+    </symbol>
+<symbol id="prop-cloud" viewBox="0 0 240 260">
+      <path d="M56,176 A38,38 0 0 1 62,104 A48,48 0 0 1 140,74 A38,38 0 0 1 200,120 A32,32 0 0 1 192,176 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M60,180 A38,38 0 0 1 66,108 A48,48 0 0 1 142,78 A38,38 0 0 1 204,124" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+    </symbol>
+<symbol id="prop-chair" viewBox="0 0 240 260">
+      <rect x="66" y="34" width="108" height="90" rx="8" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <rect x="56" y="128" width="128" height="34" rx="6" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M70,162 L58,232 M170,162 L182,232" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+      <rect x="86" y="48" width="68" height="26" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+    </symbol>
+<symbol id="prop-clipboard" viewBox="0 0 240 260">
+      <rect x="44" y="30" width="152" height="206" rx="10" fill="currentColor"/>
+      <path d="M168,34 L196,44 L196,226 L168,236 Z" style="fill:var(--tone, #61422A)"/>
+      <rect x="44" y="30" width="152" height="206" rx="10" fill="none" stroke="#000000" stroke-width="8"/>
+      <rect x="47" y="33" width="149" height="203" rx="9" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <rect x="58" y="62" width="124" height="156" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <path d="M72,92 L168,92 M72,120 L168,120 M72,148 L150,148 M72,176 L168,176" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+      <rect x="96" y="16" width="48" height="34" rx="6" fill="#4A4A4A" stroke="#000000" stroke-width="6"/>
+    </symbol>
+<symbol id="prop-paper" viewBox="0 0 240 260">
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <path d="M62,70 L178,70 M62,104 L178,104 M62,138 L150,138 M62,172 L178,172 M62,206 L130,206" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+</defs>
+</svg>
+<div id="s13-stage" class="fill" style="background:#FFFFFF">
+
+<div id="s13-ink" class="fill">
+<div id="s13-e0" class="actor" style="left:222.5px;top:335px;width:515px;height:741px;opacity:0">
+<svg width="515" height="741" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8;--tone-head:#D8D8D8">
+<use href="#rig-body" x="-160" y="-110" width="320" height="460"/>
+<g id="s13-e0-limb-idle" opacity="1"><use href="#rig-limb-idle" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s13-e0-limb-point" opacity="0"><use href="#rig-limb-point" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s13-e0-limb-walk" opacity="0"><use href="#rig-limb-walk" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s13-e0-limb-clipboard" opacity="0"><use href="#rig-limb-clipboard" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s13-e0-limb-crossed" opacity="0"><use href="#rig-limb-crossed" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s13-e0-limb-panic" opacity="0"><use href="#rig-limb-panic" x="-160" y="-110" width="320" height="460"/></g>
+<use href="#rig-head" x="-160" y="-110" width="320" height="460"/>
+<g id="s13-e0-x-neutral" opacity="1"><use href="#rig-brows-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-neutral" x="-160" y="-110" width="320" height="460"/></g>
+
+</svg>
+</div>
+<div id="s13-e1" class="actor" style="left:792.5px;top:335px;width:515px;height:741px;opacity:0">
+<svg width="515" height="741" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#1F4386;--tone-head:#D8D8D8;--c-garment:#2D5FBF;--c-hair:#000000">
+<use href="#rig-body" x="-160" y="-110" width="320" height="460"/><use href="#rig-torso" x="-160" y="-110" width="320" height="460"/>
+<g id="s13-e1-limb-idle" opacity="1"><use href="#rig-limb-idle" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s13-e1-limb-point" opacity="0"><use href="#rig-limb-point" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s13-e1-limb-walk" opacity="0"><use href="#rig-limb-walk" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s13-e1-limb-clipboard" opacity="0"><use href="#rig-limb-clipboard" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s13-e1-limb-crossed" opacity="0"><use href="#rig-limb-crossed" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s13-e1-limb-panic" opacity="0"><use href="#rig-limb-panic" x="-160" y="-110" width="320" height="460"/></g>
+<use href="#rig-head" x="-160" y="-110" width="320" height="460"/>
+<g id="s13-e1-x-neutral" opacity="1"><use href="#rig-brows-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-neutral" x="-160" y="-110" width="320" height="460"/></g><g id="s13-e1-x-shock" opacity="0"><use href="#rig-brows-raised" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-shock" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-open" x="-160" y="-110" width="320" height="460"/></g>
+<use href="#rig-hair-bun" x="-160" y="-110" width="320" height="460"/>
+</svg>
+</div>
+<div id="s13-e2" class="actor" style="left:36px;top:590px;width:240px;height:260px;opacity:1">
+<svg width="240" height="260" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<path d="M50,186 A40,40 0 0 1 60,108 A50,50 0 0 1 150,78 A40,40 0 0 1 200,128 A34,34 0 0 1 192,186 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <path d="M54,190 A40,40 0 0 1 64,110 A50,50 0 0 1 152,82 A40,40 0 0 1 202,132 A34,34 0 0 1 194,190" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(3,-2)"/>
+      <circle cx="40" cy="222" r="9" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <circle cx="22" cy="244" r="5" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <text class="prop-text" x="120" y="142" text-anchor="middle" font-family="Lato" font-weight="700" font-size="44" fill="#000000">WAIT</text>
+</svg>
+</div>
+<div id="s13-e3" class="actor" style="left:700px;top:590px;width:240px;height:260px;opacity:0">
+<svg width="240" height="260" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<use href="#prop-cloud" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s13-e4" class="actor" style="left:980px;top:590px;width:240px;height:260px;opacity:0">
+<svg width="240" height="260" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
+<use href="#prop-chair" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s13-e5" class="actor" style="left:1320px;top:590px;width:240px;height:260px;opacity:0">
+<svg width="240" height="260" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
+<use href="#prop-clipboard" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s13-e6" class="actor" style="left:1672px;top:590px;width:240px;height:260px;opacity:0">
+<svg width="240" height="260" viewBox="0 0 240 260" color="#4A4A4A" style="display:block;overflow:visible;--tone:#343434">
+<use href="#prop-paper" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s13-arrow0" class="draw" pathLength="1" d="M1222 712 L1320 716 M1279 691 L1320 716 L1277 736"/><path id="s13-x0" class="draw" pathLength="1" stroke="#D94040" stroke-width="18" d="M700 600 L940 840"/><path id="s13-x1" class="draw" pathLength="1" stroke="#D94040" stroke-width="18" d="M940 600 L700 840"/><path id="s13-x2" class="draw" pathLength="1" stroke="#D94040" stroke-width="18" d="M980 600 L1220 840"/><path id="s13-x3" class="draw" pathLength="1" stroke="#D94040" stroke-width="18" d="M1220 600 L980 840"/></svg>
+</div>
+<div id="s13-t0" class="ttl" style="color:#000000;opacity:0;font-size:137px">NO BELIEF, NO LEADER</div>
+<div id="s13-t1" class="ttl" style="color:#000000;opacity:0;font-size:150px">SIX CONDITIONS</div>
+<div id="s13-t2" class="ttl" style="color:#D94040;opacity:0;font-size:150px">THE HIDDEN PLAN</div>
+</div>
+
+</div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#s13-ink", { filter: "url(#s13-boil-a)" }, f(0));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-b)" }, f(24));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-c)" }, f(48));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-a)" }, f(72));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-b)" }, f(96));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-c)" }, f(120));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-a)" }, f(144));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-b)" }, f(168));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-c)" }, f(192));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-a)" }, f(216));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-b)" }, f(240));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-c)" }, f(264));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-a)" }, f(288));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-b)" }, f(312));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-c)" }, f(336));
+        tl.set("#s13-ink", { filter: "url(#s13-boil-a)" }, f(360));
+        tl.fromTo("#s13-e0", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(0));
+        tl.to("#s13-e0", { scale: 1, duration: f(2) }, f(4));
+        tl.fromTo("#s13-e3", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(48));
+        tl.to("#s13-e3", { scale: 1, duration: f(2) }, f(52));
+        tl.fromTo("#s13-x0", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(8), ease: "none" }, f(72));
+        tl.fromTo("#s13-x1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(8), ease: "none" }, f(80));
+        tl.fromTo("#s13-e4", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(120));
+        tl.to("#s13-e4", { scale: 1, duration: f(2) }, f(124));
+        tl.fromTo("#s13-x2", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(8), ease: "none" }, f(139));
+        tl.fromTo("#s13-x3", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(8), ease: "none" }, f(147));
+        tl.fromTo("#s13-e3", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(144));
+        tl.fromTo("#s13-e1", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(156));
+        tl.to("#s13-e1", { scale: 1, duration: f(2) }, f(160));
+        tl.fromTo("#s13-e5", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(204));
+        tl.to("#s13-e5", { scale: 1, duration: f(2) }, f(208));
+        tl.set("#s13-e1-limb-idle", { opacity: 0 }, f(264));
+        tl.set("#s13-e1-limb-point", { opacity: 1 }, f(264));
+        tl.fromTo("#s13-arrow0", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(14), ease: "power1.out" }, f(264));
+        tl.set("#s13-e1-x-neutral", { opacity: 0 }, f(300));
+        tl.set("#s13-e1-x-shock", { opacity: 1 }, f(300));
+        tl.fromTo("#s13-e6", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(336));
+        tl.to("#s13-e6", { scale: 1, duration: f(2) }, f(340));
+        tl.set("#s13-e6", { x: 8 }, f(360));
+        tl.set("#s13-e6", { x: -8 }, f(361));
+        tl.set("#s13-e6", { x: 8 }, f(362));
+        tl.set("#s13-e6", { x: -8 }, f(363));
+        tl.set("#s13-e6", { x: 8 }, f(364));
+        tl.set("#s13-e6", { x: -8 }, f(365));
+        tl.set("#s13-e6", { x: 8 }, f(366));
+        tl.set("#s13-e6", { x: -8 }, f(367));
+        tl.set("#s13-e6", { x: 0 }, f(368));
+        tl.fromTo("#s13-t0", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(48));
+        tl.set("#s13-t0", { opacity: 0 }, f(156));
+        tl.fromTo("#s13-t1", { opacity: 0, scale: 1.38 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(156));
+        tl.set("#s13-t1", { opacity: 0 }, f(336));
+        tl.fromTo("#s13-t2", { opacity: 0, scale: 1.29 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(336));
+        window.__timelines["s13"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
