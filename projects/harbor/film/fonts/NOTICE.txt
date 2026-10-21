@@ -1,0 +1,10 @@
+Fonts shipped with this project. Both are Latin subsets converted to WOFF2.
+
+Permanent Marker (permanent-marker-regular.woff2)
+Copyright (c) 2010 by Font Diner, Inc. All rights reserved. Source: https://github.com/google/fonts/tree/main/apache/permanentmarker
+Licensed under the Apache License, Version 2.0 (full text: https://www.apache.org/licenses/LICENSE-2.0).
+
+Lato Bold (lato-bold.woff2)
+Copyright (c) 2010-2014 by tyPoland Lukasz Dziedzic (team@latofonts.com) with Reserved Font Name "Lato".
+Source: https://github.com/google/fonts/tree/main/ofl/lato
+Licensed under the SIL Open Font License, Version 1.1 (full text: https://openfontlicense.org).

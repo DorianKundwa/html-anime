@@ -187,7 +187,7 @@ function propMarkup(e, enter) {
   return `<div id="${e.id}" class="actor" style="left:${e.cx - PROP.half}px;top:${PROP.top}px;width:${PROP.w}px;height:${PROP.h}px;opacity:${hidden}">
 <svg width="${PROP.w}" height="${PROP.h}" viewBox="0 0 ${PROP.w} ${PROP.h}" style="display:block;overflow:visible">
 <rect x="5" y="5" width="230" height="250" fill="${PALETTE[e.color]}" stroke="${PALETTE.black}" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="150" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="${PALETTE.black}">${esc(e.name)}</text>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="${PALETTE.black}">${esc(e.name)}</text>
 </svg>
 </div>`;
 }
@@ -247,8 +247,9 @@ function buildScene(s, dict, symbols) {
   const arrows = [];
   const crosses = [];
   const inkId = `${sid}-ink`;
-  for (let n = 0; n < N; n += 3) {
-    ops.push(`tl.set("#${inkId}", { filter: "url(#${sid}-boil-${"abc"[(n / 3) % 3]})" }, ${at(n)});`);
+  // The boil swaps once a second (every 24 frames). Each swap re-runs the turbulence filter over the whole ink layer, so a faster swap is the heaviest part of the render.
+  for (let n = 0; n < N; n += 24) {
+    ops.push(`tl.set("#${inkId}", { filter: "url(#${sid}-boil-${"abc"[(n / 24) % 3]})" }, ${at(n)});`);
   }
   let arrowN = 0;
   let crossN = 0;
@@ -324,9 +325,10 @@ function buildScene(s, dict, symbols) {
     ops.push(`tl.fromTo("#${sid}-stage", { scale: 1 }, { scale: 1.06, duration: ${at(N - pushStart)}, ease: "none" }, ${at(pushStart)});`);
   }
 
-  // Headlines (top only, as the spec requires). They stay until the scene ends.
+  // Headlines (top only, as the spec requires). Each one replaces the previous at its time, so the previous one is hidden when the next starts.
   const headlines = s.texts.map((tx, k) => {
     const L = tx.frame - s.startF;
+    if (k > 0) ops.push(`tl.set("#${sid}-t${k - 1}", { opacity: 0 }, ${at(L)});`);
     ops.push(`tl.fromTo("#${sid}-t${k}", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: ${at(3)}, ease: "power2.out" }, ${at(L)});`);
     return `<div id="${sid}-t${k}" class="ttl" style="color:${PALETTE[tx.color]};opacity:0">${esc(tx.text.toUpperCase())}</div>`;
   });
@@ -360,13 +362,15 @@ ${overlaySvg}
 ${headlines.join("\n")}
 </div>
 ${overlay}`;
-  const root = `<div id="root" data-composition-id="${sid}" data-width="${W}" data-height="${H}">\n${stage}\n</div>`;
-
-  const ids = referencedIds(root);
+  const ids = referencedIds(stage);
   const missing = ids.filter((id) => !symbols.has(id));
   if (missing.length) errors.push(`${s.id}: library has no symbol(s) ${missing.join(", ")}`);
   const defs = ids.filter((id) => symbols.has(id)).map((id) => symbols.get(id)).join("\n");
   const boil = ["a", "b", "c"].map((k, i) => `<filter id="${sid}-boil-${k}" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="${i + 1}" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>`).join("\n");
+
+  // The defs sit inside #root, not in a <template>-level svg: only #root is kept in the live DOM,
+  // so symbols and boil filters outside it were lost and the actors did not render.
+  const root = `<div id="root" data-composition-id="${sid}" data-width="${W}" data-height="${H}">\n<svg width="0" height="0" style="position: absolute" aria-hidden="true">\n<defs>\n${boil}\n${defs}\n</defs>\n</svg>\n${stage}\n</div>`;
 
   const html = `<!doctype html>
 <html lang="en">
@@ -375,12 +379,6 @@ ${overlay}`;
   </head>
   <body>
     <template>
-      <svg width="0" height="0" style="position: absolute" aria-hidden="true">
-        <defs>
-${boil}
-${defs}
-        </defs>
-      </svg>
       <style>
 ${FONT_FACES}
 ${SCENE_CSS}

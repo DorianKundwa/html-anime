@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .cap {
+          position: absolute; left: 0; bottom: 36px; width: 1920px; text-align: center;
+          font-family: "Lato", Arial, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2;
+        }
+        .cap span {
+          display: inline-block; background: #FFFFFF; color: #000000;
+          border: 4px solid #000000; padding: 6px 18px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="captions-06" data-width="1920" data-height="1080">
+      <div id="cap107" class="cap" style="opacity:0"><span>Parts of it are.</span></div>
+      <div id="cap108" class="cap" style="opacity:0"><span>Then the vocabulary arrives.</span></div>
+      <div id="cap109" class="cap" style="opacity:0"><span>Outsiders are the Drift.</span></div>
+      <div id="cap110" class="cap" style="opacity:0"><span>Doubt is static.</span></div>
+      <div id="cap111" class="cap" style="opacity:0"><span>Leaving is slipping.</span></div>
+      <div id="cap112" class="cap" style="opacity:0"><span>When Nora asks a question, someone smiles<br>and says one phrase, that's just static,</span></div>
+      <div id="cap113" class="cap" style="opacity:0"><span>and the question dissolves like sugar in<br>tea.</span></div>
+      <div id="cap114" class="cap" style="opacity:0"><span>Lifton called this loading the language.</span></div>
+      <div id="cap115" class="cap" style="opacity:0"><span>He also described what he called sacred<br>science, the idea that a group's teaching</span></div>
+      <div id="cap116" class="cap" style="opacity:0"><span>is beyond question.</span></div>
+      <div id="cap117" class="cap" style="opacity:0"><span>Notice how pleasant it feels.</span></div>
+      <div id="cap118" class="cap" style="opacity:0"><span>Doubt used to be a problem.</span></div>
+      <div id="cap119" class="cap" style="opacity:0"><span>Now it has a label, and the label makes it<br>somebody else's fault.</span></div>
+      <div id="cap120" class="cap" style="opacity:0"><span>Is that peace, or is it a locked drawer?</span></div>
+      <div id="cap121" class="cap" style="opacity:0"><span>Stage four is the small yes.</span></div>
+      <div id="cap122" class="cap" style="opacity:0"><span>Nothing in the Harbor asks for everything<br>at once.</span></div>
+      <div id="cap123" class="cap" style="opacity:0"><span>It asks for a Tuesday evening.</span></div>
+      <div id="cap124" class="cap" style="opacity:0"><span>Then six a.m.</span></div>
+      <div id="cap125" class="cap" style="opacity:0"><span>meditation on Wednesdays.</span></div>
+      <div id="cap126" class="cap" style="opacity:0"><span>Then a weekend retreat, forty miles away,<br>which means she will need to skip her temp</span></div>
+      <div id="cap127" class="cap" style="opacity:0"><span>shifts.</span></div>
+      </div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#cap107", { opacity: 1 }, f(0));
+        tl.set("#cap107", { opacity: 0 }, f(24));
+        tl.set("#cap108", { opacity: 1 }, f(24));
+        tl.set("#cap108", { opacity: 0 }, f(144));
+        tl.set("#cap109", { opacity: 1 }, f(144));
+        tl.set("#cap109", { opacity: 0 }, f(168));
+        tl.set("#cap110", { opacity: 1 }, f(168));
+        tl.set("#cap110", { opacity: 0 }, f(192));
+        tl.set("#cap111", { opacity: 1 }, f(192));
+        tl.set("#cap111", { opacity: 0 }, f(360));
+        tl.set("#cap112", { opacity: 1 }, f(360));
+        tl.set("#cap112", { opacity: 0 }, f(436));
+        tl.set("#cap113", { opacity: 1 }, f(436));
+        tl.set("#cap113", { opacity: 0 }, f(480));
+        tl.set("#cap114", { opacity: 1 }, f(480));
+        tl.set("#cap114", { opacity: 0 }, f(600));
+        tl.set("#cap115", { opacity: 1 }, f(600));
+        tl.set("#cap115", { opacity: 0 }, f(758));
+        tl.set("#cap116", { opacity: 1 }, f(758));
+        tl.set("#cap116", { opacity: 0 }, f(792));
+        tl.set("#cap117", { opacity: 1 }, f(792));
+        tl.set("#cap117", { opacity: 0 }, f(864));
+        tl.set("#cap118", { opacity: 1 }, f(864));
+        tl.set("#cap118", { opacity: 0 }, f(936));
+        tl.set("#cap119", { opacity: 1 }, f(936));
+        tl.set("#cap119", { opacity: 0 }, f(1056));
+        tl.set("#cap120", { opacity: 1 }, f(1056));
+        tl.set("#cap120", { opacity: 0 }, f(1080));
+        tl.set("#cap121", { opacity: 1 }, f(1080));
+        tl.set("#cap121", { opacity: 0 }, f(1128));
+        tl.set("#cap122", { opacity: 1 }, f(1128));
+        tl.set("#cap122", { opacity: 0 }, f(1248));
+        tl.set("#cap123", { opacity: 1 }, f(1248));
+        tl.set("#cap123", { opacity: 0 }, f(1272));
+        tl.set("#cap124", { opacity: 1 }, f(1272));
+        tl.set("#cap124", { opacity: 0 }, f(1320));
+        tl.set("#cap125", { opacity: 1 }, f(1320));
+        tl.set("#cap125", { opacity: 0 }, f(1368));
+        tl.set("#cap126", { opacity: 1 }, f(1368));
+        tl.set("#cap126", { opacity: 0 }, f(1436));
+        tl.set("#cap127", { opacity: 1 }, f(1436));
+        tl.set("#cap127", { opacity: 0 }, f(1440));
+        window.__timelines["captions-06"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .cap {
+          position: absolute; left: 0; bottom: 36px; width: 1920px; text-align: center;
+          font-family: "Lato", Arial, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2;
+        }
+        .cap span {
+          display: inline-block; background: #FFFFFF; color: #000000;
+          border: 4px solid #000000; padding: 6px 18px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="captions-08" data-width="1920" data-height="1080">
+      <div id="cap150" class="cap" style="opacity:0"><span>Nobody asks what Ines wanted to ask.</span></div>
+      <div id="cap151" class="cap" style="opacity:0"><span>Stage five is the walls.</span></div>
+      <div id="cap152" class="cap" style="opacity:0"><span>By month five, Nora lives in the Harbor's<br>house.</span></div>
+      <div id="cap153" class="cap" style="opacity:0"><span>The rent is lower.</span></div>
+      <div id="cap154" class="cap" style="opacity:0"><span>The people are kinder.</span></div>
+      <div id="cap155" class="cap" style="opacity:0"><span>Her old lease ended anyway.</span></div>
+      <div id="cap156" class="cap" style="opacity:0"><span>The walls are not made of stone.</span></div>
+      <div id="cap157" class="cap" style="opacity:0"><span>They are made of schedules.</span></div>
+      <div id="cap158" class="cap" style="opacity:0"><span>Phones go into a basket during quiet<br>hours, and the quiet hours keep growing.</span></div>
+      <div id="cap159" class="cap" style="opacity:0"><span>Her sister Leah calls, and the call goes<br>to voicemail, and then Nora stops</span></div>
+      <div id="cap160" class="cap" style="opacity:0"><span>listening to the voicemails, because<br>Julian once said that people who love you</span></div>
+      <div id="cap161" class="cap" style="opacity:0"><span>but do not understand you can feel like<br>weather.</span></div>
+      <div id="cap162" class="cap" style="opacity:0"><span>Old friends become the Drift.</span></div>
+      <div id="cap163" class="cap" style="opacity:0"><span>Any book outside the reading list feels,<br>somehow, noisy.</span></div>
+      <div id="cap164" class="cap" style="opacity:0"><span>Lifton called this milieu control, the<br>control of communication, which can grow</span></div>
+      <div id="cap165" class="cap" style="opacity:0"><span>until it reaches inside a person's own<br>thoughts.</span></div>
+      <div id="cap166" class="cap" style="opacity:0"><span>Hassan calls the related tool information<br>control.</span></div>
+      <div id="cap167" class="cap" style="opacity:0"><span>And notice, there are no guards here.</span></div>
+      <div id="cap168" class="cap" style="opacity:0"><span>Nobody has ever stopped Nora from leaving.</span></div>
+      <div id="cap169" class="cap" style="opacity:0"><span>The door is unlocked.</span></div>
+      <div id="cap170" class="cap" style="opacity:0"><span>The trouble is that there is no one left<br>outside to leave toward.</span></div>
+      </div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#cap150", { opacity: 1 }, f(0));
+        tl.set("#cap150", { opacity: 0 }, f(96));
+        tl.set("#cap151", { opacity: 1 }, f(96));
+        tl.set("#cap151", { opacity: 0 }, f(144));
+        tl.set("#cap152", { opacity: 1 }, f(144));
+        tl.set("#cap152", { opacity: 0 }, f(216));
+        tl.set("#cap153", { opacity: 1 }, f(216));
+        tl.set("#cap153", { opacity: 0 }, f(264));
+        tl.set("#cap154", { opacity: 1 }, f(264));
+        tl.set("#cap154", { opacity: 0 }, f(288));
+        tl.set("#cap155", { opacity: 1 }, f(288));
+        tl.set("#cap155", { opacity: 0 }, f(336));
+        tl.set("#cap156", { opacity: 1 }, f(336));
+        tl.set("#cap156", { opacity: 0 }, f(408));
+        tl.set("#cap157", { opacity: 1 }, f(408));
+        tl.set("#cap157", { opacity: 0 }, f(456));
+        tl.set("#cap158", { opacity: 1 }, f(456));
+        tl.set("#cap158", { opacity: 0 }, f(552));
+        tl.set("#cap159", { opacity: 1 }, f(552));
+        tl.set("#cap159", { opacity: 0 }, f(664));
+        tl.set("#cap160", { opacity: 1 }, f(664));
+        tl.set("#cap160", { opacity: 0 }, f(768));
+        tl.set("#cap161", { opacity: 1 }, f(768));
+        tl.set("#cap161", { opacity: 0 }, f(840));
+        tl.set("#cap162", { opacity: 1 }, f(840));
+        tl.set("#cap162", { opacity: 0 }, f(912));
+        tl.set("#cap163", { opacity: 1 }, f(912));
+        tl.set("#cap163", { opacity: 0 }, f(984));
+        tl.set("#cap164", { opacity: 1 }, f(984));
+        tl.set("#cap164", { opacity: 0 }, f(1042));
+        tl.set("#cap165", { opacity: 1 }, f(1042));
+        tl.set("#cap165", { opacity: 0 }, f(1080));
+        tl.set("#cap166", { opacity: 1 }, f(1080));
+        tl.set("#cap166", { opacity: 0 }, f(1176));
+        tl.set("#cap167", { opacity: 1 }, f(1176));
+        tl.set("#cap167", { opacity: 0 }, f(1248));
+        tl.set("#cap168", { opacity: 1 }, f(1248));
+        tl.set("#cap168", { opacity: 0 }, f(1320));
+        tl.set("#cap169", { opacity: 1 }, f(1320));
+        tl.set("#cap169", { opacity: 0 }, f(1392));
+        tl.set("#cap170", { opacity: 1 }, f(1392));
+        tl.set("#cap170", { opacity: 0 }, f(1440));
+        window.__timelines["captions-08"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

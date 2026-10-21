@@ -1,0 +1,15 @@
+'hyperframes validate' is deprecated and will be removed in a future release. Use 'hyperframes check' instead.
+◆  Validating film in headless Chrome
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (AMD)" renderer="ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001636) Direct3D11 vs_5_0 ps_5_0, D3D11)")
+
+  ⚠ Audio "narration" is 798.60s but its slot (data-duration) is 798.67s — the slot is shortened to the media length when rendered. Set data-duration to ~798.60s if that isn't intended.
+
+  ⚠ WCAG AA contrast warnings (6):
+    · text "THOUGHT-BUBBLE" — 1.48:1 (need 3:1, t=399.333s)
+    · text "CALENDAR" — 1.48:1 (need 3:1, t=399.333s)
+    · text "THOUGHT-BUBBLE" — 1.48:1 (need 3:1, t=718.8s)
+    · text "CULT-STEREOTYPE" — 1.48:1 (need 3:1, t=718.8s)
+    · text "DRYER" — 1.48:1 (need 3:1, t=718.8s)
+    · text "MOON-WINDOW" — 1.48:1 (need 3:1, t=718.8s)
+
+◇  0 error(s), 1 warning(s), 6 contrast warning(s)
