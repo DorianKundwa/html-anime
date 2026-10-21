@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .cap {
+          position: absolute; left: 0; bottom: 36px; width: 1920px; text-align: center;
+          font-family: "Lato", Arial, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2;
+        }
+        .cap span {
+          display: inline-block; background: #FFFFFF; color: #000000;
+          border: 4px solid #000000; padding: 6px 18px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="captions-01" data-width="1920" data-height="1080">
+      <div id="cap0" class="cap" style="opacity:0"><span>It is eleven at night, and Nora is<br>watching her clothes spin.</span></div>
+      <div id="cap1" class="cap" style="opacity:0"><span>The laundromat hums.</span></div>
+      <div id="cap2" class="cap" style="opacity:0"><span>A green backpack sits between her feet,<br>the same one she carried through college.</span></div>
+      <div id="cap3" class="cap" style="opacity:0"><span>Her phone lies face up on the folding<br>table.</span></div>
+      <div id="cap4" class="cap" style="opacity:0"><span>No messages.</span></div>
+      <div id="cap5" class="cap" style="opacity:0"><span>Not one.</span></div>
+      <div id="cap6" class="cap" style="opacity:0"><span>She checks it anyway.</span></div>
+      <div id="cap7" class="cap" style="opacity:0"><span>Three weeks ago, she moved to a city where<br>she knows nobody.</span></div>
+      <div id="cap8" class="cap" style="opacity:0"><span>Two weeks ago, the job that was supposed<br>to justify the move disappeared.</span></div>
+      <div id="cap9" class="cap" style="opacity:0"><span>Tonight, the loudest voice in her life is<br>a dryer.</span></div>
+      <div id="cap10" class="cap" style="opacity:0"><span>Most of us picture a certain kind of<br>person falling into a cult.</span></div>
+      <div id="cap11" class="cap" style="opacity:0"><span>Gullible.</span></div>
+      <div id="cap12" class="cap" style="opacity:0"><span>Troubled.</span></div>
+      <div id="cap13" class="cap" style="opacity:0"><span>Easy to fool.</span></div>
+      <div id="cap14" class="cap" style="opacity:0"><span>But what if that picture is the first lie?</span></div>
+      <div id="cap15" class="cap" style="opacity:0"><span>What if the only thing a cult truly needs<br>is a night exactly like this one?</span></div>
+      <div id="cap16" class="cap" style="opacity:0"><span>In a few minutes, Nora will say yes to<br>something small.</span></div>
+      <div id="cap17" class="cap" style="opacity:0"><span>Over the next eleven months, she will pass<br>through seven stages, one after another.</span></div>
+      <div id="cap18" class="cap" style="opacity:0"><span>Each will feel gentle.</span></div>
+      <div id="cap19" class="cap" style="opacity:0"><span>Each will feel reasonable.</span></div>
+      <div id="cap20" class="cap" style="opacity:0"><span>And somewhere along the way, a stranger<br>far outside her sight will begin pulling</span></div>
+      <div id="cap21" class="cap" style="opacity:0"><span>on a single loose thread.</span></div>
+      </div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#cap0", { opacity: 1 }, f(0));
+        tl.set("#cap0", { opacity: 0 }, f(72));
+        tl.set("#cap1", { opacity: 1 }, f(72));
+        tl.set("#cap1", { opacity: 0 }, f(120));
+        tl.set("#cap2", { opacity: 1 }, f(120));
+        tl.set("#cap2", { opacity: 0 }, f(216));
+        tl.set("#cap3", { opacity: 1 }, f(216));
+        tl.set("#cap3", { opacity: 0 }, f(336));
+        tl.set("#cap4", { opacity: 1 }, f(336));
+        tl.set("#cap4", { opacity: 0 }, f(360));
+        tl.set("#cap5", { opacity: 1 }, f(360));
+        tl.set("#cap5", { opacity: 0 }, f(384));
+        tl.set("#cap6", { opacity: 1 }, f(384));
+        tl.set("#cap6", { opacity: 0 }, f(408));
+        tl.set("#cap7", { opacity: 1 }, f(408));
+        tl.set("#cap7", { opacity: 0 }, f(504));
+        tl.set("#cap8", { opacity: 1 }, f(504));
+        tl.set("#cap8", { opacity: 0 }, f(600));
+        tl.set("#cap9", { opacity: 1 }, f(600));
+        tl.set("#cap9", { opacity: 0 }, f(672));
+        tl.set("#cap10", { opacity: 1 }, f(672));
+        tl.set("#cap10", { opacity: 0 }, f(792));
+        tl.set("#cap11", { opacity: 1 }, f(792));
+        tl.set("#cap11", { opacity: 0 }, f(792));
+        tl.set("#cap12", { opacity: 1 }, f(792));
+        tl.set("#cap12", { opacity: 0 }, f(816));
+        tl.set("#cap13", { opacity: 1 }, f(816));
+        tl.set("#cap13", { opacity: 0 }, f(864));
+        tl.set("#cap14", { opacity: 1 }, f(864));
+        tl.set("#cap14", { opacity: 0 }, f(912));
+        tl.set("#cap15", { opacity: 1 }, f(912));
+        tl.set("#cap15", { opacity: 0 }, f(1008));
+        tl.set("#cap16", { opacity: 1 }, f(1008));
+        tl.set("#cap16", { opacity: 0 }, f(1104));
+        tl.set("#cap17", { opacity: 1 }, f(1104));
+        tl.set("#cap17", { opacity: 0 }, f(1272));
+        tl.set("#cap18", { opacity: 1 }, f(1272));
+        tl.set("#cap18", { opacity: 0 }, f(1320));
+        tl.set("#cap19", { opacity: 1 }, f(1320));
+        tl.set("#cap19", { opacity: 0 }, f(1320));
+        tl.set("#cap20", { opacity: 1 }, f(1320));
+        tl.set("#cap20", { opacity: 0 }, f(1408));
+        tl.set("#cap21", { opacity: 1 }, f(1408));
+        tl.set("#cap21", { opacity: 0 }, f(1440));
+        window.__timelines["captions-01"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

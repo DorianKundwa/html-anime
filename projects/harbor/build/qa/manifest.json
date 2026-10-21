@@ -1,0 +1,42 @@
+{
+  "fps": 24,
+  "frames": 3,
+  "sheets": [
+    {
+      "file": "S01.png",
+      "scene": "S01",
+      "frames": [
+        0,
+        136,
+        272
+      ]
+    },
+    {
+      "file": "S02.png",
+      "scene": "S02",
+      "frames": [
+        408,
+        496,
+        584
+      ]
+    },
+    {
+      "file": "S03.png",
+      "scene": "S03",
+      "frames": [
+        672,
+        784,
+        896
+      ]
+    },
+    {
+      "file": "batch-pilot2.png",
+      "scenes": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "frames": 3
+    }
+  ]
+}

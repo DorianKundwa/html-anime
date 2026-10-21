@@ -1,0 +1,1437 @@
+{
+  "fps": 24,
+  "audioSeconds": 124,
+  "totalFrames": 2976,
+  "scenes": [
+    {
+      "id": "S01",
+      "n": 1,
+      "startF": 0,
+      "endF": 408,
+      "frames": 408,
+      "bg": "night",
+      "cast": [
+        "NORA"
+      ],
+      "props": [
+        "DRYER",
+        "GREEN-BACKPACK",
+        "FOLDING-TABLE",
+        "PHONE",
+        "THOUGHT-BUBBLE"
+      ],
+      "layout": "DRYER fills the right third with its round window at eye level, NORA sits on the left third with her head on the upper third line and room in front of her gaze, FOLDING-TABLE and PHONE low in the center.",
+      "camera": "push",
+      "out": "hard-cut",
+      "cueFirst": 1,
+      "cueLast": 7,
+      "beats": [
+        {
+          "frame": 0,
+          "verb": "POP",
+          "text": "DRYER with clothes spinning in its round window"
+        },
+        {
+          "frame": 12,
+          "verb": "POP",
+          "text": "NORA sitting on the left, eyes on the DRYER"
+        },
+        {
+          "frame": 72,
+          "verb": "SHAKE",
+          "text": "DRYER (the hum)"
+        },
+        {
+          "frame": 120,
+          "verb": "POP",
+          "text": "GREEN-BACKPACK on the floor between NORA's feet"
+        },
+        {
+          "frame": 168,
+          "verb": "SWAP",
+          "text": "NORA's brows to neutral and drooping"
+        },
+        {
+          "frame": 216,
+          "verb": "POP",
+          "text": "PHONE face up on FOLDING-TABLE"
+        },
+        {
+          "frame": 252,
+          "verb": "SWAP",
+          "text": "NORA's dot eyes slide sly down toward PHONE"
+        },
+        {
+          "frame": 288,
+          "verb": "SHAKE",
+          "text": "DRYER again"
+        },
+        {
+          "frame": 336,
+          "verb": "POP",
+          "text": "THOUGHT-BUBBLE above NORA with a single \"0\" inside"
+        },
+        {
+          "frame": 360,
+          "verb": "CROSS",
+          "text": "a red X over the PHONE screen"
+        },
+        {
+          "frame": 384,
+          "verb": "SWAP",
+          "text": "NORA lifts PHONE up to her face with neutral brows"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 0,
+          "pos": "top",
+          "color": "yellow",
+          "text": "11 PM"
+        },
+        {
+          "frame": 336,
+          "pos": "top",
+          "color": "yellow",
+          "text": "NO MESSAGES"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "n": 2,
+      "startF": 408,
+      "endF": 672,
+      "frames": 264,
+      "bg": "grey",
+      "cast": [
+        "NORA"
+      ],
+      "props": [
+        "CITY-SKYLINE",
+        "JOB-LETTER",
+        "DRYER"
+      ],
+      "layout": "CITY-SKYLINE across the upper right, NORA small on the lower left with her head near the left third line, DRYER entering large on the right at the end.",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 8,
+      "cueLast": 10,
+      "beats": [
+        {
+          "frame": 408,
+          "verb": "SLIDE",
+          "text": "CITY-SKYLINE (a row of flat white blocky buildings) in from the right"
+        },
+        {
+          "frame": 432,
+          "verb": "POP",
+          "text": "NORA small on the left with GREEN-BACKPACK"
+        },
+        {
+          "frame": 468,
+          "verb": "DRAW",
+          "text": "a yellow ARROW from NORA to CITY-SKYLINE with the label \"NOBODY\""
+        },
+        {
+          "frame": 504,
+          "verb": "POP",
+          "text": "JOB-LETTER (a white page with black lines) above NORA"
+        },
+        {
+          "frame": 552,
+          "verb": "CROSS",
+          "text": "a red X over JOB-LETTER"
+        },
+        {
+          "frame": 576,
+          "verb": "SLIDE",
+          "text": "JOB-LETTER off the top of the frame"
+        },
+        {
+          "frame": 600,
+          "verb": "POP",
+          "text": "DRYER large on the right, mouth open with black sound lines"
+        },
+        {
+          "frame": 636,
+          "verb": "SHAKE",
+          "text": "DRYER"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 408,
+          "pos": "top",
+          "color": "yellow",
+          "text": "NO ONE"
+        },
+        {
+          "frame": 504,
+          "pos": "top",
+          "color": "yellow",
+          "text": "NO JOB"
+        },
+        {
+          "frame": 600,
+          "pos": "top",
+          "color": "yellow",
+          "text": "ONLY A DRYER"
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "n": 3,
+      "startF": 672,
+      "endF": 1008,
+      "frames": 336,
+      "bg": "white",
+      "cast": [
+        "NORA"
+      ],
+      "props": [
+        "THOUGHT-BUBBLE",
+        "CULT-STEREOTYPE",
+        "MOON-WINDOW",
+        "DRYER"
+      ],
+      "layout": "THOUGHT-BUBBLE with CULT-STEREOTYPE centered high in the frame, labels stamped around it, MOON-WINDOW with a tiny NORA appearing at center for the last beats.",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 11,
+      "cueLast": 16,
+      "beats": [
+        {
+          "frame": 672,
+          "verb": "POP",
+          "text": "THOUGHT-BUBBLE holding CULT-STEREOTYPE (a stick figure with spiral eyes and a blank grin)"
+        },
+        {
+          "frame": 720,
+          "verb": "SHAKE",
+          "text": "CULT-STEREOTYPE"
+        },
+        {
+          "frame": 756,
+          "verb": "SHAKE",
+          "text": "CULT-STEREOTYPE's spiral eyes spinning"
+        },
+        {
+          "frame": 792,
+          "verb": "STAMP",
+          "text": "the word GULLIBLE in red beside CULT-STEREOTYPE"
+        },
+        {
+          "frame": 804,
+          "verb": "STAMP",
+          "text": "the word TROUBLED in red below CULT-STEREOTYPE"
+        },
+        {
+          "frame": 828,
+          "verb": "STAMP",
+          "text": "the words EASY TO FOOL in red on the other side of CULT-STEREOTYPE"
+        },
+        {
+          "frame": 864,
+          "verb": "CROSS",
+          "text": "a huge red X over the whole THOUGHT-BUBBLE"
+        },
+        {
+          "frame": 888,
+          "verb": "SLIDE",
+          "text": "the X'd THOUGHT-BUBBLE off to the left"
+        },
+        {
+          "frame": 912,
+          "verb": "POP",
+          "text": "MOON-WINDOW (a cobalt square with a yellow crescent) at center"
+        },
+        {
+          "frame": 936,
+          "verb": "POP",
+          "text": "tiny NORA beside a tiny DRYER inside MOON-WINDOW"
+        },
+        {
+          "frame": 972,
+          "verb": "SWAP",
+          "text": "NORA's brows to neutral"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 672,
+          "pos": "top",
+          "color": "black",
+          "text": "WHO JOINS?"
+        },
+        {
+          "frame": 864,
+          "pos": "top",
+          "color": "red",
+          "text": "THE FIRST LIE"
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "n": 4,
+      "startF": 1008,
+      "endF": 1440,
+      "frames": 432,
+      "bg": "white",
+      "cast": [
+        "NORA"
+      ],
+      "props": [
+        "THOUGHT-BUBBLE",
+        "TIMELINE",
+        "STAGE-STONES",
+        "LOOSE-THREAD",
+        "HAND"
+      ],
+      "layout": "NORA at the left edge on the lower third, TIMELINE arrow running left to right across the middle, seven STAGE-STONES along it, a distant HAND at the right edge at the end.",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 17,
+      "cueLast": 21,
+      "beats": [
+        {
+          "frame": 1008,
+          "verb": "POP",
+          "text": "NORA at the left with THOUGHT-BUBBLE reading \"YES?\""
+        },
+        {
+          "frame": 1056,
+          "verb": "STAMP",
+          "text": "a small green checkmark inside THOUGHT-BUBBLE"
+        },
+        {
+          "frame": 1104,
+          "verb": "POP",
+          "text": "TIMELINE, a long black arrow pointing right"
+        },
+        {
+          "frame": 1140,
+          "verb": "POP",
+          "text": "seven numbered STAGE-STONES (1 to 7) along TIMELINE, one after another"
+        },
+        {
+          "frame": 1200,
+          "verb": "SLIDE",
+          "text": "NORA along the first three STAGE-STONES"
+        },
+        {
+          "frame": 1272,
+          "verb": "SHAKE",
+          "text": "STAGE-STONES as they soften into rounded cushions"
+        },
+        {
+          "frame": 1320,
+          "verb": "SWAP",
+          "text": "NORA's brows to relaxed"
+        },
+        {
+          "frame": 1332,
+          "verb": "POP",
+          "text": "LOOSE-THREAD hanging from NORA's GREEN-BACKPACK"
+        },
+        {
+          "frame": 1392,
+          "verb": "SLIDE",
+          "text": "a distant cartoon HAND in from the right edge, pinching the end of LOOSE-THREAD"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 1104,
+          "pos": "top",
+          "color": "red",
+          "text": "SEVEN STAGES"
+        },
+        {
+          "frame": 1332,
+          "pos": "top",
+          "color": "black",
+          "text": "ONE LOOSE THREAD"
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "n": 5,
+      "startF": 1440,
+      "endF": 1632,
+      "frames": 192,
+      "bg": "tan",
+      "cast": [
+        "LIFTON"
+      ],
+      "props": [
+        "THICK-BOOK",
+        "CALENDAR",
+        "CHINA-MAP",
+        "CLIPBOARD"
+      ],
+      "layout": "LIFTON on the left third with eyes on the upper third line, CALENDAR top right, CHINA-MAP on the right, two small seated figures below it.",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 22,
+      "cueLast": 23,
+      "beats": [
+        {
+          "frame": 1440,
+          "verb": "SLIDE",
+          "text": "LIFTON in from the left holding THICK-BOOK"
+        },
+        {
+          "frame": 1476,
+          "verb": "POP",
+          "text": "CALENDAR at the top right with a big 1961"
+        },
+        {
+          "frame": 1512,
+          "verb": "SWAP",
+          "text": "LIFTON's brows to raised"
+        },
+        {
+          "frame": 1536,
+          "verb": "POP",
+          "text": "CHINA-MAP, a flat red shape on the right, with a yellow ARROW and the label \"CHINA\""
+        },
+        {
+          "frame": 1584,
+          "verb": "SHAKE",
+          "text": "CHINA-MAP as two small seated stick figures appear below it, speech bubbles above them"
+        },
+        {
+          "frame": 1608,
+          "verb": "POP",
+          "text": "CLIPBOARD in LIFTON's hand as THICK-BOOK slides away"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 1476,
+          "pos": "top",
+          "color": "black",
+          "text": "1961"
+        },
+        {
+          "frame": 1536,
+          "pos": "top",
+          "color": "red",
+          "text": "THOUGHT REFORM"
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "n": 6,
+      "startF": 1632,
+      "endF": 2016,
+      "frames": 384,
+      "bg": "white",
+      "cast": [
+        "SINGER"
+      ],
+      "props": [
+        "THICK-BOOK",
+        "HOUSE",
+        "COGS",
+        "DOOR",
+        "DOOR-SIGN"
+      ],
+      "layout": "SINGER on the right third, HOUSE with COGS on the left third, DOOR centered for the last beats.",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 24,
+      "cueLast": 26,
+      "beats": [
+        {
+          "frame": 1632,
+          "verb": "SLIDE",
+          "text": "SINGER in from the right holding THICK-BOOK"
+        },
+        {
+          "frame": 1680,
+          "verb": "POP",
+          "text": "HOUSE at the left, a simple brown house with a red roof"
+        },
+        {
+          "frame": 1728,
+          "verb": "SLIDE",
+          "text": "COGS in from the left and settle inside HOUSE"
+        },
+        {
+          "frame": 1776,
+          "verb": "DRAW",
+          "text": "a yellow ARROW from COGS to HOUSE with the label \"HOME\""
+        },
+        {
+          "frame": 1836,
+          "verb": "SWAP",
+          "text": "SINGER's brows to raised"
+        },
+        {
+          "frame": 1884,
+          "verb": "SLIDE",
+          "text": "HOUSE and COGS off to the left"
+        },
+        {
+          "frame": 1896,
+          "verb": "POP",
+          "text": "DOOR at center with DOOR-SIGN reading \"DANGER\""
+        },
+        {
+          "frame": 1932,
+          "verb": "CROSS",
+          "text": "a red X over DOOR-SIGN"
+        },
+        {
+          "frame": 1968,
+          "verb": "POP",
+          "text": "DOOR-SIGN reading \"WELCOME\" as DOOR swings slightly open"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 1632,
+          "pos": "top",
+          "color": "black",
+          "text": "CULTS IN OUR MIDST"
+        },
+        {
+          "frame": 1896,
+          "pos": "top",
+          "color": "red",
+          "text": "NOT DANGER"
+        },
+        {
+          "frame": 1968,
+          "pos": "top",
+          "color": "black",
+          "text": "WELCOME"
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "n": 7,
+      "startF": 2016,
+      "endF": 2328,
+      "frames": 312,
+      "bg": "cobalt",
+      "cast": [
+        "NORA"
+      ],
+      "props": [
+        "IDEA-BULB",
+        "MIND-HEAD",
+        "HAND",
+        "ROOM-WALLS"
+      ],
+      "layout": "IDEA-BULB centered high, then MIND-HEAD on the left third with HAND reaching from the right, then ROOM-WALLS rising around a doorway at center.",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 27,
+      "cueLast": 29,
+      "beats": [
+        {
+          "frame": 2016,
+          "verb": "POP",
+          "text": "IDEA-BULB (a big yellow bulb) centered"
+        },
+        {
+          "frame": 2064,
+          "verb": "SLIDE",
+          "text": "IDEA-BULB up and out of frame"
+        },
+        {
+          "frame": 2088,
+          "verb": "POP",
+          "text": "MIND-HEAD on the left, a big white head outline with a squiggle inside"
+        },
+        {
+          "frame": 2112,
+          "verb": "SLIDE",
+          "text": "HAND in from the right, reaching for MIND-HEAD"
+        },
+        {
+          "frame": 2136,
+          "verb": "CROSS",
+          "text": "a red X over HAND"
+        },
+        {
+          "frame": 2160,
+          "verb": "POP",
+          "text": "ROOM-WALLS as an open doorway outline at center"
+        },
+        {
+          "frame": 2208,
+          "verb": "SLIDE",
+          "text": "the first ROOM-WALLS segment in beside the doorway"
+        },
+        {
+          "frame": 2244,
+          "verb": "SLIDE",
+          "text": "the second ROOM-WALLS segment in, a little higher"
+        },
+        {
+          "frame": 2280,
+          "verb": "SLIDE",
+          "text": "tiny NORA walking in through the doorway"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 2016,
+          "pos": "top",
+          "color": "yellow",
+          "text": "THE IDEA"
+        },
+        {
+          "frame": 2160,
+          "pos": "top",
+          "color": "yellow",
+          "text": "A ROOM"
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "n": 8,
+      "startF": 2328,
+      "endF": 2688,
+      "frames": 360,
+      "bg": "white",
+      "cast": [
+        "SINGER",
+        "HARBOR-MEMBERS"
+      ],
+      "props": [
+        "THOUGHT-BUBBLE",
+        "CLIPBOARD",
+        "NEWSPAPER"
+      ],
+      "layout": "SINGER on the left third with CLIPBOARD, a row of three small figures along the middle, NEWSPAPER arriving on the right third.",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 30,
+      "cueLast": 32,
+      "beats": [
+        {
+          "frame": 2328,
+          "verb": "POP",
+          "text": "THOUGHT-BUBBLE with a \"?\" above SINGER"
+        },
+        {
+          "frame": 2352,
+          "verb": "POP",
+          "text": "SINGER holding CLIPBOARD"
+        },
+        {
+          "frame": 2400,
+          "verb": "POP",
+          "text": "HARBOR-MEMBERS, three small stick figures in a row, heads low"
+        },
+        {
+          "frame": 2424,
+          "verb": "STAMP",
+          "text": "the word LONELY in red above HARBOR-MEMBERS' first figure"
+        },
+        {
+          "frame": 2472,
+          "verb": "STAMP",
+          "text": "the words IN BETWEEN in red above HARBOR-MEMBERS' middle figure"
+        },
+        {
+          "frame": 2532,
+          "verb": "SWAP",
+          "text": "HARBOR-MEMBERS' brows to flat on the third figure"
+        },
+        {
+          "frame": 2568,
+          "verb": "POP",
+          "text": "NEWSPAPER with a block headline and a \"!\" bubble"
+        },
+        {
+          "frame": 2628,
+          "verb": "SWAP",
+          "text": "SINGER's brows to raised"
+        },
+        {
+          "frame": 2652,
+          "verb": "SHAKE",
+          "text": "NEWSPAPER"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 2424,
+          "pos": "top",
+          "color": "black",
+          "text": "LONELY, IN BETWEEN"
+        },
+        {
+          "frame": 2568,
+          "pos": "top",
+          "color": "red",
+          "text": "EDUCATION WEEK"
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "n": 9,
+      "startF": 2688,
+      "endF": 2976,
+      "frames": 288,
+      "bg": "white",
+      "cast": [
+        "NORA"
+      ],
+      "props": [
+        "TROUBLED-HOUSE",
+        "TIMELINE"
+      ],
+      "layout": "TROUBLED-HOUSE on the left third, then a long TIMELINE arrow across the middle with small figures walking on it, NORA on the right third with eyes on the upper third line.",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 33,
+      "cueLast": 36,
+      "beats": [
+        {
+          "frame": 2688,
+          "verb": "POP",
+          "text": "TROUBLED-HOUSE (a cracked grey house)"
+        },
+        {
+          "frame": 2736,
+          "verb": "CROSS",
+          "text": "a red X over TROUBLED-HOUSE"
+        },
+        {
+          "frame": 2784,
+          "verb": "SHAKE",
+          "text": "TROUBLED-HOUSE"
+        },
+        {
+          "frame": 2832,
+          "verb": "SLIDE",
+          "text": "TROUBLED-HOUSE off to the left"
+        },
+        {
+          "frame": 2880,
+          "verb": "POP",
+          "text": "TIMELINE, a long black arrow pointing right"
+        },
+        {
+          "frame": 2904,
+          "verb": "SLIDE",
+          "text": "three small stick figures along TIMELINE, mid-stride"
+        },
+        {
+          "frame": 2928,
+          "verb": "SHAKE",
+          "text": "TIMELINE at the middle, where a dotted gap opens"
+        },
+        {
+          "frame": 2940,
+          "verb": "POP",
+          "text": "NORA with GREEN-BACKPACK standing at the gap"
+        },
+        {
+          "frame": 2952,
+          "verb": "DRAW",
+          "text": "a yellow ARROW from TIMELINE to NORA with the label \"NORA\""
+        }
+      ],
+      "texts": [
+        {
+          "frame": 2688,
+          "pos": "top",
+          "color": "red",
+          "text": "NOT BROKEN HOMES"
+        },
+        {
+          "frame": 2880,
+          "pos": "top",
+          "color": "black",
+          "text": "IN TRANSITION"
+        }
+      ]
+    }
+  ],
+  "cues": [
+    {
+      "n": 1,
+      "frame": 0,
+      "text": "It is eleven at night, and Nora is watching her clothes spin."
+    },
+    {
+      "n": 2,
+      "frame": 72,
+      "text": "The laundromat hums."
+    },
+    {
+      "n": 3,
+      "frame": 120,
+      "text": "A green backpack sits between her feet, the same one she carried through college."
+    },
+    {
+      "n": 4,
+      "frame": 216,
+      "text": "Her phone lies face up on the folding table."
+    },
+    {
+      "n": 5,
+      "frame": 336,
+      "text": "No messages."
+    },
+    {
+      "n": 6,
+      "frame": 360,
+      "text": "Not one."
+    },
+    {
+      "n": 7,
+      "frame": 384,
+      "text": "She checks it anyway."
+    },
+    {
+      "n": 8,
+      "frame": 408,
+      "text": "Three weeks ago, she moved to a city where she knows nobody."
+    },
+    {
+      "n": 9,
+      "frame": 504,
+      "text": "Two weeks ago, the job that was supposed to justify the move disappeared."
+    },
+    {
+      "n": 10,
+      "frame": 600,
+      "text": "Tonight, the loudest voice in her life is a dryer."
+    },
+    {
+      "n": 11,
+      "frame": 672,
+      "text": "Most of us picture a certain kind of person falling into a cult."
+    },
+    {
+      "n": 12,
+      "frame": 792,
+      "text": "Gullible."
+    },
+    {
+      "n": 13,
+      "frame": 792,
+      "text": "Troubled."
+    },
+    {
+      "n": 14,
+      "frame": 816,
+      "text": "Easy to fool."
+    },
+    {
+      "n": 15,
+      "frame": 864,
+      "text": "But what if that picture is the first lie?"
+    },
+    {
+      "n": 16,
+      "frame": 912,
+      "text": "What if the only thing a cult truly needs is a night exactly like this one?"
+    },
+    {
+      "n": 17,
+      "frame": 1008,
+      "text": "In a few minutes, Nora will say yes to something small."
+    },
+    {
+      "n": 18,
+      "frame": 1104,
+      "text": "Over the next eleven months, she will pass through seven stages, one after another."
+    },
+    {
+      "n": 19,
+      "frame": 1272,
+      "text": "Each will feel gentle."
+    },
+    {
+      "n": 20,
+      "frame": 1320,
+      "text": "Each will feel reasonable."
+    },
+    {
+      "n": 21,
+      "frame": 1320,
+      "text": "And somewhere along the way, a stranger far outside her sight will begin pulling on a single loose thread."
+    },
+    {
+      "n": 22,
+      "frame": 1440,
+      "text": "Psychiatrist Robert Jay Lifton laid out the machinery in"
+    },
+    {
+      "n": 23,
+      "frame": 1536,
+      "text": "after interviewing people who had lived through thought reform in China."
+    },
+    {
+      "n": 24,
+      "frame": 1632,
+      "text": "Decades later, psychologist Margaret Singer, working with Janja Lalich on a book called Cults in Our Midst, showed how the same machinery turns up much closer to home."
+    },
+    {
+      "n": 25,
+      "frame": 1896,
+      "text": "Neither of them found a door marked danger."
+    },
+    {
+      "n": 26,
+      "frame": 1968,
+      "text": "They found a door marked welcome."
+    },
+    {
+      "n": 27,
+      "frame": 2016,
+      "text": "Here is the idea this story is built on."
+    },
+    {
+      "n": 28,
+      "frame": 2088,
+      "text": "A cult does not seize a mind."
+    },
+    {
+      "n": 29,
+      "frame": 2160,
+      "text": "It builds a room, one comfortable wall at a time, and waits for a person to walk into it on their own."
+    },
+    {
+      "n": 30,
+      "frame": 2328,
+      "text": "Is that really so unusual?"
+    },
+    {
+      "n": 31,
+      "frame": 2352,
+      "text": "Singer spent decades working with former members, and she described recruits as people who were often lonely, between attachments, and sometimes mildly depressed."
+    },
+    {
+      "n": 32,
+      "frame": 2568,
+      "text": "A Education Week report on her work added something surprising."
+    },
+    {
+      "n": 33,
+      "frame": 2688,
+      "text": "A researcher quoted there said that people who join cults are generally not the children of troubled families."
+    },
+    {
+      "n": 34,
+      "frame": 2880,
+      "text": "They were people in transition."
+    },
+    {
+      "n": 35,
+      "frame": 2928,
+      "text": "People between things."
+    },
+    {
+      "n": 36,
+      "frame": 2928,
+      "text": "People like Nora."
+    }
+  ],
+  "captions": [
+    {
+      "cue": 1,
+      "startF": 0,
+      "endF": 72,
+      "lines": [
+        "It is eleven at night, and Nora is",
+        "watching her clothes spin."
+      ]
+    },
+    {
+      "cue": 2,
+      "startF": 72,
+      "endF": 120,
+      "lines": [
+        "The laundromat hums."
+      ]
+    },
+    {
+      "cue": 3,
+      "startF": 120,
+      "endF": 216,
+      "lines": [
+        "A green backpack sits between her feet,",
+        "the same one she carried through college."
+      ]
+    },
+    {
+      "cue": 4,
+      "startF": 216,
+      "endF": 336,
+      "lines": [
+        "Her phone lies face up on the folding",
+        "table."
+      ]
+    },
+    {
+      "cue": 5,
+      "startF": 336,
+      "endF": 360,
+      "lines": [
+        "No messages."
+      ]
+    },
+    {
+      "cue": 6,
+      "startF": 360,
+      "endF": 384,
+      "lines": [
+        "Not one."
+      ]
+    },
+    {
+      "cue": 7,
+      "startF": 384,
+      "endF": 408,
+      "lines": [
+        "She checks it anyway."
+      ]
+    },
+    {
+      "cue": 8,
+      "startF": 408,
+      "endF": 504,
+      "lines": [
+        "Three weeks ago, she moved to a city where",
+        "she knows nobody."
+      ]
+    },
+    {
+      "cue": 9,
+      "startF": 504,
+      "endF": 600,
+      "lines": [
+        "Two weeks ago, the job that was supposed",
+        "to justify the move disappeared."
+      ]
+    },
+    {
+      "cue": 10,
+      "startF": 600,
+      "endF": 672,
+      "lines": [
+        "Tonight, the loudest voice in her life is",
+        "a dryer."
+      ]
+    },
+    {
+      "cue": 11,
+      "startF": 672,
+      "endF": 792,
+      "lines": [
+        "Most of us picture a certain kind of",
+        "person falling into a cult."
+      ]
+    },
+    {
+      "cue": 12,
+      "startF": 792,
+      "endF": 792,
+      "lines": [
+        "Gullible."
+      ]
+    },
+    {
+      "cue": 13,
+      "startF": 792,
+      "endF": 816,
+      "lines": [
+        "Troubled."
+      ]
+    },
+    {
+      "cue": 14,
+      "startF": 816,
+      "endF": 864,
+      "lines": [
+        "Easy to fool."
+      ]
+    },
+    {
+      "cue": 15,
+      "startF": 864,
+      "endF": 912,
+      "lines": [
+        "But what if that picture is the first lie?"
+      ]
+    },
+    {
+      "cue": 16,
+      "startF": 912,
+      "endF": 1008,
+      "lines": [
+        "What if the only thing a cult truly needs",
+        "is a night exactly like this one?"
+      ]
+    },
+    {
+      "cue": 17,
+      "startF": 1008,
+      "endF": 1104,
+      "lines": [
+        "In a few minutes, Nora will say yes to",
+        "something small."
+      ]
+    },
+    {
+      "cue": 18,
+      "startF": 1104,
+      "endF": 1272,
+      "lines": [
+        "Over the next eleven months, she will pass",
+        "through seven stages, one after another."
+      ]
+    },
+    {
+      "cue": 19,
+      "startF": 1272,
+      "endF": 1320,
+      "lines": [
+        "Each will feel gentle."
+      ]
+    },
+    {
+      "cue": 20,
+      "startF": 1320,
+      "endF": 1320,
+      "lines": [
+        "Each will feel reasonable."
+      ]
+    },
+    {
+      "cue": 21,
+      "startF": 1320,
+      "endF": 1408,
+      "lines": [
+        "And somewhere along the way, a stranger",
+        "far outside her sight will begin pulling"
+      ]
+    },
+    {
+      "cue": 21,
+      "startF": 1408,
+      "endF": 1440,
+      "lines": [
+        "on a single loose thread."
+      ]
+    },
+    {
+      "cue": 22,
+      "startF": 1440,
+      "endF": 1536,
+      "lines": [
+        "Psychiatrist Robert Jay Lifton laid out",
+        "the machinery in"
+      ]
+    },
+    {
+      "cue": 23,
+      "startF": 1536,
+      "endF": 1632,
+      "lines": [
+        "after interviewing people who had lived",
+        "through thought reform in China."
+      ]
+    },
+    {
+      "cue": 24,
+      "startF": 1632,
+      "endF": 1736,
+      "lines": [
+        "Decades later, psychologist Margaret",
+        "Singer, working with Janja Lalich on a"
+      ]
+    },
+    {
+      "cue": 24,
+      "startF": 1736,
+      "endF": 1887,
+      "lines": [
+        "book called Cults in Our Midst, showed how",
+        "the same machinery turns up much closer to"
+      ]
+    },
+    {
+      "cue": 24,
+      "startF": 1887,
+      "endF": 1896,
+      "lines": [
+        "home."
+      ]
+    },
+    {
+      "cue": 25,
+      "startF": 1896,
+      "endF": 1968,
+      "lines": [
+        "Neither of them found a door marked",
+        "danger."
+      ]
+    },
+    {
+      "cue": 26,
+      "startF": 1968,
+      "endF": 2016,
+      "lines": [
+        "They found a door marked welcome."
+      ]
+    },
+    {
+      "cue": 27,
+      "startF": 2016,
+      "endF": 2088,
+      "lines": [
+        "Here is the idea this story is built on."
+      ]
+    },
+    {
+      "cue": 28,
+      "startF": 2088,
+      "endF": 2160,
+      "lines": [
+        "A cult does not seize a mind."
+      ]
+    },
+    {
+      "cue": 29,
+      "startF": 2160,
+      "endF": 2290,
+      "lines": [
+        "It builds a room, one comfortable wall at",
+        "a time, and waits for a person to walk"
+      ]
+    },
+    {
+      "cue": 29,
+      "startF": 2290,
+      "endF": 2328,
+      "lines": [
+        "into it on their own."
+      ]
+    },
+    {
+      "cue": 30,
+      "startF": 2328,
+      "endF": 2352,
+      "lines": [
+        "Is that really so unusual?"
+      ]
+    },
+    {
+      "cue": 31,
+      "startF": 2352,
+      "endF": 2465,
+      "lines": [
+        "Singer spent decades working with former",
+        "members, and she described recruits as"
+      ]
+    },
+    {
+      "cue": 31,
+      "startF": 2465,
+      "endF": 2559,
+      "lines": [
+        "people who were often lonely, between",
+        "attachments, and sometimes mildly"
+      ]
+    },
+    {
+      "cue": 31,
+      "startF": 2559,
+      "endF": 2568,
+      "lines": [
+        "depressed."
+      ]
+    },
+    {
+      "cue": 32,
+      "startF": 2568,
+      "endF": 2688,
+      "lines": [
+        "A Education Week report on her work added",
+        "something surprising."
+      ]
+    },
+    {
+      "cue": 33,
+      "startF": 2688,
+      "endF": 2837,
+      "lines": [
+        "A researcher quoted there said that people",
+        "who join cults are generally not the"
+      ]
+    },
+    {
+      "cue": 33,
+      "startF": 2837,
+      "endF": 2880,
+      "lines": [
+        "children of troubled families."
+      ]
+    },
+    {
+      "cue": 34,
+      "startF": 2880,
+      "endF": 2928,
+      "lines": [
+        "They were people in transition."
+      ]
+    },
+    {
+      "cue": 35,
+      "startF": 2928,
+      "endF": 2928,
+      "lines": [
+        "People between things."
+      ]
+    },
+    {
+      "cue": 36,
+      "startF": 2928,
+      "endF": 2976,
+      "lines": [
+        "People like Nora."
+      ]
+    }
+  ],
+  "cast": {
+    "NORA": "stick figure, large white circle head, dot eyes, thick brow lines, black stick body, always carrying a GREEN-BACKPACK",
+    "DANIEL": "stick figure, large white circle head, dot eyes, thick brow lines, black stick body, yellow knit beanie",
+    "JULIAN": "tall stick figure, large white circle head, dot eyes, calm half-smile, thick brow lines, long cobalt robe",
+    "INES": "stick figure, large white circle head, dot eyes, thick brow lines, black stick body, red notepad in one hand",
+    "MARA": "stick figure, large white circle head, dot eyes, thick brow lines, grey hooded jacket",
+    "LEAH": "stick figure, large white circle head, dot eyes, thick brow lines, black stick body, orange scarf",
+    "LIFTON": "stick figure, large white circle head, round black glasses, thick brow lines, white lab-coat body",
+    "SINGER": "stick figure, large white circle head, hair bun, thick brow lines, cobalt blazer body",
+    "HARBOR-MEMBERS": "three small stick figures, white circle heads, dot eyes, tan sweaters, wide gentle smiles"
+  },
+  "props": {
+    "GREEN-BACKPACK": "chunky rounded green bag, two black straps, black outline",
+    "DRYER": "chunky white box, big round window with colored clothes inside, black outline",
+    "PHONE": "small black rectangle with a white blank screen",
+    "FOLDING-TABLE": "flat brown tabletop on two thin black legs",
+    "HARBOR-BUILDING": "chunky brown house with a flat roof and a black anchor drawn on the door",
+    "ROOM-WALLS": "chunky grey brick wall segments, black outline",
+    "LOOSE-THREAD": "one long wavy yellow line with a tiny curl at the end",
+    "THICK-BOOK": "chunky cobalt book with a white label strip",
+    "COGS": "three interlocking black gear shapes",
+    "CLIPBOARD": "brown board with a white page and black scribble lines",
+    "CALENDAR": "white page with a red top strip and a big black number",
+    "THOUGHT-BUBBLE": "classic white cloud shape with black outline",
+    "AIRPLANE": "flat white plane, black outline",
+    "AIRSTRIP": "flat grey landing strip, black outline",
+    "ARCHIVE-SHELF": "tall shelf with rows of boxed folders, black outline",
+    "BASKET": "chunky brown woven basket, black outline",
+    "BELIEF-BUBBLE": "empty white cloud, black outline",
+    "BIG-BOX": "giant black box labeled EVERYTHING",
+    "BOXES": "stack of brown cardboard boxes, black outline",
+    "BRIEFCASE": "small brown briefcase, black outline",
+    "BUS-ICON": "chunky cobalt bus, black outline",
+    "CABIN": "chunky brown cabin with a pitched roof",
+    "CAMPUS-ICON": "brown building with a flag on top",
+    "CAR": "chunky red car, black outline",
+    "CHAIR": "plain empty chair with a name card, black outline",
+    "CHECKMARK": "small green checkmark, black outline",
+    "CHINA-MAP": "flat red shape of China",
+    "CITY-SKYLINE": "row of flat white blocky buildings",
+    "CLOCK-ICON": "round white clock face with black hands",
+    "COAT-RACK": "tall black rack with hanging coats",
+    "COIN-JAR": "chunky brown jar labeled SAVINGS",
+    "COINS": "small stack of flat yellow coins, black outline",
+    "CRACK": "jagged black crack line",
+    "CROSSING-BANNER": "white banner strip, black outline",
+    "CULT-STEREOTYPE": "stick figure with spiral eyes and a blank grin",
+    "DEGREES-BAR": "five flat segments stepping from white to black",
+    "DESK": "plain brown desk on black legs",
+    "DICTIONARY": "big cobalt book labeled HARBOR",
+    "DOOR": "brown door, black outline",
+    "DOOR-SIGN": "small white sign on the door, black outline",
+    "DOUBT-BOX": "grey box with a red \"!\" above it",
+    "DOUBT-BUBBLE": "white cloud with a \"?\" inside, black static zigzag around it",
+    "DRAWER": "brown drawer with a padlock",
+    "EAR": "big white ear, black outline",
+    "EYE": "big white eye with a black pupil",
+    "FILE-DRAWER": "brown file drawer, black outline",
+    "GARLIC": "white garlic bulb",
+    "GIVEN-PILE": "tall stack of CAR, SUBLET-KEY and COINS",
+    "GOVERNMENT-BUILDING": "flat white building with columns",
+    "GUARD-BOOTH": "small empty booth, black outline",
+    "GUYANA-MAP": "flat green shape of Guyana",
+    "HAND": "cartoon hand with black outline",
+    "HARBOR-SIGN": "brown signpost with a black anchor on green ground",
+    "HEART": "big red heart, black outline",
+    "HOUSE": "simple brown house with a red roof",
+    "HOUSES-ICON": "three small houses in a row",
+    "IDEA-BULB": "big yellow light bulb, black outline",
+    "INVITATION": "white card with a black heart",
+    "JOB-LETTER": "white page with black lines",
+    "KITCHEN-DOOR": "brown door with a padlock",
+    "LABEL-STICKER": "yellow sticker with black lettering",
+    "LAPTOP": "flat grey laptop with a white screen",
+    "LEADER-CHAIR": "tall empty brown chair",
+    "LOAD-BAR": "white bar that fills with black from left to right",
+    "LOUD-MACHINE": "grey machine with a megaphone and many arrows",
+    "MAGNIFIER": "round magnifying glass with a black handle",
+    "MEGAPHONE": "yellow megaphone, black outline",
+    "MIND-HEAD": "big white head outline with a squiggle inside",
+    "MOON-WINDOW": "cobalt square with a yellow crescent",
+    "MUGS": "small white mugs, black outline",
+    "NAME-TAG": "white tag with a yellow star",
+    "NEWSPAPER": "newspaper with a block headline and a \"!\" bubble",
+    "OFFICE-ICON": "flat office building icon",
+    "OLD-LEASE": "white page with black lines",
+    "PADLOCK": "black padlock, black outline",
+    "PAPER-STACK": "stack of white pages with black lines",
+    "PLAN-PAPER": "sheet of paper covered by a grey cloth",
+    "PRICE-TAG": "big white price tag, black outline",
+    "PURSE": "small brown purse, black outline",
+    "READING-LIST": "short white page with three lines",
+    "RENT-TAG": "white price tag with a downward arrow",
+    "ROAD-SIGN": "white road sign reading \"40 MILES\"",
+    "SACRED-BOOK": "big yellow book with a black star",
+    "SCHEDULE-WALL": "wall of stacked calendar pages with times written on them",
+    "SCHOOL-ICON": "flat school building icon",
+    "SIGH-CLOUD": "small grey cloud with a sigh shape",
+    "SLEEPING-ARM": "flat grey arm hanging down",
+    "SLOPE": "flat grey slope, black outline",
+    "SMELL-LINES": "wavy black lines rising from a bulb",
+    "STAGE-STONES": "seven round stones with numbers 1 to 7",
+    "STAR": "yellow star, black outline",
+    "STATIC-CLOUD": "black zigzag scribble",
+    "STEP-MARKS": "short black step marks in a row",
+    "STOP-SIGN": "red octagon with white letters",
+    "SUBLET-KEY": "small key with a house tag",
+    "SUNRISE": "orange half circle on a horizon",
+    "TALLY-MARKS": "groups of black strokes",
+    "TEACUP": "white teacup, black outline",
+    "TEARS": "flat blue tears",
+    "TEMPLE-BUILDING": "small brown temple building",
+    "TIME-CARD": "white card with a red X",
+    "TIMELINE": "long black arrow",
+    "TOWER": "tall stack of CHECK-BLOCKS",
+    "TROUBLED-HOUSE": "cracked grey house, black outline",
+    "VOICEMAIL-ICON": "small black tape reel",
+    "WARNING-TRIANGLE": "thin red triangle, black outline",
+    "WEATHER-CLOUD": "grey cloud with rain lines",
+    "WEIGHT": "heavy black iron weight with a yellow numeral 6",
+    "ZIGZAG-LINE": "black line of big highs and lows"
+  }
+}

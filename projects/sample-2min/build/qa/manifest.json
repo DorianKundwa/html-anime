@@ -1,0 +1,21 @@
+{
+  "fps": 24,
+  "frames": 2,
+  "sheets": [
+    {
+      "file": "S07.png",
+      "scene": "S07",
+      "frames": [
+        2016,
+        2172
+      ]
+    },
+    {
+      "file": "batch-S07.png",
+      "scenes": [
+        "S07"
+      ],
+      "frames": 2
+    }
+  ]
+}

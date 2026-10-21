@@ -11,7 +11,10 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { compileProject } from "./compile.js";
 import { buildFilm } from "./build-film.js";
+import { PROP_ALIASES } from "./build-film.js";
 import { checkFilm } from "./check-film.js";
+import { PALETTE } from "./palette.js";
+import { readSymbols } from "./inline-library.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const LIBRARY = readFileSync(join(here, "..", "assets", "library.svg"), "utf8");
@@ -19,6 +22,13 @@ const SCENES = 60;
 const SECONDS = 600;
 const PER_SCENE = SECONDS / SCENES;
 const FRAMES = SECONDS * 24;
+
+test("the props of the sample's pilot scenes are drawn in the library, not left as placeholders", () => {
+  const symbols = readSymbols(LIBRARY);
+  for (const name of ["dryer", "green-backpack", "folding-table", "phone", "thought-bubble", "city-skyline", "job-letter", "cult-stereotype", "moon-window"]) {
+    assert.ok(symbols.has(`prop-${name}`), `library has no prop-${name}`);
+  }
+});
 
 const clock = (sec) => `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, "0")}`;
 const pad = (n) => String(n).padStart(2, "0");
@@ -64,6 +74,8 @@ function longProject() {
     "",
     "## PROPS",
     "CEREAL-BOX: chunky orange box, black outline",
+    "PHONE: flat black phone, white screen",
+    "FOLDING-TABLE: brown folding table, black outline",
     "",
     ...cards,
   ];
@@ -180,9 +192,97 @@ test("a SWAP with no known expression word is a hard error, not a crash", async 
   assert.ok(res.errors.some((e) => e.includes("no known expression word")), res.errors.join("\n"));
 });
 
+test("two entries named in one LAYOUT anchor are spread apart, not stacked", async () => {
+  const dir = longProject();
+  await compiled(dir);
+  // Scene 1: two props both "low in the center". They must not share an x.
+  const path = join(dir, "build", "timeline.json");
+  const tl = JSON.parse(readFileSync(path, "utf8"));
+  // A third prop is not named in the LAYOUT clause, so it must also keep clear of the two named ones.
+  tl.scenes[0].props = ["CEREAL-BOX", "PHONE", "FOLDING-TABLE"];
+  tl.scenes[0].layout = "CEREAL-BOX and PHONE low in the center";
+  writeFileSync(path, JSON.stringify(tl));
+  assert.equal(buildFilm(dir).ok, true);
+  const scene = readFileSync(join(dir, "film", "compositions", "s01.html"), "utf8");
+  // Two cast entries come first, so the props are s01-e2, s01-e3 and s01-e4.
+  const left = (id) => Number(new RegExp(`id="${id}" class="actor" style="left:(-?\\d+)px`).exec(scene)[1]);
+  for (const [a, b] of [["s01-e2", "s01-e3"], ["s01-e2", "s01-e4"], ["s01-e3", "s01-e4"]]) {
+    const gap = Math.abs(left(a) - left(b));
+    assert.ok(gap >= 240, `${a} and ${b} are ${gap}px apart; a 240px prop needs at least 240px`);
+  }
+});
+
+test("a prop label on a dark background uses the spec's text colour, and a slide starts at its own beat", async () => {
+  const dir = longProject();
+  // Every scene slides WITNESS in, so the scene has slide tweens to check.
+  const sheetPath = join(dir, "scene_sheet.md");
+  writeFileSync(sheetPath, readFileSync(sheetPath, "utf8").replaceAll("POP WITNESS appears at the right", "SLIDE WITNESS in from the right"));
+  await compiled(dir);
+  // Inject a synthetic unmapped prop into scene 1 so propMarkup falls back to the labelled-box path.
+  // This is independent of PROP_ALIASES completeness.
+  const path = join(dir, "build", "timeline.json");
+  const tl = JSON.parse(readFileSync(path, "utf8"));
+  tl.scenes[0].bg = "night";
+  // Append the unknown prop name to scene 1's props list and register it in dict.props.
+  tl.scenes[0].props = [...(tl.scenes[0].props ?? []), "XTEST-UNKNOWN-PROP"];
+  if (!tl.dict) tl.dict = {};
+  if (!tl.dict.props) tl.dict.props = {};
+  tl.dict.props["XTEST-UNKNOWN-PROP"] = "chunky orange prop, black outline";
+  writeFileSync(path, JSON.stringify(tl));
+  assert.equal(buildFilm(dir).ok, true);
+  const scene = readFileSync(join(dir, "film", "compositions", "s01.html"), "utf8");
+  // Scene 1 on night: black text there is unreadable, so the label must be yellow (CONTRAST.night).
+  const label = /<text x="120" y="-14"[^>]*fill="([^"]+)"/.exec(scene);
+  assert.ok(label, "the prop label is in the scene");
+  assert.equal(label[1], PALETTE.yellow);
+  // A slide that is not at time zero must not apply its start position when the page loads,
+  // or the prop sits on top of its neighbour until its own beat.
+  const slides = scene.split("\n").filter((l) => /tl\.fromTo\("#s01-e\d+", \{ x:/.test(l));
+  assert.ok(slides.length > 0, "the scene has at least one slide");
+  for (const l of slides) assert.ok(l.includes("immediateRender: false"), `slide without immediateRender: ${l}`);
+});
+
 test("a missing timeline asks for the compile step", () => {
   const dir = mkdtempSync(join(tmpdir(), "doodle-empty-"));
   const res = buildFilm(dir);
   assert.equal(res.ok, false);
   assert.match(res.errors[0], /run the compile step first/);
+});
+
+/** Every prop a project names, from the card lines and from the PROPS sections. */
+function propNames(sheet) {
+  const names = new Set();
+  for (const m of sheet.matchAll(/^PROPS:\s*(.+)$/gm)) {
+    for (const w of m[1].split(/[,\n]/)) {
+      const n = w.trim().split(/\s+/)[0];
+      if (n && /^[A-Z][A-Z-]*$/.test(n)) names.add(n);
+    }
+  }
+  for (const m of sheet.matchAll(/^## PROPS[^\n]*\n([\s\S]*?)(?=^## |\Z)/gm)) {
+    for (const line of m[1].split("\n")) {
+      const n = /^([A-Z][A-Z-]+):/.exec(line)?.[1];
+      if (n) names.add(n);
+    }
+  }
+  return [...names];
+}
+
+test("every prop a project names is drawn, not a labelled box", () => {
+  const symbols = readSymbols(LIBRARY);
+  for (const slug of ["sample", "sample-2min", "harbor"]) {
+    const path = join(here, "..", "projects", slug, "scene_sheet.md");
+    if (!existsSync(path)) continue;
+    const names = propNames(readFileSync(path, "utf8"));
+    assert.ok(names.length, `${slug} names no props`);
+    const missing = names.filter((n) => !symbols.has(PROP_ALIASES[n] ?? `prop-${n.toLowerCase()}`));
+    assert.deepEqual(missing, [], `${slug}: no drawn symbol for ${missing.join(", ")}`);
+  }
+});
+
+test("a built film has no prop left as a labelled rectangle", async () => {
+  const dir = longProject();
+  await compiled(dir);
+  assert.equal(buildFilm(dir).ok, true);
+  const scene = readFileSync(join(dir, "film", "compositions", "s01.html"), "utf8");
+  assert.ok(!scene.includes('x="5" y="5" width="230"'), "the scene still draws a prop as a labelled box");
 });

@@ -4576,62 +4576,68 @@
       "id": "S51",
       "n": 51,
       "startF": 17832,
-      "endF": 18120,
-      "frames": 288,
+      "endF": 18024,
+      "frames": 192,
       "bg": "white",
       "cast": [
-        "DANIEL",
         "JULIAN"
       ],
       "props": [
-        "LENS"
+        "LIST",
+        "LENS",
+        "GAVEL"
       ],
-      "layout": "LENS centered high, a faint dotted JULIAN at the far right edge, DANIEL on the left third in his yellow beanie with an open hand reaching toward the center.",
+      "layout": "LIST on the left third, LENS sliding over it at center, GAVEL on the right third, JULIAN small at the far right edge at the end.",
       "camera": "lock",
       "out": "hard-cut",
       "cueFirst": 224,
-      "cueLast": 229,
+      "cueLast": 227,
       "beats": [
         {
-          "frame": 17839,
+          "frame": 17832,
           "verb": "POP",
-          "text": "LENS centered high, a round black ring around a white glass"
+          "text": "LIST on the left"
         },
         {
-          "frame": 17878,
-          "verb": "SHAKE",
-          "text": "LENS as its glass turns from a red mark to clear white"
+          "frame": 17851,
+          "verb": "SLIDE",
+          "text": "LENS in over LIST"
         },
         {
-          "frame": 17930,
-          "verb": "STAMP",
-          "text": "a dotted outline of JULIAN at the far right edge"
+          "frame": 17868,
+          "verb": "POP",
+          "text": "GAVEL on the right"
         },
         {
-          "frame": 17990,
+          "frame": 17880,
           "verb": "CROSS",
-          "text": "a red X over the dotted JULIAN outline"
+          "text": "a red X over GAVEL"
         },
         {
-          "frame": 18038,
+          "frame": 17928,
+          "verb": "DRAW",
+          "text": "a green checkmark inside LENS"
+        },
+        {
+          "frame": 17976,
           "verb": "POP",
-          "text": "DANIEL on the left third in his yellow beanie"
+          "text": "JULIAN small at the far right with a \"?\" bubble above him"
         },
         {
-          "frame": 18074,
-          "verb": "SWAP",
-          "text": "DANIEL's brows to calm, open hand palm up"
+          "frame": 18000,
+          "verb": "CROSS",
+          "text": "a red X over JULIAN"
         }
       ],
       "texts": [
         {
-          "frame": 17839,
+          "frame": 17832,
           "pos": "top",
           "color": "black",
-          "text": "THE LENS"
+          "text": "THE LIST IS A LENS"
         },
         {
-          "frame": 17878,
+          "frame": 17868,
           "pos": "top",
           "color": "red",
           "text": "NOT A VERDICT"
@@ -4641,70 +4647,99 @@
     {
       "id": "S52",
       "n": 52,
-      "startF": 18120,
+      "startF": 18024,
       "endF": 18432,
-      "frames": 312,
-      "bg": "night",
+      "frames": 408,
+      "bg": "tan",
       "cast": [
+        "DANIEL",
         "NORA"
       ],
       "props": [
+        "HAND",
         "COMMUNITY-TABLE",
-        "HAND"
+        "CHAIR",
+        "THOUGHT-BUBBLE",
+        "HEART",
+        "NET",
+        "SIGN-WELCOMED",
+        "SIGN-COLLECTED"
       ],
-      "layout": "COMMUNITY-TABLE on the right third with one empty seat, NORA on the left third with her head on the upper third line, an open HAND at center and a second HAND from the far right edge at the end.",
+      "layout": "DANIEL on the left third offering HAND, COMMUNITY-TABLE with one empty CHAIR at center, two signs across the upper middle in the second half, NORA small on the right third at the end.",
       "camera": "lock",
-      "out": "hard-cut",
-      "cueFirst": 230,
+      "out": "color-dip(night)",
+      "cueFirst": 228,
       "cueLast": 231,
       "beats": [
         {
-          "frame": 18122,
+          "frame": 18024,
           "verb": "POP",
-          "text": "COMMUNITY-TABLE on the right third with one empty seat"
+          "text": "DANIEL in his yellow beanie, waving"
         },
         {
-          "frame": 18142,
-          "verb": "POP",
-          "text": "NORA on the left third, dot eyes on the table"
+          "frame": 18060,
+          "verb": "DRAW",
+          "text": "a yellow ARROW at DANIEL with the label \"DANIEL\""
         },
         {
-          "frame": 18192,
+          "frame": 18072,
+          "verb": "POP",
+          "text": "HAND offered palm up in front of DANIEL"
+        },
+        {
+          "frame": 18108,
           "verb": "SWAP",
-          "text": "NORA's brows to worried"
+          "text": "HAND now holds a steaming mug"
         },
         {
-          "frame": 18240,
+          "frame": 18120,
           "verb": "POP",
-          "text": "an open HAND at center, palm up, toward NORA"
+          "text": "COMMUNITY-TABLE with an empty CHAIR"
+        },
+        {
+          "frame": 18168,
+          "verb": "POP",
+          "text": "SIGN-WELCOMED with HEART on the left"
+        },
+        {
+          "frame": 18228,
+          "verb": "POP",
+          "text": "SIGN-COLLECTED with a small NET over a tiny figure on the right"
         },
         {
           "frame": 18288,
-          "verb": "POP",
-          "text": "a second HAND from the far right edge, fingers curled"
+          "verb": "SWAP",
+          "text": "both signs now show the same warm smiling face"
         },
         {
           "frame": 18336,
-          "verb": "DRAW",
-          "text": "a yellow ARROW from NORA to the curled HAND"
+          "verb": "POP",
+          "text": "NORA small on the right with THOUGHT-BUBBLE reading \"?\""
         },
         {
-          "frame": 18372,
+          "frame": 18384,
           "verb": "SHAKE",
-          "text": "the curled HAND"
-        },
-        {
-          "frame": 18408,
-          "verb": "SWAP",
-          "text": "NORA's brows to raised as she looks at the open HAND"
+          "text": "the \"?\" in THOUGHT-BUBBLE"
         }
       ],
       "texts": [
         {
-          "frame": 18142,
+          "frame": 18072,
           "pos": "top",
-          "color": "yellow",
-          "text": "WELCOMED OR COLLECTED"
+          "color": "black",
+          "text": "A WARM HAND"
+        },
+        {
+          "frame": 18168,
+          "pos": "top",
+          "color": "black",
+          "text": "WELCOMED..."
+        },
+        {
+          "frame": 18228,
+          "pos": "top",
+          "color": "red",
+          "text": "...OR COLLECTED?"
         }
       ]
     },
@@ -4712,168 +4747,283 @@
       "id": "S53",
       "n": 53,
       "startF": 18432,
-      "endF": 18744,
-      "frames": 312,
-      "bg": "white",
+      "endF": 18552,
+      "frames": 120,
+      "bg": "night",
       "cast": [
-        "LEAH",
-        "NORA"
+        "NORA",
+        "LEAH"
       ],
       "props": [
         "CAR",
-        "WARMTH-METER",
-        "TRAFFIC-LIGHT",
-        "PHONE",
-        "SPEECH-BALLOON"
+        "GREEN-BACKPACK",
+        "SPEECH-BALLOON",
+        "HEAT-WAVES"
       ],
-      "layout": "CAR across the left two thirds with LEAH at the wheel and NORA in the passenger seat, WARMTH-METER and TRAFFIC-LIGHT on the right third, PHONE in NORA's hand.",
+      "layout": "CAR cutaway in the center with LEAH at the wheel on the left and NORA on the right, GREEN-BACKPACK on NORA's knees, HEAT-WAVES rising at the center.",
       "camera": "lock",
       "out": "hard-cut",
       "cueFirst": 232,
-      "cueLast": 238,
+      "cueLast": 233,
       "beats": [
         {
-          "frame": 18434,
+          "frame": 18432,
           "verb": "POP",
-          "text": "CAR with LEAH at the wheel and NORA in the passenger seat"
+          "text": "CAR cutaway with LEAH at the wheel and NORA beside her, GREEN-BACKPACK on NORA's knees"
         },
         {
-          "frame": 18482,
+          "frame": 18456,
+          "verb": "POP",
+          "text": "an empty SPEECH-BALLOON above LEAH"
+        },
+        {
+          "frame": 18468,
+          "verb": "CROSS",
+          "text": "a red X over SPEECH-BALLOON"
+        },
+        {
+          "frame": 18480,
+          "verb": "POP",
+          "text": "HEAT-WAVES rising from a dashboard dial"
+        },
+        {
+          "frame": 18516,
           "verb": "SWAP",
-          "text": "LEAH's mouth stays flat, eyes on the road"
-        },
-        {
-          "frame": 18492,
-          "verb": "POP",
-          "text": "WARMTH-METER with the red fill low"
-        },
-        {
-          "frame": 18528,
-          "verb": "SHAKE",
-          "text": "WARMTH-METER as its fill rises high"
-        },
-        {
-          "frame": 18554,
-          "verb": "POP",
-          "text": "TRAFFIC-LIGHT on the right with the red light on"
-        },
-        {
-          "frame": 18590,
-          "verb": "POP",
-          "text": "PHONE in NORA's hand with a small DANIEL head on its screen"
-        },
-        {
-          "frame": 18643,
-          "verb": "POP",
-          "text": "SPEECH-BALLOON from the PHONE, empty"
-        },
-        {
-          "frame": 18689,
-          "verb": "SHAKE",
-          "text": "SPEECH-BALLOON"
-        },
-        {
-          "frame": 18722,
-          "verb": "SHAKE",
-          "text": "TRAFFIC-LIGHT as its red light turns green"
+          "text": "NORA's brows to soft"
         }
       ],
       "texts": [
         {
-          "frame": 18689,
+          "frame": 18432,
           "pos": "top",
-          "color": "red",
-          "text": "STATIC CAN'T HURT YOU"
+          "color": "yellow",
+          "text": "SILENCE"
         },
         {
-          "frame": 18722,
+          "frame": 18480,
           "pos": "top",
-          "color": "black",
-          "text": "COME HOME"
+          "color": "yellow",
+          "text": "THE HEAT UP"
         }
       ]
     },
     {
       "id": "S54",
       "n": 54,
-      "startF": 18744,
-      "endF": 19168,
-      "frames": 424,
+      "startF": 18552,
+      "endF": 18792,
+      "frames": 240,
       "bg": "night",
       "cast": [
-        "NORA",
-        "DANIEL"
+        "NORA"
       ],
       "props": [
+        "TRAFFIC-LIGHT",
         "PHONE",
-        "FOLDING-TABLE",
-        "DRYER",
-        "TOWELS",
-        "GREEN-BACKPACK"
+        "SPEECH-BALLOON",
+        "STATIC-CLOUD",
+        "HARBOR-BUILDING",
+        "THOUGHT-BUBBLE"
       ],
-      "layout": "NORA on the left third with her head on the upper third line and GREEN-BACKPACK at her feet, FOLDING-TABLE low in the center, DRYER on the right with DANIEL folding TOWELS in front of it.",
+      "layout": "TRAFFIC-LIGHT on the left third, PHONE held large by NORA at center, SPEECH-BALLOON from PHONE across the upper right, NORA's face lit from below on the right third.",
       "camera": "lock",
       "out": "hard-cut",
-      "cueFirst": 239,
-      "cueLast": 244,
+      "cueFirst": 234,
+      "cueLast": 240,
       "beats": [
         {
-          "frame": 18744,
+          "frame": 18552,
           "verb": "POP",
-          "text": "NORA on the left third holding PHONE, GREEN-BACKPACK at her feet"
+          "text": "TRAFFIC-LIGHT with the red light on"
+        },
+        {
+          "frame": 18564,
+          "verb": "SHAKE",
+          "text": "PHONE in NORA's hand with small buzz lines"
+        },
+        {
+          "frame": 18576,
+          "verb": "POP",
+          "text": "DANIEL's face (yellow beanie) on the PHONE screen"
+        },
+        {
+          "frame": 18624,
+          "verb": "POP",
+          "text": "SPEECH-BALLOON above PHONE reading \"WE MISS YOU\""
+        },
+        {
+          "frame": 18672,
+          "verb": "POP",
+          "text": "STATIC-CLOUD, a black zigzag scribble, beside the SPEECH-BALLOON"
+        },
+        {
+          "frame": 18696,
+          "verb": "SWAP",
+          "text": "STATIC-CLOUD into a soft white puff"
+        },
+        {
+          "frame": 18720,
+          "verb": "POP",
+          "text": "a small HARBOR-BUILDING on the PHONE screen with a warm yellow glow"
+        },
+        {
+          "frame": 18744,
+          "verb": "SWAP",
+          "text": "NORA's dot eyes slide left to right and back again"
         },
         {
           "frame": 18768,
-          "verb": "SWAP",
-          "text": "NORA's brows to confused, eyes moving down the PHONE screen, reading twice"
-        },
-        {
-          "frame": 18780,
-          "verb": "SWAP",
-          "text": "NORA's brows to calm, thumb resting still above the PHONE"
-        },
-        {
-          "frame": 18811,
-          "verb": "SHAKE",
-          "text": "PHONE as NORA's thumb lifts away, the message staying on the screen"
-        },
-        {
-          "frame": 18871,
-          "verb": "SHAKE",
-          "text": "DRYER, the hum"
-        },
-        {
-          "frame": 18888,
           "verb": "POP",
-          "text": "DANIEL in front of DRYER folding TOWELS"
-        },
-        {
-          "frame": 18931,
-          "verb": "SLIDE",
-          "text": "PHONE from NORA's hand down onto FOLDING-TABLE, face up"
-        },
-        {
-          "frame": 18984,
-          "verb": "SWAP",
-          "text": "NORA's brows to calm as she steps back from FOLDING-TABLE, arms at her sides"
-        },
-        {
-          "frame": 19054,
-          "verb": "SHAKE",
-          "text": "DANIEL as he folds one slow corner at a time"
-        },
-        {
-          "frame": 19116,
-          "verb": "SWAP",
-          "text": "DANIEL's brows to sly as his dot eyes glance toward NORA"
+          "text": "THOUGHT-BUBBLE with \"...\" above NORA"
         }
       ],
       "texts": [
         {
-          "frame": 19054,
+          "frame": 18552,
           "pos": "top",
           "color": "yellow",
-          "text": "WHO WILL ASK?"
+          "text": "THE RED LIGHT"
+        },
+        {
+          "frame": 18624,
+          "pos": "top",
+          "color": "yellow",
+          "text": "WE MISS YOU"
+        },
+        {
+          "frame": 18720,
+          "pos": "top",
+          "color": "yellow",
+          "text": "COME HOME"
+        }
+      ]
+    },
+    {
+      "id": "S55",
+      "n": 55,
+      "startF": 18792,
+      "endF": 18864,
+      "frames": 72,
+      "bg": "night",
+      "cast": [
+        "NORA"
+      ],
+      "props": [
+        "PHONE",
+        "DELETE-BUTTON"
+      ],
+      "layout": "PHONE close and large at center with DELETE-BUTTON low on its screen, NORA's thumb hovering above it from the right.",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 241,
+      "cueLast": 241,
+      "beats": [
+        {
+          "frame": 18792,
+          "verb": "POP",
+          "text": "PHONE close-up with DELETE-BUTTON on its screen"
+        },
+        {
+          "frame": 18816,
+          "verb": "SWAP",
+          "text": "NORA's thumb hovers above DELETE-BUTTON"
+        },
+        {
+          "frame": 18840,
+          "verb": "SHAKE",
+          "text": "the thumb, it pulls back"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 18792,
+          "pos": "top",
+          "color": "yellow",
+          "text": "NOT DELETED"
+        }
+      ]
+    },
+    {
+      "id": "S56",
+      "n": 56,
+      "startF": 18864,
+      "endF": 19168,
+      "frames": 304,
+      "bg": "night",
+      "cast": [
+        "STRANGER"
+      ],
+      "props": [
+        "DRYER",
+        "FOLDING-TABLE",
+        "PHONE",
+        "TOWELS",
+        "THOUGHT-BUBBLE"
+      ],
+      "layout": "DRYER on the right third, FOLDING-TABLE with PHONE face up at the lower center, STRANGER entering on the left third with his eyes on the upper third line and room in front of his gaze.",
+      "camera": "push",
+      "out": "hard-cut",
+      "cueFirst": 242,
+      "cueLast": 244,
+      "beats": [
+        {
+          "frame": 18864,
+          "verb": "POP",
+          "text": "DRYER with clothes spinning in its round window"
+        },
+        {
+          "frame": 18888,
+          "verb": "SHAKE",
+          "text": "DRYER"
+        },
+        {
+          "frame": 18912,
+          "verb": "POP",
+          "text": "FOLDING-TABLE with PHONE face up, blank screen"
+        },
+        {
+          "frame": 18960,
+          "verb": "POP",
+          "text": "a small dotted empty THOUGHT-BUBBLE above PHONE"
+        },
+        {
+          "frame": 18996,
+          "verb": "SWAP",
+          "text": "PHONE screen blinks white"
+        },
+        {
+          "frame": 19032,
+          "verb": "SLIDE",
+          "text": "STRANGER in from the left, folding TOWELS very slowly"
+        },
+        {
+          "frame": 19080,
+          "verb": "SWAP",
+          "text": "STRANGER's dot eyes glance toward PHONE"
+        },
+        {
+          "frame": 19116,
+          "verb": "POP",
+          "text": "a \"?\" bubble above STRANGER"
+        },
+        {
+          "frame": 19128,
+          "verb": "PUSH",
+          "text": ""
+        }
+      ],
+      "texts": [
+        {
+          "frame": 18864,
+          "pos": "top",
+          "color": "yellow",
+          "text": "A LAUNDROMAT HUMMING"
+        },
+        {
+          "frame": 19116,
+          "pos": "top",
+          "color": "yellow",
+          "text": "WHO ASKS FIRST?"
         }
       ]
     }
@@ -8538,7 +8688,8 @@
     "FESTINGER": "stick figure, large white circle head, dot eyes, thick brow lines, grey suit body, small notebook in hand",
     "FOLLOWERS": "three small stick figures, white circle heads, dot eyes, grey scarves",
     "DEBORAH": "stick figure, large white circle head, dot eyes, thick brow lines, long dark hair, red coat body",
-    "RYAN": "stick figure, large white circle head, dot eyes, thick brow lines, black suit body with a red tie"
+    "RYAN": "stick figure, large white circle head, dot eyes, thick brow lines, black suit body with a red tie",
+    "STRANGER": "stick figure, large white circle head, dot eyes, thick brow lines, grey body, one pair of folded white TOWELS in hand"
   },
   "props": {
     "GREEN-BACKPACK": "chunky rounded green bag, two black straps, black outline",
@@ -8665,7 +8816,11 @@
     "CANDLES": "small white candles with a single yellow flame each, black outline",
     "COAT": "chunky brown coat with black outline",
     "TEAM-ICON": "three small stick figures standing close together in a group, black outline",
-    "LENS": "round black ring around a white glass disc, short black handle",
-    "TRAFFIC-LIGHT": "tall black box with three round lights, the top one red, black outline"
+    "LENS": "chunky round magnifying glass, yellow frame, white glass, black outline",
+    "LIST": "white page with seven short black lines, black outline",
+    "GAVEL": "chunky brown mallet with a black outline",
+    "TRAFFIC-LIGHT": "tall dark grey box with three round lights, red lit",
+    "HEAT-WAVES": "three wavy orange lines",
+    "DELETE-BUTTON": "round red button with a white X, black outline"
   }
 }

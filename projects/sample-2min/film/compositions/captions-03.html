@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .cap {
+          position: absolute; left: 0; bottom: 36px; width: 1920px; text-align: center;
+          font-family: "Lato", Arial, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2;
+        }
+        .cap span {
+          display: inline-block; background: #FFFFFF; color: #000000;
+          border: 4px solid #000000; padding: 6px 18px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="captions-03" data-width="1920" data-height="1080">
+      <div id="cap40" class="cap" style="opacity:0"><span>They were people in transition.</span></div>
+      <div id="cap41" class="cap" style="opacity:0"><span>People between things.</span></div>
+      <div id="cap42" class="cap" style="opacity:0"><span>People like Nora.</span></div>
+      </div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#cap40", { opacity: 1 }, f(0));
+        tl.set("#cap40", { opacity: 0 }, f(48));
+        tl.set("#cap41", { opacity: 1 }, f(48));
+        tl.set("#cap41", { opacity: 0 }, f(48));
+        tl.set("#cap42", { opacity: 1 }, f(48));
+        tl.set("#cap42", { opacity: 0 }, f(96));
+        window.__timelines["captions-03"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

@@ -19,8 +19,9 @@
 import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { basename, dirname, extname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { PALETTE } from "./palette.js";
+import { PALETTE, TONES } from "./palette.js";
 import { readSymbols, referencedIds } from "./inline-library.js";
+import { CONTRAST } from "./ingest.js";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const LIBRARY = join(HERE, "..", "assets", "library.svg");
@@ -30,23 +31,33 @@ const VENDOR = join(HERE, "..", "assets", "vendor");
 const W = 1920;
 const H = 1080;
 const FPS = 24;
-const GROUND = 900;
-const ACTOR = { w: 448, h: 644, top: 298, half: 224, cy: 620, reach: 150 }; // rig scale 1.4, feet on GROUND
-const PROP = { w: 240, h: 260, top: 640, half: 120, cy: 770 };
+const GROUND = 850; // the ground line: actors' feet and props' bases stand on it, above the captions
+const ACTOR = { w: 448, h: 644, feetY: 850, top: 402, half: 224, cy: 724, reach: 150 }; // rig scale 1.4, feet on GROUND
+const PROP = { w: 240, h: 260, top: 590, half: 120, cy: 720 };
+const RIG_FEET = 320; // the rig's feet, in rig units, measured from the top of its 460 tall box
 const POSE_LIMIT = 3;
 const POSE_LIMIT_WITH_ACTION = 5;
 const ENTER_VERBS = ["POP", "SLIDE", "STAMP"];
+const FRAMING_WORDS = [
+  [/\b(foreground|bust|closeup|close-up)\b/i, "bust"],
+  [/\b(wide|full)\b/i, "wide"],
+];
 
 const EXPRESSIONS = {
-  neutral: { eyes: "rig-eyes-neutral", mouth: "rig-mouth-neutral" },
-  shock: { eyes: "rig-eyes-shock", mouth: "rig-mouth-open" },
-  sly: { eyes: "rig-eyes-sly", mouth: "rig-mouth-neutral" },
-  sweat: { eyes: "rig-eyes-sweat", mouth: "rig-mouth-neutral" },
-  confused: { eyes: "rig-eyes-confused", mouth: "rig-mouth-neutral" },
-  angry: { eyes: "rig-eyes-angry", mouth: "rig-mouth-neutral" },
+  neutral: { eyes: "rig-eyes-neutral", brows: "rig-brows-neutral", mouth: "rig-mouth-neutral" },
+  shock:   { eyes: "rig-eyes-shock",   brows: "rig-brows-raised",    mouth: "rig-mouth-open" },
+  sly:     { eyes: "rig-eyes-sly",     brows: "rig-brows-neutral",   mouth: "rig-mouth-smile" },
+  sweat:   { eyes: "rig-eyes-sweat",   brows: "rig-brows-droop",     mouth: "rig-mouth-frown" },
+  confused:{ eyes: "rig-eyes-confused",brows: "rig-brows-raised-one",mouth: "rig-mouth-neutral" },
+  angry:   { eyes: "rig-eyes-angry",   brows: "rig-brows-angry",     mouth: "rig-mouth-frown" },
+  droop:   { eyes: "rig-eyes-neutral", brows: "rig-brows-droop",     mouth: "rig-mouth-frown" },
+  tired:   { eyes: "rig-eyes-tired",   brows: "rig-brows-droop",     mouth: "rig-mouth-frown" },
+  panic:   { eyes: "rig-eyes-shock",   brows: "rig-brows-raised",    mouth: "rig-mouth-scream" },
 };
 // Checked in order against a SWAP's text (with entry names removed).
 const EXPRESSION_WORDS = [
+  [/\b(panic\w*|terrif\w*|scream\w*|horror)\b/i, "panic"],
+  [/\b(tired|exhausted|sleepy|droop\w*|downcast|sadly)\b/i, "tired"],
   [/\b(angry|mad|furious|annoy\w*)\b/i, "angry"],
   [/\b(sly|smug|wink\w*)\b/i, "sly"],
   [/\b(sweat\w*|nervous|worr\w*)\b/i, "sweat"],
@@ -90,6 +101,131 @@ function tokenIn(desc, fallback) {
   return fallback;
 }
 
+/**
+ * The clothes a cast description asks for. The scene sheet names them in words
+ * ("yellow knit beanie", "long cobalt robe", "round black glasses"), so the generator reads
+ * the description and picks the library symbol and the palette colour for each one.
+ */
+const GARMENT_WORDS = [
+  [/\brobe\b/, "rig-robe"],
+  [/\blab-?coat\b/, "rig-labcoat"],
+  [/\bsafety\s*vest\b/, "rig-vest-safety"],
+  [/\bvest\b/, "rig-vest"],
+  [/\b(dress|skirt)\b/, "rig-dress"],
+  [/\bsuit\b/, "rig-suit"],
+  [/\bsweater\b/, "rig-sweater"],
+  [/\bhoodie\b/, "rig-sweater"],
+  [/\b(blazer|jacket|coat|shirt)\b/, "rig-torso"],
+];
+const HAT_WORDS = [
+  [/\bhard\s*hat\b/, "rig-hat-hard"],
+  [/\bhard\s*helm\w*\b/, "rig-hat-hard"],
+  [/\bbeanie\b/, "rig-hat-beanie"],
+  [/\b(cap|hat)\b/, "rig-hat-cap"],
+];
+const HAIR_WORDS = [
+  [/ponytail\b/, "rig-hair-ponytail"],
+  [/curl\w*\s+hair/, "rig-hair-curly"],
+  [/hair bun|\bbun\b/, "rig-hair-bun"],
+  [/long[\w\s-]{0,14}hair/, "rig-hair-long"],
+  [/short[\w\s-]{0,14}hair/, "rig-hair-short"],
+  [/\bhair\b/, "rig-hair-short"],
+];
+// Pose override words read from the cast description.
+const POSE_WORDS = [
+  [/\bwalk\w*|slump\w*\s*walk\w*/i, "rig-limb-walk"],
+  [/\bclipboard\b/i, "rig-limb-clipboard"],
+  [/\bcrossed\s*arms\b/i, "rig-limb-crossed"],
+  [/\bpanic\w*\s*arms\b/i, "rig-limb-panic"],
+];
+
+/** Reads a cast description into the outfit the rig draws. */
+function dressUp(desc) {
+  const ws = String(desc ?? "").toLowerCase().split(/[^a-z0-9-]+/).filter(Boolean);
+  const joined = ws.join(" ");
+  /** Index of the last word of the first match of `re` in the description. */
+  const find = (re) => {
+    const m = re.exec(joined);
+    if (!m) return -1;
+    const before = joined.slice(0, m.index).trim();
+    const pre = before ? before.split(/\s+/).length : 0;
+    return pre + m[0].trim().split(/\s+/).length - 1;
+  };
+  /** The palette token nearest before a word, looking back three words. */
+  const tokenBefore = (end) => {
+    for (let i = end; i >= 0 && i > end - 3; i--) if (Object.hasOwn(PALETTE, ws[i])) return ws[i];
+    return null;
+  };
+  const headIdx = ws.findIndex((w) => w === "head" || w === "heads");
+  const head = headIdx < 0 ? "white" : tokenBefore(headIdx) ?? "white";
+
+  let garment = null;
+  for (const [re, symbol] of GARMENT_WORDS) {
+    const i = find(re);
+    if (i < 0) continue;
+    const color = tokenBefore(i);
+    if (color) {
+      garment = { symbol, color };
+      break;
+    }
+  }
+  if (!garment) {
+    // "<colour> body" is a plain torso. "black stick body" is a bare stick body.
+    const i = ws.findIndex((w) => w === "body");
+    if (i > 0 && ws[i - 1] !== "stick") {
+      const color = tokenBefore(i);
+      if (color) garment = { symbol: "rig-torso", color };
+    }
+  }
+
+  let hat = null;
+  for (const [re, symbol] of HAT_WORDS) {
+    const i = find(re);
+    if (i < 0) continue;
+    hat = { symbol, color: tokenBefore(i) ?? "yellow" };
+    break;
+  }
+  let hair = null;
+  for (const [re, symbol] of HAIR_WORDS) {
+    const i = find(re);
+    if (i < 0) continue;
+    hair = { symbol, color: tokenBefore(i) ?? "black" };
+    break;
+  }
+  let scarf = null;
+  const scarfIdx = find(/scarf\w*/);
+  if (scarfIdx >= 0) scarf = { color: tokenBefore(scarfIdx) ?? "orange" };
+  let tie = null;
+  const tieIdx = find(/\btie\b/);
+  if (tieIdx >= 0) tie = { color: tokenBefore(tieIdx) ?? "red" };
+
+  // Pose override from description words (e.g. "walking slumped" = walk-slump pose).
+  let pose = null;
+  for (const [re, symbol] of POSE_WORDS) {
+    if (re.test(joined)) { pose = symbol; break; }
+  }
+  return {
+    head,
+    garment,
+    hat,
+    hair,
+    scarf,
+    tie,
+    glasses: /glass\w*/.test(joined),
+    hood: /hooded/.test(joined),
+    pose,
+  };
+}
+
+/** Size words in a LAYOUT clause, and the scale they ask for. */
+const SIZE_WORDS = [
+  [/\b(fills|giant|huge)\b/, 1.4],
+  [/\b(large|big)\b/, 1.3],
+  [/\bsmall\b/, 0.66],
+  [/\btiny\b/, 0.42],
+  [/\bdistant\b/, 0.6],
+];
+
 function sceneEntries(s, dict) {
   const prefix = idOf(s);
   return [
@@ -99,8 +235,19 @@ function sceneEntries(s, dict) {
     ...e,
     id: `${prefix}-e${i}`,
     color: tokenIn(e.desc, e.kind === "actor" ? "white" : "tan"),
+    outfit: e.kind === "actor" ? dressUp(e.desc) : null,
+    scale: null,
   }));
 }
+
+/**
+ * How big the actors of a scene are drawn. The count of actors, not of entries: a prop
+ * does not make a person smaller. A scene with one actor is drawn close up, the way the
+ * reference frames are: the figure fills most of the height instead of standing in the
+ * middle of an empty frame. A crowded scene stays smaller so nobody overlaps.
+ */
+const ACTOR_SCALE = { 1: 1.45, 2: 1.15, 3: 1.02 };
+const actorScale = (count) => ACTOR_SCALE[count] ?? 1;
 
 /**
  * Horizontal centre of each entry. Entries share the width evenly. A LAYOUT clause
@@ -108,15 +255,81 @@ function sceneEntries(s, dict) {
  */
 function placeEntries(ents, layout) {
   const n = ents.length;
-  const xs = ents.map((_, i) => Math.round(((i + 0.5) * W) / n));
-  for (const clause of layout.replace(/facing\s+(left|right)/gi, "").split(/[;,.]/)) {
+  const margin = 60;
+  const slot = (W - 2 * margin) / n;
+  const grid = ents.map((_, i) => Math.round(margin + (i + 0.5) * slot));
+  const xs = ents.map(() => null);
+  const anchor = new Map();
+  const clauses = layout.replace(/facing\s+(left|right)/gi, "").split(/[;,.]/);
+  // A size word in a clause scales the entries it names, so "DRYER large on the right"
+  // draws a big dryer and "NORA small on the left" draws a small one.
+  for (const clause of clauses) {
+    for (const [re, size] of SIZE_WORDS) {
+      if (!re.test(clause)) continue;
+      for (const e of namesIn(clause, ents)) e.scale ??= size;
+      break;
+    }
+  }
+  for (const clause of clauses) {
     const word = /\b(left|right|center|centre|middle)\b/i.exec(clause);
     if (!word) continue;
     const x = { left: 480, right: 1440 }[word[1].toLowerCase()] ?? 960;
-    for (const e of namesIn(clause, ents)) xs[ents.indexOf(e)] = x;
+    for (const e of namesIn(clause, ents)) anchor.set(e, x);
   }
+  // The width an entry is drawn at, after the scene's actor scale and any size word.
+  const widthOf = (e) => Math.round((e.kind === "actor" ? ACTOR.w : PROP.w) * (e.scale ?? 1) * (e.crowd ?? 1));
+  // How much of that width is ink. An actor is drawn in a 320 unit box but its head is
+  // only 180 wide, so two actors can stand closer than their boxes suggest.
+  const visHalf = (e) => (widthOf(e) / 2) * (e.kind === "actor" ? 0.68 : 1);
+  // Entries that share an anchor would stack on top of each other, so spread them
+  // across it, side by side, by their widths.
+  const groups = new Map();
+  for (const [e, x] of anchor) groups.set(x, [...(groups.get(x) ?? []), e]);
+  for (const [x, group] of groups) {
+    const step = Math.max(...group.map((e) => visHalf(e) * 2 + 40));
+    group.forEach((e, j) => {
+      xs[ents.indexOf(e)] = Math.round(x + (j - (group.length - 1) / 2) * step);
+    });
+  }
+  // Entries with no LAYOUT anchor go in the free space that is left. The candidates are the
+  // even grid slots and the middle of every gap between the entries already placed; the
+  // one with the most room around it wins, so nothing lands on top of anything else.
+  const placed = [];
   ents.forEach((e, i) => {
-    e.cx = xs[i];
+    if (xs[i] !== null) placed.push({ x: xs[i], half: visHalf(e) });
+  });
+  ents.forEach((e, i) => {
+    if (xs[i] !== null) return;
+    const half = visHalf(e);
+    const lo = half + 8;
+    const hi = W - half - 8;
+    const sorted = [...placed].sort((a, b) => a.x - b.x);
+    const gaps = [];
+    let edge = 8;
+    for (const p of sorted) {
+      gaps.push([edge, p.x - p.half]);
+      edge = p.x + p.half;
+    }
+    gaps.push([edge, W - 8]);
+    const candidates = [...grid, ...gaps.filter(([a, b]) => b > a).map(([a, b]) => (a + b) / 2)]
+      .filter((x) => x >= lo && x <= hi);
+    const room = (x) => Math.min(...placed.map((p) => Math.abs(x - p.x) - p.half - half), Infinity);
+    let best = candidates[0] ?? Math.round((lo + hi) / 2);
+    let bestRoom = -Infinity;
+    for (const c of candidates) {
+      const r = room(c);
+      if (r > bestRoom || (r === bestRoom && Math.abs(c - grid[i]) < Math.abs(best - grid[i]))) {
+        bestRoom = r;
+        best = c;
+      }
+    }
+    xs[i] = Math.round(best);
+    placed.push({ x: xs[i], half });
+  });
+  ents.forEach((e, i) => {
+    // Keep the drawn figure inside the frame: a head on the edge would be cut off.
+    const half = Math.round(visHalf(e));
+    e.cx = Math.max(half + 8, Math.min(W - half - 8, xs[i]));
   });
 }
 
@@ -139,7 +352,7 @@ function resolveBeats(s, ents, errors) {
         case "SWAP": {
           const hit = EXPRESSION_WORDS.find(([re]) => re.test(stripNames(b.text, hits)));
           if (!item.first || item.first.kind !== "actor") bad("the text must name the CAST entry whose face changes");
-          if (!hit) bad("no known expression word (angry, sly, sweat, confused, shock or raised, calm)");
+          if (!hit) bad("no known expression word (angry, sly, sweat, confused, shock, tired, panic, or calm)");
           else item.expr = hit[1];
           break;
         }
@@ -150,6 +363,14 @@ function resolveBeats(s, ents, errors) {
             item.to = hits[1];
           }
           break;
+        case "CALLOUT": {
+          // CALLOUT: "LABEL" -> ENTRY   or   CALLOUT: "LABEL" pointing at ENTRY
+          const labelMatch = /["\u201C\u201D]([^"\u201C\u201D]+)["\u201C\u201D]/.exec(b.text);
+          item.calloutLabel = labelMatch ? labelMatch[1].toUpperCase() : "";
+          // The entry the arrow points at is the first named hit; if none, it's an absolute callout.
+          item.first = hits[0] ?? null;
+          break;
+        }
         case "HOLD":
         case "PUSH":
           break;
@@ -160,52 +381,225 @@ function resolveBeats(s, ents, errors) {
     });
 }
 
+/**
+ * Shade step for a figure or prop: the flat -dark tone of its colour. Set as --tone on the
+ * svg, which the library's shade bands read. --tone-head is the head's own shade.
+ */
+const SHADE_OF = { white: "white-dark", black: "black-dark" };
+function toneOf(color) {
+  return TONES[SHADE_OF[color] ?? `${color}-dark`] ?? TONES["grey-dark"];
+}
+
+/** The box an entry is drawn in, after the scale its LAYOUT clause asked for. */
+function geom(e) {
+  const s = (e.scale ?? 1) * (e.crowd ?? 1);
+  // FRAMING: bust/foreground scales actor to ~2× and anchors them low-left as a half-body crop.
+  const framing = e.framing ?? "normal";
+  if (e.kind === "actor") {
+    const fs = framing === "bust" ? 1.9 : 1;
+    const ws = Math.round(ACTOR.w * s * fs);
+    const hs = Math.round(ACTOR.h * s * fs);
+    const top = Math.round(ACTOR.feetY - (RIG_FEET / 460) * hs);
+    return { w: ws, h: hs, top, half: ws / 2, cy: top + hs / 2, reach: ACTOR.reach * s * fs };
+  }
+  const w = Math.round(PROP.w * s);
+  const h = Math.round(PROP.h * s);
+  const top = Math.round(GROUND - h);
+  return { w, h, top, half: w / 2, cy: top + h / 2, reach: 120 * s };
+}
+
 function use(id) {
   return `<use href="#${id}" x="-160" y="-110" width="320" height="460"/>`;
 }
 
 function actorMarkup(e, enter) {
+  const o = e.outfit;
+  const g = geom(e);
   const layers = [...e.exprKeys]
     .map((k) => {
       const face = EXPRESSIONS[k];
-      return `<g id="${e.id}-x-${k}" opacity="${k === "neutral" ? 1 : 0}">${use(face.eyes)}${use(face.mouth)}</g>`;
+      return `<g id="${e.id}-x-${k}" opacity="${k === "neutral" ? 1 : 0}">${use(face.brows)}${use(face.eyes)}${use(face.mouth)}</g>`;
     })
     .join("");
   const hidden = enter.has(e) ? 0 : 1;
-  return `<div id="${e.id}" class="actor" style="left:${e.cx - ACTOR.half}px;top:${ACTOR.top}px;width:${ACTOR.w}px;height:${ACTOR.h}px;opacity:${hidden}">
-<svg width="${ACTOR.w}" height="${ACTOR.h}" viewBox="-160 -110 320 460" color="${PALETTE[e.color]}" style="display:block;overflow:visible">
-${use("rig-head")}${use("rig-brows-neutral")}${use("rig-body")}
-<g id="${e.id}-limb-idle" opacity="1">${use("rig-limb-idle")}</g>
-<g id="${e.id}-limb-point" opacity="0">${use("rig-limb-point")}</g>
+  const vars = [
+    `--tone:${toneOf(o.garment?.color ?? o.head)}`,
+    `--tone-head:${toneOf(o.head)}`,
+    o.garment ? `--c-garment:${PALETTE[o.garment.color]}` : "",
+    o.hat ? `--c-hat:${PALETTE[o.hat.color]}` : "",
+    o.hair ? `--c-hair:${PALETTE[o.hair.color]}` : "",
+    o.scarf ? `--c-scarf:${PALETTE[o.scarf.color]}` : "",
+    o.tie ? `--c-tie:${PALETTE[o.tie.color]}` : "",
+  ].filter(Boolean).join(";");
+  // Clothes under the head, and clothes over it.
+  const under = [
+    o.garment ? use(o.garment.symbol) : "",
+    o.hood ? use("rig-hood") : "",
+    o.tie ? use("rig-tie") : "",
+  ].join("");
+  const over = [
+    o.hair ? use(o.hair.symbol) : "",
+    o.hat ? use(o.hat.symbol) : "",
+    o.glasses ? use("rig-glasses") : "",
+    o.scarf ? use("rig-scarf") : "",
+  ].join("");
+  // Pose override: if the cast description requested a specific limb pose, show that idle variant.
+  const defaultLimb = o.pose ?? "rig-limb-idle";
+  const limbs = ["rig-limb-idle", "rig-limb-point", "rig-limb-walk", "rig-limb-clipboard", "rig-limb-crossed", "rig-limb-panic"]
+    .map((sym) => `<g id="${e.id}-limb-${sym.replace("rig-limb-","")}" opacity="${sym === defaultLimb ? 1 : 0}">${use(sym)}</g>`)
+    .join("\n");
+  return `<div id="${e.id}" class="actor" style="left:${e.cx - g.half}px;top:${g.top}px;width:${g.w}px;height:${g.h}px;opacity:${hidden}">
+<svg width="${g.w}" height="${g.h}" viewBox="-160 -110 320 460" color="${PALETTE[o.head]}" style="display:block;overflow:visible;${vars}">
+${use("rig-body")}${under}
+${limbs}
+${use("rig-head")}
 ${layers}
+${over}
 </svg>
 </div>`;
 }
 
-function propMarkup(e, enter) {
+/** Label colour for a background: black where the spec allows it, else the spec's first allowed text colour. */
+function labelColor(bg) {
+  const allowed = CONTRAST[bg] ?? ["black"];
+  return allowed.includes("black") ? "black" : allowed[0];
+}
+
+/** Library symbol that draws a prop, e.g. GREEN-BACKPACK -> prop-green-backpack. */
+const propSymbol = (name) => `prop-${String(name).toLowerCase()}`;
+
+/**
+ * Props that share a drawn shape. The scene sheets name a prop for what it is
+ * (a book, a tag, a building), so many of them are the same object with another
+ * word for it. This map sends each of those names to the symbol that draws it,
+ * so no prop is ever left as a labelled box.
+ */
+export const PROP_ALIASES = {
+  "AFFIDAVIT": "prop-paper", "AIRPLANE": "prop-airplane", "AIRSTRIP": "prop-airstrip",
+  "ARCHIVE-SHELF": "prop-shelf", "BASKET": "prop-basket", "BELIEF-BUBBLE": "prop-cloud",
+  "BUS-ICON": "prop-building", "BUSINESS-CARD": "prop-card", "CABIN": "prop-building",
+  "CAMPUS-ICON": "prop-building", "CAR": "prop-car", "CHAIR": "prop-chair",
+  "CHECKMARK": "prop-check", "CHINA-MAP": "prop-map", "CLOCK-ICON": "prop-clock",
+  "COAT-RACK": "prop-tower", "COGS": "prop-gears", "COIN-JAR": "prop-coin-jar",
+  "COINS": "prop-coins", "COIN-STACKS": "prop-coins", "COMMUNITY-TABLE": "prop-desk",
+  "CRACK": "prop-crack", "CROSSING-BANNER": "prop-sign", "DEGREES-BAR": "prop-meter",
+  "DELETE-BUTTON": "prop-delete-button", "DESK": "prop-desk", "DICTIONARY": "prop-book",
+  "DOOR-SIGN": "prop-door-sign", "DOUBT-BOX": "prop-machine", "DOUBT-BUBBLE": "prop-cloud",
+  "DRIFT-WAVE": "prop-thread", "DRAWER": "prop-file-drawer", "DRYER": "prop-dryer",
+  "EAR": "prop-ear", "EYE": "prop-eye", "FILE-DRAWER": "prop-file-drawer",
+  "FILE-FOLDER": "prop-folder", "FLOOD-WAVE": "prop-thread", "GARLIC": "prop-garlic",
+  "GIVEN-PILE": "prop-pile", "GOVERNMENT-BUILDING": "prop-building",
+  "GUARD-BOOTH": "prop-building", "GUYANA-MAP": "prop-map", "HARBOR-BUILDING": "prop-harbor-building",
+  "HARBOR-SIGN": "prop-sign", "HEAT-WAVES": "prop-thread", "HOUSES-ICON": "prop-houses",
+  "IDEA-BULB": "prop-lightbulb", "INVITATION": "prop-card", "KITCHEN-DOOR": "prop-door",
+  "LABEL-STICKER": "prop-tag", "LEADER-CHAIR": "prop-chair", "LIST": "prop-paper",
+  "LOAD-BAR": "prop-meter", "LOOSE-THREAD": "prop-thread", "LOUD-MACHINE": "prop-machine",
+  "MAGNIFIER": "prop-magnifier", "MEGAPHONE": "prop-megaphone", "MIND-HEAD": "prop-mind-head",
+  "MUGS": "prop-mugs", "NAME-TAG": "prop-card", "NEWSPAPER": "prop-newspaper",
+  "OFFICE-ICON": "prop-building", "OLD-LEASE": "prop-paper", "PAPER-STACK": "prop-paper",
+  "PLAN-PAPER": "prop-paper", "PRICE-TAG": "prop-tag", "PURSE": "prop-purse",
+  "READING-LIST": "prop-paper", "RENT-TAG": "prop-tag", "ROAD-SIGN": "prop-sign",
+  "ROOM-WALLS": "prop-wall", "SACRED-BOOK": "prop-book", "SCHEDULE-WALL": "prop-schedule-wall",
+  "SCHOOL-ICON": "prop-building", "SIGH-CLOUD": "prop-cloud", "SLEEPING-ARM": "prop-arm",
+  "SLOPE": "prop-slope", "SMELL-LINES": "prop-thread", "STAGE-STONES": "prop-stones",
+  "STATIC-CLOUD": "prop-cloud", "STEP-MARKS": "prop-thread", "STOP-SIGN": "prop-sign",
+  "SUBLET-KEY": "prop-key", "SUNRISE": "prop-sunrise", "TALLY-MARKS": "prop-thread",
+  "TEACUP": "prop-teacup", "TEARS": "prop-thread", "TEMPLE-BUILDING": "prop-building",
+  "THICK-BOOK": "prop-book", "TIME-CARD": "prop-card", "TOWELS": "prop-boxes",
+  "TOWER": "prop-tower", "TRAFFIC-LIGHT": "prop-traffic-light", "TROUBLED-HOUSE": "prop-cracked-house",
+  "VOICEMAIL-ICON": "prop-voicemail", "WARNING-TRIANGLE": "prop-warning-triangle",
+  "WARMTH-METER": "prop-meter", "WEATHER-CLOUD": "prop-cloud", "WEIGHT": "prop-weight",
+  "ZIGZAG-LINE": "prop-thread", "BOXES": "prop-boxes", "GAVEL": "prop-gavel",
+  "LENS": "prop-lens", "NET": "prop-net", "CANDLES": "prop-candles",
+  // Harbor project props
+  "EMAIL-ICON": "prop-envelope", "CHECK-BLOCKS": "prop-boxes",
+  "COAT": "prop-briefcase", "TEAM-ICON": "prop-team",
+  "SIGN-WELCOMED": "prop-sign", "SIGN-COLLECTED": "prop-sign",
+  // Generic extras
+  "THOUGHT-BUBBLE": "prop-thought-bubble", "CALENDAR": "prop-calendar",
+  "BRIEFCASE": "prop-briefcase", "TALLY": "prop-thread", "ENVELOPE": "prop-envelope",
+  "ARROW": "prop-timeline", "LETTER": "prop-job-letter", "HOME": "prop-house",
+};
+
+/**
+ * A prop is drawn from its library symbol. A prop with no symbol yet is a labelled
+ * box, which is a placeholder and fails the placeholder gate in AGENTS.md.
+ */
+function propMarkup(e, enter, label, symbols, text) {
+  const g = geom(e);
   const hidden = enter.has(e) ? 0 : 1;
-  return `<div id="${e.id}" class="actor" style="left:${e.cx - PROP.half}px;top:${PROP.top}px;width:${PROP.w}px;height:${PROP.h}px;opacity:${hidden}">
-<svg width="${PROP.w}" height="${PROP.h}" viewBox="0 0 ${PROP.w} ${PROP.h}" style="display:block;overflow:visible">
-<rect x="5" y="5" width="230" height="250" fill="${PALETTE[e.color]}" stroke="${PALETTE.black}" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="${PALETTE.black}">${esc(e.name)}</text>
+  const id = PROP_ALIASES[e.name] ?? propSymbol(e.name);
+  const sym = symbols.get(id);
+  const art = sym
+    ? /<text class="prop-(text|label)"/.test(sym)
+      ? filledSymbol(sym, text, e.color)
+      : `<use href="#${id}" x="0" y="0" width="${PROP.w}" height="${PROP.h}"/>`
+    : `<rect x="5" y="5" width="230" height="250" fill="${PALETTE[e.color]}" stroke="${PALETTE.black}" stroke-width="10" stroke-linejoin="round"/>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="${PALETTE[label]}">${esc(e.name)}</text>`;
+  return `<div id="${e.id}" class="actor" style="left:${e.cx - g.half}px;top:${g.top}px;width:${g.w}px;height:${g.h}px;opacity:${hidden}">
+<svg width="${g.w}" height="${g.h}" viewBox="0 0 ${PROP.w} ${PROP.h}" color="${PALETTE[e.color]}" style="display:block;overflow:visible;--tone:${toneOf(e.color)}">
+${art}
 </svg>
 </div>`;
+}
+
+/** The words a prop shows: a calendar reading 1961, a sign reading DANGER, a box labeled
+ * EVERYTHING. They come from the prop's description or from the beat that brings it on. */
+const LABEL_PATTERNS = [
+  /reading\s+["'“]?([^"'”,;]+)["'”]?/i,
+  /labeled\s+["'“]?([^"'”,;]+)["'”]?/i,
+  /with a single\s+["'“]?([\w?]+)["'”]?/i,
+  /with a big\s+(?:black\s+)?(?:number\s+)?([\w?]+)/i,
+  /showing\s+["'“]?([^"'”,;]+)["'”]?/i,
+];
+const NOT_A_LABEL = new Set(["number", "big", "black", "white", "the", "a", "an", "one", "two"]);
+
+function propLabel(e, dict, beats) {
+  const texts = [dict.props?.[e.name], ...beats.filter((b) => namesIn(b.text, [e]).length).map((b) => b.text)];
+  for (const t of texts) {
+    for (const re of LABEL_PATTERNS) {
+      const m = re.exec(String(t ?? ""));
+      if (!m) continue;
+      const label = m[1].trim().replace(/[.,;]+$/, "");
+      if (!label || label.length > 12 || NOT_A_LABEL.has(label.toLowerCase())) continue;
+      return label;
+    }
+  }
+  return null;
+}
+
+/** The inner markup of a library symbol, with its text slot filled or cleared. */
+const DARK_PROPS = new Set(["black", "night", "cobalt", "brown", "grey"]);
+function filledSymbol(symbolMarkup, text, color) {
+  let body = symbolMarkup.replace(/^<symbol\b[^>]*>/, "").replace(/<\/symbol>$/, "").trim();
+  if (!/<text class="prop-(text|label)"/.test(body)) return body;
+  if (!text) return body.replace(/<text class="prop-(text|label)"[\s\S]*?<\/text>/, "");
+  const size = text.length <= 2 ? 64 : text.length <= 5 ? 44 : 28;
+  const small = Math.max(10, Math.min(22, Math.round(110 / Math.max(1, text.length * 0.62))));
+  const fill = DARK_PROPS.has(color) ? PALETTE.white : PALETTE.black;
+  return body.replace(/<text class="(prop-text|prop-label)"([^>]*)>([\s\S]*?)<\/text>/, (m, kind, attrs) => {
+    const a = attrs
+      .replace(/font-size="[^"]*"/, `font-size="${kind === "prop-label" ? small : size}"`)
+      .replace(/fill="[^"]*"/, `fill="${fill}"`);
+    return `<text class="${kind}"${a}>${esc(text)}</text>`;
+  });
 }
 
 /** Arrow from the centre of a to the centre of b, stopped short of both, with a two-stroke head. */
 function arrowD(a, b) {
-  const cy = (e) => (e.kind === "actor" ? ACTOR.cy : PROP.cy);
+  const ga = geom(a);
+  const gb = geom(b);
   const ax = a.cx;
-  const ay = cy(a);
+  const ay = ga.cy;
   const dx = b.cx - ax;
-  const dy = cy(b) - ay;
+  const dy = gb.cy - ay;
   const len = Math.hypot(dx, dy) || 1;
   const ux = dx / len;
   const uy = dy / len;
-  const sx = ax + ux * ACTOR.reach;
-  const sy = ay + uy * ACTOR.reach;
-  const ex = b.cx - ux * ACTOR.reach;
-  const ey = cy(b) - uy * ACTOR.reach;
+  const sx = ax + ux * ga.reach;
+  const sy = ay + uy * ga.reach;
+  const ex = b.cx - ux * gb.reach;
+  const ey = gb.cy - uy * gb.reach;
   const ang = (28 * Math.PI) / 180;
   const back = [-ux, -uy];
   const rot = (v, t) => [v[0] * Math.cos(t) - v[1] * Math.sin(t), v[0] * Math.sin(t) + v[1] * Math.cos(t)];
@@ -221,6 +615,8 @@ function buildScene(s, dict, symbols) {
   const sid = idOf(s);
   const N = s.frames;
   const ents = sceneEntries(s, dict);
+  const aScale = actorScale(ents.filter((e) => e.kind === "actor").length);
+  for (const e of ents) e.crowd = e.kind === "actor" ? aScale : 1;
   placeEntries(ents, s.layout || "");
   const beats = resolveBeats(s, ents, errors);
   if (errors.length) return { html: "", errors };
@@ -259,16 +655,16 @@ function buildScene(s, dict, symbols) {
     const a = (k) => at(L + k);
     switch (b.verb) {
       case "POP":
-        ops.push(`tl.fromTo("#${t.id}", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: ${at(4)}, ease: "power2.out" }, ${at(L)});`);
+        ops.push(`tl.fromTo("#${t.id}", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: ${at(4)}, ease: "power2.out", immediateRender: false }, ${at(L)});`);
         ops.push(`tl.to("#${t.id}", { scale: 1, duration: ${at(2)} }, ${a(4)});`);
         break;
       case "STAMP":
-        ops.push(`tl.fromTo("#${t.id}", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 0.96, duration: ${at(3)}, ease: "power4.in" }, ${at(L)});`);
+        ops.push(`tl.fromTo("#${t.id}", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 0.96, duration: ${at(3)}, ease: "power4.in", immediateRender: false }, ${at(L)});`);
         ops.push(`tl.to("#${t.id}", { scale: 1, duration: ${at(2)}, ease: "power1.out" }, ${a(3)});`);
         break;
       case "SLIDE": {
         const from = /from the right/i.test(b.text) ? 400 : -400;
-        ops.push(`tl.fromTo("#${t.id}", { x: ${from}, opacity: 0 }, { x: 0, opacity: 1, duration: ${at(12)}, ease: "power2.out" }, ${at(L)});`);
+        ops.push(`tl.fromTo("#${t.id}", { x: ${from}, opacity: 0 }, { x: 0, opacity: 1, duration: ${at(12)}, ease: "power2.out", immediateRender: false }, ${at(L)});`);
         break;
       }
       case "SHAKE":
@@ -293,13 +689,40 @@ function buildScene(s, dict, symbols) {
         ops.push(`tl.fromTo("#${id}", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: ${at(14)}, ease: "power1.out" }, ${at(L)});`);
         break;
       }
+      case "CALLOUT": {
+        // Render a hand-drawn diagonal callout arrow with a short label beside the arrowhead.
+        const calloutN = arrowN++;
+        const callId = `${sid}-co${calloutN}`;
+        const tgtX = t ? t.cx : W / 2;
+        const tgtY = t ? (geom(t).top + geom(t).h / 2) : H / 2;
+        const tx1 = Math.max(60, tgtX - 220);
+        const ty1 = Math.max(80, tgtY - 180);
+        const dx = tgtX - tx1;
+        const dy = tgtY - ty1;
+        const len = Math.hypot(dx, dy) || 1;
+        const ux = dx / len; const uy = dy / len;
+        const ang = (28 * Math.PI) / 180;
+        const cos28 = Math.cos(ang); const sin28 = Math.sin(ang);
+        const ex = tgtX - ux * 40; const ey = tgtY - uy * 40;
+        const h1x = -ux * cos28 - uy * sin28; const h1y = -ux * sin28 + uy * cos28;
+        const h2x = -ux * cos28 + uy * sin28; const h2y = ux * sin28 + uy * cos28;
+        const arrowPath = `M${Math.round(tx1)},${Math.round(ty1)} Q${Math.round(tx1 + dx * 0.4 + uy * 60)},${Math.round(ty1 + dy * 0.4 - ux * 60)} ${Math.round(ex)},${Math.round(ey)} M${Math.round(ex)},${Math.round(ey)} L${Math.round(ex + h1x * 42)},${Math.round(ey + h1y * 42)} M${Math.round(ex)},${Math.round(ey)} L${Math.round(ex + h2x * 42)},${Math.round(ey + h2y * 42)}`;
+        const labelFill = PALETTE[labelColor(s.bg)];
+        const calloutSvg = `<path id="${callId}-line" class="draw" pathLength="1" d="${arrowPath}" fill="none" stroke="${PALETTE.black}" stroke-width="7" stroke-linecap="round"/>` +
+          (b.calloutLabel ? `<text id="${callId}-txt" class="callout-label" x="${Math.round(tx1 - 10)}" y="${Math.round(ty1 - 14)}" text-anchor="end" font-family="Permanent Marker, Arial, sans-serif" font-weight="400" font-size="44" fill="${labelFill}" style="-webkit-text-stroke:4px ${PALETTE.black};paint-order:stroke fill">${esc(b.calloutLabel)}</text>` : "");
+        arrows.push(calloutSvg);
+        if (L > 0) {
+          ops.push(`tl.fromTo("#${callId}-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: ${at(10)}, ease: "power1.out", immediateRender: false }, ${at(L)});`);
+          if (b.calloutLabel) ops.push(`tl.fromTo("#${callId}-txt", { opacity: 0 }, { opacity: 1, duration: ${at(3)}, ease: "power1.out", immediateRender: false }, ${at(L + 8)});`);
+        }
+        break;
+      }
       case "CROSS": {
-        const c = t.kind === "actor" ? ACTOR : PROP;
-        const cy = c.cy;
-        const h = t.kind === "actor" ? ACTOR.reach : 120;
+        const c = geom(t);
+        const h = c.reach;
         const lines = [
-          [`${t.cx - h}`, `${cy - h}`, `${t.cx + h}`, `${cy + h}`],
-          [`${t.cx + h}`, `${cy - h}`, `${t.cx - h}`, `${cy + h}`],
+          [`${t.cx - h}`, `${c.cy - h}`, `${t.cx + h}`, `${c.cy + h}`],
+          [`${t.cx + h}`, `${c.cy - h}`, `${t.cx - h}`, `${c.cy + h}`],
         ];
         lines.forEach(([x1, y1, x2, y2], k) => {
           const id = `${sid}-x${crossN++}`;
@@ -326,11 +749,17 @@ function buildScene(s, dict, symbols) {
   }
 
   // Headlines (top only, as the spec requires). Each one replaces the previous at its time, so the previous one is hidden when the next starts.
+  // The size follows the length, so a short headline fills the width like the reference frames
+  // and a long one still fits inside 1920.
   const headlines = s.texts.map((tx, k) => {
     const L = tx.frame - s.startF;
+    const text = tx.text.toUpperCase();
+    const size = Math.max(80, Math.min(150, Math.round(1700 / Math.max(1, text.length * 0.62))));
+    // The headline pops in from a bigger size, but never from so big that it leaves the frame.
+    const pop = Math.min(1.45, 1800 / Math.max(1, text.length * 0.62 * size));
     if (k > 0) ops.push(`tl.set("#${sid}-t${k - 1}", { opacity: 0 }, ${at(L)});`);
-    ops.push(`tl.fromTo("#${sid}-t${k}", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: ${at(3)}, ease: "power2.out" }, ${at(L)});`);
-    return `<div id="${sid}-t${k}" class="ttl" style="color:${PALETTE[tx.color]};opacity:0">${esc(tx.text.toUpperCase())}</div>`;
+    ops.push(`tl.fromTo("#${sid}-t${k}", { opacity: 0, scale: ${pop.toFixed(2)} }, { opacity: 1, scale: 1, duration: ${at(3)}, ease: "power2.out" }, ${at(L)});`);
+    return `<div id="${sid}-t${k}" class="ttl" style="color:${PALETTE[tx.color]};opacity:0;font-size:${size}px">${esc(text)}</div>`;
   });
 
   // OUT: a dip to a palette color, or a wipe, over the last 6 frames. Hard cut leaves nothing.
@@ -352,7 +781,10 @@ function buildScene(s, dict, symbols) {
     : "";
   const bgHex = PALETTE[s.bg === "sky+ground" ? "sky" : s.bg];
   const overlaySvg = `<svg class="fill" viewBox="0 0 ${W} ${H}" fill="none" stroke="${PALETTE.black}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible">${arrows.join("")}${crosses.join("")}</svg>`;
-  const entityMarkup = ents.map((e) => (e.kind === "actor" ? actorMarkup(e, enter) : propMarkup(e, enter))).join("\n");
+  const label = labelColor(s.bg);
+  const entityMarkup = ents
+    .map((e) => (e.kind === "actor" ? actorMarkup(e, enter) : propMarkup(e, enter, label, symbols, propLabel(e, dict, beats))))
+    .join("\n");
   const stage = `<div id="${sid}-stage" class="fill" style="background:${bgHex}">
 ${ground}
 <div id="${sid}-ink" class="fill">
@@ -419,8 +851,11 @@ const SCENE_CSS = `        #root { position: absolute; inset: 0; width: ${W}px; 
           position: absolute; top: 60px; left: 0; width: ${W}px; margin: 0; text-align: center;
           font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
           transform-origin: 50% 50%;
+          -webkit-text-stroke: 12px ${PALETTE.black}; paint-order: stroke fill;
+          letter-spacing: 2px;
         }
-        .draw { stroke-dasharray: 1 1; }`;
+        .draw { stroke-dasharray: 1 1; }
+        .callout-label { pointer-events: none; }`;
 
 const MINUTE = 60 * FPS;
 const minuteCount = (tl) => Math.max(1, Math.ceil(tl.totalFrames / MINUTE));

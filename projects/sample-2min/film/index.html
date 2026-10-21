@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>sample-2min</title>
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      body { margin: 0; background: #FFFFFF; }
+      #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+      .clip { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main" data-no-timeline
+      data-start="0"
+      data-fps="24"
+      data-width="1920"
+      data-height="1080"
+      data-duration="124"
+    >
+      <div id="s01-clip" class="clip" data-composition-id="s01" data-composition-src="compositions/s01.html" data-start="0" data-duration="17" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s02-clip" class="clip" data-composition-id="s02" data-composition-src="compositions/s02.html" data-start="17" data-duration="11" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s03-clip" class="clip" data-composition-id="s03" data-composition-src="compositions/s03.html" data-start="28" data-duration="14" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s04-clip" class="clip" data-composition-id="s04" data-composition-src="compositions/s04.html" data-start="42" data-duration="18" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s05-clip" class="clip" data-composition-id="s05" data-composition-src="compositions/s05.html" data-start="60" data-duration="8" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s06-clip" class="clip" data-composition-id="s06" data-composition-src="compositions/s06.html" data-start="68" data-duration="16" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s07-clip" class="clip" data-composition-id="s07" data-composition-src="compositions/s07.html" data-start="84" data-duration="13" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s08-clip" class="clip" data-composition-id="s08" data-composition-src="compositions/s08.html" data-start="97" data-duration="15" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s09-clip" class="clip" data-composition-id="s09" data-composition-src="compositions/s09.html" data-start="112" data-duration="12" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="captions-01-clip" class="clip" data-track-kind="captions" data-composition-id="captions-01" data-composition-src="compositions/captions-01.html" data-start="0" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="captions-02-clip" class="clip" data-track-kind="captions" data-composition-id="captions-02" data-composition-src="compositions/captions-02.html" data-start="60" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="captions-03-clip" class="clip" data-track-kind="captions" data-composition-id="captions-03" data-composition-src="compositions/captions-03.html" data-start="120" data-duration="4" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+      <audio id="narration" src="narration.wav" data-start="0" data-duration="124"></audio>
+    </div>
+  </body>
+</html>

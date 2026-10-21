@@ -338,7 +338,7 @@ test("offPaletteColors flags colors outside the palette and nothing else", () =>
 test("tone variants are allowed in film/ but are not palette tokens", () => {
   const toneHexes = Object.values(TONES).join(" ");
   assert.deepEqual(offPaletteColors(toneHexes), []);
-  assert.equal(Object.keys(TONES).length, 20);
+  assert.equal(Object.keys(TONES).length, 24);
   for (const name of Object.keys(TONES)) {
     assert.ok(!(name in PALETTE), `${name} must not be a PALETTE key`);
     assert.ok(!TOKEN_NAMES.includes(name), `${name} must not be a TOKEN_NAMES entry`);

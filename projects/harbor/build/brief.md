@@ -1088,77 +1088,112 @@ Size 1920×1080, 24 fps. Audio 798.67 s = 19168 frames. All frame numbers are ro
   - frame 17760 DRAW a yellow ARROW from CLIPBOARD to DEGREES-BAR with the label "SMALL"
   - frame 17808 SWAP LIFTON's brows to raised
 
-## S51: frames 17832–18120 (12:23.00–12:35.00), 288 frames, bg=white
+## S51: frames 17832–18024 (12:23.00–12:31.00), 192 frames, bg=white
 
-- Cast: DANIEL, JULIAN
-- Props: LENS
-- Layout: LENS centered high, a faint dotted JULIAN at the far right edge, DANIEL on the left third in his yellow beanie with an open hand reaching toward the center.
+- Cast: JULIAN
+- Props: LIST, LENS, GAVEL
+- Layout: LIST on the left third, LENS sliding over it at center, GAVEL on the right third, JULIAN small at the far right edge at the end.
 - Camera: lock   Out: hard-cut
-- Cues: 224–229
-- Headline (black, frame 17839): "THE LENS"
-- Headline (red, frame 17878): "NOT A VERDICT"
+- Cues: 224–227
+- Headline (black, frame 17832): "THE LIST IS A LENS"
+- Headline (red, frame 17868): "NOT A VERDICT"
 - Beats:
-  - frame 17839 POP LENS centered high, a round black ring around a white glass
-  - frame 17878 SHAKE LENS as its glass turns from a red mark to clear white
-  - frame 17930 STAMP a dotted outline of JULIAN at the far right edge
-  - frame 17990 CROSS a red X over the dotted JULIAN outline
-  - frame 18038 POP DANIEL on the left third in his yellow beanie
-  - frame 18074 SWAP DANIEL's brows to calm, open hand palm up
+  - frame 17832 POP LIST on the left
+  - frame 17851 SLIDE LENS in over LIST
+  - frame 17868 POP GAVEL on the right
+  - frame 17880 CROSS a red X over GAVEL
+  - frame 17928 DRAW a green checkmark inside LENS
+  - frame 17976 POP JULIAN small at the far right with a "?" bubble above him
+  - frame 18000 CROSS a red X over JULIAN
 
-## S52: frames 18120–18432 (12:35.00–12:48.00), 312 frames, bg=night
+## S52: frames 18024–18432 (12:31.00–12:48.00), 408 frames, bg=tan
+
+- Cast: DANIEL, NORA
+- Props: HAND, COMMUNITY-TABLE, CHAIR, THOUGHT-BUBBLE, HEART, NET, SIGN-WELCOMED, SIGN-COLLECTED
+- Layout: DANIEL on the left third offering HAND, COMMUNITY-TABLE with one empty CHAIR at center, two signs across the upper middle in the second half, NORA small on the right third at the end.
+- Camera: lock   Out: color-dip(night)
+- Cues: 228–231
+- Headline (black, frame 18072): "A WARM HAND"
+- Headline (black, frame 18168): "WELCOMED..."
+- Headline (red, frame 18228): "...OR COLLECTED?"
+- Beats:
+  - frame 18024 POP DANIEL in his yellow beanie, waving
+  - frame 18060 DRAW a yellow ARROW at DANIEL with the label "DANIEL"
+  - frame 18072 POP HAND offered palm up in front of DANIEL
+  - frame 18108 SWAP HAND now holds a steaming mug
+  - frame 18120 POP COMMUNITY-TABLE with an empty CHAIR
+  - frame 18168 POP SIGN-WELCOMED with HEART on the left
+  - frame 18228 POP SIGN-COLLECTED with a small NET over a tiny figure on the right
+  - frame 18288 SWAP both signs now show the same warm smiling face
+  - frame 18336 POP NORA small on the right with THOUGHT-BUBBLE reading "?"
+  - frame 18384 SHAKE the "?" in THOUGHT-BUBBLE
+
+## S53: frames 18432–18552 (12:48.00–12:53.00), 120 frames, bg=night
+
+- Cast: NORA, LEAH
+- Props: CAR, GREEN-BACKPACK, SPEECH-BALLOON, HEAT-WAVES
+- Layout: CAR cutaway in the center with LEAH at the wheel on the left and NORA on the right, GREEN-BACKPACK on NORA's knees, HEAT-WAVES rising at the center.
+- Camera: lock   Out: hard-cut
+- Cues: 232–233
+- Headline (yellow, frame 18432): "SILENCE"
+- Headline (yellow, frame 18480): "THE HEAT UP"
+- Beats:
+  - frame 18432 POP CAR cutaway with LEAH at the wheel and NORA beside her, GREEN-BACKPACK on NORA's knees
+  - frame 18456 POP an empty SPEECH-BALLOON above LEAH
+  - frame 18468 CROSS a red X over SPEECH-BALLOON
+  - frame 18480 POP HEAT-WAVES rising from a dashboard dial
+  - frame 18516 SWAP NORA's brows to soft
+
+## S54: frames 18552–18792 (12:53.00–13:03.00), 240 frames, bg=night
 
 - Cast: NORA
-- Props: COMMUNITY-TABLE, HAND
-- Layout: COMMUNITY-TABLE on the right third with one empty seat, NORA on the left third with her head on the upper third line, an open HAND at center and a second HAND from the far right edge at the end.
+- Props: TRAFFIC-LIGHT, PHONE, SPEECH-BALLOON, STATIC-CLOUD, HARBOR-BUILDING, THOUGHT-BUBBLE
+- Layout: TRAFFIC-LIGHT on the left third, PHONE held large by NORA at center, SPEECH-BALLOON from PHONE across the upper right, NORA's face lit from below on the right third.
 - Camera: lock   Out: hard-cut
-- Cues: 230–231
-- Headline (yellow, frame 18142): "WELCOMED OR COLLECTED"
+- Cues: 234–240
+- Headline (yellow, frame 18552): "THE RED LIGHT"
+- Headline (yellow, frame 18624): "WE MISS YOU"
+- Headline (yellow, frame 18720): "COME HOME"
 - Beats:
-  - frame 18122 POP COMMUNITY-TABLE on the right third with one empty seat
-  - frame 18142 POP NORA on the left third, dot eyes on the table
-  - frame 18192 SWAP NORA's brows to worried
-  - frame 18240 POP an open HAND at center, palm up, toward NORA
-  - frame 18288 POP a second HAND from the far right edge, fingers curled
-  - frame 18336 DRAW a yellow ARROW from NORA to the curled HAND
-  - frame 18372 SHAKE the curled HAND
-  - frame 18408 SWAP NORA's brows to raised as she looks at the open HAND
+  - frame 18552 POP TRAFFIC-LIGHT with the red light on
+  - frame 18564 SHAKE PHONE in NORA's hand with small buzz lines
+  - frame 18576 POP DANIEL's face (yellow beanie) on the PHONE screen
+  - frame 18624 POP SPEECH-BALLOON above PHONE reading "WE MISS YOU"
+  - frame 18672 POP STATIC-CLOUD, a black zigzag scribble, beside the SPEECH-BALLOON
+  - frame 18696 SWAP STATIC-CLOUD into a soft white puff
+  - frame 18720 POP a small HARBOR-BUILDING on the PHONE screen with a warm yellow glow
+  - frame 18744 SWAP NORA's dot eyes slide left to right and back again
+  - frame 18768 POP THOUGHT-BUBBLE with "..." above NORA
 
-## S53: frames 18432–18744 (12:48.00–13:01.00), 312 frames, bg=white
+## S55: frames 18792–18864 (13:03.00–13:06.00), 72 frames, bg=night
 
-- Cast: LEAH, NORA
-- Props: CAR, WARMTH-METER, TRAFFIC-LIGHT, PHONE, SPEECH-BALLOON
-- Layout: CAR across the left two thirds with LEAH at the wheel and NORA in the passenger seat, WARMTH-METER and TRAFFIC-LIGHT on the right third, PHONE in NORA's hand.
+- Cast: NORA
+- Props: PHONE, DELETE-BUTTON
+- Layout: PHONE close and large at center with DELETE-BUTTON low on its screen, NORA's thumb hovering above it from the right.
 - Camera: lock   Out: hard-cut
-- Cues: 232–238
-- Headline (red, frame 18689): "STATIC CAN'T HURT YOU"
-- Headline (black, frame 18722): "COME HOME"
+- Cues: 241–241
+- Headline (yellow, frame 18792): "NOT DELETED"
 - Beats:
-  - frame 18434 POP CAR with LEAH at the wheel and NORA in the passenger seat
-  - frame 18482 SWAP LEAH's mouth stays flat, eyes on the road
-  - frame 18492 POP WARMTH-METER with the red fill low
-  - frame 18528 SHAKE WARMTH-METER as its fill rises high
-  - frame 18554 POP TRAFFIC-LIGHT on the right with the red light on
-  - frame 18590 POP PHONE in NORA's hand with a small DANIEL head on its screen
-  - frame 18643 POP SPEECH-BALLOON from the PHONE, empty
-  - frame 18689 SHAKE SPEECH-BALLOON
-  - frame 18722 SHAKE TRAFFIC-LIGHT as its red light turns green
+  - frame 18792 POP PHONE close-up with DELETE-BUTTON on its screen
+  - frame 18816 SWAP NORA's thumb hovers above DELETE-BUTTON
+  - frame 18840 SHAKE the thumb, it pulls back
 
-## S54: frames 18744–19168 (13:01.00–13:18.67), 424 frames, bg=night
+## S56: frames 18864–19168 (13:06.00–13:18.67), 304 frames, bg=night
 
-- Cast: NORA, DANIEL
-- Props: PHONE, FOLDING-TABLE, DRYER, TOWELS, GREEN-BACKPACK
-- Layout: NORA on the left third with her head on the upper third line and GREEN-BACKPACK at her feet, FOLDING-TABLE low in the center, DRYER on the right with DANIEL folding TOWELS in front of it.
-- Camera: lock   Out: hard-cut
-- Cues: 239–244
-- Headline (yellow, frame 19054): "WHO WILL ASK?"
+- Cast: STRANGER
+- Props: DRYER, FOLDING-TABLE, PHONE, TOWELS, THOUGHT-BUBBLE
+- Layout: DRYER on the right third, FOLDING-TABLE with PHONE face up at the lower center, STRANGER entering on the left third with his eyes on the upper third line and room in front of his gaze.
+- Camera: push   Out: hard-cut
+- Cues: 242–244
+- Headline (yellow, frame 18864): "A LAUNDROMAT HUMMING"
+- Headline (yellow, frame 19116): "WHO ASKS FIRST?"
 - Beats:
-  - frame 18744 POP NORA on the left third holding PHONE, GREEN-BACKPACK at her feet
-  - frame 18768 SWAP NORA's brows to confused, eyes moving down the PHONE screen, reading twice
-  - frame 18780 SWAP NORA's brows to calm, thumb resting still above the PHONE
-  - frame 18811 SHAKE PHONE as NORA's thumb lifts away, the message staying on the screen
-  - frame 18871 SHAKE DRYER, the hum
-  - frame 18888 POP DANIEL in front of DRYER folding TOWELS
-  - frame 18931 SLIDE PHONE from NORA's hand down onto FOLDING-TABLE, face up
-  - frame 18984 SWAP NORA's brows to calm as she steps back from FOLDING-TABLE, arms at her sides
-  - frame 19054 SHAKE DANIEL as he folds one slow corner at a time
-  - frame 19116 SWAP DANIEL's brows to sly as his dot eyes glance toward NORA
+  - frame 18864 POP DRYER with clothes spinning in its round window
+  - frame 18888 SHAKE DRYER
+  - frame 18912 POP FOLDING-TABLE with PHONE face up, blank screen
+  - frame 18960 POP a small dotted empty THOUGHT-BUBBLE above PHONE
+  - frame 18996 SWAP PHONE screen blinks white
+  - frame 19032 SLIDE STRANGER in from the left, folding TOWELS very slowly
+  - frame 19080 SWAP STRANGER's dot eyes glance toward PHONE
+  - frame 19116 POP a "?" bubble above STRANGER
+  - frame 19128 PUSH

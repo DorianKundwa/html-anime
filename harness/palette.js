@@ -45,6 +45,10 @@ export const TONES = {
   "grey-light": "#9B9B9B",
   "night-dark": "#131D34",
   "night-light": "#828A9B",
+  "white-dark": "#D8D8D8",
+  "white-light": "#F0F0F0",
+  "black-dark": "#1A1A1A",
+  "black-light": "#3A3A3A",
 };
 
 /** Background tokens from the scene-sheet spec. sky+ground is sky with a green strip. */

@@ -1167,77 +1167,117 @@ TEXT: top | black | "IN DEGREES" @12:13.0
 CAMERA: lock
 OUT: hard-cut
 
+## CAST (added)
+STRANGER: stick figure, large white circle head, dot eyes, thick brow lines, grey body, one pair of folded white TOWELS in hand
+
 ## PROPS (added)
-LENS: round black ring around a white glass disc, short black handle
-TRAFFIC-LIGHT: tall black box with three round lights, the top one red, black outline
+LENS: chunky round magnifying glass, yellow frame, white glass, black outline
+LIST: white page with seven short black lines, black outline
+GAVEL: chunky brown mallet with a black outline
+TRAFFIC-LIGHT: tall dark grey box with three round lights, red lit
+HEAT-WAVES: three wavy orange lines
+DELETE-BUTTON: round red button with a white X, black outline
 
-## S51 | 12:23-12:35 | cues 224-229 | bg=white
-CAST: DANIEL, JULIAN
-PROPS: LENS
-LAYOUT: LENS centered high, a faint dotted JULIAN at the far right edge, DANIEL on the left third in his yellow beanie with an open hand reaching toward the center.
+## S51 | 12:23-12:31 | cues 224-227 | bg=white
+CAST: JULIAN
+PROPS: LIST, LENS, GAVEL
+LAYOUT: LIST on the left third, LENS sliding over it at center, GAVEL on the right third, JULIAN small at the far right edge at the end.
 BEATS:
-- 12:23.3 POP LENS centered high, a round black ring around a white glass
-- 12:24.9 SHAKE LENS as its glass turns from a red mark to clear white
-- 12:27.1 STAMP a dotted outline of JULIAN at the far right edge
-- 12:29.6 CROSS a red X over the dotted JULIAN outline
-- 12:31.6 POP DANIEL on the left third in his yellow beanie
-- 12:33.1 SWAP DANIEL's brows to calm, open hand palm up
-TEXT: top | black | "THE LENS" @12:23.3
-TEXT: top | red | "NOT A VERDICT" @12:24.9
+- 12:23.0 POP LIST on the left
+- 12:23.8 SLIDE LENS in over LIST
+- 12:24.5 POP GAVEL on the right
+- 12:25.0 CROSS a red X over GAVEL
+- 12:27.0 DRAW a green checkmark inside LENS
+- 12:29.0 POP JULIAN small at the far right with a "?" bubble above him
+- 12:30.0 CROSS a red X over JULIAN
+TEXT: top | black | "THE LIST IS A LENS" @12:23.0
+TEXT: top | red | "NOT A VERDICT" @12:24.5
 CAMERA: lock
 OUT: hard-cut
 
-## S52 | 12:35-12:48 | cues 230-231 | bg=night
+## S52 | 12:31-12:48 | cues 228-231 | bg=tan
+CAST: DANIEL, NORA
+PROPS: HAND, COMMUNITY-TABLE, CHAIR, THOUGHT-BUBBLE, HEART, NET, SIGN-WELCOMED, SIGN-COLLECTED
+LAYOUT: DANIEL on the left third offering HAND, COMMUNITY-TABLE with one empty CHAIR at center, two signs across the upper middle in the second half, NORA small on the right third at the end.
+BEATS:
+- 12:31.0 POP DANIEL in his yellow beanie, waving
+- 12:32.5 DRAW a yellow ARROW at DANIEL with the label "DANIEL"
+- 12:33.0 POP HAND offered palm up in front of DANIEL
+- 12:34.5 SWAP HAND now holds a steaming mug
+- 12:35.0 POP COMMUNITY-TABLE with an empty CHAIR
+- 12:37.0 POP SIGN-WELCOMED with HEART on the left
+- 12:39.5 POP SIGN-COLLECTED with a small NET over a tiny figure on the right
+- 12:42.0 SWAP both signs now show the same warm smiling face
+- 12:44.0 POP NORA small on the right with THOUGHT-BUBBLE reading "?"
+- 12:46.0 SHAKE the "?" in THOUGHT-BUBBLE
+TEXT: top | black | "A WARM HAND" @12:33.0
+TEXT: top | black | "WELCOMED..." @12:37.0
+TEXT: top | red | "...OR COLLECTED?" @12:39.5
+CAMERA: lock
+OUT: color-dip(night)
+
+## S53 | 12:48-12:53 | cues 232-233 | bg=night
+CAST: NORA, LEAH
+PROPS: CAR, GREEN-BACKPACK, SPEECH-BALLOON, HEAT-WAVES
+LAYOUT: CAR cutaway in the center with LEAH at the wheel on the left and NORA on the right, GREEN-BACKPACK on NORA's knees, HEAT-WAVES rising at the center.
+BEATS:
+- 12:48.0 POP CAR cutaway with LEAH at the wheel and NORA beside her, GREEN-BACKPACK on NORA's knees
+- 12:49.0 POP an empty SPEECH-BALLOON above LEAH
+- 12:49.5 CROSS a red X over SPEECH-BALLOON
+- 12:50.0 POP HEAT-WAVES rising from a dashboard dial
+- 12:51.5 SWAP NORA's brows to soft
+TEXT: top | yellow | "SILENCE" @12:48.0
+TEXT: top | yellow | "THE HEAT UP" @12:50.0
+CAMERA: lock
+OUT: hard-cut
+
+## S54 | 12:53-13:03 | cues 234-240 | bg=night
 CAST: NORA
-PROPS: COMMUNITY-TABLE, HAND
-LAYOUT: COMMUNITY-TABLE on the right third with one empty seat, NORA on the left third with her head on the upper third line, an open HAND at center and a second HAND from the far right edge at the end.
+PROPS: TRAFFIC-LIGHT, PHONE, SPEECH-BALLOON, STATIC-CLOUD, HARBOR-BUILDING, THOUGHT-BUBBLE
+LAYOUT: TRAFFIC-LIGHT on the left third, PHONE held large by NORA at center, SPEECH-BALLOON from PHONE across the upper right, NORA's face lit from below on the right third.
 BEATS:
-- 12:35.1 POP COMMUNITY-TABLE on the right third with one empty seat
-- 12:35.9 POP NORA on the left third, dot eyes on the table
-- 12:38.0 SWAP NORA's brows to worried
-- 12:40.0 POP an open HAND at center, palm up, toward NORA
-- 12:42.0 POP a second HAND from the far right edge, fingers curled
-- 12:44.0 DRAW a yellow ARROW from NORA to the curled HAND
-- 12:45.5 SHAKE the curled HAND
-- 12:47.0 SWAP NORA's brows to raised as she looks at the open HAND
-TEXT: top | yellow | "WELCOMED OR COLLECTED" @12:35.9
+- 12:53.0 POP TRAFFIC-LIGHT with the red light on
+- 12:53.5 SHAKE PHONE in NORA's hand with small buzz lines
+- 12:54.0 POP DANIEL's face (yellow beanie) on the PHONE screen
+- 12:56.0 POP SPEECH-BALLOON above PHONE reading "WE MISS YOU"
+- 12:58.0 POP STATIC-CLOUD, a black zigzag scribble, beside the SPEECH-BALLOON
+- 12:59.0 SWAP STATIC-CLOUD into a soft white puff
+- 13:00.0 POP a small HARBOR-BUILDING on the PHONE screen with a warm yellow glow
+- 13:01.0 SWAP NORA's dot eyes slide left to right and back again
+- 13:02.0 POP THOUGHT-BUBBLE with "..." above NORA
+TEXT: top | yellow | "THE RED LIGHT" @12:53.0
+TEXT: top | yellow | "WE MISS YOU" @12:56.0
+TEXT: top | yellow | "COME HOME" @13:00.0
 CAMERA: lock
 OUT: hard-cut
 
-## S53 | 12:48-13:01 | cues 232-238 | bg=white
-CAST: LEAH, NORA
-PROPS: CAR, WARMTH-METER, TRAFFIC-LIGHT, PHONE, SPEECH-BALLOON
-LAYOUT: CAR across the left two thirds with LEAH at the wheel and NORA in the passenger seat, WARMTH-METER and TRAFFIC-LIGHT on the right third, PHONE in NORA's hand.
+## S55 | 13:03-13:06 | cues 241-241 | bg=night
+CAST: NORA
+PROPS: PHONE, DELETE-BUTTON
+LAYOUT: PHONE close and large at center with DELETE-BUTTON low on its screen, NORA's thumb hovering above it from the right.
 BEATS:
-- 12:48.1 POP CAR with LEAH at the wheel and NORA in the passenger seat
-- 12:50.1 SWAP LEAH's mouth stays flat, eyes on the road
-- 12:50.5 POP WARMTH-METER with the red fill low
-- 12:52.0 SHAKE WARMTH-METER as its fill rises high
-- 12:53.1 POP TRAFFIC-LIGHT on the right with the red light on
-- 12:54.6 POP PHONE in NORA's hand with a small DANIEL head on its screen
-- 12:56.8 POP SPEECH-BALLOON from the PHONE, empty
-- 12:58.7 SHAKE SPEECH-BALLOON
-- 13:00.1 SHAKE TRAFFIC-LIGHT as its red light turns green
-TEXT: top | red | "STATIC CAN'T HURT YOU" @12:58.7
-TEXT: top | black | "COME HOME" @13:00.1
+- 13:03.0 POP PHONE close-up with DELETE-BUTTON on its screen
+- 13:04.0 SWAP NORA's thumb hovers above DELETE-BUTTON
+- 13:05.0 SHAKE the thumb, it pulls back
+TEXT: top | yellow | "NOT DELETED" @13:03.0
 CAMERA: lock
 OUT: hard-cut
 
-## S54 | 13:01-END | cues 239-244 | bg=night
-CAST: NORA, DANIEL
-PROPS: PHONE, FOLDING-TABLE, DRYER, TOWELS, GREEN-BACKPACK
-LAYOUT: NORA on the left third with her head on the upper third line and GREEN-BACKPACK at her feet, FOLDING-TABLE low in the center, DRYER on the right with DANIEL folding TOWELS in front of it.
+## S56 | 13:06-END | cues 242-244 | bg=night
+CAST: STRANGER
+PROPS: DRYER, FOLDING-TABLE, PHONE, TOWELS, THOUGHT-BUBBLE
+LAYOUT: DRYER on the right third, FOLDING-TABLE with PHONE face up at the lower center, STRANGER entering on the left third with his eyes on the upper third line and room in front of his gaze.
 BEATS:
-- 13:01.0 POP NORA on the left third holding PHONE, GREEN-BACKPACK at her feet
-- 13:02.0 SWAP NORA's brows to confused, eyes moving down the PHONE screen, reading twice
-- 13:02.5 SWAP NORA's brows to calm, thumb resting still above the PHONE
-- 13:03.8 SHAKE PHONE as NORA's thumb lifts away, the message staying on the screen
-- 13:06.3 SHAKE DRYER, the hum
-- 13:07.0 POP DANIEL in front of DRYER folding TOWELS
-- 13:08.8 SLIDE PHONE from NORA's hand down onto FOLDING-TABLE, face up
-- 13:11.0 SWAP NORA's brows to calm as she steps back from FOLDING-TABLE, arms at her sides
-- 13:13.9 SHAKE DANIEL as he folds one slow corner at a time
-- 13:16.5 SWAP DANIEL's brows to sly as his dot eyes glance toward NORA
-TEXT: top | yellow | "WHO WILL ASK?" @13:13.9
-CAMERA: lock
+- 13:06.0 POP DRYER with clothes spinning in its round window
+- 13:07.0 SHAKE DRYER
+- 13:08.0 POP FOLDING-TABLE with PHONE face up, blank screen
+- 13:10.0 POP a small dotted empty THOUGHT-BUBBLE above PHONE
+- 13:11.5 SWAP PHONE screen blinks white
+- 13:13.0 SLIDE STRANGER in from the left, folding TOWELS very slowly
+- 13:15.0 SWAP STRANGER's dot eyes glance toward PHONE
+- 13:16.5 POP a "?" bubble above STRANGER
+- 13:17.0 PUSH
+TEXT: top | yellow | "A LAUNDROMAT HUMMING" @13:06.0
+TEXT: top | yellow | "WHO ASKS FIRST?" @13:16.5
+CAMERA: push
 OUT: hard-cut

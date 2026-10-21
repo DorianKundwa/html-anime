@@ -4,11 +4,21 @@
     body starting at y=95. Draw with <use href="#id" x="0" y="0" width="320" height="460"/>.
     Head fill uses currentColor, so set color="#D94040" (red) or color="#FFFFFF" (white) on the <use>.
     Outlines are black. Colors are palette hexes only (harness/palette.js).
+
+    House style (doodle-style skill): every outline is a bold main stroke with a thin
+    offset echo line beside it, the sketchy double stroke. A shade step is a flat tone
+    from TONES, drawn as style="fill:var(--tone, ...)". build-film.js sets --tone on each
+    svg from the colour the scene card gives it. Hands are white mitts; feet are short ticks.
+
     Scene files inline the symbols they use via harness/inline-library.js.
   -->
   <defs>
     <symbol id="rig-head" viewBox="-160 -110 320 460">
-      <circle cx="0" cy="0" r="90" fill="currentColor" stroke="#000000" stroke-width="6"/>
+      <clipPath id="rig-head-clip"><circle cx="0" cy="0" r="90"/></clipPath>
+      <circle cx="0" cy="0" r="90" style="fill:var(--tone-head, var(--tone, #9B9B9B))"/>
+      <circle cx="-12" cy="-12" r="90" fill="currentColor" clip-path="url(#rig-head-clip)"/>
+      <circle cx="0" cy="0" r="90" fill="none" stroke="#000000" stroke-width="6"/>
+      <circle cx="3" cy="-2" r="92" fill="none" stroke="#000000" stroke-width="2.5"/>
     </symbol>
 
     <symbol id="rig-eyes-neutral" viewBox="-160 -110 320 460">
@@ -43,30 +53,173 @@
     <symbol id="rig-brows-neutral" viewBox="-160 -110 320 460">
       <path d="M-44,-30 L-16,-30 M16,-30 L44,-30" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
     </symbol>
+    <symbol id="rig-brows-raised" viewBox="-160 -110 320 460">
+      <path d="M-46,-42 L-16,-42 M16,-42 L46,-42" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-brows-raised-one" viewBox="-160 -110 320 460">
+      <path d="M-46,-42 L-16,-42 M16,-46 L46,-28" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-brows-droop" viewBox="-160 -110 320 460">
+      <path d="M-46,-24 L-14,-40 M14,-40 L46,-24" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-brows-angry" viewBox="-160 -110 320 460">
+      <path d="M-46,-42 L-14,-26 M14,-26 L46,-42" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
     <symbol id="rig-mouth-neutral" viewBox="-160 -110 320 460">
       <path d="M-20,34 L20,34" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
     </symbol>
     <symbol id="rig-mouth-open" viewBox="-160 -110 320 460">
       <ellipse cx="0" cy="38" rx="14" ry="10" fill="#000000"/>
     </symbol>
+    <symbol id="rig-mouth-smile" viewBox="-160 -110 320 460">
+      <path d="M-24,30 Q0,50 24,30" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-mouth-frown" viewBox="-160 -110 320 460">
+      <path d="M-22,44 Q0,26 22,44" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
 
     <symbol id="rig-body" viewBox="-160 -110 320 460">
       <path d="M0,95 L0,240" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <path d="M3,97 L2.5,238" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M-35,320 L-62,320 M35,320 L62,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
     </symbol>
     <symbol id="rig-limb-idle" viewBox="-160 -110 320 460">
       <path d="M0,130 L-50,200 M0,130 L50,200 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
     </symbol>
     <symbol id="rig-limb-point" viewBox="-160 -110 320 460">
       <path d="M0,130 L-120,112 M0,130 L50,200 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-120" cy="112" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
     </symbol>
     <symbol id="rig-limb-shrug" viewBox="-160 -110 320 460">
       <path d="M0,130 L-64,102 M0,130 L64,102 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-64" cy="102" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="64" cy="102" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
     </symbol>
     <symbol id="rig-limb-carry" viewBox="-160 -110 320 460">
       <path d="M0,130 L-30,190 M0,130 L30,190 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-30" cy="190" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="30" cy="190" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
     </symbol>
     <symbol id="rig-limb-row" viewBox="-160 -110 320 460">
       <path d="M0,130 L-20,190 M0,130 L-90,160 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-20" cy="190" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="-90" cy="160" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+
+    <!--
+      Clothing and character detail. The colour of each garment is a CSS custom property
+      that build-film.js sets from the cast description, so one symbol serves every colour:
+      --c-garment, --c-hat, --c-hair, --c-scarf, --c-tie. --tone is the flat shade of the
+      garment and is set the same way. A garment is drawn fill, then shade band, then the
+      bold outline, so the band never covers the outline.
+    -->
+    <symbol id="rig-torso" viewBox="-160 -110 320 460">
+      <path d="M-44,104 Q0,88 44,104 L52,150 L46,252 L-46,252 L-52,150 Z" fill="var(--c-garment, #F5820D)"/>
+      <path d="M18,98 L44,104 L52,150 L46,252 L24,252 Z" style="fill:var(--tone, #AC5B09)"/>
+      <path d="M-44,104 Q0,88 44,104 L52,150 L46,252 L-46,252 L-52,150 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M-44,104 Q0,88 44,104" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(4,3)"/>
+      <path d="M0,142 L0,250" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-vest" viewBox="-160 -110 320 460">
+      <path d="M-44,104 Q0,88 44,104 L52,150 L46,252 L-46,252 L-52,150 Z" fill="var(--c-garment, #F5820D)"/>
+      <path d="M18,98 L44,104 L52,150 L46,252 L24,252 Z" style="fill:var(--tone, #AC5B09)"/>
+      <path d="M-44,104 Q0,88 44,104 L52,150 L46,252 L-46,252 L-52,150 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M-44,104 Q0,88 44,104" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(4,3)"/>
+      <rect x="-31" y="138" width="12" height="114" fill="#FFFFFF" stroke="#000000" stroke-width="3"/>
+      <rect x="19" y="138" width="12" height="114" fill="#FFFFFF" stroke="#000000" stroke-width="3"/>
+      <rect x="-46" y="174" width="92" height="14" fill="#FFFFFF" stroke="#000000" stroke-width="3"/>
+    </symbol>
+    <symbol id="rig-robe" viewBox="-160 -110 320 460">
+      <path d="M-46,102 Q0,86 46,102 L56,172 L74,330 L-74,330 L-56,172 Z" fill="var(--c-garment, #2D5FBF)"/>
+      <path d="M18,96 L46,102 L56,172 L74,330 L50,330 L34,180 Z" style="fill:var(--tone, #1F4386)"/>
+      <path d="M-46,102 Q0,86 46,102 L56,172 L74,330 L-74,330 L-56,172 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M-46,102 Q0,86 46,102" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(4,3)"/>
+      <path d="M-20,210 L-32,328 M20,210 L32,328" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-suit" viewBox="-160 -110 320 460">
+      <path d="M-44,104 Q0,88 44,104 L52,150 L46,252 L-46,252 L-52,150 Z" fill="var(--c-garment, #4A4A4A)"/>
+      <path d="M18,98 L44,104 L52,150 L46,252 L24,252 Z" style="fill:var(--tone, #343434)"/>
+      <path d="M-44,104 Q0,88 44,104 L52,150 L46,252 L-46,252 L-52,150 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M-44,104 Q0,88 44,104" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(4,3)"/>
+      <path d="M-19,98 L0,158 L19,98 Z" fill="#FFFFFF" stroke="#000000" stroke-width="4" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="rig-dress" viewBox="-160 -110 320 460">
+      <path d="M-40,104 Q0,88 40,104 L48,158 L86,320 L-86,320 L-48,158 Z" fill="var(--c-garment, #8B5E3C)"/>
+      <path d="M16,98 L40,104 L48,158 L86,320 L56,320 L30,180 Z" style="fill:var(--tone, #61422A)"/>
+      <path d="M-40,104 Q0,88 40,104 L48,158 L86,320 L-86,320 L-48,158 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M-40,104 Q0,88 40,104" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(4,3)"/>
+    </symbol>
+    <symbol id="rig-sweater" viewBox="-160 -110 320 460">
+      <path d="M-46,104 Q0,86 46,104 L54,152 L48,254 L-48,254 L-54,152 Z" fill="var(--c-garment, #C4965A)"/>
+      <path d="M20,96 L46,104 L54,152 L48,254 L26,254 L24,150 Z" style="fill:var(--tone, #89693F)"/>
+      <path d="M-46,104 Q0,86 46,104 L54,152 L48,254 L-48,254 L-54,152 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M-46,104 Q0,86 46,104" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(4,3)"/>
+      <path d="M-28,104 Q0,126 28,104" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <path d="M-48,238 L48,238" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-labcoat" viewBox="-160 -110 320 460">
+      <path d="M-46,104 Q0,86 46,104 L54,152 L48,258 L-48,258 L-54,152 Z" fill="var(--c-garment, #FFFFFF)"/>
+      <path d="M20,96 L46,104 L54,152 L48,258 L26,258 L24,150 Z" style="fill:var(--tone, #D8D8D8)"/>
+      <path d="M-46,104 Q0,86 46,104 L54,152 L48,258 L-48,258 L-54,152 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M-46,104 Q0,86 46,104" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(4,3)"/>
+      <path d="M0,134 L0,256" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+      <path d="M-36,198 L-14,198 M14,198 L36,198" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-hood" viewBox="-160 -110 320 460">
+      <path d="M-94,26 A94,94 0 0 1 94,26 L74,30 A74,74 0 0 0 -74,30 Z" fill="var(--c-garment, #4A4A4A)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="rig-scarf" viewBox="-160 -110 320 460">
+      <path d="M-48,88 Q0,112 48,88 L46,118 Q0,140 -46,118 Z" fill="var(--c-scarf, #F5820D)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M16,120 L42,120 L36,188 L18,182 Z" fill="var(--c-scarf, #F5820D)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="rig-tie" viewBox="-160 -110 320 460">
+      <path d="M0,118 L13,132 L9,182 L0,192 L-9,182 L-13,132 Z" fill="var(--c-tie, #D94040)" stroke="#000000" stroke-width="4" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="rig-hat-beanie" viewBox="-160 -110 320 460">
+      <path d="M-76,-30 Q-76,-100 0,-100 Q76,-100 76,-30 Z" fill="var(--c-hat, #F5C518)"/>
+      <path d="M20,-92 Q44,-84 58,-62 L76,-30 L40,-30 L20,-66 Z" style="fill:var(--tone, #AC8A11)"/>
+      <path d="M-76,-30 Q-76,-100 0,-100 Q76,-100 76,-30 Z" fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M-80,-32 L80,-32 L78,-8 L-78,-8 Z" fill="var(--c-hat, #F5C518)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M-80,-32 L80,-32" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(3,2)"/>
+    </symbol>
+    <symbol id="rig-hat-hard" viewBox="-160 -110 320 460">
+      <path d="M-70,-36 Q-70,-98 0,-98 Q70,-98 70,-36 Z" fill="var(--c-hat, #F5C518)"/>
+      <path d="M22,-90 Q56,-80 66,-52 L70,-36 L38,-36 L20,-66 Z" style="fill:var(--tone, #AC8A11)"/>
+      <path d="M-70,-36 Q-70,-98 0,-98 Q70,-98 70,-36 Z" fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M0,-98 L0,-36" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <path d="M-98,-36 L98,-36 L94,-12 L-94,-12 Z" fill="var(--c-hat, #F5C518)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="rig-hat-cap" viewBox="-160 -110 320 460">
+      <path d="M-72,-38 Q-72,-98 0,-98 Q72,-98 72,-38 Z" fill="var(--c-hat, #D94040)"/>
+      <path d="M20,-90 Q56,-80 66,-54 L72,-38 L40,-38 L20,-68 Z" style="fill:var(--tone, #982D2D)"/>
+      <path d="M-72,-38 Q-72,-98 0,-98 Q72,-98 72,-38 Z" fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M-72,-38 L30,-38 Q92,-34 100,-18 L-72,-18 Z" fill="var(--c-hat, #D94040)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="rig-hair-short" viewBox="-160 -110 320 460">
+      <path d="M-88,-26 A88,88 0 0 1 88,-26 L74,-44 Q40,-84 0,-84 Q-40,-84 -74,-44 Z" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="rig-hair-curly" viewBox="-160 -110 320 460">
+      <circle cx="-58" cy="-60" r="28" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5"/>
+      <circle cx="-20" cy="-84" r="30" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5"/>
+      <circle cx="20" cy="-84" r="30" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5"/>
+      <circle cx="58" cy="-60" r="28" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5"/>
+    </symbol>
+    <symbol id="rig-hair-bun" viewBox="-160 -110 320 460">
+      <path d="M-88,-26 A88,88 0 0 1 88,-26 L74,-44 Q40,-84 0,-84 Q-40,-84 -74,-44 Z" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <circle cx="34" cy="-92" r="26" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5"/>
+    </symbol>
+    <symbol id="rig-hair-long" viewBox="-160 -110 320 460">
+      <path d="M-88,-26 A88,88 0 0 1 88,-26 L74,-44 Q40,-84 0,-84 Q-40,-84 -74,-44 Z" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M-88,-24 L-78,116 L-44,116 L-58,-40 Z" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M88,-24 L78,116 L44,116 L58,-40 Z" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="rig-glasses" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-8" r="26" fill="none" stroke="#000000" stroke-width="5"/>
+      <circle cx="30" cy="-8" r="26" fill="none" stroke="#000000" stroke-width="5"/>
+      <path d="M-4,-12 L4,-12 M-56,-16 L-86,-26 M56,-16 L86,-26" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
     </symbol>
 
     <symbol id="arrow-diag" viewBox="-160 -110 320 460">
@@ -76,6 +229,670 @@
 
     <symbol id="bubble-cloud" viewBox="-160 -110 320 460">
       <path d="M-80,40 A40,40 0 0 1 -60,-30 A50,50 0 0 1 20,-60 A40,40 0 0 1 80,-20 A34,34 0 0 1 70,40 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <path d="M-76,44 A40,40 0 0 1 -56,-26 A50,50 0 0 1 22,-56 A40,40 0 0 1 84,-16" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(3,-2)"/>
+    </symbol>
+
+    <!--
+      Props. Each is drawn in a 240 x 260 box and placed by build-film.js as
+      prop-<name in lower case>. The main body fill is currentColor, so the colour the
+      scene card gives the prop applies. The shade step is style="fill:var(--tone)".
+      Outlines are black: 8 px main, 2.5 to 3 px echo.
+    -->
+    <!-- NEW: tired eyes (half-closed, heavy lids) -->
+    <symbol id="rig-eyes-tired" viewBox="-160 -110 320 460">
+      <path d="M-40,-10 Q-28,-24 -16,-10" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <path d="M16,-10 Q28,-24 40,-10" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="-28" cy="-8" r="7" fill="#000000"/>
+      <circle cx="28" cy="-8" r="7" fill="#000000"/>
+      <!-- heavy drooping upper lids in grey-dark -->
+      <path d="M-44,-14 Q-28,-2 -12,-14" fill="#343434" stroke="none"/>
+      <path d="M12,-14 Q28,-2 44,-14" fill="#343434" stroke="none"/>
+    </symbol>
+    <!-- NEW: scream/panic mouth (large oval open mouth) -->
+    <symbol id="rig-mouth-scream" viewBox="-160 -110 320 460">
+      <ellipse cx="0" cy="56" rx="30" ry="24" fill="#000000" stroke="#000000" stroke-width="5"/>
+      <ellipse cx="0" cy="56" rx="22" ry="16" fill="#D94040"/>
+    </symbol>
+    <!-- NEW: ponytail hair -->
+    <symbol id="rig-hair-ponytail" viewBox="-160 -110 320 460">
+      <path d="M-88,-26 A88,88 0 0 1 88,-26 L74,-44 Q40,-84 0,-84 Q-40,-84 -74,-44 Z" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M72,-36 Q100,-30 96,20 Q92,70 72,86 Q60,94 60,80 Q60,50 66,22 Z" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+    </symbol>
+    <!-- NEW: safety vest (hi-vis yellow vest over body) -->
+    <symbol id="rig-vest-safety" viewBox="-160 -110 320 460">
+      <path d="M-44,104 Q0,88 44,104 L52,150 L46,252 L-46,252 L-52,150 Z" fill="var(--c-garment, #F5C518)"/>
+      <path d="M18,98 L44,104 L52,150 L46,252 L24,252 Z" style="fill:var(--tone, #AC8A11)"/>
+      <path d="M-44,104 Q0,88 44,104 L52,150 L46,252 L-46,252 L-52,150 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <!-- reflective stripe -->
+      <path d="M-48,180 L48,180 M-50,204 L50,204" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
+      <path d="M-48,180 L48,180 M-50,204 L50,204" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- NEW: walk limb pose (striding) -->
+    <symbol id="rig-limb-walk" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-40,188 M0,130 L36,188 M-40,188 L-54,298 M36,188 L22,296" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-40" cy="188" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="36" cy="188" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+    <!-- NEW: clipboard limb pose (actor holds clipboard in front-raised arm) -->
+    <symbol id="rig-limb-clipboard" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-30,190 M0,130 L50,160 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-30" cy="190" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <!-- small clipboard icon at the raised arm's end -->
+      <rect x="46" y="138" width="36" height="46" rx="3" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="52" y="132" width="22" height="10" rx="3" fill="#4A4A4A" stroke="#000000" stroke-width="4"/>
+      <path d="M52,156 L76,156 M52,168 L70,168" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <!-- NEW: crossed-arms limb pose -->
+    <symbol id="rig-limb-crossed" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-60,175 M0,130 L60,175 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <!-- crossing forearms -->
+      <path d="M-60,175 Q-20,192 30,175 M60,175 Q20,192 -30,175" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-60" cy="175" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="60" cy="175" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+    <!-- NEW: panic-arms limb pose (arms raised in alarm) -->
+    <symbol id="rig-limb-panic" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-80,80 M0,130 L80,80 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-80" cy="80" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="80" cy="80" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+
+    <symbol id="prop-dryer" viewBox="0 0 240 260">
+      <rect x="20" y="20" width="200" height="212" rx="10" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <rect x="24" y="24" width="200" height="212" rx="10" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <rect x="184" y="30" width="30" height="200" rx="8" style="fill:var(--tone, #9B9B9B)"/>
+      <circle cx="196" cy="50" r="8" fill="#000000"/>
+      <circle cx="120" cy="132" r="70" fill="#6EB5E8" stroke="#000000" stroke-width="8"/>
+      <circle cx="120" cy="132" r="54" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M74,172 L98,138 L120,160 L142,138 L166,172 Z" fill="#D94040" stroke="#000000" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="138" cy="124" r="9" fill="#F5C518" stroke="#000000" stroke-width="3"/>
+      <path d="M40,232 L40,246 M200,232 L200,246" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-green-backpack" viewBox="0 0 240 260">
+      <path d="M80,54 Q80,14 120,14 Q160,14 160,54" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <rect x="46" y="50" width="148" height="186" rx="42" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M170,66 Q186,96 186,130 L186,196 Q186,218 166,226 Q178,200 176,140 Q174,96 150,62 Z" style="fill:var(--tone, #9B9B9B)"/>
+      <rect x="50" y="54" width="144" height="186" rx="40" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M46,118 L194,118" stroke="#000000" stroke-width="6"/>
+      <path d="M76,140 L164,140 L164,196 Q120,218 76,196 Z" fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M72,118 L72,150 M168,118 L168,150" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-folding-table" viewBox="0 0 240 260">
+      <rect x="10" y="88" width="220" height="26" rx="4" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <rect x="12" y="106" width="216" height="8" style="fill:var(--tone, #9B9B9B)"/>
+      <path d="M14,92 L226,91" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M40,114 L24,250 M200,114 L216,250 M60,190 L180,190" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-phone" viewBox="0 0 240 260">
+      <rect x="66" y="26" width="108" height="200" rx="16" fill="#000000"/>
+      <rect x="80" y="46" width="80" height="150" fill="#FFFFFF"/>
+      <path d="M80,46 L104,46 L80,74 Z" fill="#FFFFFF" style="fill:var(--tone, #9B9B9B)"/>
+      <circle cx="120" cy="212" r="7" fill="#FFFFFF"/>
+      <rect x="70" y="30" width="100" height="192" rx="13" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+    </symbol>
+    <symbol id="prop-thought-bubble" viewBox="0 0 240 260">
+      <path d="M50,186 A40,40 0 0 1 60,108 A50,50 0 0 1 150,78 A40,40 0 0 1 200,128 A34,34 0 0 1 192,186 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <path d="M54,190 A40,40 0 0 1 64,110 A50,50 0 0 1 152,82 A40,40 0 0 1 202,132 A34,34 0 0 1 194,190" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(3,-2)"/>
+      <circle cx="40" cy="222" r="9" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <circle cx="22" cy="244" r="5" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <text class="prop-text" x="120" y="142" text-anchor="middle" font-family="Lato" font-weight="700" font-size="52" fill="#000000">?</text>
+    </symbol>
+    <symbol id="prop-city-skyline" viewBox="0 0 240 260">
+      <rect x="10" y="120" width="52" height="134" fill="currentColor" stroke="#000000" stroke-width="6"/>
+      <rect x="64" y="56" width="58" height="198" fill="currentColor" stroke="#000000" stroke-width="6"/>
+      <rect x="124" y="100" width="46" height="154" fill="currentColor" stroke="#000000" stroke-width="6"/>
+      <rect x="172" y="150" width="58" height="104" fill="currentColor" stroke="#000000" stroke-width="6"/>
+      <rect x="50" y="126" width="10" height="128" style="fill:var(--tone, #9B9B9B)"/>
+      <rect x="110" y="62" width="10" height="192" style="fill:var(--tone, #9B9B9B)"/>
+      <rect x="158" y="106" width="10" height="148" style="fill:var(--tone, #9B9B9B)"/>
+      <rect x="218" y="156" width="10" height="98" style="fill:var(--tone, #9B9B9B)"/>
+      <rect x="76" y="84" width="12" height="12" fill="#F5C518" stroke="#000000" stroke-width="3"/>
+      <rect x="98" y="84" width="12" height="12" fill="#F5C518" stroke="#000000" stroke-width="3"/>
+      <rect x="76" y="116" width="12" height="12" fill="#F5C518" stroke="#000000" stroke-width="3"/>
+      <rect x="186" y="178" width="12" height="12" fill="#F5C518" stroke="#000000" stroke-width="3"/>
+    </symbol>
+    <symbol id="prop-job-letter" viewBox="0 0 240 260">
+      <rect x="30" y="40" width="180" height="184" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="33" y="43" width="180" height="184" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M30,40 L120,130 L210,40" fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M56,148 L184,148 M56,176 L184,176 M56,204 L160,204" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="170" cy="196" r="20" fill="#D94040" stroke="#000000" stroke-width="4"/>
+    </symbol>
+    <symbol id="prop-cult-stereotype" viewBox="0 0 240 260">
+      <path d="M120,22 A54,54 0 0 1 174,76 L206,242 L34,242 L66,76 A54,54 0 0 1 120,22 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M150,30 A54,54 0 0 1 174,76 L206,242 L160,242 Z" style="fill:var(--tone, #9B9B9B)"/>
+      <path d="M120,22 A54,54 0 0 1 174,76 L206,242 L34,242 L66,76 A54,54 0 0 1 120,22 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(3,-2)"/>
+      <circle cx="120" cy="104" r="26" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <circle cx="110" cy="100" r="4" fill="#000000"/>
+      <circle cx="130" cy="100" r="4" fill="#000000"/>
+      <path d="M108,118 L132,118" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-moon-window" viewBox="0 0 240 260">
+      <rect x="20" y="20" width="200" height="220" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <rect x="40" y="40" width="160" height="180" fill="#1B2A4A"/>
+      <rect x="20" y="222" width="200" height="18" style="fill:var(--tone, #9B9B9B)"/>
+      <rect x="23" y="23" width="200" height="220" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <circle cx="150" cy="80" r="26" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <circle cx="160" cy="72" r="22" fill="#1B2A4A"/>
+      <path d="M120,40 L120,220 M40,130 L200,130" stroke="#000000" stroke-width="8"/>
+    </symbol>
+
+    <symbol id="prop-clipboard" viewBox="0 0 240 260">
+      <rect x="44" y="30" width="152" height="206" rx="10" fill="currentColor"/>
+      <path d="M168,34 L196,44 L196,226 L168,236 Z" style="fill:var(--tone, #61422A)"/>
+      <rect x="44" y="30" width="152" height="206" rx="10" fill="none" stroke="#000000" stroke-width="8"/>
+      <rect x="47" y="33" width="149" height="203" rx="9" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <rect x="58" y="62" width="124" height="156" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <path d="M72,92 L168,92 M72,120 L168,120 M72,148 L150,148 M72,176 L168,176" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+      <rect x="96" y="16" width="48" height="34" rx="6" fill="#4A4A4A" stroke="#000000" stroke-width="6"/>
+    </symbol>
+    <symbol id="prop-calendar" viewBox="0 0 240 260">
+      <rect x="30" y="40" width="180" height="186" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="34" y="44" width="172" height="186" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <rect x="30" y="40" width="180" height="44" fill="#D94040" stroke="#000000" stroke-width="8"/>
+      <rect x="60" y="26" width="16" height="28" rx="4" fill="#000000"/>
+      <rect x="164" y="26" width="16" height="28" rx="4" fill="#000000"/>
+      <text class="prop-text" x="120" y="196" text-anchor="middle" font-family="Lato" font-weight="700" font-size="64" fill="#000000">7</text>
+    </symbol>
+    <symbol id="prop-heart" viewBox="0 0 240 260">
+      <path d="M120,226 C60,180 26,140 26,100 C26,64 54,42 84,42 C104,42 116,54 120,66 C124,54 136,42 156,42 C186,42 214,64 214,100 C214,140 180,180 120,226 Z" fill="currentColor"/>
+      <path d="M156,50 C186,54 210,76 210,104 C210,138 182,176 126,220 C160,172 178,140 174,108 C171,80 164,60 156,50 Z" style="fill:var(--tone, #982D2D)"/>
+      <path d="M120,226 C60,180 26,140 26,100 C26,64 54,42 84,42 C104,42 116,54 120,66 C124,54 136,42 156,42 C186,42 214,64 214,100 C214,140 180,180 120,226 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,226 C60,180 26,140 26,100 C26,64 54,42 84,42" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(4,-3)"/>
+    </symbol>
+    <symbol id="prop-star" viewBox="0 0 240 260">
+      <path d="M120,26 L148,96 L222,96 L164,138 L186,210 L120,166 L54,210 L76,138 L18,96 L92,96 Z" fill="currentColor"/>
+      <path d="M148,96 L222,96 L164,138 L186,210 L120,166 L130,120 L148,96 Z" style="fill:var(--tone, #AC8A11)"/>
+      <path d="M120,26 L148,96 L222,96 L164,138 L186,210 L120,166 L54,210 L76,138 L18,96 L92,96 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="prop-hand" viewBox="0 0 240 260">
+      <path d="M52,226 C30,214 22,190 26,166 L30,142 L30,74 C30,60 46,60 46,74 L46,122 L46,46 C46,32 64,32 64,46 L64,120 L70,38 C72,24 90,26 90,40 L88,122 L100,66 C104,52 120,56 120,70 L114,142 C112,172 100,198 84,216 C74,226 64,226 52,226 Z" fill="currentColor"/>
+      <path d="M96,42 L104,66 L114,142 C112,172 100,198 84,216 L74,220 C88,200 98,174 100,144 L94,66 Z" style="fill:var(--tone, #982D2D)"/>
+      <path d="M52,226 C30,214 22,190 26,166 L30,142 L30,74 C30,60 46,60 46,74 L46,122 L46,46 C46,32 64,32 64,46 L64,120 L70,38 C72,24 90,26 90,40 L88,122 L100,66 C104,52 120,56 120,70 L114,142 C112,172 100,198 84,216 C74,226 64,226 52,226 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="prop-speech-balloon" viewBox="0 0 240 260">
+      <path d="M44,140 C44,92 84,56 132,56 C180,56 220,92 220,140 C220,182 190,212 152,220 L120,248 L126,214 C76,208 44,182 44,140 Z" fill="#FFFFFF"/>
+      <path d="M132,60 C178,62 216,96 216,140 C216,180 188,208 152,216 C186,200 204,172 204,138 C204,102 178,74 132,60 Z" style="fill:var(--tone, #D8D8D8)"/>
+      <path d="M44,140 C44,92 84,56 132,56 C180,56 220,92 220,140 C220,182 190,212 152,220 L120,248 L126,214 C76,208 44,182 44,140 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M46,140 C46,94 86,60 132,60" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(4,-3)"/>
+      <text class="prop-text" x="132" y="152" text-anchor="middle" font-family="Lato" font-weight="700" font-size="52" fill="#000000">!</text>
+    </symbol>
+    <symbol id="prop-timeline" viewBox="0 0 240 260">
+      <path d="M16,130 L192,130" fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round"/>
+      <path d="M166,94 L214,130 L166,166" fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="prop-padlock" viewBox="0 0 240 260">
+      <path d="M74,112 L74,82 A46,46 0 0 1 166,82 L166,112" fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round"/>
+      <rect x="46" y="108" width="148" height="112" rx="10" fill="currentColor"/>
+      <path d="M168,112 L190,120 L190,210 L168,220 Z" style="fill:var(--tone, #343434)"/>
+      <rect x="46" y="108" width="148" height="112" rx="10" fill="none" stroke="#000000" stroke-width="8"/>
+      <circle cx="120" cy="148" r="12" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <rect x="112" y="150" width="16" height="42" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+    <symbol id="prop-laptop" viewBox="0 0 240 260">
+      <rect x="40" y="56" width="160" height="120" rx="8" fill="#4A4A4A"/>
+      <rect x="52" y="68" width="136" height="96" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <path d="M20,182 L220,182 L234,208 L6,208 Z" fill="currentColor"/>
+      <rect x="40" y="56" width="160" height="120" rx="8" fill="none" stroke="#000000" stroke-width="8"/>
+      <path d="M20,182 L220,182 L234,208 L6,208 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="prop-door" viewBox="0 0 240 260">
+      <rect x="50" y="24" width="140" height="212" fill="currentColor"/>
+      <path d="M162,28 L188,34 L188,226 L162,236 Z" style="fill:var(--tone, #61422A)"/>
+      <rect x="50" y="24" width="140" height="212" fill="none" stroke="#000000" stroke-width="8"/>
+      <rect x="64" y="40" width="112" height="180" fill="none" stroke="#000000" stroke-width="5"/>
+      <circle cx="170" cy="130" r="9" fill="#000000"/>
+    </symbol>
+    <symbol id="prop-house" viewBox="0 0 240 260">
+      <path d="M120,24 L216,92 L24,92 Z" fill="#D94040"/>
+      <path d="M120,24 L216,92 L150,92 Z" style="fill:var(--tone, #982D2D)"/>
+      <path d="M120,24 L216,92 L24,92 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <rect x="44" y="90" width="152" height="146" fill="currentColor"/>
+      <rect x="44" y="90" width="152" height="146" fill="none" stroke="#000000" stroke-width="8"/>
+      <rect x="96" y="158" width="48" height="78" fill="#000000" stroke="#000000" stroke-width="5"/>
+    </symbol>
+    <symbol id="prop-big-box" viewBox="0 0 240 260">
+      <rect x="18" y="48" width="204" height="184" fill="currentColor"/>
+      <rect x="18" y="48" width="204" height="184" fill="none" stroke="#000000" stroke-width="8"/>
+      <rect x="22" y="52" width="196" height="176" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <text class="prop-text" x="120" y="158" text-anchor="middle" font-family="Lato" font-weight="700" font-size="40" fill="#FFFFFF">EVERYTHING</text>
+    </symbol>
+
+    <!--
+      More props. Same 240 x 260 box and the same rules: currentColor body, --tone
+      shade, bold black outline with a thin echo line. A slot marked class="prop-text"
+      takes the words from the scene card; class="prop-label" takes a small word.
+    -->
+    <symbol id="prop-book" viewBox="0 0 240 260">
+      <path d="M44,38 L194,28 L200,226 L48,236 Z" fill="currentColor"/>
+      <path d="M150,32 L194,28 L200,226 L154,230 Z" style="fill:var(--tone, #1F4386)"/>
+      <path d="M44,38 L194,28 L200,226 L48,236 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M44,38 L194,28 L200,226 L48,236 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <rect x="62" y="100" width="104" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <text class="prop-label" x="114" y="118" text-anchor="middle" font-family="Lato" font-weight="700" font-size="18" fill="#000000">BOOK</text>
+    </symbol>
+    <symbol id="prop-map" viewBox="0 0 240 260">
+      <path d="M36,60 L104,36 L136,58 L206,34 L212,206 L142,230 L108,208 L40,232 Z" fill="currentColor"/>
+      <path d="M142,58 L206,34 L212,206 L142,230 Z" style="fill:var(--tone, #982D2D)"/>
+      <path d="M36,60 L104,36 L136,58 L206,34 L212,206 L142,230 L108,208 L40,232 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M36,60 L104,36 L136,58 L206,34 L212,206 L142,230 L108,208 L40,232 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <path d="M104,36 L108,208 M136,58 L142,230" stroke="#000000" stroke-width="4" fill="none"/>
+      <path d="M60,120 L92,104 M60,150 L100,132" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-gears" viewBox="0 0 240 260">
+      <g fill="currentColor" stroke="#000000" stroke-width="7" stroke-linejoin="round">
+        <path d="M78,66 L96,58 L104,74 L122,68 L124,86 L142,88 L138,106 L154,116 L142,128 L148,144 L130,148 L124,164 L106,158 L96,172 L80,162 L64,168 L58,150 L40,146 L44,128 L28,118 L40,106 L34,90 L52,86 L58,70 Z"/>
+        <path d="M158,124 L174,118 L180,132 L196,128 L196,144 L212,150 L204,162 L214,174 L200,180 L198,196 L182,192 L174,204 L160,196 L146,200 L142,184 L126,178 L134,166 L126,152 L140,148 L144,132 Z"/>
+      </g>
+      <circle cx="92" cy="114" r="24" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <circle cx="170" cy="162" r="20" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+    </symbol>
+    <symbol id="prop-wall" viewBox="0 0 240 260">
+      <rect x="12" y="40" width="216" height="180" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M12,100 L228,100 M12,160 L228,160 M80,40 L80,100 M160,40 L160,100 M40,100 L40,160 M120,100 L120,160 M200,100 L200,160 M80,160 L80,220 M160,160 L160,220" stroke="#000000" stroke-width="5" fill="none"/>
+      <path d="M12,40 L228,40 L228,100 L12,100 Z" style="fill:var(--tone, #343434)"/>
+      <path d="M12,40 L228,40 L228,100 L12,100 Z" fill="none" stroke="#000000" stroke-width="6"/>
+      <path d="M12,40 L228,40 L228,100 L12,100 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+    </symbol>
+    <symbol id="prop-thread" viewBox="0 0 240 260">
+      <path d="M28,200 C60,200 52,120 84,120 C116,120 108,200 140,200 C172,200 164,120 196,120" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+      <path d="M196,120 C210,120 214,132 206,138" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+      <path d="M28,200 C60,200 52,120 84,120 C116,120 108,200 140,200 C172,200 164,120 196,120" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(4,-3)"/>
+    </symbol>
+    <symbol id="prop-lightbulb" viewBox="0 0 240 260">
+      <path d="M120,24 A66,66 0 0 1 186,90 A66,66 0 0 1 150,146 L150,164 L90,164 L90,146 A66,66 0 0 1 120,24 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M96,164 L144,164 L140,196 L100,196 Z" fill="#4A4A4A" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M98,200 L142,200 M102,220 L138,220" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <path d="M96,60 A42,42 0 0 1 138,58" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-mind-head" viewBox="0 0 240 260">
+      <path d="M120,26 A92,92 0 1 1 119,210 L92,210 L92,240 L148,240 L148,210 L121,210 A92,92 0 0 1 120,26 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M92,132 Q104,104 118,132 Q132,160 146,132" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-stones" viewBox="0 0 240 260">
+      <g stroke="#000000" stroke-width="6" fill="currentColor">
+        <ellipse cx="46" cy="196" rx="28" ry="18"/>
+        <ellipse cx="82" cy="176" rx="28" ry="18"/>
+        <ellipse cx="118" cy="156" rx="28" ry="18"/>
+        <ellipse cx="154" cy="136" rx="28" ry="18"/>
+        <ellipse cx="190" cy="116" rx="28" ry="18"/>
+      </g>
+      <g font-family="Lato" font-weight="700" font-size="22" fill="#000000" text-anchor="middle">
+        <text x="46" y="203">1</text>
+        <text x="82" y="183">2</text>
+        <text x="118" y="163">3</text>
+        <text x="154" y="143">4</text>
+        <text x="190" y="123">5</text>
+      </g>
+    </symbol>
+    <symbol id="prop-cracked-house" viewBox="0 0 240 260">
+      <path d="M120,30 L212,96 L28,96 Z" fill="#4A4A4A" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <rect x="46" y="94" width="148" height="140" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M120,96 L120,234 M92,140 L112,160 L96,182" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="96" y="160" width="48" height="74" fill="#000000"/>
+    </symbol>
+    <symbol id="prop-harbor-building" viewBox="0 0 240 260">
+      <path d="M30,86 L120,40 L210,86 L210,226 L30,226 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,40 L210,86 L210,226 L150,226 Z" style="fill:var(--tone, #61422A)"/>
+      <path d="M30,86 L120,40 L210,86 L210,226 L30,226 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <rect x="96" y="150" width="52" height="76" fill="#000000" stroke="#000000" stroke-width="5"/>
+      <path d="M122,172 L104,196 M122,172 L140,196 M122,172 L122,200" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <circle cx="122" cy="172" r="8" fill="#FFFFFF" stroke="#000000" stroke-width="3"/>
+    </symbol>
+    <symbol id="prop-door-sign" viewBox="0 0 240 260">
+      <rect x="30" y="96" width="180" height="70" rx="8" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="34" y="100" width="172" height="62" rx="5" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M60,120 L110,120 M60,144 L150,144" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="190" cy="131" r="8" fill="#000000"/>
+    </symbol>
+    <symbol id="prop-newspaper" viewBox="0 0 240 260">
+      <rect x="20" y="44" width="200" height="176" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="24" y="48" width="192" height="168" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <rect x="32" y="56" width="120" height="26" fill="#000000"/>
+      <path d="M32,100 L116,100 M32,126 L116,126 M32,152 L116,152 M32,178 L100,178" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <rect x="128" y="56" width="80" height="80" fill="currentColor" stroke="#000000" stroke-width="5"/>
+      <path d="M136,120 L156,84 L176,120 Z" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <circle cx="172" cy="176" r="26" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <path d="M172,162 L172,182" stroke="#D94040" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="172" cy="192" r="4" fill="#D94040"/>
+    </symbol>
+
+    <!--
+      Effects. Not placed by build-film.js yet: a scene card or a later generator step
+      places them. Drawn in the same 240 x 260 box as the props.
+    -->
+    <symbol id="prop-paper" viewBox="0 0 240 260">
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <path d="M62,70 L178,70 M62,104 L178,104 M62,138 L150,138 M62,172 L178,172 M62,206 L130,206" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-card" viewBox="0 0 240 260">
+      <rect x="34" y="70" width="172" height="118" rx="10" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="38" y="74" width="164" height="110" rx="7" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M58,106 L142,106 M58,136 L182,136 M58,166 L120,166" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-tag" viewBox="0 0 240 260">
+      <path d="M60,60 L176,44 L214,130 L176,216 L60,200 L36,130 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <circle cx="72" cy="130" r="14" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <path d="M108,100 L180,92 M108,150 L166,144" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-cloud" viewBox="0 0 240 260">
+      <path d="M56,176 A38,38 0 0 1 62,104 A48,48 0 0 1 140,74 A38,38 0 0 1 200,120 A32,32 0 0 1 192,176 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M60,180 A38,38 0 0 1 66,108 A48,48 0 0 1 142,78 A38,38 0 0 1 204,124" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+    </symbol>
+    <symbol id="prop-sign" viewBox="0 0 240 260">
+      <rect x="22" y="34" width="196" height="110" rx="8" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <rect x="26" y="38" width="188" height="102" rx="5" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M104,144 L136,144 L128,232 L112,232 Z" fill="#8B5E3C" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <text class="prop-text" x="120" y="104" text-anchor="middle" font-family="Lato" font-weight="700" font-size="40" fill="#000000">SIGN</text>
+    </symbol>
+    <symbol id="prop-building" viewBox="0 0 240 260">
+      <rect x="40" y="52" width="160" height="176" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M40,52 L200,52 L200,92 L40,92 Z" style="fill:var(--tone, #343434)"/>
+      <path d="M40,52 L200,52 L200,92 L40,92 Z" fill="none" stroke="#000000" stroke-width="7"/>
+      <g fill="#F5C518" stroke="#000000" stroke-width="4">
+        <rect x="62" y="110" width="34" height="30"/>
+        <rect x="144" y="110" width="34" height="30"/>
+        <rect x="62" y="162" width="34" height="30"/>
+        <rect x="144" y="162" width="34" height="30"/>
+      </g>
+      <rect x="98" y="186" width="44" height="42" fill="#000000"/>
+    </symbol>
+    <symbol id="prop-chair" viewBox="0 0 240 260">
+      <rect x="66" y="34" width="108" height="90" rx="8" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <rect x="56" y="128" width="128" height="34" rx="6" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M70,162 L58,232 M170,162 L182,232" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+      <rect x="86" y="48" width="68" height="26" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+    </symbol>
+    <symbol id="prop-desk" viewBox="0 0 240 260">
+      <rect x="18" y="112" width="204" height="30" rx="4" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <rect x="20" y="140" width="200" height="10" style="fill:var(--tone, #61422A)"/>
+      <path d="M40,152 L32,232 M200,152 L208,232" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+      <path d="M22,116 L218,115" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-file-drawer" viewBox="0 0 240 260">
+      <rect x="40" y="34" width="160" height="192" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M140,38 L196,42 L196,222 L140,222 Z" style="fill:var(--tone, #61422A)"/>
+      <rect x="54" y="58" width="120" height="46" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="54" y="122" width="120" height="46" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <path d="M84,81 L144,81 M84,145 L144,145" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-shelf" viewBox="0 0 240 260">
+      <rect x="26" y="24" width="188" height="212" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M26,24 L214,24 L214,60 L26,60 Z" style="fill:var(--tone, #61422A)"/>
+      <path d="M26,88 L214,88 M26,150 L214,150 M26,212 L214,212" stroke="#000000" stroke-width="7"/>
+      <g fill="#FFFFFF" stroke="#000000" stroke-width="4">
+        <rect x="42" y="38" width="26" height="44"/>
+        <rect x="76" y="38" width="26" height="44"/>
+        <rect x="110" y="38" width="26" height="44"/>
+        <rect x="42" y="100" width="26" height="44"/>
+        <rect x="76" y="100" width="26" height="44"/>
+        <rect x="42" y="162" width="26" height="44"/>
+      </g>
+    </symbol>
+    <symbol id="prop-folder" viewBox="0 0 240 260">
+      <path d="M26,64 L104,64 L120,86 L214,86 L214,210 L26,210 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,86 L214,86 L214,110 L120,110 Z" style="fill:var(--tone, #61422A)"/>
+      <rect x="56" y="132" width="96" height="20" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+    <symbol id="prop-envelope" viewBox="0 0 240 260">
+      <rect x="24" y="66" width="192" height="130" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M24,66 L120,134 L216,66" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M24,196 L92,138 M216,196 L148,138" fill="none" stroke="#000000" stroke-width="5"/>
+    </symbol>
+    <symbol id="prop-voicemail" viewBox="0 0 240 260">
+      <rect x="34" y="60" width="172" height="140" rx="12" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <circle cx="88" cy="118" r="30" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <circle cx="88" cy="118" r="10" fill="#000000"/>
+      <circle cx="152" cy="118" r="30" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <circle cx="152" cy="118" r="10" fill="#000000"/>
+      <path d="M74,168 L166,168" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-coins" viewBox="0 0 240 260">
+      <g stroke="#000000" stroke-width="6" fill="currentColor">
+        <ellipse cx="120" cy="196" rx="72" ry="20"/>
+        <ellipse cx="120" cy="166" rx="72" ry="20"/>
+        <ellipse cx="120" cy="136" rx="72" ry="20"/>
+        <ellipse cx="120" cy="106" rx="72" ry="20"/>
+      </g>
+      <ellipse cx="120" cy="106" rx="52" ry="13" fill="none" stroke="#000000" stroke-width="3"/>
+    </symbol>
+    <symbol id="prop-coin-jar" viewBox="0 0 240 260">
+      <path d="M58,74 L182,74 L176,226 Q120,240 64,226 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <rect x="52" y="46" width="136" height="32" rx="8" fill="#61422A" stroke="#000000" stroke-width="8"/>
+      <path d="M150,80 L180,80 L176,220 Q166,226 150,226 Z" style="fill:var(--tone, #61422A)"/>
+      <rect x="76" y="120" width="88" height="40" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <text class="prop-label" x="120" y="148" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">SAVINGS</text>
+    </symbol>
+    <symbol id="prop-car" viewBox="0 0 240 260">
+      <path d="M28,176 L52,116 Q60,98 84,98 L150,98 Q176,98 190,120 L212,152 L212,176 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M70,104 L144,104 Q160,104 170,122 L184,146 L62,146 Z" fill="#6EB5E8" stroke="#000000" stroke-width="5"/>
+      <circle cx="72" cy="186" r="30" fill="#000000"/>
+      <circle cx="72" cy="186" r="12" fill="#FFFFFF"/>
+      <circle cx="170" cy="186" r="30" fill="#000000"/>
+      <circle cx="170" cy="186" r="12" fill="#FFFFFF"/>
+      <path d="M192,150 L212,150 L212,166 L196,166 Z" style="fill:var(--tone, #982D2D)"/>
+    </symbol>
+    <symbol id="prop-tower" viewBox="0 0 240 260">
+      <g fill="currentColor" stroke="#000000" stroke-width="7">
+        <rect x="52" y="164" width="136" height="34" rx="6"/>
+        <rect x="66" y="116" width="108" height="34" rx="6"/>
+        <rect x="80" y="68" width="80" height="34" rx="6"/>
+      </g>
+      <path d="M120,20 L120,64 M96,36 L144,36" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-basket" viewBox="0 0 240 260">
+      <path d="M32,120 L208,120 L188,226 L52,226 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M76,120 Q76,52 120,52 Q164,52 164,120" fill="none" stroke="#000000" stroke-width="9" stroke-linecap="round"/>
+      <path d="M46,156 L194,156 M52,192 L188,192" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-purse" viewBox="0 0 240 260">
+      <path d="M40,110 Q40,86 68,86 L172,86 Q200,86 200,110 L200,206 Q200,224 182,224 L58,224 Q40,224 40,206 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M84,86 Q120,40 156,86" fill="none" stroke="#000000" stroke-width="9" stroke-linecap="round"/>
+      <rect x="106" y="140" width="28" height="24" rx="4" fill="#F5C518" stroke="#000000" stroke-width="5"/>
+    </symbol>
+    <symbol id="prop-key" viewBox="0 0 240 260">
+      <circle cx="66" cy="96" r="40" fill="none" stroke="currentColor" stroke-width="16"/>
+      <circle cx="66" cy="96" r="40" fill="none" stroke="#000000" stroke-width="4"/>
+      <path d="M94,124 L194,224" stroke="currentColor" stroke-width="16" stroke-linecap="round"/>
+      <path d="M94,124 L194,224" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <path d="M158,188 L180,166 M176,206 L196,186" stroke="currentColor" stroke-width="14" stroke-linecap="round"/>
+      <path d="M158,188 L180,166 M176,206 L196,186" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-briefcase" viewBox="0 0 240 260">
+      <rect x="30" y="86" width="180" height="120" rx="10" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M150,90 L206,96 L206,202 L150,206 Z" style="fill:var(--tone, #61422A)"/>
+      <rect x="90" y="60" width="60" height="28" rx="6" fill="none" stroke="#000000" stroke-width="9"/>
+      <rect x="104" y="132" width="32" height="26" rx="4" fill="#F5C518" stroke="#000000" stroke-width="5"/>
+    </symbol>
+    <symbol id="prop-eye" viewBox="0 0 240 260">
+      <path d="M18,130 Q120,32 222,130 Q120,228 18,130 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <circle cx="120" cy="130" r="52" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <circle cx="120" cy="130" r="20" fill="#000000"/>
+    </symbol>
+    <symbol id="prop-ear" viewBox="0 0 240 260">
+      <path d="M160,44 Q84,44 84,120 Q84,164 106,182 Q126,198 126,214 Q126,232 108,232 Q86,232 78,208 Q54,150 58,110 Q68,36 150,36 Q214,36 214,104 Q214,160 160,182 Q140,192 132,180 Q124,166 146,152 Q166,138 166,116 Q166,88 140,88 Q120,88 116,106" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="prop-warning-triangle" viewBox="0 0 240 260">
+      <path d="M120,28 L216,222 L24,222 Z" fill="currentColor" stroke="#000000" stroke-width="9" stroke-linejoin="round"/>
+      <path d="M120,96 L120,158" stroke="#000000" stroke-width="14" stroke-linecap="round"/>
+      <circle cx="120" cy="192" r="11" fill="#000000"/>
+    </symbol>
+    <symbol id="prop-traffic-light" viewBox="0 0 240 260">
+      <rect x="76" y="24" width="88" height="180" rx="14" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <circle cx="120" cy="62" r="22" fill="#D94040" stroke="#000000" stroke-width="6"/>
+      <circle cx="120" cy="114" r="22" fill="#F5C518" stroke="#000000" stroke-width="6"/>
+      <circle cx="120" cy="166" r="22" fill="#3A9E3A" stroke="#000000" stroke-width="6"/>
+      <path d="M120,204 L120,236 M84,236 L156,236" stroke="#000000" stroke-width="9" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-magnifier" viewBox="0 0 240 260">
+      <circle cx="102" cy="98" r="66" fill="#6EB5E8" stroke="#000000" stroke-width="9"/>
+      <circle cx="102" cy="98" r="46" fill="none" stroke="#000000" stroke-width="4"/>
+      <path d="M148,148 L212,224" stroke="currentColor" stroke-width="22" stroke-linecap="round"/>
+      <path d="M148,148 L212,224" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-clock" viewBox="0 0 240 260">
+      <circle cx="120" cy="126" r="92" fill="#FFFFFF" stroke="#000000" stroke-width="9"/>
+      <circle cx="120" cy="126" r="74" fill="none" stroke="#000000" stroke-width="4"/>
+      <path d="M120,126 L120,64 M120,126 L166,150" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+      <circle cx="120" cy="126" r="8" fill="#000000"/>
+      <path d="M120,34 L120,52 M120,200 L120,218 M28,126 L46,126 M194,126 L212,126" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-megaphone" viewBox="0 0 240 260">
+      <path d="M44,104 L206,52 L206,196 L44,150 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <rect x="24" y="100" width="30" height="56" rx="8" fill="currentColor" stroke="#000000" stroke-width="7"/>
+      <path d="M70,150 L70,216 L104,216 L104,150 Z" fill="currentColor" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M186,60 L186,44 M200,70 L216,58 M186,188 L186,204" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-check" viewBox="0 0 240 260">
+      <path d="M46,132 L96,182 L196,72" fill="none" stroke="currentColor" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M46,132 L96,182 L196,72" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="prop-candles" viewBox="0 0 240 260">
+      <rect x="62" y="120" width="26" height="110" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <rect x="112" y="96" width="26" height="134" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <rect x="162" y="130" width="26" height="100" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <path d="M75,112 Q66,92 75,72 Q84,92 75,112 Z" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <path d="M125,88 Q116,68 125,48 Q134,68 125,88 Z" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <path d="M175,122 Q166,102 175,82 Q184,102 175,122 Z" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <rect x="44" y="226" width="152" height="18" rx="4" fill="currentColor" stroke="#000000" stroke-width="6"/>
+    </symbol>
+    <symbol id="prop-gavel" viewBox="0 0 240 260">
+      <rect x="26" y="212" width="188" height="24" rx="4" fill="currentColor" stroke="#000000" stroke-width="7"/>
+      <path d="M62,206 L158,120" stroke="currentColor" stroke-width="22" stroke-linecap="round"/>
+      <path d="M62,206 L158,120" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+      <g transform="rotate(-38 150 96)">
+        <rect x="96" y="62" width="112" height="52" rx="8" fill="currentColor" stroke="#000000" stroke-width="7"/>
+      </g>
+    </symbol>
+    <symbol id="prop-mugs" viewBox="0 0 240 260">
+      <path d="M56,120 L56,196 Q56,216 78,216 L124,216 Q146,216 146,196 L146,120 Z" fill="#FFFFFF" stroke="#000000" stroke-width="7"/>
+      <path d="M146,138 Q180,138 180,162 Q180,186 146,186" fill="none" stroke="#000000" stroke-width="7"/>
+      <path d="M56,120 L146,120 L146,140 L56,140 Z" fill="currentColor" stroke="#000000" stroke-width="5"/>
+      <path d="M78,92 Q70,72 78,56 Q86,72 78,92 Z" fill="#6EB5E8" stroke="#000000" stroke-width="3"/>
+    </symbol>
+    <symbol id="prop-arm" viewBox="0 0 240 260">
+      <path d="M40,40 L120,40 Q150,40 150,74 L150,150 Q150,178 176,190 Q200,202 196,218 Q192,236 168,226 Q130,210 118,176 Q104,140 104,110 L104,74 L40,74 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="prop-crack" viewBox="0 0 240 260">
+      <path d="M60,20 L92,80 L62,120 L104,164 L76,240" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M92,80 L140,104 M104,164 L152,180" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-sunrise" viewBox="0 0 240 260">
+      <path d="M40,190 A80,80 0 0 1 200,190 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M24,190 L216,190" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <path d="M120,34 L120,58 M60,60 L78,76 M180,60 L162,76" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-airplane" viewBox="0 0 240 260">
+      <path d="M34,146 L120,124 L206,86 L220,104 L160,134 L206,164 L220,182 L120,144 L34,166 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M34,146 L120,124 L206,86 L220,104 L160,134 L206,164 L220,182 L120,144 L34,166 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(3,-3)"/>
+      <circle cx="80" cy="140" r="9" fill="#6EB5E8" stroke="#000000" stroke-width="4"/>
+    </symbol>
+    <symbol id="prop-airstrip" viewBox="0 0 240 260">
+      <rect x="16" y="96" width="208" height="70" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M40,131 L200,131" stroke="#FFFFFF" stroke-width="8" stroke-dasharray="28 18" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-garlic" viewBox="0 0 240 260">
+      <path d="M120,50 Q188,60 186,140 Q184,216 120,224 Q56,216 54,140 Q52,60 120,50 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M120,50 L104,18 M120,50 L136,18" stroke="#3A9E3A" stroke-width="8" stroke-linecap="round"/>
+      <path d="M120,72 Q100,140 108,214 M120,72 Q142,140 134,214" fill="none" stroke="#000000" stroke-width="4"/>
+    </symbol>
+    <symbol id="prop-teacup" viewBox="0 0 240 260">
+      <path d="M48,104 L176,104 L168,196 Q164,220 120,220 Q76,220 72,196 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M176,120 Q214,120 214,148 Q214,176 170,176" fill="none" stroke="#000000" stroke-width="8"/>
+      <path d="M48,104 L176,104 L172,132 L52,132 Z" fill="currentColor" stroke="#000000" stroke-width="5"/>
+      <path d="M96,74 Q86,52 96,32 M128,74 Q118,52 128,32" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-lens" viewBox="0 0 240 260">
+      <path d="M36,130 Q120,40 204,130 Q120,220 36,130 Z" fill="#6EB5E8" stroke="#000000" stroke-width="8"/>
+      <circle cx="120" cy="130" r="42" fill="none" stroke="#000000" stroke-width="7"/>
+      <circle cx="120" cy="130" r="16" fill="currentColor" stroke="#000000" stroke-width="5"/>
+    </symbol>
+    <symbol id="prop-net" viewBox="0 0 240 260">
+      <path d="M40,30 L200,30 L200,120 Q120,200 40,120 Z" fill="none" stroke="currentColor" stroke-width="9"/>
+      <path d="M40,30 L200,30 L200,120 Q120,200 40,120 Z" fill="none" stroke="#000000" stroke-width="4"/>
+      <path d="M78,30 L78,140 M120,30 L120,162 M162,30 L162,140 M40,62 L200,62 M40,92 L200,92" fill="none" stroke="#000000" stroke-width="3"/>
+    </symbol>
+    <symbol id="prop-weight" viewBox="0 0 240 260">
+      <path d="M52,84 L188,84 L176,220 L64,220 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M96,84 Q120,44 144,84" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+      <text class="prop-text" x="120" y="186" text-anchor="middle" font-family="Lato" font-weight="700" font-size="72" fill="#F5C518">6</text>
+    </symbol>
+    <symbol id="prop-machine" viewBox="0 0 240 260">
+      <rect x="30" y="88" width="180" height="140" rx="10" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M150,92 L206,98 L206,222 L150,222 Z" style="fill:var(--tone, #343434)"/>
+      <rect x="52" y="112" width="80" height="48" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <path d="M64,136 L92,136 M78,122 L78,150" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="170" cy="180" r="22" fill="#D94040" stroke="#000000" stroke-width="6"/>
+      <path d="M30,70 L90,70 M40,56 L74,56" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-meter" viewBox="0 0 240 260">
+      <rect x="20" y="108" width="200" height="44" rx="8" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M28,116 L96,116 L96,144 L28,144 Z" fill="currentColor"/>
+      <path d="M104,116 L120,116 M136,116 L152,116 M168,116 L184,116" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-boxes" viewBox="0 0 240 260">
+      <rect x="34" y="146" width="172" height="82" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M34,176 L206,176" stroke="#000000" stroke-width="5"/>
+      <rect x="60" y="70" width="120" height="68" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M60,98 L180,98" stroke="#000000" stroke-width="5"/>
+      <rect x="90" y="20" width="70" height="44" fill="currentColor" stroke="#000000" stroke-width="8"/>
+    </symbol>
+    <symbol id="prop-pile" viewBox="0 0 240 260">
+      <rect x="24" y="176" width="192" height="60" rx="6" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M40,176 L60,120 L180,120 L200,176 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <circle cx="120" cy="92" r="34" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M96,92 L144,92" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-slope" viewBox="0 0 240 260">
+      <path d="M20,216 L220,60 L220,216 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M20,216 L220,60 L220,216 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+    </symbol>
+    <symbol id="prop-schedule-wall" viewBox="0 0 240 260">
+      <rect x="26" y="26" width="188" height="208" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <g fill="#FFFFFF" stroke="#000000" stroke-width="4">
+        <rect x="42" y="42" width="156" height="52"/>
+        <rect x="42" y="104" width="156" height="52"/>
+        <rect x="42" y="166" width="156" height="52"/>
+      </g>
+      <path d="M58,64 L110,64 M58,78 L140,78 M58,126 L140,126 M58,140 L96,140 M58,188 L120,188 M58,202 L150,202" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-houses" viewBox="0 0 240 260">
+      <g stroke="#000000" stroke-width="7" stroke-linejoin="round">
+        <path d="M20,140 L58,104 L96,140 L96,214 L20,214 Z" fill="currentColor"/>
+        <path d="M88,140 L126,104 L164,140 L164,214 L88,214 Z" fill="currentColor"/>
+        <path d="M156,140 L194,104 L232,140 L232,214 L156,214 Z" fill="currentColor"/>
+      </g>
+      <rect x="48" y="160" width="22" height="54" fill="#000000"/>
+      <rect x="116" y="160" width="22" height="54" fill="#000000"/>
+      <rect x="184" y="160" width="22" height="54" fill="#000000"/>
+    </symbol>
+    <symbol id="prop-team" viewBox="0 0 240 260">
+      <g stroke="#000000" stroke-width="7">
+        <circle cx="120" cy="70" r="30" fill="#FFFFFF"/>
+        <circle cx="58" cy="106" r="24" fill="#FFFFFF"/>
+        <circle cx="182" cy="106" r="24" fill="#FFFFFF"/>
+      </g>
+      <path d="M84,180 Q84,110 120,110 Q156,110 156,180 Z" fill="currentColor" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M26,190 Q26,140 58,140 Q90,140 90,190 Z" fill="currentColor" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M150,190 Q150,140 182,140 Q214,140 214,190 Z" fill="currentColor" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="prop-cereal-box" viewBox="0 0 240 260">
+      <path d="M48,44 L192,38 L192,222 L48,228 Z" fill="currentColor"/>
+      <path d="M140,40 L192,38 L192,222 L140,224 Z" style="fill:var(--tone, #61422A)"/>
+      <path d="M48,44 L192,38 L192,222 L48,228 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M48,44 L192,38 L192,222 L48,228 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <circle cx="92" cy="108" r="34" fill="#F5C518" stroke="#000000" stroke-width="6"/>
+      <path d="M74,120 L92,92 L110,120 Z" fill="#D94040" stroke="#000000" stroke-width="4"/>
+      <path d="M62,166 L126,164" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="prop-delete-button" viewBox="0 0 240 260">
+      <circle cx="120" cy="126" r="82" fill="currentColor" stroke="#000000" stroke-width="9"/>
+      <circle cx="120" cy="126" r="64" fill="none" stroke="#000000" stroke-width="3"/>
+      <path d="M92,98 L148,154 M148,98 L92,154" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="fx-sparkle" viewBox="0 0 240 260">
+      <path d="M120,60 Q128,122 180,130 Q128,138 120,200 Q112,138 60,130 Q112,122 120,60 Z" fill="#F5C518" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
     </symbol>
   </defs>
 </svg>
