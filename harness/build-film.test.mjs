@@ -1,0 +1,188 @@
+/**
+ * Film generator tests. Run with `npm test`. No dependencies: node:test and node:assert.
+ * The project is synthetic: 600 s of narration (no real audio is read), 60 ten-second
+ * scenes that share one cast, so the test covers the long-film path end to end.
+ */
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { compileProject } from "./compile.js";
+import { buildFilm } from "./build-film.js";
+import { checkFilm } from "./check-film.js";
+
+const here = dirname(fileURLToPath(import.meta.url));
+const LIBRARY = readFileSync(join(here, "..", "assets", "library.svg"), "utf8");
+const SCENES = 60;
+const SECONDS = 600;
+const PER_SCENE = SECONDS / SCENES;
+const FRAMES = SECONDS * 24;
+
+const clock = (sec) => `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, "0")}`;
+const pad = (n) => String(n).padStart(2, "0");
+
+/** A 10-minute project: one cue every 5 s, two cues per scene, the same cast in every scene. */
+function longProject() {
+  const dir = mkdtempSync(join(tmpdir(), "doodle-long-"));
+  mkdirSync(join(dir, "audio"));
+  writeFileSync(join(dir, "audio", "narration.mp3"), "not real audio: the test passes audioSeconds");
+
+  const cues = [];
+  for (let k = 0; k < SECONDS / 5; k++) cues.push(`[${clock(k * 5)}] Line ${k + 1} of the narration.`);
+  writeFileSync(join(dir, "transcript.txt"), cues.join("\n") + "\n");
+
+  const cards = [];
+  for (let k = 0; k < SCENES; k++) {
+    const start = k * PER_SCENE;
+    const end = k === SCENES - 1 ? "END" : clock((k + 1) * PER_SCENE);
+    const bg = k % 2 ? "white" : "sky";
+    const headline = k % 2 ? "black" : "red";
+    const camera = k % 2 ? "push" : "lock";
+    const out = ["color-dip(black)", "wipe-left", "hard-cut"][k % 3];
+    cards.push(
+      `## S${pad(k + 1)} | ${clock(start)}-${end} | cues ${2 * k + 1}-${2 * k + 2} | bg=${bg}`,
+      "CAST: INVESTIGATOR, WITNESS",
+      "PROPS: CEREAL-BOX",
+      "LAYOUT: INVESTIGATOR in the left third, WITNESS in the right third",
+      "BEATS:",
+      `- ${clock(start)}.0 POP INVESTIGATOR enters on the left`,
+      `- ${clock(start + 2)}.0 SWAP INVESTIGATOR's brows to raised`,
+      `- ${clock(start + 4)}.0 POP WITNESS appears at the right`,
+      `- ${clock(start + 6)}.0 DRAW a black arrow from INVESTIGATOR to WITNESS`,
+      `TEXT: top | ${headline} | "SCENE ${k + 1}" @${clock(start)}.0`,
+      `CAMERA: ${camera}`,
+      `OUT: ${out}`,
+      "",
+    );
+  }
+  const sheet = [
+    "## CAST",
+    "INVESTIGATOR: stick figure, large white circle head, dot eyes, thick brow lines, black stick body",
+    "WITNESS: stick figure, large white circle head, dot eyes, thick brow lines, black stick body",
+    "",
+    "## PROPS",
+    "CEREAL-BOX: chunky orange box, black outline",
+    "",
+    ...cards,
+  ];
+  writeFileSync(join(dir, "scene_sheet.md"), sheet.join("\n"));
+  return dir;
+}
+
+async function compiled(dir) {
+  const res = await compileProject(dir, { audioSeconds: SECONDS });
+  assert.equal(res.ok, true, `compile failed:\n${(res.errors ?? []).join("\n")}`);
+  return JSON.parse(readFileSync(join(dir, "build", "timeline.json"), "utf8"));
+}
+
+/** Adds beats to a compiled project's scene, to exercise the generator's own checks. */
+function addBeats(dir, scene, beats) {
+  const path = join(dir, "build", "timeline.json");
+  const tl = JSON.parse(readFileSync(path, "utf8"));
+  tl.scenes[scene].beats.push(...beats);
+  writeFileSync(path, JSON.stringify(tl));
+}
+
+test("a 10-minute, 60-scene film compiles, builds and passes the film gates", async () => {
+  const dir = longProject();
+  const tl = await compiled(dir);
+  assert.equal(tl.scenes.length, SCENES);
+  assert.equal(tl.totalFrames, FRAMES);
+
+  const built = buildFilm(dir);
+  assert.equal(built.ok, true, built.errors.join("\n"));
+  assert.equal(built.files.length, SCENES + SECONDS / 60 + 1, "one file per scene, one captions file per minute, plus the root");
+
+  const root = readFileSync(join(dir, "film", "index.html"), "utf8");
+  assert.ok(root.includes(`data-duration="${SECONDS}"`), "root data-duration is the audio length");
+  assert.ok(root.includes('data-fps="24"'), "root declares 24 fps, so the render does not default to 30");
+  const clips = [
+    ...root.matchAll(/data-composition-src="compositions\/(s\d\d)\.html" data-start="([\d.]+)" data-duration="([\d.]+)"/g),
+  ];
+  assert.equal(clips.length, SCENES, "one clip per scene");
+
+  // Scene frames tile the root exactly: each starts where the last one ended.
+  let cursor = 0;
+  for (const m of clips) {
+    assert.equal(Math.round(parseFloat(m[2]) * 24), cursor, `${m[1]} starts at frame ${cursor}`);
+    cursor += Math.round(parseFloat(m[3]) * 24);
+  }
+  assert.equal(cursor, FRAMES, "scene frames sum to the root frame count");
+
+  // Captions are split one file per minute, and each minute's clip covers exactly that minute.
+  const captionClips = [
+    ...root.matchAll(/data-composition-src="compositions\/(captions-\d\d)\.html" data-start="([\d.]+)" data-duration="([\d.]+)"/g),
+  ];
+  assert.equal(captionClips.length, SECONDS / 60, "one captions clip per minute");
+  captionClips.forEach((m, k) => {
+    assert.equal(m[1], `captions-${pad(k + 1)}`);
+    assert.equal(Math.round(parseFloat(m[2]) * 24), k * 1440, `${m[1]} starts at its minute`);
+    assert.equal(Math.round(parseFloat(m[3]) * 24), 1440, `${m[1]} covers one minute`);
+  });
+  // Caption times in a minute file are frames counted from that minute's start, so none exceed 1440 (60 s at 24 fps).
+  const second = readFileSync(join(dir, "film", "compositions", "captions-02.html"), "utf8");
+  const times = [...second.matchAll(/\{ opacity: \d \}, f\(([\d.]+)\)/g)].map((m) => parseFloat(m[1]));
+  assert.ok(times.length > 0, "captions-02 has caption timings");
+  assert.ok(times.every((t) => t >= 0 && t <= 1440), "captions-02 times are local to its minute");
+
+  // One rig everywhere: every scene carries the same library symbols, byte for byte.
+  const rigBody = /<symbol id="rig-body"[\s\S]*?<\/symbol>/.exec(LIBRARY)[0];
+  for (let k = 1; k <= SCENES; k++) {
+    const scene = readFileSync(join(dir, "film", "compositions", `s${pad(k)}.html`), "utf8");
+    assert.ok(scene.includes(rigBody), `s${pad(k)} inlines the shared rig-body symbol`);
+  }
+
+  const gates = checkFilm(dir);
+  assert.deepEqual(gates.errors, [], gates.errors.join("\n"));
+});
+
+test("building the same project twice gives the same bytes", async () => {
+  const dir = longProject();
+  await compiled(dir);
+  const read = () => ({
+    root: readFileSync(join(dir, "film", "index.html"), "utf8"),
+    scene: readFileSync(join(dir, "film", "compositions", "s30.html"), "utf8"),
+    captions: readFileSync(join(dir, "film", "compositions", "captions-01.html"), "utf8"),
+  });
+  assert.equal(buildFilm(dir).ok, true);
+  const first = read();
+  assert.equal(buildFilm(dir).ok, true);
+  assert.deepEqual(read(), first);
+});
+
+test("too many poses for one actor in a scene is a hard error, and nothing is written", async () => {
+  const dir = longProject();
+  await compiled(dir);
+  // Scene 1's card already has one SWAP (raised = shock). Four more expressions push INVESTIGATOR past the limit of 3.
+  addBeats(dir, 0, [
+    { frame: 30, verb: "SWAP", text: "INVESTIGATOR's face to angry" },
+    { frame: 60, verb: "SWAP", text: "INVESTIGATOR's face to sly" },
+    { frame: 90, verb: "SWAP", text: "INVESTIGATOR's face to sweat" },
+    { frame: 120, verb: "SWAP", text: "INVESTIGATOR's face to confused" },
+  ]);
+  const res = buildFilm(dir);
+  assert.equal(res.ok, false);
+  assert.ok(
+    res.errors.some((e) => /^S01: INVESTIGATOR takes \d+ poses; the limit is 3/.test(e)),
+    res.errors.join("\n"),
+  );
+  assert.equal(existsSync(join(dir, "film")), false, "a failed build writes no film files");
+});
+
+test("a SWAP with no known expression word is a hard error, not a crash", async () => {
+  const dir = longProject();
+  await compiled(dir);
+  addBeats(dir, 1, [{ frame: 300, verb: "SWAP", text: "INVESTIGATOR's brows to purple" }]);
+  const res = buildFilm(dir);
+  assert.equal(res.ok, false);
+  assert.ok(res.errors.some((e) => e.includes("no known expression word")), res.errors.join("\n"));
+});
+
+test("a missing timeline asks for the compile step", () => {
+  const dir = mkdtempSync(join(tmpdir(), "doodle-empty-"));
+  const res = buildFilm(dir);
+  assert.equal(res.ok, false);
+  assert.match(res.errors[0], /run the compile step first/);
+});

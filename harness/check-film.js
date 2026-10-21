@@ -6,12 +6,28 @@
  *
  *   node harness/check-film.js projects/<slug>
  */
+import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
-import { extname, join, relative } from "node:path";
+import { extname, join, relative, sep } from "node:path";
 import { pathToFileURL } from "node:url";
 import { offPaletteColors } from "./palette.js";
 
 const TEXT_EXT = new Set([".html", ".htm", ".css", ".js", ".mjs", ".svg", ".json"]);
+
+/**
+ * Vendored third-party files that the film may load from film/. A file is exempt from the
+ * banned-token and color gates only while its bytes match the pinned sha256, so a changed
+ * or swapped copy is checked like any other film file. Paths are relative to film/.
+ * gsap 3.14.2 uses Math.random, Date.now, setTimeout and .play() internally; it is not our code.
+ */
+export const VENDORED = {
+  "vendor/gsap.min.js": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+};
+
+export function isPinnedVendor(relPath, bytes) {
+  const pinned = VENDORED[relPath.split(sep).join("/")];
+  return pinned !== undefined && createHash("sha256").update(bytes).digest("hex") === pinned;
+}
 
 export const BANNED = [
   { name: "gradient", re: /gradient/i },
@@ -43,10 +59,15 @@ export function checkFilm(projectDir) {
   const filmDir = join(projectDir, "film");
   if (!existsSync(filmDir)) return { errors: [`missing ${filmDir}`] };
 
+  // film/.hyperframes/ holds the artifacts `hyperframes check` writes. They are generated output, not film source.
+  const checkArtifacts = join(filmDir, ".hyperframes") + sep;
   for (const file of walk(filmDir)) {
+    if (file.startsWith(checkArtifacts)) continue;
     if (!TEXT_EXT.has(extname(file).toLowerCase())) continue;
     const rel = relative(projectDir, file);
-    const text = readFileSync(file, "utf8");
+    const bytes = readFileSync(file);
+    if (isPinnedVendor(relative(filmDir, file), bytes)) continue;
+    const text = bytes.toString("utf8");
     for (const hex of offPaletteColors(text)) {
       errors.push(`${rel}: color ${hex} is not in harness/palette.js`);
     }

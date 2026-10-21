@@ -190,6 +190,21 @@ test("streamed actions reply as NDJSON that ends with a result line", async () =
   });
 });
 
+test("a streamed compile sends its progress lines before the result", async () => {
+  await withServer(makeRoot(), async (port) => {
+    const res = await call(port, { method: "POST", path: "/api/projects/alpha/compile?stream=1" });
+    const lines = parseNdjson(res.body);
+    const outputs = lines.filter((l) => l.type === "output").map((l) => l.text);
+    assert.equal(outputs[0], "compile alpha\n", JSON.stringify(outputs));
+    const result = lines.at(-1);
+    assert.equal(result.type, "result");
+    assert.equal(result.action, "compile");
+    assert.equal(result.ok, false);
+    assert.match(result.errors.join(""), /missing scene_sheet\.md/);
+    assert.equal(result.stdout, outputs.join(""));
+  });
+});
+
 test("unknown actions and methods are refused", async () => {
   await withServer(makeRoot(), async (port) => {
     assert.equal((await call(port, { method: "POST", path: "/api/projects/alpha/rm-rf" })).status, 404);

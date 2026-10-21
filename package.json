@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node harness/compile.test.mjs && node ui/server.test.mjs",
+    "test": "node harness/compile.test.mjs && node harness/build-film.test.mjs && node ui/server.test.mjs",
     "ui": "node ui/server.mjs"
   }
 }

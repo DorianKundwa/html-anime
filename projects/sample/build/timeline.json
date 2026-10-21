@@ -1,0 +1,177 @@
+{
+  "fps": 24,
+  "audioSeconds": 20,
+  "totalFrames": 480,
+  "scenes": [
+    {
+      "id": "S01",
+      "n": 1,
+      "startF": 0,
+      "endF": 240,
+      "frames": 240,
+      "bg": "sky",
+      "cast": [
+        "INVESTIGATOR"
+      ],
+      "props": [
+        "CEREAL-BOX"
+      ],
+      "layout": "INVESTIGATOR in the left third, CEREAL-BOX in the right third",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 1,
+      "cueLast": 2,
+      "beats": [
+        {
+          "frame": 0,
+          "verb": "POP",
+          "text": "INVESTIGATOR enters on the left"
+        },
+        {
+          "frame": 48,
+          "verb": "SWAP",
+          "text": "INVESTIGATOR's brows to raised"
+        },
+        {
+          "frame": 96,
+          "verb": "POP",
+          "text": "CEREAL-BOX appears at the right"
+        },
+        {
+          "frame": 144,
+          "verb": "DRAW",
+          "text": "a black arrow from INVESTIGATOR to CEREAL-BOX"
+        },
+        {
+          "frame": 192,
+          "verb": "SHAKE",
+          "text": "CEREAL-BOX"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 0,
+          "pos": "top",
+          "color": "black",
+          "text": "THE CEREAL BOX"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "n": 2,
+      "startF": 240,
+      "endF": 480,
+      "frames": 240,
+      "bg": "white",
+      "cast": [
+        "INVESTIGATOR"
+      ],
+      "props": [
+        "CEREAL-BOX"
+      ],
+      "layout": "INVESTIGATOR in the right third facing left, eyes on the upper third line",
+      "camera": "push",
+      "out": "hard-cut",
+      "cueFirst": 3,
+      "cueLast": 4,
+      "beats": [
+        {
+          "frame": 240,
+          "verb": "SLIDE",
+          "text": "INVESTIGATOR in from the right"
+        },
+        {
+          "frame": 288,
+          "verb": "SWAP",
+          "text": "INVESTIGATOR's brows to flat"
+        },
+        {
+          "frame": 336,
+          "verb": "HOLD",
+          "text": ""
+        },
+        {
+          "frame": 384,
+          "verb": "CROSS",
+          "text": "a red X over CEREAL-BOX"
+        },
+        {
+          "frame": 432,
+          "verb": "SWAP",
+          "text": "INVESTIGATOR's expression to calm"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 336,
+          "pos": "top",
+          "color": "black",
+          "text": "LATER"
+        }
+      ]
+    }
+  ],
+  "cues": [
+    {
+      "n": 1,
+      "frame": 0,
+      "text": "The cereal box story starts here."
+    },
+    {
+      "n": 2,
+      "frame": 96,
+      "text": "The Oseberg ship was buried in Norway."
+    },
+    {
+      "n": 3,
+      "frame": 240,
+      "text": "Alcuin wrote about raiding."
+    },
+    {
+      "n": 4,
+      "frame": 336,
+      "text": "The invoice came later."
+    }
+  ],
+  "captions": [
+    {
+      "cue": 1,
+      "startF": 0,
+      "endF": 96,
+      "lines": [
+        "The cereal box story starts here."
+      ]
+    },
+    {
+      "cue": 2,
+      "startF": 96,
+      "endF": 240,
+      "lines": [
+        "The Oseberg ship was buried in Norway."
+      ]
+    },
+    {
+      "cue": 3,
+      "startF": 240,
+      "endF": 336,
+      "lines": [
+        "Alcuin wrote about raiding."
+      ]
+    },
+    {
+      "cue": 4,
+      "startF": 336,
+      "endF": 480,
+      "lines": [
+        "The invoice came later."
+      ]
+    }
+  ],
+  "cast": {
+    "INVESTIGATOR": "stick figure, large white circle head, dot eyes, thick brow lines, black stick body"
+  },
+  "props": {
+    "CEREAL-BOX": "chunky orange box, black outline"
+  }
+}

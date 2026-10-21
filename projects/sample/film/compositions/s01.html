@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+        <defs>
+          <filter id="s01-boil-a" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n" />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+          <filter id="s01-boil-b" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n" />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+          <filter id="s01-boil-c" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n" />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+      <style>
+        @font-face {
+          font-family: "Bangers";
+          src: url("../fonts/bangers-latin-400-normal.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+        }
+        .fill {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: visible;
+        }
+        .actor {
+          position: absolute;
+          transform-origin: 50% 50%;
+        }
+        .ttl {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 1920px;
+          margin: 0;
+          text-align: center;
+          font-family: "Bangers", Arial, sans-serif;
+          font-weight: 400;
+          font-size: 96px;
+          color: #000000;
+          transform-origin: 50% 50%;
+        }
+        #s01-arrow {
+          stroke-dasharray: 1 1;
+        }
+      </style>
+
+      <div id="root" data-composition-id="s01" data-width="1920" data-height="1080">
+        <div id="s01-ink" class="fill">
+          <div id="s01-inv" class="actor" style="left: 200px; top: 238px; width: 420px; height: 620px; opacity: 0">
+            <svg width="420" height="620" viewBox="0 0 420 620" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible">
+              <circle cx="210" cy="130" r="100" fill="#FFFFFF" />
+              <g fill="#000000" stroke="none">
+                <circle cx="175" cy="122" r="9" />
+                <circle cx="245" cy="122" r="9" />
+              </g>
+              <path id="s01-brow-n" d="M150 80 L192 80 M228 80 L270 80" />
+              <path id="s01-brow-r" d="M150 58 Q171 44 192 58 M228 58 Q249 44 270 58" opacity="0" />
+              <path d="M182 180 L238 180" />
+              <path d="M210 230 L210 430 M210 430 L160 600 M210 430 L260 600" />
+              <path d="M145 600 L160 600 M260 600 L275 600" />
+              <g id="s01-arm-i">
+                <path d="M210 290 L140 390 M210 290 L280 390" />
+              </g>
+              <g id="s01-arm-p" opacity="0">
+                <path d="M210 290 L140 390 M210 290 L345 362" />
+                <circle cx="345" cy="362" r="12" fill="#FFFFFF" />
+              </g>
+            </svg>
+          </div>
+
+          <div id="s01-box" class="actor" style="left: 1300px; top: 380px; width: 320px; height: 440px; opacity: 0">
+            <svg width="320" height="440" viewBox="0 0 320 440" stroke="#000000" stroke-width="10" stroke-linejoin="round" style="display: block; overflow: visible">
+              <rect x="10" y="10" width="300" height="420" fill="#F5820D" />
+              <rect x="10" y="10" width="300" height="70" fill="#F5C518" />
+              <rect x="10" y="150" width="300" height="110" fill="#F5C518" />
+              <text x="160" y="232" text-anchor="middle" font-family="Bangers" font-size="64" fill="#000000" stroke="none">CEREAL</text>
+              <path d="M104 326 L216 326 Q206 396 160 396 Q114 396 104 326 Z" fill="#FFFFFF" />
+              <g fill="#F5C518" stroke-width="5">
+                <circle cx="136" cy="314" r="12" />
+                <circle cx="160" cy="306" r="12" />
+                <circle cx="184" cy="314" r="12" />
+              </g>
+            </svg>
+          </div>
+
+          <svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+            <path id="s01-arrow" pathLength="1" d="M572 600 L1300 600 M1258 570 L1300 600 L1258 630" />
+          </svg>
+        </div>
+
+        <h1 id="s01-title" class="ttl" style="opacity: 0">THE CEREAL BOX</h1>
+      </div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+
+        for (let n = 0; n < 240; n += 3) {
+          tl.set("#s01-ink", { filter: `url(#s01-boil-${"abc"[(n / 3) % 3]})` }, f(n));
+        }
+
+        tl.fromTo("#s01-title", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(0));
+
+        tl.fromTo("#s01-inv", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out" }, f(0));
+        tl.to("#s01-inv", { scale: 1, duration: f(2) }, f(4));
+        tl.set("#s01-brow-n", { opacity: 0 }, f(48));
+        tl.set("#s01-brow-r", { opacity: 1 }, f(48));
+
+        tl.fromTo("#s01-box", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out" }, f(96));
+        tl.to("#s01-box", { scale: 1, duration: f(2) }, f(100));
+
+        tl.set("#s01-arm-i", { opacity: 0 }, f(144));
+        tl.set("#s01-arm-p", { opacity: 1 }, f(144));
+        tl.fromTo("#s01-arrow", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(14), ease: "power1.out" }, f(144));
+
+        for (let k = 0; k < 6; k++) {
+          tl.set("#s01-box", { x: k % 2 === 0 ? 8 : -8 }, f(192 + 2 * k));
+        }
+        tl.set("#s01-box", { x: 0 }, f(204));
+
+        window.__timelines["s01"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

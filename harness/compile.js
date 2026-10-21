@@ -15,6 +15,7 @@ import { pathToFileURL } from "node:url";
 import { PALETTE } from "./palette.js";
 import {
   FPS,
+  IngestError,
   audioDuration,
   buildTimeline,
   checkSheet,
@@ -34,10 +35,14 @@ function findAudio(dir) {
   return null;
 }
 
-/** Runs ingest and checks. Returns { ok, errors, warnings, counts, timeline }. */
-export async function compileProject(dir, { audioSeconds } = {}) {
+/**
+ * Runs ingest and checks. Returns { ok, errors, warnings, counts, timeline }.
+ * log(text) receives progress lines as each stage finishes, so a UI can stream them.
+ */
+export async function compileProject(dir, { audioSeconds, log = () => {} } = {}) {
   const errors = [];
   const warnings = [];
+  log(`compile ${basename(dir)}\n`);
   const audioPath = findAudio(dir);
   if (!audioPath && audioSeconds == null) errors.push("missing audio/narration.mp3 (or .wav)");
   const transcriptPath = join(dir, "transcript.txt");
@@ -52,7 +57,15 @@ export async function compileProject(dir, { audioSeconds } = {}) {
 
   const rawCues = parseTranscript(readFileSync(transcriptPath, "utf8"));
   const sheet = parseSceneSheet(readFileSync(sheetPath, "utf8"));
-  const seconds = audioSeconds ?? (await audioDuration(audioPath));
+  let seconds;
+  try {
+    seconds = audioSeconds ?? (await audioDuration(audioPath));
+  } catch (err) {
+    if (!(err instanceof IngestError)) throw err;
+    errors.push(err.message);
+    return { ok: false, errors, warnings, counts: null, timeline: null };
+  }
+  log(`read ${rawCues.length} cues, ${sheet.scenes.length} scenes, ${seconds.toFixed(2)} s of audio\n`);
 
   const { cues, diffs, warnings: cueWarnings } = correctCues(rawCues, scriptText);
   warnings.push(...cueWarnings);
@@ -60,6 +73,7 @@ export async function compileProject(dir, { audioSeconds } = {}) {
   const check = checkSheet({ cues: rawCues, scenes: sheet.scenes, audioSeconds: seconds, cast: sheet.cast, props: sheet.props });
   errors.push(...check.errors);
   warnings.push(...check.warnings);
+  log(`checked: ${errors.length} error(s), ${warnings.length} warning(s)\n`);
 
   const counts = {
     cues: cues.length,
@@ -77,6 +91,7 @@ export async function compileProject(dir, { audioSeconds } = {}) {
   writeFileSync(join(build, "brief.md"), renderBrief(timeline, basename(dir)));
   writeFileSync(join(build, "captions-diff.md"), renderDiff(diffs, scriptText == null));
   writeFileSync(join(dir, "captions.srt"), toSrt(timeline.captions));
+  log("wrote build/ and captions.srt\n");
   return { ok: true, errors, warnings, counts, timeline };
 }
 

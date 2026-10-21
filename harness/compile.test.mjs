@@ -22,7 +22,7 @@ import {
   wrapLines,
 } from "./ingest.js";
 import { offPaletteColors } from "./palette.js";
-import { checkFilm } from "./check-film.js";
+import { checkFilm, VENDORED } from "./check-film.js";
 import { inlineLibrary, readSymbols } from "./inline-library.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -216,6 +216,23 @@ test("compileProject without audio and without a length reports the missing file
   assert.ok(res.errors.some((e) => e.includes("missing audio")));
 });
 
+test("without ffprobe on PATH, the compile says to install it instead of a raw spawn error", async () => {
+  const dir = tempProject();
+  mkdirSync(join(dir, "audio"));
+  writeFileSync(join(dir, "audio", "narration.mp3"), "not really audio");
+  const savedPath = process.env.PATH;
+  process.env.PATH = "";
+  try {
+    const res = await compileProject(dir);
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes("ffprobe is not installed")), res.errors.join("\n"));
+    assert.ok(!res.errors.some((e) => e.includes("ENOENT") || e.includes("spawn")), "raw spawn error leaked");
+    assert.equal(existsSync(join(dir, "build")), false);
+  } finally {
+    process.env.PATH = savedPath;
+  }
+});
+
 test("a hard error stops the compile and writes nothing", async () => {
   const dir = tempProject({ file: "scene_sheet.md", from: "bg=sky", to: "bg=mauve" });
   const res = await compileProject(dir, { audioSeconds: AUDIO_SECONDS });
@@ -349,9 +366,34 @@ test("checkFilm flags banned tokens and a root duration that is not the audio", 
   assert.ok(errors.some((e) => e.includes("is not the audio's 480 frames")));
 });
 
+test("the vendored gsap is exempt only while its bytes match the pinned hash", () => {
+  const here = dirname(fileURLToPath(import.meta.url));
+  const shipped = readFileSync(join(here, "..", "assets", "vendor", "gsap.min.js"));
+  const dir = mkdtempSync(join(tmpdir(), "film-"));
+  mkdirSync(join(dir, "film", "vendor"), { recursive: true });
+  writeFileSync(join(dir, "film", "index.html"), '<div data-duration="20"></div>');
+  writeFileSync(join(dir, "film", "vendor", "gsap.min.js"), shipped);
+  assert.deepEqual(checkFilm(dir).errors, [], "the shipped gsap passes the gates");
+  // Same path, different bytes: the exemption no longer applies and the banned tokens are reported.
+  writeFileSync(join(dir, "film", "vendor", "gsap.min.js"), shipped.toString("utf8") + "\nMath.random();");
+  assert.ok(checkFilm(dir).errors.some((e) => e.includes("banned token \"Math.random\"")));
+  assert.match(VENDORED["vendor/gsap.min.js"], /^[0-9a-f]{64}$/);
+});
+
 test("checkFilm reports a missing film directory", () => {
   const dir = mkdtempSync(join(tmpdir(), "film-"));
   assert.equal(checkFilm(dir).errors.length, 1);
+});
+
+test("checkFilm skips film/.hyperframes check artifacts but still checks the rest of film/", () => {
+  const dir = mkdtempSync(join(tmpdir(), "film-"));
+  mkdirSync(join(dir, "film", ".hyperframes"), { recursive: true });
+  mkdirSync(join(dir, "film", "compositions"), { recursive: true });
+  writeFileSync(join(dir, "film", "index.html"), '<div data-duration="20"></div>');
+  writeFileSync(join(dir, "film", ".hyperframes", "check.json"), '{"fill":"rgb(10,20,30)","bg":"linear-gradient(red,blue)"}');
+  assert.deepEqual(checkFilm(dir).errors, []);
+  writeFileSync(join(dir, "film", "compositions", "s01.html"), '<div style="color:#123456"></div>');
+  assert.ok(checkFilm(dir).errors.some((e) => e.includes("#123456")));
 });
 
 // ---------- library inlining ----------

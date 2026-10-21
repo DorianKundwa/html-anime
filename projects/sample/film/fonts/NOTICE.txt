@@ -1,0 +1,3 @@
+Bangers (latin 400), from Google Fonts.
+License: SIL Open Font License 1.1 (https://openfontlicense.org).
+Copied unmodified for the sample film. Source: .agents/skills/embedded-captions/modes/standard/fonts/files/

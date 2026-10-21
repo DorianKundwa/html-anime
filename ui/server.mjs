@@ -132,9 +132,14 @@ const needFilm = (dir) =>
 /** Project actions. Each takes { dir, slug } and returns a JSON-safe result. */
 const ACTIONS = {
   compile: {
-    async run({ dir }) {
-      const res = await compileProject(dir);
-      return { ok: res.ok, errors: res.errors, warnings: res.warnings, counts: res.counts };
+    async run({ dir, emit }) {
+      const lines = [];
+      const log = (text) => {
+        lines.push(text);
+        emit?.(text);
+      };
+      const res = await compileProject(dir, { log });
+      return { ok: res.ok, errors: res.errors, warnings: res.warnings, counts: res.counts, stdout: lines.join("") };
     },
   },
   "film-gate": {

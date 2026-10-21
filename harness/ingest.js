@@ -157,9 +157,17 @@ function splitList(s) {
 
 /** Duration of an audio file in seconds, from ffprobe. */
 export async function audioDuration(path) {
-  const { stdout } = await execFileP("ffprobe", [
-    "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path,
-  ]);
+  let stdout;
+  try {
+    ({ stdout } = await execFileP("ffprobe", [
+      "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path,
+    ]));
+  } catch (err) {
+    if (err.code === "ENOENT") {
+      throw new IngestError("ffprobe is not installed or not on PATH: install FFmpeg (it includes ffprobe) to read the audio length");
+    }
+    throw new IngestError(`ffprobe failed on ${path}: ${(err.stderr || err.message).toString().trim()}`);
+  }
   const sec = parseFloat(stdout.trim());
   if (!Number.isFinite(sec) || sec <= 0) throw new IngestError(`ffprobe gave no duration for ${path}`);
   return sec;

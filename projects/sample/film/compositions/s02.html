@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+        <defs>
+          <filter id="s02-boil-a" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n" />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+          <filter id="s02-boil-b" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n" />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+          <filter id="s02-boil-c" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n" />
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+      <style>
+        @font-face {
+          font-family: "Bangers";
+          src: url("../fonts/bangers-latin-400-normal.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: hidden;
+        }
+        .fill {
+          position: absolute;
+          inset: 0;
+          width: 1920px;
+          height: 1080px;
+          overflow: visible;
+        }
+        .actor {
+          position: absolute;
+          transform-origin: 50% 50%;
+        }
+        .ttl {
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 1920px;
+          margin: 0;
+          text-align: center;
+          font-family: "Bangers", Arial, sans-serif;
+          font-weight: 400;
+          font-size: 96px;
+          color: #000000;
+          transform-origin: 50% 50%;
+        }
+        #s02-stage {
+          transform-origin: 1510px 540px;
+        }
+        #s02-x1,
+        #s02-x2 {
+          stroke-dasharray: 1 1;
+        }
+      </style>
+
+      <div id="root" data-composition-id="s02" data-width="1920" data-height="1080">
+        <div id="s02-stage" class="fill" data-layout-allow-overflow>
+          <div id="s02-ink" class="fill">
+            <div id="s02-inv" class="actor" style="left: 1300px; top: 238px; width: 420px; height: 620px">
+              <svg width="420" height="620" viewBox="0 0 420 620" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible">
+                <circle cx="210" cy="130" r="100" fill="#FFFFFF" />
+                <g id="s02-eyes" fill="#000000" stroke="none">
+                  <circle cx="139" cy="122" r="9" />
+                  <circle cx="209" cy="122" r="9" />
+                </g>
+                <path id="s02-blink" d="M127 122 L151 122 M197 122 L221 122" opacity="0" />
+                <path id="s02-brow-r" d="M114 58 Q135 44 156 58 M192 58 Q213 44 234 58" />
+                <path id="s02-brow-c" d="M116 78 L156 78 M192 78 L232 78" opacity="0" />
+                <path id="s02-m-n" d="M146 180 L202 180" />
+                <path d="M110 128 L92 148 L110 154" />
+                <path id="s02-m-s" d="M144 172 Q174 196 204 172" opacity="0" />
+                <path d="M210 230 L210 430 M210 430 L160 600 M210 430 L260 600" />
+                <path d="M145 600 L160 600 M260 600 L275 600" />
+                <path d="M210 290 L140 390 M210 290 L280 390" />
+              </svg>
+            </div>
+
+            <div id="s02-box" class="actor" style="left: 800px; top: 380px; width: 320px; height: 440px">
+              <svg width="320" height="440" viewBox="0 0 320 440" stroke="#000000" stroke-width="10" stroke-linejoin="round" style="display: block; overflow: visible">
+                <rect x="10" y="10" width="300" height="420" fill="#F5820D" />
+                <rect x="10" y="10" width="300" height="70" fill="#F5C518" />
+                <rect x="10" y="150" width="300" height="110" fill="#F5C518" />
+                <text x="160" y="232" text-anchor="middle" font-family="Bangers" font-size="64" fill="#000000" stroke="none">CEREAL</text>
+                <path d="M104 326 L216 326 Q206 396 160 396 Q114 396 104 326 Z" fill="#FFFFFF" />
+                <g fill="#F5C518" stroke-width="5">
+                  <circle cx="136" cy="314" r="12" />
+                  <circle cx="160" cy="306" r="12" />
+                  <circle cx="184" cy="314" r="12" />
+                </g>
+              </svg>
+            </div>
+
+            <svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#D94040" stroke-width="22" stroke-linecap="round">
+              <path id="s02-x1" pathLength="1" d="M740 410 L980 790" />
+              <path id="s02-x2" pathLength="1" d="M980 410 L740 790" />
+            </svg>
+          </div>
+        </div>
+
+        <h1 id="s02-title" class="ttl" style="opacity: 0">LATER</h1>
+      </div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+
+        for (let n = 0; n < 240; n += 3) {
+          tl.set("#s02-ink", { filter: `url(#s02-boil-${"abc"[(n / 3) % 3]})` }, f(n));
+        }
+
+        tl.fromTo("#s02-inv", { x: 700 }, { x: 0, duration: f(10), ease: "power3.out" }, f(0));
+
+        tl.set("#s02-eyes", { opacity: 0 }, f(48));
+        tl.set("#s02-blink", { opacity: 1 }, f(48));
+        tl.set("#s02-eyes", { opacity: 1 }, f(50));
+        tl.set("#s02-blink", { opacity: 0 }, f(50));
+
+        tl.set("#s02-brow-r", { opacity: 0 }, f(48));
+        tl.set("#s02-brow-c", { opacity: 1 }, f(48));
+
+        tl.fromTo("#s02-title", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(96));
+
+        tl.fromTo("#s02-x1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(6), ease: "none" }, f(144));
+        tl.fromTo("#s02-x2", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(6), ease: "none" }, f(147));
+
+        tl.set("#s02-brow-r", { opacity: 0 }, f(192));
+        tl.set("#s02-brow-c", { opacity: 1 }, f(192));
+        tl.set("#s02-m-n", { opacity: 0 }, f(192));
+        tl.set("#s02-m-s", { opacity: 1 }, f(192));
+
+        tl.fromTo("#s02-stage", { scale: 1 }, { scale: 1.06, duration: f(240), ease: "power1.inOut" }, f(0));
+
+        window.__timelines["s02"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
