@@ -18,6 +18,35 @@ export const PALETTE = {
   night: "#1B2A4A",
 };
 
+/**
+ * Flat tone variants for shading one flat fill against itself (a shadow side, a highlight).
+ * They are NOT channel tokens: they are absent from PALETTE, so they cannot be used as
+ * TEXT colors, BG tokens, OUT color-dip targets or cast/prop colors. They are allowed in film/.
+ * -dark is 70% of the base channel; -light is the base 45% of the way to white.
+ */
+export const TONES = {
+  "orange-dark": "#AC5B09",
+  "orange-light": "#FABA7A",
+  "cobalt-dark": "#1F4386",
+  "cobalt-light": "#8CA7DC",
+  "green-dark": "#296F29",
+  "green-light": "#93CA93",
+  "yellow-dark": "#AC8A11",
+  "yellow-light": "#FADF80",
+  "red-dark": "#982D2D",
+  "red-light": "#EA9696",
+  "brown-dark": "#61422A",
+  "brown-light": "#BFA694",
+  "sky-dark": "#4D7FA2",
+  "sky-light": "#AFD6F2",
+  "tan-dark": "#89693F",
+  "tan-light": "#DFC5A4",
+  "grey-dark": "#343434",
+  "grey-light": "#9B9B9B",
+  "night-dark": "#131D34",
+  "night-light": "#828A9B",
+};
+
 /** Background tokens from the scene-sheet spec. sky+ground is sky with a green strip. */
 export const BG_TOKENS = [
   "white", "tan", "brown", "orange", "cobalt", "sky", "sky+ground", "grey", "night", "red", "yellow",
@@ -27,13 +56,13 @@ export const BG_TOKENS = [
 export const TOKEN_NAMES = Object.keys(PALETTE);
 
 export function cssVars() {
-  const lines = Object.entries(PALETTE).map(([k, v]) => `  --${k}: ${v};`);
+  const lines = Object.entries({ ...PALETTE, ...TONES }).map(([k, v]) => `  --${k}: ${v};`);
   return `:root {\n${lines.join("\n")}\n}\n`;
 }
 
 /** Returns every hex color in `text` that is not in the palette (case-insensitive). */
 export function offPaletteColors(text) {
-  const allowed = new Set(Object.values(PALETTE).map((v) => v.toUpperCase()));
+  const allowed = new Set([...Object.values(PALETTE), ...Object.values(TONES)].map((v) => v.toUpperCase()));
   const found = new Set();
   for (const m of text.matchAll(/#[0-9a-fA-F]{3,8}\b/g)) {
     const hex = m[0].toUpperCase();

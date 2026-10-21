@@ -33,13 +33,15 @@ A project is done only when all pass:
 4. `checkFilm` finds none of `gradient`, `box-shadow`, `drop-shadow`, `text-shadow`, `blur(`, `Math.random`, `Date.now`, `setTimeout`, `async`. The boil's `feTurbulence` and `feDisplacementMap` are the only allowed filters.
 5. `npx hyperframes lint` and `npx hyperframes validate` (or `check`) pass in `film/`.
 6. Scene frames sum to the root frame count, which equals the audio duration × 24.
+7. Placeholder check: the contact sheets in `build/qa/` show no placeholder art. A placeholder is a bare labelled rectangle standing in for a drawn prop or character.
 
 ## Hard rules
 
 - Palette only, from `harness/palette.js`. No hex outside it.
+- Tones: a flat shade of a palette color may be used only from `TONES` in `harness/palette.js` (for example `orange-dark`), and only as a shading step on the same object. Tones are not tokens. They cannot be text colors, backgrounds or color-dip targets.
 - Zero gradients. Zero shadows, glows, textures, blurs.
 - Hard cut unless a card says `OUT: color-dip(token)` or a wipe.
-- No sakuga shot. At most 3 poses per character per scene, 5 in a scene that uses SHAKE or CROSS.
+- No sakuga shot. At most 3 poses per character per scene, 5 in a scene that uses SHAKE or CROSS. A character changes pose at most once every 12 frames (half a second).
 - Determinism: no `Math.random`, `Date.now`, `async`, `setTimeout`, `repeat: -1`, or `play()` on media.
 - Frames are integers at 24 fps. Never carry float seconds into the composition.
 - Fonts ship locally as `.woff2` with a `NOTICE.txt`. No network fonts.

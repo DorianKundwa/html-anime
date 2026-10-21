@@ -21,7 +21,7 @@ import {
   toSrt,
   wrapLines,
 } from "./ingest.js";
-import { offPaletteColors } from "./palette.js";
+import { offPaletteColors, PALETTE, TONES, TOKEN_NAMES } from "./palette.js";
 import { checkFilm, VENDORED } from "./check-film.js";
 import { inlineLibrary, readSymbols } from "./inline-library.js";
 
@@ -333,6 +333,16 @@ test("offPaletteColors flags colors outside the palette and nothing else", () =>
   assert.ok(found.includes("rgb("));
   assert.ok(!found.includes("#F5820D"));
   assert.ok(!found.includes("#f5820d"));
+});
+
+test("tone variants are allowed in film/ but are not palette tokens", () => {
+  const toneHexes = Object.values(TONES).join(" ");
+  assert.deepEqual(offPaletteColors(toneHexes), []);
+  assert.equal(Object.keys(TONES).length, 20);
+  for (const name of Object.keys(TONES)) {
+    assert.ok(!(name in PALETTE), `${name} must not be a PALETTE key`);
+    assert.ok(!TOKEN_NAMES.includes(name), `${name} must not be a TOKEN_NAMES entry`);
+  }
 });
 
 test("renderBrief names the palette and the rules the agent draws under", async () => {
