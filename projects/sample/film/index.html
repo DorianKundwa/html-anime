@@ -4,33 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1920, height=1080" />
     <title>sample</title>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="vendor/gsap.min.js"></script>
     <style>
-      @font-face {
-        font-family: "Bangers";
-        src: url("fonts/bangers-latin-400-normal.woff2") format("woff2");
-        font-weight: 400;
-        font-style: normal;
-      }
-      body {
-        margin: 0;
-        background: #FFFFFF;
-      }
-      #root {
-        position: absolute;
-        inset: 0;
-        width: 1920px;
-        height: 1080px;
-        overflow: hidden;
-        font-family: "Bangers", Arial, sans-serif;
-        font-weight: 400;
-      }
-      .clip {
-        position: absolute;
-        inset: 0;
-        width: 1920px;
-        height: 1080px;
-      }
+      body { margin: 0; background: #FFFFFF; }
+      #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+      .clip { position: absolute; inset: 0; width: 1920px; height: 1080px; }
     </style>
   </head>
   <body>
@@ -38,13 +16,14 @@
       id="root"
       data-composition-id="main" data-no-timeline
       data-start="0"
+      data-fps="24"
       data-width="1920"
       data-height="1080"
       data-duration="20"
     >
-      <div id="s01-clip" class="clip" data-composition-id="s01" data-composition-src="compositions/s01.html" data-start="0" data-duration="10" data-track-index="1" data-width="1920" data-height="1080" style="background: #6EB5E8"></div>
-
-      <div id="s02-clip" class="clip" data-composition-id="s02" data-composition-src="compositions/s02.html" data-start="10" data-duration="10" data-track-index="1" data-width="1920" data-height="1080" style="background: #FFFFFF"></div>
+      <div id="s01-clip" class="clip" data-composition-id="s01" data-composition-src="compositions/s01.html" data-start="0" data-duration="10" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s02-clip" class="clip" data-composition-id="s02" data-composition-src="compositions/s02.html" data-start="10" data-duration="10" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="captions-01-clip" class="clip" data-track-kind="captions" data-composition-id="captions-01" data-composition-src="compositions/captions-01.html" data-start="0" data-duration="20" data-track-index="2" data-width="1920" data-height="1080"></div>
 
       <audio id="narration" src="narration.wav" data-start="0" data-duration="20"></audio>
     </div>

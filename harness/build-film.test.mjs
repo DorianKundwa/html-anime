@@ -286,3 +286,80 @@ test("a built film has no prop left as a labelled rectangle", async () => {
   const scene = readFileSync(join(dir, "film", "compositions", "s01.html"), "utf8");
   assert.ok(!scene.includes('x="5" y="5" width="230"'), "the scene still draws a prop as a labelled box");
 });
+
+test("environment set backdrop renders wide behind actors without displacing them", async () => {
+  const dir = longProject();
+  await compiled(dir);
+  const path = join(dir, "build", "timeline.json");
+  const tl = JSON.parse(readFileSync(path, "utf8"));
+  tl.scenes[0].props = ["ENV-OFFICE", "CEREAL-BOX"];
+  tl.scenes[0].layout = "INVESTIGATOR in the left third, WITNESS in the right third";
+  writeFileSync(path, JSON.stringify(tl));
+  assert.equal(buildFilm(dir).ok, true);
+  const scene = readFileSync(join(dir, "film", "compositions", "s01.html"), "utf8");
+  assert.ok(scene.includes('class="actor env-backdrop"'), "renders env backdrop element");
+  assert.ok(scene.includes('width="1920"'), "env backdrop spans wide stage");
+  const envIndex = scene.indexOf('class="actor env-backdrop"');
+  const actorIndex = scene.indexOf('id="s01-e0" class="actor"');
+  assert.ok(envIndex < actorIndex, "env backdrop is rendered before actors in the ink layer");
+});
+
+test("actors maintain inter-scene position continuity across consecutive cuts", async () => {
+  const dir = longProject();
+  await compiled(dir);
+  const path = join(dir, "build", "timeline.json");
+  const tl = JSON.parse(readFileSync(path, "utf8"));
+  tl.scenes[0].layout = "INVESTIGATOR in the left third, WITNESS in the right third";
+  tl.scenes[1].cast = ["INVESTIGATOR"];
+  tl.scenes[1].props = [];
+  tl.scenes[1].layout = "INVESTIGATOR holds evidence folder";
+  writeFileSync(path, JSON.stringify(tl));
+  assert.equal(buildFilm(dir).ok, true);
+  const s02 = readFileSync(join(dir, "film", "compositions", "s02.html"), "utf8");
+  const leftS02 = Number(/id="s02-e0" class="actor" style="left:(-?\d+)px/.exec(s02)[1]);
+  assert.ok(leftS02 < 500, `INVESTIGATOR in s02 should stay on the left (${leftS02}px), not jump to center`);
+});
+
+test("historical costumes, hats, expressions and OverSimplified defeat tumble render accurately", async () => {
+  const dir = longProject();
+  await compiled(dir);
+  const path = join(dir, "build", "timeline.json");
+  const tl = JSON.parse(readFileSync(path, "utf8"));
+  tl.cast["INVESTIGATOR"] = "stick figure, white head, yellow crown, cobalt cape, grey armor";
+  tl.cast["WITNESS"] = "stick figure, white head, grey helmet, red tunic";
+  tl.scenes[0].beats = [
+    { frame: 24, verb: "SWAP", text: "INVESTIGATOR falls dead" },
+    { frame: 48, verb: "SWAP", text: "WITNESS's face to evil" },
+  ];
+  writeFileSync(path, JSON.stringify(tl));
+  const res = buildFilm(dir);
+  assert.equal(res.ok, true, `build failed: ${res.errors?.join("\n")}`);
+  const s01 = readFileSync(join(dir, "film", "compositions", "s01.html"), "utf8");
+  assert.ok(s01.includes('href="#rig-hat-crown"'), "includes royal crown hat");
+  assert.ok(s01.includes('href="#rig-cape"'), "includes cape garment");
+  assert.ok(s01.includes('href="#rig-armor"'), "includes knight armor");
+  assert.ok(s01.includes('href="#rig-hat-helmet"'), "includes warrior helmet");
+  assert.ok(s01.includes('href="#rig-tunic"'), "includes historical tunic");
+  assert.ok(s01.includes('rotation: 90') || s01.includes('rotation: -90'), "includes comedic 90-degree tumble rotation");
+  assert.ok(s01.includes('ease: "bounce.out"'), "includes comedic bounce ease");
+});
+
+test("historical props and castle environment render cleanly with zero placeholders", async () => {
+  const dir = longProject();
+  await compiled(dir);
+  const path = join(dir, "build", "timeline.json");
+  const tl = JSON.parse(readFileSync(path, "utf8"));
+  tl.scenes[0].props = ["ENV-CASTLE", "SWORD", "SHIELD", "CROWN", "SCROLL"];
+  writeFileSync(path, JSON.stringify(tl));
+  const res = buildFilm(dir);
+  assert.equal(res.ok, true, `build failed: ${res.errors?.join("\n")}`);
+  const s01 = readFileSync(join(dir, "film", "compositions", "s01.html"), "utf8");
+  assert.ok(s01.includes('href="#prop-env-castle"'), "inlines castle environment set");
+  assert.ok(s01.includes('href="#prop-sword"'), "inlines sword prop");
+  assert.ok(s01.includes('href="#prop-shield"'), "inlines shield prop");
+  assert.ok(s01.includes('href="#prop-crown"'), "inlines crown prop");
+  assert.ok(s01.includes('href="#prop-scroll"'), "inlines scroll prop");
+  const gates = checkFilm(dir);
+  assert.deepEqual(gates.errors, [], `film gates failed:\n${gates.errors.join("\n")}`);
+});
+

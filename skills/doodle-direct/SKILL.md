@@ -15,6 +15,7 @@ The scene sheet is the script for the picture. You build what it says, in the or
 - At most 3 poses per character per scene. Up to 5 in a scene that uses SHAKE or CROSS.
 - No sakuga. A shot is a shot.
 - Hard cut by default. Use `color-dip` only when a card says `OUT: color-dip(...)`.
+- `TEXT:` is optional. Only include `TEXT:` when introducing a title, major chapter, or key date. Omit it on standard narrative and action scenes.
 
 ## Build order
 

@@ -5,146 +5,157 @@
   </head>
   <body>
     <template>
-      <svg width="0" height="0" style="position: absolute" aria-hidden="true">
-        <defs>
-          <filter id="s02-boil-a" x="-5%" y="-5%" width="110%" height="110%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n" />
-            <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
-          <filter id="s02-boil-b" x="-5%" y="-5%" width="110%" height="110%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n" />
-            <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
-          <filter id="s02-boil-c" x="-5%" y="-5%" width="110%" height="110%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n" />
-            <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
-        </defs>
-      </svg>
       <style>
         @font-face {
-          font-family: "Bangers";
-          src: url("../fonts/bangers-latin-400-normal.woff2") format("woff2");
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
           font-weight: 400;
           font-style: normal;
         }
-        #root {
-          position: absolute;
-          inset: 0;
-          width: 1920px;
-          height: 1080px;
-          overflow: hidden;
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
         }
-        .fill {
-          position: absolute;
-          inset: 0;
-          width: 1920px;
-          height: 1080px;
-          overflow: visible;
-        }
-        .actor {
-          position: absolute;
-          transform-origin: 50% 50%;
-        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .fill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+        .actor { position: absolute; transform-origin: 50% 50%; }
+        .env-backdrop { position: absolute; transform-origin: 50% 50%; }
         .ttl {
-          position: absolute;
-          top: 60px;
-          left: 0;
-          width: 1920px;
-          margin: 0;
-          text-align: center;
-          font-family: "Bangers", Arial, sans-serif;
-          font-weight: 400;
-          font-size: 96px;
-          color: #000000;
+          position: absolute; top: 60px; left: 0; width: 1920px; margin: 0; text-align: center;
+          font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
           transform-origin: 50% 50%;
+          -webkit-text-stroke: 12px #000000; paint-order: stroke fill;
+          letter-spacing: 2px;
         }
-        #s02-stage {
-          transform-origin: 1510px 540px;
-        }
-        #s02-x1,
-        #s02-x2 {
-          stroke-dasharray: 1 1;
-        }
+        .draw { stroke-dasharray: 1 1; }
+        .callout-label { pointer-events: none; }
       </style>
 
-      <div id="root" data-composition-id="s02" data-width="1920" data-height="1080">
-        <div id="s02-stage" class="fill" data-layout-allow-overflow>
-          <div id="s02-ink" class="fill">
-            <div id="s02-inv" class="actor" style="left: 1300px; top: 238px; width: 420px; height: 620px">
-              <svg width="420" height="620" viewBox="0 0 420 620" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible">
-                <circle cx="210" cy="130" r="100" fill="#FFFFFF" />
-                <g id="s02-eyes" fill="#000000" stroke="none">
-                  <circle cx="139" cy="122" r="9" />
-                  <circle cx="209" cy="122" r="9" />
-                </g>
-                <path id="s02-blink" d="M127 122 L151 122 M197 122 L221 122" opacity="0" />
-                <path id="s02-brow-r" d="M114 58 Q135 44 156 58 M192 58 Q213 44 234 58" />
-                <path id="s02-brow-c" d="M116 78 L156 78 M192 78 L232 78" opacity="0" />
-                <path id="s02-m-n" d="M146 180 L202 180" />
-                <path d="M110 128 L92 148 L110 154" />
-                <path id="s02-m-s" d="M144 172 Q174 196 204 172" opacity="0" />
-                <path d="M210 230 L210 430 M210 430 L160 600 M210 430 L260 600" />
-                <path d="M145 600 L160 600 M260 600 L275 600" />
-                <path d="M210 290 L140 390 M210 290 L280 390" />
-              </svg>
-            </div>
+<div id="root" data-composition-id="s02" data-width="1920" data-height="1080">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<filter id="s02-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s02-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s02-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<symbol id="rig-body" viewBox="-160 -110 320 460">
+      <path d="M0,95 L0,240" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <path d="M3,97 L2.5,238" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M-35,320 L-62,320 M35,320 L62,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-limb-idle" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-50,200 M0,130 L50,200 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-point" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-120,112 M0,130 L50,200 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-120" cy="112" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-walk" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-40,188 M0,130 L36,188 M-40,188 L-54,298 M36,188 L22,296" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-40" cy="188" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="36" cy="188" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-clipboard" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-30,190 M0,130 L50,160 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-30" cy="190" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <!-- small clipboard icon at the raised arm's end -->
+      <rect x="46" y="138" width="36" height="46" rx="3" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="52" y="132" width="22" height="10" rx="3" fill="#4A4A4A" stroke="#000000" stroke-width="4"/>
+      <path d="M52,156 L76,156 M52,168 L70,168" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-limb-crossed" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-60,175 M0,130 L60,175 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <!-- crossing forearms -->
+      <path d="M-60,175 Q-20,192 30,175 M60,175 Q20,192 -30,175" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-60" cy="175" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="60" cy="175" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-panic" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-80,80 M0,130 L80,80 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-80" cy="80" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="80" cy="80" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-head" viewBox="-160 -110 320 460">
+      <clipPath id="rig-head-clip"><circle cx="0" cy="0" r="90"/></clipPath>
+      <circle cx="0" cy="0" r="90" style="fill:var(--tone-head, var(--tone, #9B9B9B))"/>
+      <circle cx="-12" cy="-12" r="90" fill="currentColor" clip-path="url(#rig-head-clip)"/>
+      <circle cx="0" cy="0" r="90" fill="none" stroke="#000000" stroke-width="6"/>
+      <circle cx="3" cy="-2" r="92" fill="none" stroke="#000000" stroke-width="2.5"/>
+    </symbol>
+<symbol id="rig-brows-neutral" viewBox="-160 -110 320 460">
+      <path d="M-44,-30 L-16,-30 M16,-30 L44,-30" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-eyes-neutral" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-10" r="7" fill="#000000"/>
+      <circle cx="30" cy="-10" r="7" fill="#000000"/>
+    </symbol>
+<symbol id="rig-mouth-neutral" viewBox="-160 -110 320 460">
+      <path d="M-20,34 L20,34" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-cereal-box" viewBox="0 0 240 260">
+      <path d="M48,44 L192,38 L192,222 L48,228 Z" fill="currentColor"/>
+      <path d="M140,40 L192,38 L192,222 L140,224 Z" style="fill:var(--tone, #61422A)"/>
+      <path d="M48,44 L192,38 L192,222 L48,228 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M48,44 L192,38 L192,222 L48,228 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <circle cx="92" cy="108" r="34" fill="#F5C518" stroke="#000000" stroke-width="6"/>
+      <path d="M74,120 L92,92 L110,120 Z" fill="#D94040" stroke="#000000" stroke-width="4"/>
+      <path d="M62,166 L126,164" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+</defs>
+</svg>
+<div id="s02-stage" class="fill" style="background:#FFFFFF">
 
-            <div id="s02-box" class="actor" style="left: 800px; top: 380px; width: 320px; height: 440px">
-              <svg width="320" height="440" viewBox="0 0 320 440" stroke="#000000" stroke-width="10" stroke-linejoin="round" style="display: block; overflow: visible">
-                <rect x="10" y="10" width="300" height="420" fill="#F5820D" />
-                <rect x="10" y="10" width="300" height="70" fill="#F5C518" />
-                <rect x="10" y="150" width="300" height="110" fill="#F5C518" />
-                <text x="160" y="232" text-anchor="middle" font-family="Bangers" font-size="64" fill="#000000" stroke="none">CEREAL</text>
-                <path d="M104 326 L216 326 Q206 396 160 396 Q114 396 104 326 Z" fill="#FFFFFF" />
-                <g fill="#F5C518" stroke-width="5">
-                  <circle cx="136" cy="314" r="12" />
-                  <circle cx="160" cy="306" r="12" />
-                  <circle cx="184" cy="314" r="12" />
-                </g>
-              </svg>
-            </div>
+<div id="s02-ink" class="fill">
+<div id="s02-e0" class="actor" style="left:1115px;top:200px;width:650px;height:934px;opacity:0">
+<svg width="650" height="934" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8;--tone-head:#D8D8D8">
+<use href="#rig-body" x="-160" y="-110" width="320" height="460"/>
+<g id="s02-e0-limb-idle" opacity="1"><use href="#rig-limb-idle" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s02-e0-limb-point" opacity="0"><use href="#rig-limb-point" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s02-e0-limb-walk" opacity="0"><use href="#rig-limb-walk" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s02-e0-limb-clipboard" opacity="0"><use href="#rig-limb-clipboard" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s02-e0-limb-crossed" opacity="0"><use href="#rig-limb-crossed" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s02-e0-limb-panic" opacity="0"><use href="#rig-limb-panic" x="-160" y="-110" width="320" height="460"/></g>
+<use href="#rig-head" x="-160" y="-110" width="320" height="460"/>
+<g id="s02-e0-x-neutral" opacity="1"><use href="#rig-brows-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-neutral" x="-160" y="-110" width="320" height="460"/></g>
 
-            <svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#D94040" stroke-width="22" stroke-linecap="round">
-              <path id="s02-x1" pathLength="1" d="M740 410 L980 790" />
-              <path id="s02-x2" pathLength="1" d="M980 410 L740 790" />
-            </svg>
-          </div>
-        </div>
+</svg>
+</div>
+<div id="s02-e1" class="actor" style="left:390px;top:590px;width:240px;height:260px;opacity:1">
+<svg width="240" height="260" viewBox="0 0 240 260" color="#F5820D" style="display:block;overflow:visible;--tone:#AC5B09">
+<use href="#prop-cereal-box" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s02-x0" class="draw" pathLength="1" stroke="#D94040" stroke-width="18" d="M390 600 L630 840"/><path id="s02-x1" class="draw" pathLength="1" stroke="#D94040" stroke-width="18" d="M630 600 L390 840"/></svg>
+</div>
+<div id="s02-t0" class="ttl" style="color:#000000;opacity:0;font-size:150px">LATER</div>
+</div>
 
-        <h1 id="s02-title" class="ttl" style="opacity: 0">LATER</h1>
-      </div>
+</div>
 
       <script>
         const f = (n) => n / 24;
         const tl = gsap.timeline({ paused: true });
-
-        for (let n = 0; n < 240; n += 3) {
-          tl.set("#s02-ink", { filter: `url(#s02-boil-${"abc"[(n / 3) % 3]})` }, f(n));
-        }
-
-        tl.fromTo("#s02-inv", { x: 700 }, { x: 0, duration: f(10), ease: "power3.out" }, f(0));
-
-        tl.set("#s02-eyes", { opacity: 0 }, f(48));
-        tl.set("#s02-blink", { opacity: 1 }, f(48));
-        tl.set("#s02-eyes", { opacity: 1 }, f(50));
-        tl.set("#s02-blink", { opacity: 0 }, f(50));
-
-        tl.set("#s02-brow-r", { opacity: 0 }, f(48));
-        tl.set("#s02-brow-c", { opacity: 1 }, f(48));
-
-        tl.fromTo("#s02-title", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(96));
-
-        tl.fromTo("#s02-x1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(6), ease: "none" }, f(144));
-        tl.fromTo("#s02-x2", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(6), ease: "none" }, f(147));
-
-        tl.set("#s02-brow-r", { opacity: 0 }, f(192));
-        tl.set("#s02-brow-c", { opacity: 1 }, f(192));
-        tl.set("#s02-m-n", { opacity: 0 }, f(192));
-        tl.set("#s02-m-s", { opacity: 1 }, f(192));
-
-        tl.fromTo("#s02-stage", { scale: 1 }, { scale: 1.06, duration: f(240), ease: "power1.inOut" }, f(0));
-
+        tl.set("#s02-ink", { filter: "url(#s02-boil-a)" }, f(0));
+        tl.set("#s02-ink", { filter: "url(#s02-boil-b)" }, f(24));
+        tl.set("#s02-ink", { filter: "url(#s02-boil-c)" }, f(48));
+        tl.set("#s02-ink", { filter: "url(#s02-boil-a)" }, f(72));
+        tl.set("#s02-ink", { filter: "url(#s02-boil-b)" }, f(96));
+        tl.set("#s02-ink", { filter: "url(#s02-boil-c)" }, f(120));
+        tl.set("#s02-ink", { filter: "url(#s02-boil-a)" }, f(144));
+        tl.set("#s02-ink", { filter: "url(#s02-boil-b)" }, f(168));
+        tl.set("#s02-ink", { filter: "url(#s02-boil-c)" }, f(192));
+        tl.set("#s02-ink", { filter: "url(#s02-boil-a)" }, f(216));
+        tl.fromTo("#s02-e0", { x: 400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(0));
+        tl.set("#s02-e0-x-neutral", { opacity: 1 }, f(48));
+        tl.fromTo("#s02-x0", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(8), ease: "none" }, f(144));
+        tl.fromTo("#s02-x1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(8), ease: "none" }, f(152));
+        tl.set("#s02-e0-x-neutral", { opacity: 1 }, f(192));
+        tl.fromTo("#s02-stage", { scale: 1 }, { scale: 1.06, duration: f(240), ease: "none" }, f(0));
+        tl.fromTo("#s02-t0", { opacity: 0, scale: 1.45 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(96));
         window.__timelines["s02"] = tl;
       </script>
     </template>

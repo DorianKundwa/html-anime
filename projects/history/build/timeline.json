@@ -1,0 +1,251 @@
+{
+  "fps": 24,
+  "audioSeconds": 20,
+  "totalFrames": 480,
+  "scenes": [
+    {
+      "id": "S01",
+      "n": 1,
+      "startF": 0,
+      "endF": 96,
+      "frames": 96,
+      "bg": "tan",
+      "cast": [
+        "KING"
+      ],
+      "props": [
+        "ENV-CASTLE",
+        "THRONE",
+        "SCROLL"
+      ],
+      "layout": "KING in the center third, THRONE in the center third, SCROLL on the right",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 1,
+      "cueLast": 1,
+      "beats": [
+        {
+          "frame": 0,
+          "verb": "POP",
+          "text": "KING enters on the left"
+        },
+        {
+          "frame": 24,
+          "verb": "POP",
+          "text": "THRONE appears in the center"
+        },
+        {
+          "frame": 48,
+          "verb": "POP",
+          "text": "SCROLL appears at the right"
+        },
+        {
+          "frame": 72,
+          "verb": "SWAP",
+          "text": "KING's expression to sly"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 0,
+          "pos": "top",
+          "color": "black",
+          "text": "THE ROYAL DECREE"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "n": 2,
+      "startF": 96,
+      "endF": 240,
+      "frames": 144,
+      "bg": "cobalt",
+      "cast": [
+        "WARRIOR"
+      ],
+      "props": [
+        "ENV-SEA",
+        "SHIP"
+      ],
+      "layout": "WARRIOR in the left third, SHIP in the right third",
+      "camera": "push",
+      "out": "hard-cut",
+      "cueFirst": 2,
+      "cueLast": 2,
+      "beats": [
+        {
+          "frame": 96,
+          "verb": "POP",
+          "text": "WARRIOR enters on the left"
+        },
+        {
+          "frame": 144,
+          "verb": "SLIDE",
+          "text": "SHIP in from the right"
+        },
+        {
+          "frame": 192,
+          "verb": "SWAP",
+          "text": "WARRIOR's face to evil"
+        }
+      ],
+      "texts": []
+    },
+    {
+      "id": "S03",
+      "n": 3,
+      "startF": 240,
+      "endF": 336,
+      "frames": 96,
+      "bg": "sky+ground",
+      "cast": [
+        "KING",
+        "WARRIOR"
+      ],
+      "props": [
+        "ENV-BATTLEFIELD",
+        "SWORD",
+        "SHIELD"
+      ],
+      "layout": "WARRIOR in the left third, KING in the right third",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 3,
+      "cueLast": 3,
+      "beats": [
+        {
+          "frame": 240,
+          "verb": "POP",
+          "text": "SWORD appears in the center"
+        },
+        {
+          "frame": 264,
+          "verb": "DRAW",
+          "text": "a black arrow from WARRIOR to KING"
+        },
+        {
+          "frame": 288,
+          "verb": "SWAP",
+          "text": "WARRIOR's face to rage"
+        },
+        {
+          "frame": 312,
+          "verb": "SHAKE",
+          "text": "SWORD"
+        }
+      ],
+      "texts": []
+    },
+    {
+      "id": "S04",
+      "n": 4,
+      "startF": 336,
+      "endF": 480,
+      "frames": 144,
+      "bg": "night",
+      "cast": [
+        "KING"
+      ],
+      "props": [
+        "MAP-EUROPE",
+        "TOMBSTONE"
+      ],
+      "layout": "KING in the left third, MAP-EUROPE in the right third",
+      "camera": "push",
+      "out": "hard-cut",
+      "cueFirst": 4,
+      "cueLast": 4,
+      "beats": [
+        {
+          "frame": 336,
+          "verb": "POP",
+          "text": "MAP-EUROPE appears at the right"
+        },
+        {
+          "frame": 384,
+          "verb": "SWAP",
+          "text": "KING falls dead"
+        },
+        {
+          "frame": 432,
+          "verb": "CROSS",
+          "text": "a red X over KING"
+        }
+      ],
+      "texts": []
+    }
+  ],
+  "cues": [
+    {
+      "n": 1,
+      "frame": 0,
+      "text": "The cereal box story starts here."
+    },
+    {
+      "n": 2,
+      "frame": 96,
+      "text": "The Oseberg ship was buried in Norway."
+    },
+    {
+      "n": 3,
+      "frame": 240,
+      "text": "Alcuin wrote about raiding."
+    },
+    {
+      "n": 4,
+      "frame": 336,
+      "text": "The invoice came later."
+    }
+  ],
+  "captions": [
+    {
+      "cue": 1,
+      "startF": 0,
+      "endF": 96,
+      "lines": [
+        "The cereal box story starts here."
+      ]
+    },
+    {
+      "cue": 2,
+      "startF": 96,
+      "endF": 240,
+      "lines": [
+        "The Oseberg ship was buried in Norway."
+      ]
+    },
+    {
+      "cue": 3,
+      "startF": 240,
+      "endF": 336,
+      "lines": [
+        "Alcuin wrote about raiding."
+      ]
+    },
+    {
+      "cue": 4,
+      "startF": 336,
+      "endF": 480,
+      "lines": [
+        "The invoice came later."
+      ]
+    }
+  ],
+  "cast": {
+    "KING": "stick figure, white head, yellow crown, cobalt cape, grey armor",
+    "WARRIOR": "stick figure, white head, grey helmet, red tunic"
+  },
+  "props": {
+    "ENV-CASTLE": "stone fortress battlements with towers and portcullis gate",
+    "ENV-SEA": "rolling ocean waves with coastal cliff lighthouse",
+    "ENV-BATTLEFIELD": "smoky war hills with arrows and barricades",
+    "MAP-EUROPE": "strategic map of europe with tactical attack arrows",
+    "THRONE": "ornate gold and red velvet royal throne",
+    "SCROLL": "rolled parchment treaty with red wax seal",
+    "SHIP": "wooden galleon warship with red cross on billowing sails",
+    "SWORD": "iron knight blade with gold crossguard and pommel",
+    "SHIELD": "heater shield with rivets and gold heraldic cross",
+    "TOMBSTONE": "grey stone grave marker with carved cross"
+  }
+}

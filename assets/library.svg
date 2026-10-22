@@ -49,6 +49,18 @@
       <circle cx="30" cy="-6" r="7" fill="#000000"/>
       <path d="M-46,-30 L-14,-20 M46,-30 L14,-20" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
     </symbol>
+    <symbol id="rig-eyes-dead" viewBox="-160 -110 320 460">
+      <path d="M-38,-18 L-22,-2 M-22,-18 L-38,-2" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+      <path d="M22,-18 L38,-2 M38,-18 L22,-2" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+      <path d="M-14,32 L14,32 M0,32 L-2,44 L6,44 L4,32" fill="#D94040" stroke="#000000" stroke-width="3"/>
+    </symbol>
+    <symbol id="rig-eyes-rage" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-6" r="10" fill="#D94040" stroke="#000000" stroke-width="4"/>
+      <circle cx="30" cy="-6" r="10" fill="#D94040" stroke="#000000" stroke-width="4"/>
+      <circle cx="-30" cy="-6" r="4" fill="#000000"/>
+      <circle cx="30" cy="-6" r="4" fill="#000000"/>
+      <path d="M-48,-28 L-12,-12 M48,-28 L12,-12" stroke="#D94040" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
 
     <symbol id="rig-brows-neutral" viewBox="-160 -110 320 460">
       <path d="M-44,-30 L-16,-30 M16,-30 L44,-30" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
@@ -76,6 +88,10 @@
     </symbol>
     <symbol id="rig-mouth-frown" viewBox="-160 -110 320 460">
       <path d="M-22,44 Q0,26 22,44" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-mouth-evil" viewBox="-160 -110 320 460">
+      <path d="M-28,24 Q0,60 28,24 Z" fill="#000000" stroke="#000000" stroke-width="4"/>
+      <path d="M-20,28 L-14,38 L-8,28 L-2,38 L4,28 L10,38 L16,28" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none"/>
     </symbol>
 
     <symbol id="rig-body" viewBox="-160 -110 320 460">
@@ -178,6 +194,28 @@
     <symbol id="rig-tie" viewBox="-160 -110 320 460">
       <path d="M0,118 L13,132 L9,182 L0,192 L-9,182 L-13,132 Z" fill="var(--c-tie, #D94040)" stroke="#000000" stroke-width="4" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="rig-armor" viewBox="-160 -110 320 460">
+      <path d="M-48,104 Q0,86 48,104 L56,156 L46,252 L-46,252 L-56,156 Z" fill="var(--c-garment, #4A4A4A)"/>
+      <path d="M18,94 L48,104 L56,156 L46,252 L24,252 Z" style="fill:var(--tone, #343434)"/>
+      <path d="M-48,104 Q0,86 48,104 L56,156 L46,252 L-46,252 L-56,156 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <rect x="-68" y="104" width="28" height="26" rx="6" fill="var(--c-garment, #4A4A4A)" stroke="#000000" stroke-width="5"/>
+      <rect x="40" y="104" width="28" height="26" rx="6" fill="var(--c-garment, #4A4A4A)" stroke="#000000" stroke-width="5"/>
+      <circle cx="0" cy="148" r="14" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <line x1="-30" y1="190" x2="30" y2="190" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+      <line x1="-24" y1="214" x2="24" y2="214" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rig-cape" viewBox="-160 -110 320 460">
+      <path d="M-44,96 L-78,310 L78,310 L44,96 Z" fill="var(--c-cape, var(--c-garment, #D94040))"/>
+      <path d="M18,96 L44,96 L78,310 L48,310 Z" style="fill:var(--tone-cape, var(--tone, #982D2D))"/>
+      <path d="M-44,96 L-78,310 L78,310 L44,96 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="rig-tunic" viewBox="-160 -110 320 460">
+      <path d="M-46,104 Q0,86 46,104 L56,156 L64,280 L-64,280 L-56,156 Z" fill="var(--c-garment, #8B5E3C)"/>
+      <path d="M20,96 L46,104 L56,156 L64,280 L36,280 L24,152 Z" style="fill:var(--tone, #61422A)"/>
+      <path d="M-46,104 Q0,86 46,104 L56,156 L64,280 L-64,280 L-56,156 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <rect x="-50" y="194" width="100" height="18" fill="#000000"/>
+      <rect x="-14" y="190" width="28" height="26" rx="4" fill="#F5C518" stroke="#000000" stroke-width="3"/>
+    </symbol>
     <symbol id="rig-hat-beanie" viewBox="-160 -110 320 460">
       <path d="M-76,-30 Q-76,-100 0,-100 Q76,-100 76,-30 Z" fill="var(--c-hat, #F5C518)"/>
       <path d="M20,-92 Q44,-84 58,-62 L76,-30 L40,-30 L20,-66 Z" style="fill:var(--tone, #AC8A11)"/>
@@ -197,6 +235,30 @@
       <path d="M20,-90 Q56,-80 66,-54 L72,-38 L40,-38 L20,-68 Z" style="fill:var(--tone, #982D2D)"/>
       <path d="M-72,-38 Q-72,-98 0,-98 Q72,-98 72,-38 Z" fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
       <path d="M-72,-38 L30,-38 Q92,-34 100,-18 L-72,-18 Z" fill="var(--c-hat, #D94040)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="rig-hat-crown" viewBox="-160 -110 320 460">
+      <path d="M-60,-40 L-70,-96 L-30,-64 L0,-102 L30,-64 L70,-96 L60,-40 Z" fill="var(--c-hat, #F5C518)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M12,-72 L30,-64 L70,-96 L60,-40 L18,-40 Z" style="fill:var(--tone, #AC8A11)"/>
+      <circle cx="-70" cy="-96" r="6" fill="#D94040" stroke="#000000" stroke-width="3"/>
+      <circle cx="0" cy="-102" r="7" fill="#2D5FBF" stroke="#000000" stroke-width="3"/>
+      <circle cx="70" cy="-96" r="6" fill="#D94040" stroke="#000000" stroke-width="3"/>
+      <rect x="-64" y="-40" width="128" height="16" rx="4" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <circle cx="-40" cy="-32" r="3" fill="#000000"/>
+      <circle cx="0" cy="-32" r="3" fill="#000000"/>
+      <circle cx="40" cy="-32" r="3" fill="#000000"/>
+    </symbol>
+    <symbol id="rig-hat-helmet" viewBox="-160 -110 320 460">
+      <path d="M-72,-30 Q-72,-100 0,-100 Q72,-100 72,-30 L54,10 L30,14 L0,-10 L-30,14 L-54,10 Z" fill="var(--c-hat, #4A4A4A)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M18,-92 Q50,-80 62,-50 L72,-30 L54,10 L30,14 L20,-10 Z" style="fill:var(--tone, #343434)"/>
+      <path d="M-40,-16 L40,-16" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <path d="M0,-100 L0,-40" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+      <polygon points="0,-104 -10,-80 10,-80" fill="#D94040" stroke="#000000" stroke-width="4"/>
+    </symbol>
+    <symbol id="rig-hat-tricorn" viewBox="-160 -110 320 460">
+      <path d="M-96,-34 Q-70,-96 0,-96 Q70,-96 96,-34 Q40,-54 0,-54 Q-40,-54 -96,-34 Z" fill="var(--c-hat, #000000)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M-92,-34 Q-40,-50 0,-50 Q40,-50 92,-34" fill="none" stroke="#F5C518" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="0" cy="-68" r="10" fill="#FFFFFF" stroke="#000000" stroke-width="3"/>
+      <circle cx="0" cy="-68" r="5" fill="#D94040"/>
     </symbol>
     <symbol id="rig-hair-short" viewBox="-160 -110 320 460">
       <path d="M-88,-26 A88,88 0 0 1 88,-26 L74,-44 Q40,-84 0,-84 Q-40,-84 -74,-44 Z" fill="var(--c-hair, #000000)" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
@@ -893,6 +955,465 @@
     </symbol>
     <symbol id="fx-sparkle" viewBox="0 0 240 260">
       <path d="M120,60 Q128,122 180,130 Q128,138 120,200 Q112,138 60,130 Q112,122 120,60 Z" fill="#F5C518" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+    </symbol>
+    <!-- Common Environment Set: Laundromat -->
+    <symbol id="prop-env-laundromat" viewBox="0 0 1200 400">
+      <line x1="0" y1="360" x2="1200" y2="360" stroke="#000000" stroke-width="8"/>
+      <path d="M100,360 L40,400 M350,360 L280,400 M600,360 L540,400 M850,360 L800,400 M1100,360 L1060,400" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+      <rect x="60" y="80" width="220" height="276" rx="12" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="250" y="84" width="26" height="268" rx="8" style="fill:var(--tone, #9B9B9B)"/>
+      <circle cx="170" cy="210" r="70" fill="#6EB5E8" stroke="#000000" stroke-width="8"/>
+      <circle cx="170" cy="210" r="54" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M130,240 L150,210 L170,230 L190,210 L210,240 Z" fill="#D94040" stroke="#000000" stroke-width="4"/>
+      <circle cx="180" cy="195" r="10" fill="#F5C518" stroke="#000000" stroke-width="3"/>
+      <circle cx="230" cy="116" r="8" fill="#000000"/>
+      <rect x="320" y="80" width="220" height="276" rx="12" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="510" y="84" width="26" height="268" rx="8" style="fill:var(--tone, #9B9B9B)"/>
+      <circle cx="430" cy="210" r="70" fill="#6EB5E8" stroke="#000000" stroke-width="8"/>
+      <circle cx="430" cy="210" r="54" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M390,240 L410,210 L430,230 L450,210 L470,240 Z" fill="#2D5FBF" stroke="#000000" stroke-width="4"/>
+      <circle cx="440" cy="195" r="10" fill="#F5820D" stroke="#000000" stroke-width="3"/>
+      <circle cx="490" cy="116" r="8" fill="#000000"/>
+      <rect x="580" y="80" width="220" height="276" rx="12" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="770" y="84" width="26" height="268" rx="8" style="fill:var(--tone, #9B9B9B)"/>
+      <circle cx="690" cy="210" r="70" fill="#6EB5E8" stroke="#000000" stroke-width="8"/>
+      <circle cx="690" cy="210" r="54" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M650,240 L670,210 L690,230 L710,210 L730,240 Z" fill="#3A9E3A" stroke="#000000" stroke-width="4"/>
+      <circle cx="700" cy="195" r="10" fill="#F5C518" stroke="#000000" stroke-width="3"/>
+      <circle cx="750" cy="116" r="8" fill="#000000"/>
+      <rect x="850" y="180" width="310" height="32" rx="4" fill="#8B5E3C" stroke="#000000" stroke-width="8"/>
+      <path d="M880,212 L870,360 M1130,212 L1140,360 M900,280 L1110,280" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <rect x="890" y="140" width="80" height="38" rx="4" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="980" y="126" width="90" height="52" rx="4" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="990" y="96" width="70" height="28" rx="4" fill="#6EB5E8" stroke="#000000" stroke-width="5"/>
+      <circle cx="170" cy="36" r="28" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <line x1="170" y1="36" x2="170" y2="20" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <line x1="170" y1="36" x2="184" y2="36" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <rect x="420" y="16" width="240" height="42" rx="8" fill="#F5C518" stroke="#000000" stroke-width="6"/>
+      <text x="540" y="44" text-anchor="middle" font-family="Lato, sans-serif" font-weight="700" font-size="22" fill="#000000">LAUNDROMAT</text>
+    </symbol>
+    <!-- Common Environment Set: Corridor -->
+    <symbol id="prop-env-corridor" viewBox="0 0 1200 400">
+      <line x1="0" y1="370" x2="1200" y2="370" stroke="#000000" stroke-width="8"/>
+      <line x1="0" y1="30" x2="1200" y2="30" stroke="#000000" stroke-width="6"/>
+      <line x1="220" y1="190" x2="0" y2="370" stroke="#000000" stroke-width="4"/>
+      <line x1="220" y1="190" x2="0" y2="30" stroke="#000000" stroke-width="4"/>
+      <line x1="220" y1="190" x2="400" y2="370" stroke="#000000" stroke-width="4"/>
+      <line x1="220" y1="190" x2="800" y2="370" stroke="#000000" stroke-width="4"/>
+      <rect x="180" y="140" width="80" height="110" fill="#4A4A4A" stroke="#000000" stroke-width="6"/>
+      <rect x="310" y="110" width="100" height="170" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <line x1="360" y1="110" x2="360" y2="280" stroke="#000000" stroke-width="4"/>
+      <rect x="335" y="90" width="50" height="18" rx="3" fill="#000000"/>
+      <polygon points="360,94 354,103 366,103" fill="#F5C518"/>
+      <rect x="470" y="80" width="160" height="230" fill="#FFFFFF" stroke="#000000" stroke-width="7"/>
+      <line x1="550" y1="80" x2="550" y2="310" stroke="#000000" stroke-width="5"/>
+      <rect x="520" y="56" width="60" height="22" rx="4" fill="#000000"/>
+      <polygon points="550,60 542,72 558,72" fill="#F5C518"/>
+      <rect x="730" y="44" width="260" height="310" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="960" y="48" width="28" height="302" rx="4" style="fill:var(--tone, #9B9B9B)"/>
+      <line x1="860" y1="44" x2="860" y2="354" stroke="#000000" stroke-width="6"/>
+      <rect x="810" y="14" width="100" height="28" rx="5" fill="#000000"/>
+      <polygon points="860,18 848,34 872,34" fill="#F5C518"/>
+      <rect x="1030" y="160" width="24" height="60" rx="4" fill="#4A4A4A" stroke="#000000" stroke-width="4"/>
+      <circle cx="1042" cy="176" r="6" fill="#F5C518"/>
+      <circle cx="1042" cy="202" r="6" fill="#FFFFFF"/>
+    </symbol>
+    <!-- Common Environment Set: Office -->
+    <symbol id="prop-env-office" viewBox="0 0 1200 400">
+      <line x1="0" y1="360" x2="1200" y2="360" stroke="#000000" stroke-width="8"/>
+      <rect x="60" y="80" width="160" height="276" rx="6" fill="#4A4A4A" stroke="#000000" stroke-width="8"/>
+      <rect x="76" y="100" width="128" height="60" rx="4" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="120" y="124" width="40" height="12" rx="3" fill="#000000"/>
+      <rect x="76" y="180" width="128" height="60" rx="4" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="120" y="204" width="40" height="12" rx="3" fill="#000000"/>
+      <rect x="76" y="260" width="128" height="60" rx="4" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="120" y="284" width="40" height="12" rx="3" fill="#000000"/>
+      <rect x="360" y="180" width="500" height="34" rx="4" fill="#8B5E3C" stroke="#000000" stroke-width="8"/>
+      <path d="M400,214 L390,360 M820,214 L830,360 M420,280 L800,280" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <rect x="520" y="84" width="130" height="92" rx="6" fill="#000000" stroke="#000000" stroke-width="6"/>
+      <rect x="530" y="94" width="110" height="72" fill="#FFFFFF"/>
+      <polyline points="540,150 564,124 590,138 626,104" fill="none" stroke="#D94040" stroke-width="5"/>
+      <rect x="572" y="176" width="26" height="14" fill="#000000"/>
+      <rect x="550" y="186" width="70" height="6" fill="#000000"/>
+      <path d="M720,180 L740,110 L700,90" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <polygon points="700,90 680,80 670,110 710,104" fill="#F5C518" stroke="#000000" stroke-width="5"/>
+      <rect x="980" y="160" width="120" height="196" rx="8" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <ellipse cx="1040" cy="110" rx="46" ry="56" fill="#6EB5E8" stroke="#000000" stroke-width="7"/>
+      <circle cx="1040" cy="210" r="10" fill="#2D5FBF"/>
+      <circle cx="1040" cy="240" r="10" fill="#D94040"/>
+    </symbol>
+    <!-- Common Environment Set: City -->
+    <symbol id="prop-env-city" viewBox="0 0 1200 400">
+      <line x1="0" y1="360" x2="1200" y2="360" stroke="#000000" stroke-width="8"/>
+      <line x1="0" y1="384" x2="1200" y2="384" stroke="#000000" stroke-width="4"/>
+      <rect x="40" y="90" width="180" height="268" fill="#2D5FBF" stroke="#000000" stroke-width="7"/>
+      <rect x="180" y="96" width="36" height="258" style="fill:var(--tone, #1F4386)"/>
+      <rect x="64" y="120" width="28" height="34" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <rect x="110" y="120" width="28" height="34" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <rect x="64" y="180" width="28" height="34" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <rect x="110" y="180" width="28" height="34" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <rect x="64" y="240" width="28" height="34" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <rect x="110" y="240" width="28" height="34" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <rect x="250" y="30" width="240" height="328" fill="#4A4A4A" stroke="#000000" stroke-width="8"/>
+      <rect x="440" y="36" width="46" height="318" style="fill:var(--tone, #343434)"/>
+      <line x1="370" y1="30" x2="370" y2="0" stroke="#000000" stroke-width="6"/>
+      <circle cx="370" cy="0" r="7" fill="#D94040"/>
+      <g fill="#F5C518" stroke="#000000" stroke-width="4">
+        <rect x="278" y="60" width="26" height="28"/><rect x="320" y="60" width="26" height="28"/><rect x="362" y="60" width="26" height="28"/>
+        <rect x="278" y="110" width="26" height="28"/><rect x="320" y="110" width="26" height="28"/><rect x="362" y="110" width="26" height="28"/>
+        <rect x="278" y="160" width="26" height="28"/><rect x="320" y="160" width="26" height="28"/><rect x="362" y="160" width="26" height="28"/>
+        <rect x="278" y="210" width="26" height="28"/><rect x="320" y="210" width="26" height="28"/><rect x="362" y="210" width="26" height="28"/>
+        <rect x="278" y="260" width="26" height="28"/><rect x="320" y="260" width="26" height="28"/><rect x="362" y="260" width="26" height="28"/>
+      </g>
+      <rect x="520" y="120" width="220" height="238" fill="#C4965A" stroke="#000000" stroke-width="7"/>
+      <rect x="696" y="126" width="40" height="228" style="fill:var(--tone, #89693F)"/>
+      <rect x="770" y="70" width="260" height="288" fill="#8B5E3C" stroke="#000000" stroke-width="7"/>
+      <rect x="980" y="76" width="46" height="278" style="fill:var(--tone, #61422A)"/>
+      <path d="M1070,360 L1070,140 Q1070,80 1120,80" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <polygon points="1110,96 1130,96 1136,126 1104,126" fill="#F5C518" stroke="#000000" stroke-width="5"/>
+      <circle cx="1120" cy="116" r="6" fill="#FFFFFF"/>
+    </symbol>
+    <!-- Common Environment Set: Room / Interior -->
+    <symbol id="prop-env-room" viewBox="0 0 1200 400">
+      <line x1="0" y1="360" x2="1200" y2="360" stroke="#000000" stroke-width="8"/>
+      <line x1="0" y1="340" x2="1200" y2="340" stroke="#000000" stroke-width="4"/>
+      <rect x="120" y="60" width="180" height="220" rx="4" fill="#6EB5E8" stroke="#000000" stroke-width="7"/>
+      <line x1="210" y1="60" x2="210" y2="280" stroke="#000000" stroke-width="5"/>
+      <line x1="120" y1="160" x2="300" y2="160" stroke="#000000" stroke-width="5"/>
+      <line x1="90" y1="46" x2="330" y2="46" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <polygon points="96,46 130,46 116,280 96,280" fill="#D94040" stroke="#000000" stroke-width="5"/>
+      <polygon points="324,46 290,46 304,280 324,280" fill="#D94040" stroke="#000000" stroke-width="5"/>
+      <rect x="520" y="80" width="160" height="110" rx="4" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <rect x="532" y="92" width="136" height="86" fill="#F5C518"/>
+      <circle cx="600" cy="135" r="24" fill="#F5820D" stroke="#000000" stroke-width="4"/>
+      <rect x="420" y="240" width="360" height="116" rx="10" fill="#C4965A" stroke="#000000" stroke-width="8"/>
+      <rect x="440" y="220" width="140" height="50" rx="8" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="600" y="220" width="140" height="50" rx="8" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="740" y="248" width="32" height="104" rx="4" style="fill:var(--tone, #89693F)"/>
+      <path d="M980,360 L980,110" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <polygon points="940,110 1020,110 1000,60 960,60" fill="#F5C518" stroke="#000000" stroke-width="6"/>
+      <ellipse cx="980" cy="110" rx="40" ry="10" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+    <!-- Common Environment Set: Courtroom / Hearing Hall -->
+    <symbol id="prop-env-courtroom" viewBox="0 0 1200 400">
+      <line x1="0" y1="360" x2="1200" y2="360" stroke="#000000" stroke-width="8"/>
+      <rect x="0" y="20" width="1200" height="340" fill="#8B5E3C" stroke="#000000" stroke-width="8"/>
+      <rect x="80" y="40" width="160" height="160" fill="none" stroke="#61422A" stroke-width="6"/>
+      <rect x="300" y="40" width="160" height="160" fill="none" stroke="#61422A" stroke-width="6"/>
+      <rect x="520" y="40" width="160" height="160" fill="none" stroke="#61422A" stroke-width="6"/>
+      <rect x="740" y="40" width="160" height="160" fill="none" stroke="#61422A" stroke-width="6"/>
+      <rect x="960" y="40" width="160" height="160" fill="none" stroke="#61422A" stroke-width="6"/>
+      <rect x="360" y="160" width="480" height="198" fill="#4A4A4A" stroke="#000000" stroke-width="8"/>
+      <rect x="340" y="140" width="520" height="30" rx="4" fill="#C4965A" stroke="#000000" stroke-width="7"/>
+      <rect x="790" y="166" width="44" height="186" style="fill:var(--tone, #343434)"/>
+      <rect x="560" y="128" width="50" height="14" rx="2" fill="#8B5E3C" stroke="#000000" stroke-width="4"/>
+      <rect x="574" y="112" width="22" height="18" rx="3" fill="#8B5E3C" stroke="#000000" stroke-width="4"/>
+      <line x1="585" y1="120" x2="625" y2="108" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="600" cy="80" r="30" fill="#F5C518" stroke="#000000" stroke-width="5"/>
+      <line x1="600" y1="62" x2="600" y2="98" stroke="#000000" stroke-width="4"/>
+      <line x1="580" y1="72" x2="620" y2="72" stroke="#000000" stroke-width="4"/>
+      <rect x="920" y="220" width="200" height="138" fill="#C4965A" stroke="#000000" stroke-width="7"/>
+      <line x1="920" y1="260" x2="1120" y2="260" stroke="#000000" stroke-width="4"/>
+    </symbol>
+
+    <!-- Historical Prop: Sword -->
+    <symbol id="prop-sword" viewBox="0 0 240 260">
+      <path d="M106,86 L108,214 L120,246 L132,214 L134,86 Z" fill="#FFFFFF" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M120,86 L134,86 L132,214 L120,246 Z" style="fill:var(--tone, #D8D8D8)"/>
+      <line x1="120" y1="88" x2="120" y2="216" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <rect x="62" y="72" width="116" height="18" rx="6" fill="#F5C518" stroke="#000000" stroke-width="6"/>
+      <circle cx="68" cy="81" r="7" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <circle cx="172" cy="81" r="7" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <rect x="112" y="34" width="16" height="38" rx="3" fill="#8B5E3C" stroke="#000000" stroke-width="5"/>
+      <line x1="112" y1="46" x2="128" y2="46" stroke="#000000" stroke-width="3"/>
+      <line x1="112" y1="58" x2="128" y2="58" stroke="#000000" stroke-width="3"/>
+      <circle cx="120" cy="24" r="14" fill="#F5C518" stroke="#000000" stroke-width="6"/>
+      <circle cx="120" cy="24" r="5" fill="#D94040"/>
+    </symbol>
+
+    <!-- Historical Prop: Shield -->
+    <symbol id="prop-shield" viewBox="0 0 240 260">
+      <path d="M42,34 L198,34 Q204,152 120,236 Q36,152 42,34 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,34 L198,34 Q204,152 120,236 Z" style="fill:var(--tone, #343434)"/>
+      <path d="M42,34 L198,34 Q204,152 120,236 Q36,152 42,34 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(3,3)"/>
+      <path d="M120,52 L120,186 M68,100 L172,100" stroke="#F5C518" stroke-width="16" stroke-linecap="round"/>
+      <path d="M120,52 L120,186 M68,100 L172,100" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="58" cy="48" r="4" fill="#FFFFFF"/>
+      <circle cx="182" cy="48" r="4" fill="#FFFFFF"/>
+      <circle cx="176" cy="118" r="4" fill="#FFFFFF"/>
+      <circle cx="64" cy="118" r="4" fill="#FFFFFF"/>
+      <circle cx="120" cy="216" r="4" fill="#FFFFFF"/>
+    </symbol>
+
+    <!-- Historical Prop: Crown -->
+    <symbol id="prop-crown" viewBox="0 0 240 260">
+      <path d="M52,148 Q120,80 188,148 Z" fill="#D94040" stroke="#000000" stroke-width="6"/>
+      <path d="M34,154 L24,78 L74,116 L120,44 L166,116 L216,78 L206,154 Z" fill="#F5C518" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,44 L166,116 L216,78 L206,154 L120,154 Z" style="fill:var(--tone, #AC8A11)"/>
+      <circle cx="24" cy="78" r="8" fill="#D94040" stroke="#000000" stroke-width="4"/>
+      <circle cx="120" cy="44" r="10" fill="#2D5FBF" stroke="#000000" stroke-width="4"/>
+      <circle cx="216" cy="78" r="8" fill="#D94040" stroke="#000000" stroke-width="4"/>
+      <rect x="28" y="154" width="184" height="34" rx="6" fill="#FFFFFF" stroke="#000000" stroke-width="7"/>
+      <circle cx="58" cy="171" r="4" fill="#000000"/>
+      <circle cx="98" cy="171" r="4" fill="#000000"/>
+      <circle cx="142" cy="171" r="4" fill="#000000"/>
+      <circle cx="182" cy="171" r="4" fill="#000000"/>
+      <line x1="30" y1="156" x2="210" y2="156" stroke="#000000" stroke-width="2.5" transform="translate(0,-2)"/>
+    </symbol>
+
+    <!-- Historical Prop: Scroll / Parchment / Treaty -->
+    <symbol id="prop-scroll" viewBox="0 0 240 260">
+      <path d="M46,38 L194,38 L188,212 Q120,224 52,212 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M150,38 L194,38 L188,212 L150,214 Z" style="fill:var(--tone, #D8D8D8)"/>
+      <line x1="68" y1="68" x2="172" y2="68" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="94" x2="172" y2="94" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="120" x2="172" y2="120" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="146" x2="140" y2="146" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <ellipse cx="120" cy="38" rx="76" ry="14" fill="#C4965A" stroke="#000000" stroke-width="7"/>
+      <ellipse cx="120" cy="214" rx="72" ry="14" fill="#C4965A" stroke="#000000" stroke-width="7"/>
+      <path d="M112,176 L100,230 M128,176 L140,230" stroke="#D94040" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="120" cy="176" r="20" fill="#D94040" stroke="#000000" stroke-width="5"/>
+      <circle cx="120" cy="176" r="10" fill="#982D2D"/>
+    </symbol>
+
+    <!-- Historical Prop: Tombstone / Grave -->
+    <symbol id="prop-tombstone" viewBox="0 0 240 260">
+      <path d="M48,228 L48,96 A72,72 0 0 1 192,96 L192,228 Z" fill="#4A4A4A" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M140,42 A72,72 0 0 1 192,96 L192,228 L140,228 Z" style="fill:var(--tone, #343434)"/>
+      <path d="M48,228 L48,96 A72,72 0 0 1 192,96 L192,228 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(3,3)"/>
+      <path d="M120,68 L120,118 M102,86 L138,86" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+      <text class="prop-text" x="120" y="162" text-anchor="middle" font-family="Lato" font-weight="700" font-size="36" fill="#FFFFFF">R.I.P.</text>
+      <path d="M22,230 Q120,208 218,230 L218,246 L22,246 Z" fill="#3A9E3A" stroke="#000000" stroke-width="6"/>
+      <line x1="80" y1="222" x2="84" y2="210" stroke="#296F29" stroke-width="4" stroke-linecap="round"/>
+      <line x1="160" y1="222" x2="156" y2="208" stroke="#296F29" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Historical Prop: Skull -->
+    <symbol id="prop-skull" viewBox="0 0 240 260">
+      <line x1="40" y1="50" x2="200" y2="210" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"/>
+      <line x1="40" y1="50" x2="200" y2="210" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <line x1="200" y1="50" x2="40" y2="210" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"/>
+      <line x1="200" y1="50" x2="40" y2="210" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <path d="M58,110 A62,62 0 0 1 182,110 Q182,154 158,168 L158,206 L82,206 L82,168 Q58,154 58,110 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,48 A62,62 0 0 1 182,110 Q182,154 158,168 L158,206 L120,206 Z" style="fill:var(--tone, #D8D8D8)"/>
+      <ellipse cx="92" cy="116" rx="16" ry="20" fill="#000000"/>
+      <ellipse cx="148" cy="116" rx="16" ry="20" fill="#000000"/>
+      <polygon points="120,138 112,156 128,156" fill="#000000"/>
+      <line x1="98" y1="186" x2="98" y2="206" stroke="#000000" stroke-width="4"/>
+      <line x1="112" y1="186" x2="112" y2="206" stroke="#000000" stroke-width="4"/>
+      <line x1="128" y1="186" x2="128" y2="206" stroke="#000000" stroke-width="4"/>
+      <line x1="142" y1="186" x2="142" y2="206" stroke="#000000" stroke-width="4"/>
+    </symbol>
+
+    <!-- Historical Prop: Fire / Flames -->
+    <symbol id="prop-fire" viewBox="0 0 240 260">
+      <line x1="36" y1="216" x2="204" y2="242" stroke="#8B5E3C" stroke-width="16" stroke-linecap="round"/>
+      <line x1="36" y1="216" x2="204" y2="242" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+      <line x1="36" y1="242" x2="204" y2="216" stroke="#61422A" stroke-width="16" stroke-linecap="round"/>
+      <line x1="36" y1="242" x2="204" y2="216" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+      <path d="M120,24 Q164,80 188,112 Q218,148 200,192 Q180,230 120,230 Q60,230 40,192 Q22,148 52,112 Q76,80 120,24 Z" fill="#D94040" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,68 Q152,112 168,136 Q186,166 172,198 Q156,226 120,226 Q84,226 68,198 Q54,166 72,136 Q88,112 120,68 Z" fill="#F5820D" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M120,118 Q140,150 148,170 Q156,188 144,212 Q136,224 120,224 Q104,224 96,212 Q84,188 92,170 Q100,150 120,118 Z" fill="#F5C518" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- Historical Prop: Flag / War Banner -->
+    <symbol id="prop-flag" viewBox="0 0 240 260">
+      <line x1="48" y1="20" x2="48" y2="246" stroke="#8B5E3C" stroke-width="10" stroke-linecap="round"/>
+      <polygon points="48,12 38,30 58,30" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <path d="M48,34 Q124,18 204,38 L168,88 L204,138 Q124,118 48,134 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,26 Q162,30 204,38 L168,88 L204,138 Q162,128 120,126 Z" style="fill:var(--tone, #982D2D)"/>
+      <path d="M48,34 Q124,18 204,38 L168,88 L204,138 Q124,118 48,134 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(3,2)"/>
+      <circle cx="106" cy="84" r="18" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <path d="M106,72 L106,96 M94,84 L118,84" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Historical Prop: Throne -->
+    <symbol id="prop-throne" viewBox="0 0 240 260">
+      <rect x="52" y="32" width="136" height="152" rx="16" fill="#F5C518" stroke="#000000" stroke-width="8"/>
+      <path d="M96,32 L108,12 L120,24 L132,12 L144,32 Z" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <rect x="68" y="48" width="104" height="122" rx="10" fill="#D94040" stroke="#000000" stroke-width="5"/>
+      <line x1="68" y1="88" x2="172" y2="88" stroke="#982D2D" stroke-width="4"/>
+      <line x1="68" y1="128" x2="172" y2="128" stroke="#982D2D" stroke-width="4"/>
+      <rect x="32" y="142" width="28" height="58" rx="6" fill="#F5C518" stroke="#000000" stroke-width="6"/>
+      <rect x="180" y="142" width="28" height="58" rx="6" fill="#F5C518" stroke="#000000" stroke-width="6"/>
+      <rect x="52" y="162" width="136" height="38" rx="6" fill="#D94040" stroke="#000000" stroke-width="7"/>
+      <line x1="56" y1="200" x2="44" y2="246" stroke="#F5C518" stroke-width="12" stroke-linecap="round"/>
+      <line x1="184" y1="200" x2="196" y2="246" stroke="#F5C518" stroke-width="12" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Historical Prop: Army Battalion -->
+    <symbol id="prop-army" viewBox="0 0 240 260">
+      <line x1="34" y1="28" x2="48" y2="226" stroke="#000000" stroke-width="5"/>
+      <polygon points="34,20 28,38 40,38" fill="#4A4A4A" stroke="#000000" stroke-width="2"/>
+      <line x1="72" y1="18" x2="84" y2="226" stroke="#000000" stroke-width="5"/>
+      <polygon points="72,10 66,28 78,28" fill="#4A4A4A" stroke="#000000" stroke-width="2"/>
+      <line x1="112" y1="24" x2="120" y2="226" stroke="#000000" stroke-width="5"/>
+      <polygon points="112,16 106,34 118,34" fill="#4A4A4A" stroke="#000000" stroke-width="2"/>
+      <line x1="154" y1="14" x2="158" y2="226" stroke="#000000" stroke-width="5"/>
+      <polygon points="154,6 148,24 160,24" fill="#4A4A4A" stroke="#000000" stroke-width="2"/>
+      <line x1="194" y1="30" x2="192" y2="226" stroke="#000000" stroke-width="5"/>
+      <polygon points="194,22 188,40 200,40" fill="#4A4A4A" stroke="#000000" stroke-width="2"/>
+      <polygon points="156,24 214,36 157,60" fill="#D94040" stroke="#000000" stroke-width="3"/>
+      <ellipse cx="48" cy="132" rx="16" ry="14" fill="#4A4A4A" stroke="#000000" stroke-width="4"/>
+      <ellipse cx="88" cy="128" rx="16" ry="14" fill="#4A4A4A" stroke="#000000" stroke-width="4"/>
+      <ellipse cx="128" cy="130" rx="16" ry="14" fill="#4A4A4A" stroke="#000000" stroke-width="4"/>
+      <ellipse cx="168" cy="128" rx="16" ry="14" fill="#4A4A4A" stroke="#000000" stroke-width="4"/>
+      <path d="M22,148 Q46,138 70,148 Q94,138 118,148 Q142,138 166,148 Q190,138 214,148 L214,216 L22,216 Z" fill="currentColor" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M118,148 Q142,138 166,148 Q190,138 214,148 L214,216 L118,216 Z" style="fill:var(--tone, #343434)"/>
+      <line x1="42" y1="216" x2="34" y2="246" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="76" y1="216" x2="86" y2="246" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="114" y1="216" x2="106" y2="246" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="152" y1="216" x2="162" y2="246" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="188" y1="216" x2="180" y2="246" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Historical Prop: Warship / Galleon -->
+    <symbol id="prop-ship" viewBox="0 0 240 260">
+      <path d="M22,148 Q38,218 120,224 Q196,218 226,140 L188,140 L188,158 L54,158 L22,148 Z" fill="#8B5E3C" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,158 L188,158 L226,140 Q196,218 120,224 Z" style="fill:var(--tone, #61422A)"/>
+      <rect x="74" y="174" width="12" height="12" fill="#000000"/>
+      <rect x="114" y="176" width="12" height="12" fill="#000000"/>
+      <rect x="154" y="174" width="12" height="12" fill="#000000"/>
+      <line x1="78" y1="36" x2="78" y2="158" stroke="#000000" stroke-width="6"/>
+      <line x1="152" y1="26" x2="152" y2="158" stroke="#000000" stroke-width="7"/>
+      <path d="M56,48 Q78,42 100,48 L96,114 Q78,124 60,114 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M128,40 Q152,34 176,40 L172,112 Q152,122 132,112 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M152,54 L152,98 M138,76 L166,76" stroke="#D94040" stroke-width="8" stroke-linecap="round"/>
+      <path d="M10,224 Q60,206 120,224 Q180,242 230,224" fill="none" stroke="#6EB5E8" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Historical Prop: Europe Strategic War Map -->
+    <symbol id="prop-map-europe" viewBox="0 0 240 260">
+      <rect x="20" y="26" width="200" height="206" rx="6" fill="#C4965A" stroke="#000000" stroke-width="8"/>
+      <rect x="24" y="30" width="192" height="198" rx="4" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <rect x="180" y="30" width="36" height="198" style="fill:var(--tone, #89693F)"/>
+      <path d="M50,70 Q70,58 92,68 Q90,98 72,106 Q54,102 50,70 Z" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <path d="M106,64 Q154,56 182,78 Q174,124 140,140 Q112,120 106,64 Z" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <path d="M68,128 Q96,120 106,146 Q98,186 64,180 Z" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <path d="M136,144 Q148,154 162,188 L148,194 Q132,168 136,144 Z" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <path d="M68,148 Q108,110 148,98" fill="none" stroke="#D94040" stroke-width="12" stroke-linecap="round"/>
+      <polygon points="160,96 140,84 144,112" fill="#D94040" stroke="#000000" stroke-width="3"/>
+      <line x1="140" y1="120" x2="164" y2="144" stroke="#D94040" stroke-width="5"/>
+      <line x1="164" y1="120" x2="140" y2="144" stroke="#D94040" stroke-width="5"/>
+    </symbol>
+
+    <!-- Common Environment Set: Castle / Fortress -->
+    <symbol id="prop-env-castle" viewBox="0 0 1200 400">
+      <line x1="0" y1="360" x2="1200" y2="360" stroke="#000000" stroke-width="8"/>
+      <path d="M0,280 Q240,210 520,270 Q800,200 1200,260 L1200,360 L0,360 Z" fill="#3A9E3A" stroke="#000000" stroke-width="6"/>
+      <rect x="60" y="80" width="180" height="280" fill="#4A4A4A" stroke="#000000" stroke-width="8"/>
+      <rect x="200" y="86" width="34" height="274" style="fill:var(--tone, #343434)"/>
+      <rect x="52" y="52" width="40" height="32" fill="#4A4A4A" stroke="#000000" stroke-width="6"/>
+      <rect x="106" y="52" width="40" height="32" fill="#4A4A4A" stroke="#000000" stroke-width="6"/>
+      <rect x="160" y="52" width="40" height="32" fill="#4A4A4A" stroke="#000000" stroke-width="6"/>
+      <rect x="212" y="52" width="36" height="32" fill="#4A4A4A" stroke="#000000" stroke-width="6"/>
+      <polygon points="150,14 110,52 190,52" fill="#D94040" stroke="#000000" stroke-width="6"/>
+      <line x1="150" y1="14" x2="150" y2="0" stroke="#000000" stroke-width="4"/>
+      <polygon points="150,0 180,6 150,12" fill="#F5C518"/>
+      <rect x="240" y="160" width="540" height="200" fill="#4A4A4A" stroke="#000000" stroke-width="8"/>
+      <g fill="#4A4A4A" stroke="#000000" stroke-width="6">
+        <rect x="250" y="132" width="36" height="30"/><rect x="306" y="132" width="36" height="30"/>
+        <rect x="362" y="132" width="36" height="30"/><rect x="418" y="132" width="36" height="30"/>
+        <rect x="566" y="132" width="36" height="30"/><rect x="622" y="132" width="36" height="30"/>
+        <rect x="678" y="132" width="36" height="30"/><rect x="734" y="132" width="36" height="30"/>
+      </g>
+      <path d="M460,360 L460,240 A50,50 0 0 1 560,240 L560,360 Z" fill="#8B5E3C" stroke="#000000" stroke-width="8"/>
+      <line x1="510" y1="190" x2="510" y2="360" stroke="#000000" stroke-width="6"/>
+      <line x1="460" y1="270" x2="560" y2="270" stroke="#000000" stroke-width="6"/>
+      <line x1="460" y1="315" x2="560" y2="315" stroke="#000000" stroke-width="6"/>
+      <rect x="780" y="60" width="220" height="300" fill="#4A4A4A" stroke="#000000" stroke-width="8"/>
+      <rect x="956" y="66" width="38" height="294" style="fill:var(--tone, #343434)"/>
+      <g fill="#4A4A4A" stroke="#000000" stroke-width="6">
+        <rect x="772" y="32" width="40" height="32"/><rect x="828" y="32" width="40" height="32"/>
+        <rect x="884" y="32" width="40" height="32"/><rect x="940" y="32" width="40" height="32"/>
+        <rect x="996" y="32" width="16" height="32"/>
+      </g>
+      <rect x="136" y="140" width="12" height="42" rx="4" fill="#000000"/>
+      <rect x="880" y="120" width="14" height="48" rx="4" fill="#000000"/>
+      <rect x="424" y="240" width="12" height="30" fill="#8B5E3C"/>
+      <polygon points="430,224 420,240 440,240" fill="#F5820D"/>
+      <rect x="584" y="240" width="12" height="30" fill="#8B5E3C"/>
+      <polygon points="590,224 580,240 600,240" fill="#F5820D"/>
+    </symbol>
+
+    <!-- Common Environment Set: Battlefield -->
+    <symbol id="prop-env-battlefield" viewBox="0 0 1200 400">
+      <line x1="0" y1="360" x2="1200" y2="360" stroke="#000000" stroke-width="8"/>
+      <path d="M0,240 Q300,190 600,230 Q900,180 1200,220 L1200,360 L0,360 Z" fill="#8B5E3C" stroke="#000000" stroke-width="6"/>
+      <path d="M0,280 Q400,250 800,290 Q1050,260 1200,280 L1200,360 L0,360 Z" fill="#3A9E3A" stroke="#000000" stroke-width="6"/>
+      <ellipse cx="260" cy="180" rx="70" ry="40" fill="#9B9B9B" stroke="#000000" stroke-width="4"/>
+      <ellipse cx="320" cy="160" rx="90" ry="50" fill="#4A4A4A" stroke="#000000" stroke-width="5"/>
+      <ellipse cx="880" cy="160" rx="80" ry="46" fill="#4A4A4A" stroke="#000000" stroke-width="5"/>
+      <line x1="200" y1="180" x2="200" y2="240" stroke="#000000" stroke-width="3"/>
+      <line x1="220" y1="174" x2="220" y2="240" stroke="#000000" stroke-width="3"/>
+      <line x1="240" y1="182" x2="240" y2="240" stroke="#000000" stroke-width="3"/>
+      <line x1="920" y1="170" x2="920" y2="230" stroke="#000000" stroke-width="3"/>
+      <line x1="940" y1="164" x2="940" y2="230" stroke="#000000" stroke-width="3"/>
+      <line x1="960" y1="172" x2="960" y2="230" stroke="#000000" stroke-width="3"/>
+      <path d="M120,360 A46,46 0 0 1 212,360 Z" fill="#8B5E3C" stroke="#000000" stroke-width="8"/>
+      <circle cx="166" cy="360" r="14" fill="#4A4A4A" stroke="#000000" stroke-width="5"/>
+      <line x1="380" y1="360" x2="350" y2="290" stroke="#8B5E3C" stroke-width="6" stroke-linecap="round"/>
+      <polygon points="350,290 342,304 358,304" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <line x1="430" y1="360" x2="454" y2="304" stroke="#8B5E3C" stroke-width="6" stroke-linecap="round"/>
+      <polygon points="454,304 446,318 462,318" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <line x1="600" y1="360" x2="680" y2="290" stroke="#8B5E3C" stroke-width="10" stroke-linecap="round"/>
+      <line x1="680" y1="360" x2="600" y2="290" stroke="#8B5E3C" stroke-width="10" stroke-linecap="round"/>
+      <line x1="580" y1="330" x2="700" y2="330" stroke="#8B5E3C" stroke-width="12" stroke-linecap="round"/>
+      <line x1="1040" y1="210" x2="1040" y2="360" stroke="#8B5E3C" stroke-width="8" stroke-linecap="round"/>
+      <polygon points="1040,210 1120,234 1040,260" fill="#D94040" stroke="#000000" stroke-width="6"/>
+    </symbol>
+
+    <!-- Common Environment Set: War Room / Strategy HQ -->
+    <symbol id="prop-env-war-room" viewBox="0 0 1200 400">
+      <line x1="0" y1="360" x2="1200" y2="360" stroke="#000000" stroke-width="8"/>
+      <rect x="0" y="20" width="1200" height="340" fill="#61422A" stroke="#000000" stroke-width="8"/>
+      <line x1="0" y1="140" x2="1200" y2="140" stroke="#000000" stroke-width="5"/>
+      <line x1="300" y1="20" x2="300" y2="360" stroke="#000000" stroke-width="5"/>
+      <line x1="600" y1="20" x2="600" y2="360" stroke="#000000" stroke-width="5"/>
+      <line x1="900" y1="20" x2="900" y2="360" stroke="#000000" stroke-width="5"/>
+      <rect x="80" y="50" width="140" height="200" rx="4" fill="#D94040" stroke="#000000" stroke-width="6"/>
+      <polygon points="150,70 170,110 130,110" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <polygon points="80,250 150,280 220,250" fill="#D94040" stroke="#000000" stroke-width="6"/>
+      <rect x="980" y="50" width="140" height="200" rx="4" fill="#2D5FBF" stroke="#000000" stroke-width="6"/>
+      <circle cx="1050" cy="100" r="24" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <polygon points="980,250 1050,280 1120,250" fill="#2D5FBF" stroke="#000000" stroke-width="6"/>
+      <rect x="320" y="200" width="560" height="46" rx="4" fill="#8B5E3C" stroke="#000000" stroke-width="8"/>
+      <rect x="360" y="160" width="480" height="44" rx="3" fill="#C4965A" stroke="#000000" stroke-width="6"/>
+      <rect x="420" y="146" width="24" height="18" fill="#D94040" stroke="#000000" stroke-width="3"/>
+      <rect x="460" y="146" width="24" height="18" fill="#D94040" stroke="#000000" stroke-width="3"/>
+      <rect x="700" y="146" width="24" height="18" fill="#2D5FBF" stroke="#000000" stroke-width="3"/>
+      <rect x="740" y="146" width="24" height="18" fill="#2D5FBF" stroke="#000000" stroke-width="3"/>
+      <rect x="360" y="246" width="30" height="114" fill="#61422A" stroke="#000000" stroke-width="6"/>
+      <rect x="810" y="246" width="30" height="114" fill="#61422A" stroke="#000000" stroke-width="6"/>
+      <line x1="390" y1="300" x2="810" y2="300" stroke="#000000" stroke-width="7"/>
+      <line x1="590" y1="160" x2="590" y2="100" stroke="#F5C518" stroke-width="6"/>
+      <line x1="560" y1="110" x2="620" y2="110" stroke="#F5C518" stroke-width="5"/>
+      <rect x="556" y="90" width="8" height="20" fill="#FFFFFF"/>
+      <polygon points="560,78 554,90 566,90" fill="#F5C518"/>
+      <rect x="586" y="80" width="8" height="20" fill="#FFFFFF"/>
+      <polygon points="590,68 584,80 596,80" fill="#F5C518"/>
+      <rect x="616" y="90" width="8" height="20" fill="#FFFFFF"/>
+      <polygon points="620,78 614,90 626,90" fill="#F5C518"/>
+    </symbol>
+
+    <!-- Common Environment Set: Sea / Ocean / Naval -->
+    <symbol id="prop-env-sea" viewBox="0 0 1200 400">
+      <line x1="0" y1="360" x2="1200" y2="360" stroke="#000000" stroke-width="8"/>
+      <path d="M0,140 Q100,160 160,220 Q200,300 240,360 L0,360 Z" fill="#4A4A4A" stroke="#000000" stroke-width="8"/>
+      <path d="M120,180 Q160,240 240,360 L180,360 Z" style="fill:var(--tone, #343434)"/>
+      <polygon points="80,140 100,70 120,70 140,140" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <rect x="94" y="60" width="32" height="14" fill="#D94040" stroke="#000000" stroke-width="4"/>
+      <polygon points="110,48 100,60 120,60" fill="#F5C518"/>
+      <path d="M0,280 Q150,260 300,280 Q450,300 600,280 Q750,260 900,280 Q1050,300 1200,280 L1200,360 L0,360 Z" fill="#2D5FBF" stroke="#000000" stroke-width="6"/>
+      <path d="M0,320 Q200,300 400,320 Q600,340 800,320 Q1000,300 1200,320 L1200,360 L0,360 Z" fill="#1F4386" stroke="#000000" stroke-width="6"/>
+      <path d="M720,240 Q740,262 790,262 Q830,260 840,236 Z" fill="#8B5E3C" stroke="#000000" stroke-width="4"/>
+      <line x1="756" y1="190" x2="756" y2="240" stroke="#000000" stroke-width="3"/>
+      <polygon points="742,196 756,192 756,226 742,226" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <line x1="800" y1="180" x2="800" y2="240" stroke="#000000" stroke-width="3"/>
+      <polygon points="786,186 800,182 800,224 786,224" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+      <polygon points="800,182 818,186 800,192" fill="#D94040"/>
+      <path d="M420,90 Q432,76 444,90 Q456,76 468,90" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
+      <path d="M510,120 Q520,108 530,120 Q540,108 550,120" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
     </symbol>
   </defs>
 </svg>

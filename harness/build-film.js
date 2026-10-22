@@ -53,9 +53,15 @@ const EXPRESSIONS = {
   droop:   { eyes: "rig-eyes-neutral", brows: "rig-brows-droop",     mouth: "rig-mouth-frown" },
   tired:   { eyes: "rig-eyes-tired",   brows: "rig-brows-droop",     mouth: "rig-mouth-frown" },
   panic:   { eyes: "rig-eyes-shock",   brows: "rig-brows-raised",    mouth: "rig-mouth-scream" },
+  dead:    { eyes: "rig-eyes-dead",    brows: "rig-brows-droop",     mouth: "rig-mouth-frown" },
+  rage:    { eyes: "rig-eyes-rage",    brows: "rig-brows-angry",     mouth: "rig-mouth-open" },
+  evil:    { eyes: "rig-eyes-sly",     brows: "rig-brows-angry",     mouth: "rig-mouth-evil" },
 };
 // Checked in order against a SWAP's text (with entry names removed).
 const EXPRESSION_WORDS = [
+  [/\b(dead|death|kill\w*|slain|defeat\w*|perish\w*|knock\w*|unconscious)\b/i, "dead"],
+  [/\b(rage|outrage\w*|livid|wrath)\b/i, "rage"],
+  [/\b(evil|schem\w*|wicked|villain\w*|malic\w*|sinister)\b/i, "evil"],
   [/\b(panic\w*|terrif\w*|scream\w*|horror)\b/i, "panic"],
   [/\b(tired|exhausted|sleepy|droop\w*|downcast|sadly)\b/i, "tired"],
   [/\b(angry|mad|furious|annoy\w*)\b/i, "angry"],
@@ -118,6 +124,9 @@ function tokenIn(desc, fallback) {
  * the description and picks the library symbol and the palette colour for each one.
  */
 const GARMENT_WORDS = [
+  [/\b(armor|armour|plate)\b/, "rig-armor"],
+  [/\bcape\b/, "rig-cape"],
+  [/\btunic\b/, "rig-tunic"],
   [/\brobe\b/, "rig-robe"],
   [/\blab-?coat\b/, "rig-labcoat"],
   [/\bsafety\s*vest\b/, "rig-vest-safety"],
@@ -129,6 +138,9 @@ const GARMENT_WORDS = [
   [/\b(blazer|jacket|coat|shirt)\b/, "rig-torso"],
 ];
 const HAT_WORDS = [
+  [/\bcrown\b/, "rig-hat-crown"],
+  [/\b(helmet|bascinet|helm)\b/, "rig-hat-helmet"],
+  [/\btricorn\b/, "rig-hat-tricorn"],
   [/\bhard\s*hat\b/, "rig-hat-hard"],
   [/\bhard\s*helm\w*\b/, "rig-hat-hard"],
   [/\bbeanie\b/, "rig-hat-beanie"],
@@ -209,6 +221,9 @@ function dressUp(desc) {
   let tie = null;
   const tieIdx = find(/\btie\b/);
   if (tieIdx >= 0) tie = { color: tokenBefore(tieIdx) ?? "red" };
+  let cape = null;
+  const capeIdx = find(/\bcape\b/);
+  if (capeIdx >= 0) cape = { symbol: "rig-cape", color: tokenBefore(capeIdx) ?? "red" };
 
   // Pose override from description words (e.g. "walking slumped" = walk-slump pose).
   let pose = null;
@@ -218,6 +233,7 @@ function dressUp(desc) {
   return {
     head,
     garment,
+    cape,
     hat,
     hair,
     scarf,
@@ -237,11 +253,97 @@ const SIZE_WORDS = [
   [/\bdistant\b/, 0.6],
 ];
 
+/** Library symbol that draws a prop, e.g. GREEN-BACKPACK -> prop-green-backpack. */
+export const propSymbol = (name) => `prop-${String(name).toLowerCase()}`;
+
+/**
+ * Props that share a drawn shape. The scene sheets name a prop for what it is
+ * (a book, a tag, a building), so many of them are the same object with another
+ * word for it. This map sends each of those names to the symbol that draws it,
+ * so no prop is ever left as a labelled box.
+ */
+export const PROP_ALIASES = {
+  "AFFIDAVIT": "prop-paper", "AIRPLANE": "prop-airplane", "AIRSTRIP": "prop-airstrip",
+  "ARCHIVE-SHELF": "prop-shelf", "BASKET": "prop-basket", "BELIEF-BUBBLE": "prop-cloud",
+  "BUS-ICON": "prop-building", "BUSINESS-CARD": "prop-card", "CABIN": "prop-building",
+  "CAMPUS-ICON": "prop-building", "CAR": "prop-car", "CHAIR": "prop-chair",
+  "CHECKMARK": "prop-check", "CHINA-MAP": "prop-map", "CLOCK-ICON": "prop-clock",
+  "COAT-RACK": "prop-tower", "COGS": "prop-gears", "COIN-JAR": "prop-coin-jar",
+  "COINS": "prop-coins", "COIN-STACKS": "prop-coins", "COMMUNITY-TABLE": "prop-desk",
+  "CRACK": "prop-crack", "CROSSING-BANNER": "prop-sign", "DEGREES-BAR": "prop-meter",
+  "DELETE-BUTTON": "prop-delete-button", "DESK": "prop-desk", "DICTIONARY": "prop-book",
+  "DOOR-SIGN": "prop-door-sign", "DOUBT-BOX": "prop-machine", "DOUBT-BUBBLE": "prop-cloud",
+  "DRIFT-WAVE": "prop-thread", "DRAWER": "prop-file-drawer", "DRYER": "prop-dryer",
+  "EAR": "prop-ear", "EYE": "prop-eye", "FILE-DRAWER": "prop-file-drawer",
+  "FILE-FOLDER": "prop-folder", "FLOOD-WAVE": "prop-thread", "GARLIC": "prop-garlic",
+  "GIVEN-PILE": "prop-pile", "GOVERNMENT-BUILDING": "prop-building",
+  "GUARD-BOOTH": "prop-building", "GUYANA-MAP": "prop-map", "HARBOR-BUILDING": "prop-harbor-building",
+  "HARBOR-SIGN": "prop-sign", "HEAT-WAVES": "prop-thread", "HOUSES-ICON": "prop-houses",
+  "IDEA-BULB": "prop-lightbulb", "INVITATION": "prop-card", "KITCHEN-DOOR": "prop-door",
+  "LABEL-STICKER": "prop-tag", "LEADER-CHAIR": "prop-chair", "LIST": "prop-paper",
+  "LOAD-BAR": "prop-meter", "LOOSE-THREAD": "prop-thread", "LOUD-MACHINE": "prop-machine",
+  "MAGNIFIER": "prop-magnifier", "MEGAPHONE": "prop-megaphone", "MIND-HEAD": "prop-mind-head",
+  "MUGS": "prop-mugs", "NAME-TAG": "prop-card", "NEWSPAPER": "prop-newspaper",
+  "OFFICE-ICON": "prop-building", "OLD-LEASE": "prop-paper", "PAPER-STACK": "prop-paper",
+  "PLAN-PAPER": "prop-paper", "PRICE-TAG": "prop-tag", "PURSE": "prop-purse",
+  "READING-LIST": "prop-paper", "RENT-TAG": "prop-tag", "ROAD-SIGN": "prop-sign",
+  "ROOM-WALLS": "prop-wall", "SACRED-BOOK": "prop-book", "SCHEDULE-WALL": "prop-schedule-wall",
+  "SCHOOL-ICON": "prop-building", "SIGH-CLOUD": "prop-cloud", "SLEEPING-ARM": "prop-arm",
+  "SLOPE": "prop-slope", "SMELL-LINES": "prop-thread", "STAGE-STONES": "prop-stones",
+  "STATIC-CLOUD": "prop-cloud", "STEP-MARKS": "prop-thread", "STOP-SIGN": "prop-sign",
+  "SUBLET-KEY": "prop-key", "SUNRISE": "prop-sunrise", "TALLY-MARKS": "prop-thread",
+  "TEACUP": "prop-teacup", "TEARS": "prop-thread", "TEMPLE-BUILDING": "prop-building",
+  "THICK-BOOK": "prop-book", "TIME-CARD": "prop-card", "TOWELS": "prop-boxes",
+  "TOWER": "prop-tower", "TRAFFIC-LIGHT": "prop-traffic-light", "TROUBLED-HOUSE": "prop-cracked-house",
+  "VOICEMAIL-ICON": "prop-voicemail", "WARNING-TRIANGLE": "prop-warning-triangle",
+  "WARMTH-METER": "prop-meter", "WEATHER-CLOUD": "prop-cloud", "WEIGHT": "prop-weight",
+  "ZIGZAG-LINE": "prop-thread", "BOXES": "prop-boxes", "GAVEL": "prop-gavel",
+  "LENS": "prop-lens", "NET": "prop-net", "CANDLES": "prop-candles",
+  // Harbor project props
+  "EMAIL-ICON": "prop-envelope", "CHECK-BLOCKS": "prop-boxes",
+  "COAT": "prop-briefcase", "TEAM-ICON": "prop-team",
+  "SIGN-WELCOMED": "prop-sign", "SIGN-COLLECTED": "prop-sign",
+  // Generic extras
+  "THOUGHT-BUBBLE": "prop-thought-bubble", "CALENDAR": "prop-calendar",
+  "BRIEFCASE": "prop-briefcase", "TALLY": "prop-thread", "ENVELOPE": "prop-envelope",
+  "ARROW": "prop-timeline", "LETTER": "prop-job-letter", "HOME": "prop-house",
+  // Common Environment Sets
+  "ENV-LAUNDROMAT": "prop-env-laundromat", "LAUNDROMAT-SET": "prop-env-laundromat", "LAUNDROMAT": "prop-env-laundromat",
+  "ENV-CORRIDOR": "prop-env-corridor", "HALLWAY": "prop-env-corridor", "ELEVATOR-ROW": "prop-env-corridor", "CORRIDOR": "prop-env-corridor",
+  "ENV-OFFICE": "prop-env-office", "OFFICE-SET": "prop-env-office", "CUBICLE": "prop-env-office",
+  "ENV-CITY": "prop-env-city", "CITY-SET": "prop-env-city", "STREET": "prop-env-city",
+  "ENV-ROOM": "prop-env-room", "ROOM-SET": "prop-env-room", "BEDROOM": "prop-env-room", "LIVING-ROOM": "prop-env-room", "APARTMENT": "prop-env-room",
+  "ENV-COURT": "prop-env-courtroom", "COURT-SET": "prop-env-courtroom", "COURTROOM": "prop-env-courtroom", "HEARING-ROOM": "prop-env-courtroom",
+  // Historical Props
+  "SWORD": "prop-sword", "BLADE": "prop-sword", "DAGGER": "prop-sword",
+  "SHIELD": "prop-shield",
+  "CROWN": "prop-crown", "CORONET": "prop-crown",
+  "SCROLL": "prop-scroll", "TREATY": "prop-scroll", "PARCHMENT": "prop-scroll", "DECREE": "prop-scroll",
+  "TOMBSTONE": "prop-tombstone", "GRAVE": "prop-tombstone", "GRAVESTONE": "prop-tombstone",
+  "SKULL": "prop-skull", "SKELETON": "prop-skull",
+  "FIRE": "prop-fire", "FLAMES": "prop-fire", "BONFIRE": "prop-fire", "TORCH": "prop-fire",
+  "FLAG": "prop-flag", "BANNER": "prop-flag", "STANDARD": "prop-flag",
+  "THRONE": "prop-throne", "ROYAL-CHAIR": "prop-throne",
+  "ARMY": "prop-army", "SOLDIERS": "prop-army", "TROOPS": "prop-army", "BATTALION": "prop-army",
+  "SHIP": "prop-ship", "WARSHIP": "prop-ship", "GALLEON": "prop-ship", "BOAT": "prop-ship",
+  "MAP-EUROPE": "prop-map-europe", "WAR-MAP": "prop-map-europe", "EUROPE-MAP": "prop-map-europe",
+  // Historical Environment Sets
+  "ENV-CASTLE": "prop-env-castle", "CASTLE-SET": "prop-env-castle", "CASTLE": "prop-env-castle", "FORTRESS": "prop-env-castle",
+  "ENV-BATTLEFIELD": "prop-env-battlefield", "BATTLEFIELD-SET": "prop-env-battlefield", "BATTLEFIELD": "prop-env-battlefield", "BATTLE": "prop-env-battlefield",
+  "ENV-WAR-ROOM": "prop-env-war-room", "WAR-ROOM-SET": "prop-env-war-room", "WAR-ROOM": "prop-env-war-room", "STRATEGY-ROOM": "prop-env-war-room",
+  "ENV-SEA": "prop-env-sea", "SEA-SET": "prop-env-sea", "OCEAN": "prop-env-sea", "NAVAL-SET": "prop-env-sea",
+};
+
+export const isEnvName = (name) => {
+  const sym = PROP_ALIASES[name] ?? propSymbol(name);
+  return sym.startsWith("prop-env-") || /^ENV-/i.test(name) || /-SET$/i.test(name);
+};
+
 function sceneEntries(s, dict) {
   const prefix = idOf(s);
   return [
     ...s.cast.map((name) => ({ name, kind: "actor", desc: dict.cast[name] })),
-    ...s.props.map((name) => ({ name, kind: "prop", desc: dict.props[name] })),
+    ...s.props.map((name) => ({ name, kind: "prop", desc: dict.props[name], isEnv: isEnvName(name) })),
   ].map((e, i) => ({
     ...e,
     id: `${prefix}-e${i}`,
@@ -264,14 +366,11 @@ const actorScale = (count) => ACTOR_SCALE[count] ?? 1;
  * Horizontal centre of each entry. Entries share the width evenly. A LAYOUT clause
  * with left, right, or center/middle moves the entries it names to that third.
  */
-function placeEntries(ents, layout) {
-  const n = ents.length;
-  const margin = 60;
-  const slot = (W - 2 * margin) / n;
-  const grid = ents.map((_, i) => Math.round(margin + (i + 0.5) * slot));
-  const xs = ents.map(() => null);
-  const anchor = new Map();
+function placeEntries(ents, layout, prevPositions = new Map()) {
+  const envEnts = ents.filter((e) => e.isEnv);
+  const foreEnts = ents.filter((e) => !e.isEnv);
   const clauses = layout.replace(/facing\s+(left|right)/gi, "").split(/[;,.]/);
+
   // A size word in a clause scales the entries it names, so "DRYER large on the right"
   // draws a big dryer and "NORA small on the left" draws a small one.
   for (const clause of clauses) {
@@ -281,12 +380,38 @@ function placeEntries(ents, layout) {
       break;
     }
   }
+
+  const anchor = new Map();
   for (const clause of clauses) {
     const word = /\b(left|right|center|centre|middle)\b/i.exec(clause);
     if (!word) continue;
     const x = { left: 480, right: 1440 }[word[1].toLowerCase()] ?? 960;
     for (const e of namesIn(clause, ents)) anchor.set(e, x);
   }
+
+  // Inter-scene continuity: if an actor was placed in the previous scene
+  // and has no explicit layout direction in this scene, inherit their previous anchor.
+  if (prevPositions && prevPositions.size) {
+    for (const e of foreEnts) {
+      if (e.kind === "actor" && !anchor.has(e) && prevPositions.has(e.name)) {
+        anchor.set(e, prevPositions.get(e.name));
+      }
+    }
+  }
+
+  // Environments default to screen center (or layout anchor if specified).
+  envEnts.forEach((e) => {
+    e.cx = anchor.get(e) ?? Math.round(W / 2);
+  });
+
+  const n = foreEnts.length;
+  if (n === 0) return;
+
+  const margin = 60;
+  const slot = (W - 2 * margin) / n;
+  const grid = foreEnts.map((_, i) => Math.round(margin + (i + 0.5) * slot));
+  const xs = foreEnts.map(() => null);
+
   // The width an entry is drawn at, after the scene's actor scale and any size word.
   const widthOf = (e) => Math.round((e.kind === "actor" ? ACTOR.w : PROP.w) * (e.scale ?? 1) * (e.crowd ?? 1));
   // How much of that width is ink. An actor is drawn in a 320 unit box but its head is
@@ -295,21 +420,23 @@ function placeEntries(ents, layout) {
   // Entries that share an anchor would stack on top of each other, so spread them
   // across it, side by side, by their widths.
   const groups = new Map();
-  for (const [e, x] of anchor) groups.set(x, [...(groups.get(x) ?? []), e]);
+  for (const [e, x] of anchor) {
+    if (!e.isEnv) groups.set(x, [...(groups.get(x) ?? []), e]);
+  }
   for (const [x, group] of groups) {
     const step = Math.max(...group.map((e) => visHalf(e) * 2 + 40));
     group.forEach((e, j) => {
-      xs[ents.indexOf(e)] = Math.round(x + (j - (group.length - 1) / 2) * step);
+      xs[foreEnts.indexOf(e)] = Math.round(x + (j - (group.length - 1) / 2) * step);
     });
   }
   // Entries with no LAYOUT anchor go in the free space that is left. The candidates are the
   // even grid slots and the middle of every gap between the entries already placed; the
   // one with the most room around it wins, so nothing lands on top of anything else.
   const placed = [];
-  ents.forEach((e, i) => {
+  foreEnts.forEach((e, i) => {
     if (xs[i] !== null) placed.push({ x: xs[i], half: visHalf(e) });
   });
-  ents.forEach((e, i) => {
+  foreEnts.forEach((e, i) => {
     if (xs[i] !== null) return;
     const half = visHalf(e);
     const lo = half + 8;
@@ -337,7 +464,7 @@ function placeEntries(ents, layout) {
     xs[i] = Math.round(best);
     placed.push({ x: xs[i], half });
   });
-  ents.forEach((e, i) => {
+  foreEnts.forEach((e, i) => {
     // Keep the drawn figure inside the frame: a head on the edge would be cut off.
     const half = Math.round(visHalf(e));
     e.cx = Math.max(half + 8, Math.min(W - half - 8, xs[i]));
@@ -423,6 +550,14 @@ function toneOf(color) {
 
 /** The box an entry is drawn in, after the scale its LAYOUT clause asked for. */
 function geom(e) {
+  if (e.isEnv) {
+    const s = e.scale ?? 1.6;
+    const w = Math.round(1200 * s);
+    const h = Math.round(400 * s);
+    const floorY = 360 * s;
+    const top = Math.round(GROUND - floorY);
+    return { w, h, top, half: w / 2, cy: top + h / 2, reach: 0 };
+  }
   const s = (e.scale ?? 1) * (e.crowd ?? 1);
   // FRAMING: bust/foreground scales actor to ~2× and anchors them low-left as a half-body crop.
   const framing = e.framing ?? "normal";
@@ -456,6 +591,8 @@ function actorMarkup(e, enter) {
   const vars = [
     `--tone:${toneOf(o.garment?.color ?? o.head)}`,
     `--tone-head:${toneOf(o.head)}`,
+    o.cape ? `--c-cape:${PALETTE[o.cape.color]}` : "",
+    o.cape ? `--tone-cape:${toneOf(o.cape.color)}` : "",
     o.garment ? `--c-garment:${PALETTE[o.garment.color]}` : "",
     o.hat ? `--c-hat:${PALETTE[o.hat.color]}` : "",
     o.hair ? `--c-hair:${PALETTE[o.hair.color]}` : "",
@@ -481,7 +618,7 @@ function actorMarkup(e, enter) {
     .join("\n");
   return `<div id="${e.id}" class="actor" style="left:${e.cx - g.half}px;top:${g.top}px;width:${g.w}px;height:${g.h}px;opacity:${hidden}">
 <svg width="${g.w}" height="${g.h}" viewBox="-160 -110 320 460" color="${PALETTE[o.head]}" style="display:block;overflow:visible;${vars}">
-${use("rig-body")}${under}
+${o.cape ? use(o.cape.symbol) : ""}${use("rig-body")}${under}
 ${limbs}
 ${use("rig-head")}
 ${layers}
@@ -496,61 +633,7 @@ function labelColor(bg) {
   return allowed.includes("black") ? "black" : allowed[0];
 }
 
-/** Library symbol that draws a prop, e.g. GREEN-BACKPACK -> prop-green-backpack. */
-const propSymbol = (name) => `prop-${String(name).toLowerCase()}`;
 
-/**
- * Props that share a drawn shape. The scene sheets name a prop for what it is
- * (a book, a tag, a building), so many of them are the same object with another
- * word for it. This map sends each of those names to the symbol that draws it,
- * so no prop is ever left as a labelled box.
- */
-export const PROP_ALIASES = {
-  "AFFIDAVIT": "prop-paper", "AIRPLANE": "prop-airplane", "AIRSTRIP": "prop-airstrip",
-  "ARCHIVE-SHELF": "prop-shelf", "BASKET": "prop-basket", "BELIEF-BUBBLE": "prop-cloud",
-  "BUS-ICON": "prop-building", "BUSINESS-CARD": "prop-card", "CABIN": "prop-building",
-  "CAMPUS-ICON": "prop-building", "CAR": "prop-car", "CHAIR": "prop-chair",
-  "CHECKMARK": "prop-check", "CHINA-MAP": "prop-map", "CLOCK-ICON": "prop-clock",
-  "COAT-RACK": "prop-tower", "COGS": "prop-gears", "COIN-JAR": "prop-coin-jar",
-  "COINS": "prop-coins", "COIN-STACKS": "prop-coins", "COMMUNITY-TABLE": "prop-desk",
-  "CRACK": "prop-crack", "CROSSING-BANNER": "prop-sign", "DEGREES-BAR": "prop-meter",
-  "DELETE-BUTTON": "prop-delete-button", "DESK": "prop-desk", "DICTIONARY": "prop-book",
-  "DOOR-SIGN": "prop-door-sign", "DOUBT-BOX": "prop-machine", "DOUBT-BUBBLE": "prop-cloud",
-  "DRIFT-WAVE": "prop-thread", "DRAWER": "prop-file-drawer", "DRYER": "prop-dryer",
-  "EAR": "prop-ear", "EYE": "prop-eye", "FILE-DRAWER": "prop-file-drawer",
-  "FILE-FOLDER": "prop-folder", "FLOOD-WAVE": "prop-thread", "GARLIC": "prop-garlic",
-  "GIVEN-PILE": "prop-pile", "GOVERNMENT-BUILDING": "prop-building",
-  "GUARD-BOOTH": "prop-building", "GUYANA-MAP": "prop-map", "HARBOR-BUILDING": "prop-harbor-building",
-  "HARBOR-SIGN": "prop-sign", "HEAT-WAVES": "prop-thread", "HOUSES-ICON": "prop-houses",
-  "IDEA-BULB": "prop-lightbulb", "INVITATION": "prop-card", "KITCHEN-DOOR": "prop-door",
-  "LABEL-STICKER": "prop-tag", "LEADER-CHAIR": "prop-chair", "LIST": "prop-paper",
-  "LOAD-BAR": "prop-meter", "LOOSE-THREAD": "prop-thread", "LOUD-MACHINE": "prop-machine",
-  "MAGNIFIER": "prop-magnifier", "MEGAPHONE": "prop-megaphone", "MIND-HEAD": "prop-mind-head",
-  "MUGS": "prop-mugs", "NAME-TAG": "prop-card", "NEWSPAPER": "prop-newspaper",
-  "OFFICE-ICON": "prop-building", "OLD-LEASE": "prop-paper", "PAPER-STACK": "prop-paper",
-  "PLAN-PAPER": "prop-paper", "PRICE-TAG": "prop-tag", "PURSE": "prop-purse",
-  "READING-LIST": "prop-paper", "RENT-TAG": "prop-tag", "ROAD-SIGN": "prop-sign",
-  "ROOM-WALLS": "prop-wall", "SACRED-BOOK": "prop-book", "SCHEDULE-WALL": "prop-schedule-wall",
-  "SCHOOL-ICON": "prop-building", "SIGH-CLOUD": "prop-cloud", "SLEEPING-ARM": "prop-arm",
-  "SLOPE": "prop-slope", "SMELL-LINES": "prop-thread", "STAGE-STONES": "prop-stones",
-  "STATIC-CLOUD": "prop-cloud", "STEP-MARKS": "prop-thread", "STOP-SIGN": "prop-sign",
-  "SUBLET-KEY": "prop-key", "SUNRISE": "prop-sunrise", "TALLY-MARKS": "prop-thread",
-  "TEACUP": "prop-teacup", "TEARS": "prop-thread", "TEMPLE-BUILDING": "prop-building",
-  "THICK-BOOK": "prop-book", "TIME-CARD": "prop-card", "TOWELS": "prop-boxes",
-  "TOWER": "prop-tower", "TRAFFIC-LIGHT": "prop-traffic-light", "TROUBLED-HOUSE": "prop-cracked-house",
-  "VOICEMAIL-ICON": "prop-voicemail", "WARNING-TRIANGLE": "prop-warning-triangle",
-  "WARMTH-METER": "prop-meter", "WEATHER-CLOUD": "prop-cloud", "WEIGHT": "prop-weight",
-  "ZIGZAG-LINE": "prop-thread", "BOXES": "prop-boxes", "GAVEL": "prop-gavel",
-  "LENS": "prop-lens", "NET": "prop-net", "CANDLES": "prop-candles",
-  // Harbor project props
-  "EMAIL-ICON": "prop-envelope", "CHECK-BLOCKS": "prop-boxes",
-  "COAT": "prop-briefcase", "TEAM-ICON": "prop-team",
-  "SIGN-WELCOMED": "prop-sign", "SIGN-COLLECTED": "prop-sign",
-  // Generic extras
-  "THOUGHT-BUBBLE": "prop-thought-bubble", "CALENDAR": "prop-calendar",
-  "BRIEFCASE": "prop-briefcase", "TALLY": "prop-thread", "ENVELOPE": "prop-envelope",
-  "ARROW": "prop-timeline", "LETTER": "prop-job-letter", "HOME": "prop-house",
-};
 
 /**
  * A prop is drawn from its library symbol. A prop with no symbol yet is a labelled
@@ -561,6 +644,16 @@ function propMarkup(e, enter, label, symbols, text) {
   const hidden = enter.has(e) ? 0 : 1;
   const id = PROP_ALIASES[e.name] ?? propSymbol(e.name);
   const sym = symbols.get(id);
+  if (e.isEnv) {
+    const art = sym
+      ? `<use href="#${id}" x="0" y="0" width="${g.w}" height="${g.h}"/>`
+      : `<rect x="0" y="0" width="${g.w}" height="${g.h}" fill="${PALETTE[e.color]}" stroke="${PALETTE.black}" stroke-width="4"/>`;
+    return `<div id="${e.id}" class="actor env-backdrop" style="left:${e.cx - g.half}px;top:${g.top}px;width:${g.w}px;height:${g.h}px;opacity:${hidden};z-index:0;pointer-events:none">
+<svg width="${g.w}" height="${g.h}" viewBox="0 0 1200 400" color="${PALETTE[e.color]}" style="display:block;overflow:visible;--tone:${toneOf(e.color)}">
+${art}
+</svg>
+</div>`;
+  }
   const art = sym
     ? /<text class="prop-(text|label)"/.test(sym)
       ? filledSymbol(sym, text, e.color)
@@ -640,17 +733,17 @@ function arrowD(a, b) {
   return `M${r(sx)} ${r(sy)} L${r(ex)} ${r(ey)} M${r(ex + w1[0] * 48)} ${r(ey + w1[1] * 48)} L${r(ex)} ${r(ey)} L${r(ex + w2[0] * 48)} ${r(ey + w2[1] * 48)}`;
 }
 
-/** Builds one scene composition. Returns { html, errors }. */
-function buildScene(s, dict, symbols) {
+/** Builds one scene composition. Returns { html, errors, positions }. */
+function buildScene(s, dict, symbols, prevPositions = new Map()) {
   const errors = [];
   const sid = idOf(s);
   const N = s.frames;
   const ents = sceneEntries(s, dict);
   const aScale = actorScale(ents.filter((e) => e.kind === "actor").length);
   for (const e of ents) e.crowd = e.kind === "actor" ? aScale : 1;
-  placeEntries(ents, s.layout || "");
+  placeEntries(ents, s.layout || "", prevPositions);
   const beats = resolveBeats(s, ents, errors);
-  if (errors.length) return { html: "", errors };
+  if (errors.length) return { html: "", errors, positions: new Map() };
   const actors = ents.filter((e) => e.kind === "actor");
 
   // Pass A: which faces and entries exist, when entries enter, where the camera starts.
@@ -707,6 +800,10 @@ function buildScene(s, dict, symbols) {
           for (const k of t.exprKeys) ops.push(`tl.set("#${t.id}-x-${k}", { opacity: ${k === b.expr ? 1 : 0} }, ${at(L)});`);
           t.state.expr = b.expr;
           t.poses.add(poseKey(t.state));
+          if (b.expr === "dead" || /\b(dead|collaps\w*|fall\w*|tumble\w*)\b/i.test(b.text)) {
+            const rot = t.cx < W / 2 ? 90 : -90;
+            ops.push(`tl.to("#${t.id}", { rotation: ${rot}, y: "+=120", transformOrigin: "center center", duration: ${at(6)}, ease: "bounce.out" }, ${at(L)});`);
+          }
         } else if (t) {
           ops.push(`tl.fromTo("#${t.id}", { scale: 1.08 }, { scale: 1, duration: ${at(2)}, ease: "power1.out" }, ${at(L)});`);
         }
@@ -845,9 +942,12 @@ function buildScene(s, dict, symbols) {
   const bgHex = PALETTE[s.bg === "sky+ground" ? "sky" : s.bg];
   const overlaySvg = `<svg class="fill" viewBox="0 0 ${W} ${H}" fill="none" stroke="${PALETTE.black}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible">${arrows.join("")}${crosses.join("")}</svg>`;
   const label = labelColor(s.bg);
-  const entityMarkup = ents
-    .map((e) => (e.kind === "actor" ? actorMarkup(e, enter) : propMarkup(e, enter, label, symbols, propLabel(e, dict, beats))))
-    .join("\n");
+  const envEnts = ents.filter((e) => e.isEnv);
+  const foreEnts = ents.filter((e) => !e.isEnv);
+  const entityMarkup = [
+    ...envEnts.map((e) => propMarkup(e, enter, label, symbols, propLabel(e, dict, beats))),
+    ...foreEnts.map((e) => (e.kind === "actor" ? actorMarkup(e, enter) : propMarkup(e, enter, label, symbols, propLabel(e, dict, beats)))),
+  ].join("\n");
   const stage = `<div id="${sid}-stage" class="fill" style="background:${bgHex}">
 ${ground}
 <div id="${sid}-ink" class="fill">
@@ -891,7 +991,9 @@ ${ops.map((o) => "        " + o).join("\n")}
   </body>
 </html>
 `;
-  return { html, errors };
+  const positions = new Map();
+  for (const e of actors) positions.set(e.name, e.cx);
+  return { html, errors, positions };
 }
 
 const FONT_FACES = `        @font-face {
@@ -910,6 +1012,7 @@ const FONT_FACES = `        @font-face {
 const SCENE_CSS = `        #root { position: absolute; inset: 0; width: ${W}px; height: ${H}px; overflow: hidden; }
         .fill { position: absolute; inset: 0; width: ${W}px; height: ${H}px; overflow: visible; }
         .actor { position: absolute; transform-origin: 50% 50%; }
+        .env-backdrop { position: absolute; transform-origin: 50% 50%; }
         .ttl {
           position: absolute; top: 60px; left: 0; width: ${W}px; margin: 0; text-align: center;
           font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
@@ -1053,7 +1156,13 @@ export function buildFilm(projectDir) {
   const dict = { cast: tl.cast ?? {}, props: tl.props ?? {} };
   const symbols = readSymbols(readFileSync(LIBRARY, "utf8"));
 
-  const scenes = tl.scenes.map((s) => ({ id: idOf(s), ...buildScene(s, dict, symbols) }));
+  const scenes = [];
+  let prevPositions = new Map();
+  for (const s of tl.scenes) {
+    const res = buildScene(s, dict, symbols, prevPositions);
+    scenes.push({ id: idOf(s), ...res });
+    prevPositions = res.positions ?? new Map();
+  }
   const errors = scenes.flatMap((s) => s.errors);
   if (errors.length) return { ok: false, errors, files: [] };
 
