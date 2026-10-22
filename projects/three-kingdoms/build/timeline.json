@@ -1,0 +1,274 @@
+{
+  "fps": 24,
+  "audioSeconds": 20,
+  "totalFrames": 480,
+  "scenes": [
+    {
+      "id": "S01",
+      "n": 1,
+      "startF": 0,
+      "endF": 96,
+      "frames": 96,
+      "bg": "tan",
+      "cast": [
+        "EMPEROR",
+        "EUNUCH"
+      ],
+      "props": [
+        "ENV-CHINESE-PALACE"
+      ],
+      "layout": "EMPEROR in the left third, EUNUCH in the right third",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 1,
+      "cueLast": 1,
+      "beats": [
+        {
+          "frame": 0,
+          "verb": "POP",
+          "text": "EMPEROR enters on the left"
+        },
+        {
+          "frame": 24,
+          "verb": "POP",
+          "text": "EUNUCH enters on the right"
+        },
+        {
+          "frame": 48,
+          "verb": "SWAP",
+          "text": "EMPEROR's expression to sweat"
+        },
+        {
+          "frame": 72,
+          "verb": "SWAP",
+          "text": "EUNUCH's face to evil"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 0,
+          "pos": "top",
+          "color": "black",
+          "text": "THE IMPERIAL COURT"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "n": 2,
+      "startF": 96,
+      "endF": 240,
+      "frames": 144,
+      "bg": "sky+ground",
+      "cast": [
+        "REBEL",
+        "LU-BU"
+      ],
+      "props": [
+        "SWORD"
+      ],
+      "layout": "REBEL in the left third, LU-BU in the right third",
+      "camera": "push",
+      "out": "hard-cut",
+      "cueFirst": 2,
+      "cueLast": 2,
+      "beats": [
+        {
+          "frame": 96,
+          "verb": "POP",
+          "text": "REBEL enters on the left"
+        },
+        {
+          "frame": 120,
+          "verb": "SLIDE",
+          "text": "LU-BU in from the right"
+        },
+        {
+          "frame": 144,
+          "verb": "POP",
+          "text": "SWORD appears in the center"
+        },
+        {
+          "frame": 168,
+          "verb": "SWAP",
+          "text": "REBEL's expression to panic"
+        },
+        {
+          "frame": 192,
+          "verb": "SWAP",
+          "text": "LU-BU's face to rage"
+        }
+      ],
+      "texts": []
+    },
+    {
+      "id": "S03",
+      "n": 3,
+      "startF": 240,
+      "endF": 336,
+      "frames": 96,
+      "bg": "sky+ground",
+      "cast": [
+        "REBEL",
+        "LU-BU"
+      ],
+      "props": [
+        "FIGHT-CLOUD",
+        "CLASH-SPARK"
+      ],
+      "layout": "REBEL in the left third, LU-BU in the right third, FIGHT-CLOUD in the center",
+      "camera": "lock",
+      "out": "hard-cut",
+      "cueFirst": 3,
+      "cueLast": 3,
+      "beats": [
+        {
+          "frame": 240,
+          "verb": "POP",
+          "text": "FIGHT-CLOUD appears in the center"
+        },
+        {
+          "frame": 264,
+          "verb": "POP",
+          "text": "CLASH-SPARK appears in the center"
+        },
+        {
+          "frame": 288,
+          "verb": "SHAKE",
+          "text": "FIGHT-CLOUD"
+        },
+        {
+          "frame": 312,
+          "verb": "SWAP",
+          "text": "LU-BU's face to sly"
+        }
+      ],
+      "texts": []
+    },
+    {
+      "id": "S04",
+      "n": 4,
+      "startF": 336,
+      "endF": 480,
+      "frames": 144,
+      "bg": "tan",
+      "cast": [
+        "DONG-ZHUO",
+        "REBEL"
+      ],
+      "props": [
+        "ENV-CHINESE-PALACE",
+        "MUD-PUDDLE"
+      ],
+      "layout": "DONG-ZHUO in the left third, REBEL in the right third, MUD-PUDDLE in the right third",
+      "camera": "push",
+      "out": "hard-cut",
+      "cueFirst": 4,
+      "cueLast": 4,
+      "beats": [
+        {
+          "frame": 336,
+          "verb": "POP",
+          "text": "DONG-ZHUO enters on the left"
+        },
+        {
+          "frame": 360,
+          "verb": "POP",
+          "text": "MUD-PUDDLE appears at the right"
+        },
+        {
+          "frame": 384,
+          "verb": "SWAP",
+          "text": "REBEL falls in mud puddle"
+        },
+        {
+          "frame": 432,
+          "verb": "SWAP",
+          "text": "DONG-ZHUO's face to evil"
+        }
+      ],
+      "texts": [
+        {
+          "frame": 336,
+          "pos": "top",
+          "color": "black",
+          "text": "DONG ZHUO TRIUMPHS"
+        }
+      ]
+    }
+  ],
+  "cues": [
+    {
+      "n": 1,
+      "frame": 0,
+      "text": "The Han dynasty court faced turmoil in Luoyang."
+    },
+    {
+      "n": 2,
+      "frame": 96,
+      "text": "The Yellow Turban rebellion spread across the provinces."
+    },
+    {
+      "n": 3,
+      "frame": 240,
+      "text": "Lü Bu clashed with rivals beneath the gates."
+    },
+    {
+      "n": 4,
+      "frame": 336,
+      "text": "Dong Zhuo seized control of the imperial capital."
+    }
+  ],
+  "captions": [
+    {
+      "cue": 1,
+      "startF": 0,
+      "endF": 96,
+      "lines": [
+        "The Han dynasty court faced turmoil in",
+        "Luoyang."
+      ]
+    },
+    {
+      "cue": 2,
+      "startF": 96,
+      "endF": 240,
+      "lines": [
+        "The Yellow Turban rebellion spread across",
+        "the provinces."
+      ]
+    },
+    {
+      "cue": 3,
+      "startF": 240,
+      "endF": 336,
+      "lines": [
+        "Lü Bu clashed with rivals beneath the",
+        "gates."
+      ]
+    },
+    {
+      "cue": 4,
+      "startF": 336,
+      "endF": 480,
+      "lines": [
+        "Dong Zhuo seized control of the imperial",
+        "capital."
+      ]
+    }
+  ],
+  "cast": {
+    "EMPEROR": "pill body in yellow hanfu robe, imperial beaded crown",
+    "EUNUCH": "pill body in grey chinese robe, black scholar hat futou, trimmed goatee",
+    "REBEL": "pill body in tan chinese robe, yellow turban headband",
+    "LU-BU": "pill body in red chinese robe, pheasant plume warlord helm",
+    "DONG-ZHUO": "pill body in dark blue hanfu robe, warlord full beard"
+  },
+  "props": {
+    "ENV-CHINESE-PALACE": "imperial palace court backdrop with tiered glazed roofs and red columns",
+    "SWORD": "iron blade with gold guard",
+    "FIGHT-CLOUD": "cartoon billowing fight cloud with action stars and dust",
+    "CLASH-SPARK": "weapon clash impact spark",
+    "MUD-PUDDLE": "slapstick mud puddle with splashes"
+  }
+}

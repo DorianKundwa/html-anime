@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>three-kingdoms</title>
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      body { margin: 0; background: #FFFFFF; }
+      #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+      .clip { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main" data-no-timeline
+      data-start="0"
+      data-fps="24"
+      data-width="1920"
+      data-height="1080"
+      data-duration="20"
+    >
+      <div id="s01-clip" class="clip" data-composition-id="s01" data-composition-src="compositions/s01.html" data-start="0" data-duration="4" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s02-clip" class="clip" data-composition-id="s02" data-composition-src="compositions/s02.html" data-start="4" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s03-clip" class="clip" data-composition-id="s03" data-composition-src="compositions/s03.html" data-start="10" data-duration="4" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s04-clip" class="clip" data-composition-id="s04" data-composition-src="compositions/s04.html" data-start="14" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="captions-01-clip" class="clip" data-track-kind="captions" data-composition-id="captions-01" data-composition-src="compositions/captions-01.html" data-start="0" data-duration="20" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+      <audio id="narration" src="narration.wav" data-start="0" data-duration="20"></audio>
+    </div>
+  </body>
+</html>

@@ -5,3 +5,12 @@ node_modules/
 renders/
 *.mp4
 !media/film.mp4
+*.mov
+build/tmp/
+media/manim/
+media/remotion/
+media/texts/
+media/videos/
+remotion/out/
+__pycache__/
+

@@ -59,7 +59,7 @@ const EXPRESSIONS = {
 };
 // Checked in order against a SWAP's text (with entry names removed).
 const EXPRESSION_WORDS = [
-  [/\b(dead|death|kill\w*|slain|defeat\w*|perish\w*|knock\w*|unconscious)\b/i, "dead"],
+  [/\b(dead|death|kill\w*|slain|defeat\w*|perish\w*|knock\w*|unconscious|fall\w*|collaps\w*|tumble\w*|mud|puddle)\b/i, "dead"],
   [/\b(rage|outrage\w*|livid|wrath)\b/i, "rage"],
   [/\b(evil|schem\w*|wicked|villain\w*|malic\w*|sinister)\b/i, "evil"],
   [/\b(panic\w*|terrif\w*|scream\w*|horror)\b/i, "panic"],
@@ -110,10 +110,19 @@ function stripNames(text, ents) {
   return out;
 }
 
+export function canonicalToken(word) {
+  if (!word) return null;
+  const w = word.toLowerCase();
+  if (Object.hasOwn(PALETTE, w)) return w;
+  const SYN = { blue: "cobalt", gray: "grey", gold: "yellow", navy: "night", darkblue: "night" };
+  return SYN[w] ?? null;
+}
+
 /** First palette token word in a CAST or PROPS description, else the fallback. */
 function tokenIn(desc, fallback) {
   for (const word of String(desc ?? "").toLowerCase().split(/[^a-z]+/)) {
-    if (Object.hasOwn(PALETTE, word)) return word;
+    const tok = canonicalToken(word);
+    if (tok) return tok;
   }
   return fallback;
 }
@@ -124,6 +133,7 @@ function tokenIn(desc, fallback) {
  * the description and picks the library symbol and the palette colour for each one.
  */
 const GARMENT_WORDS = [
+  [/\b(pill\s*body|pill|hanfu|chinese\s*robe)\b/, "rig-body-pill"],
   [/\b(armor|armour|plate)\b/, "rig-armor"],
   [/\bcape\b/, "rig-cape"],
   [/\btunic\b/, "rig-tunic"],
@@ -138,6 +148,10 @@ const GARMENT_WORDS = [
   [/\b(blazer|jacket|coat|shirt)\b/, "rig-torso"],
 ];
 const HAT_WORDS = [
+  [/\b(mianliu|imperial\s*crown|beaded\s*crown)\b/, "rig-hat-mianliu"],
+  [/\b(futou|magistrate|eunuch|scholar\s*hat)\b/, "rig-hat-futou"],
+  [/\b(turban|yellow\s*turban|headband)\b/, "rig-hat-turban"],
+  [/\b(lubu|pheasant|plume\s*helm\w*)\b/, "rig-helmet-lubu"],
   [/\bcrown\b/, "rig-hat-crown"],
   [/\b(helmet|bascinet|helm)\b/, "rig-hat-helmet"],
   [/\btricorn\b/, "rig-hat-tricorn"],
@@ -153,6 +167,11 @@ const HAIR_WORDS = [
   [/long[\w\s-]{0,14}hair/, "rig-hair-long"],
   [/short[\w\s-]{0,14}hair/, "rig-hair-short"],
   [/\bhair\b/, "rig-hair-short"],
+];
+const BEARD_WORDS = [
+  [/\b(full\s*beard|warlord\s*beard|heavy\s*beard|thick\s*beard|long\s*beard|big\s*beard)\b/, "rig-beard-full"],
+  [/\b(goatee|mustache|mustachio|trimmed\s*beard)\b/, "rig-beard-goatee"],
+  [/\bbeard\b/, "rig-beard-full"],
 ];
 // Pose override words read from the cast description.
 const POSE_WORDS = [
@@ -176,7 +195,19 @@ function dressUp(desc) {
   };
   /** The palette token nearest before a word, looking back three words. */
   const tokenBefore = (end) => {
-    for (let i = end; i >= 0 && i > end - 3; i--) if (Object.hasOwn(PALETTE, ws[i])) return ws[i];
+    for (let i = end; i >= 0 && i > end - 3; i--) {
+      const tok = canonicalToken(ws[i]);
+      if (tok) return tok;
+    }
+    return null;
+  };
+  const tokenAround = (end) => {
+    const b = tokenBefore(end);
+    if (b) return b;
+    for (let i = end + 1; i < ws.length && i <= end + 5; i++) {
+      const tok = canonicalToken(ws[i]);
+      if (tok) return tok;
+    }
     return null;
   };
   const headIdx = ws.findIndex((w) => w === "head" || w === "heads");
@@ -186,7 +217,8 @@ function dressUp(desc) {
   for (const [re, symbol] of GARMENT_WORDS) {
     const i = find(re);
     if (i < 0) continue;
-    const color = tokenBefore(i);
+    let color = tokenAround(i);
+    if (!color && symbol === "rig-body-pill") color = "white";
     if (color) {
       garment = { symbol, color };
       break;
@@ -205,7 +237,11 @@ function dressUp(desc) {
   for (const [re, symbol] of HAT_WORDS) {
     const i = find(re);
     if (i < 0) continue;
-    hat = { symbol, color: tokenBefore(i) ?? "yellow" };
+    const fallbackColor = symbol === "rig-hat-turban" ? "yellow"
+      : symbol === "rig-helmet-lubu" ? "grey"
+      : symbol === "rig-hat-futou" ? "black"
+      : "yellow";
+    hat = { symbol, color: tokenAround(i) ?? fallbackColor };
     break;
   }
   let hair = null;
@@ -213,6 +249,13 @@ function dressUp(desc) {
     const i = find(re);
     if (i < 0) continue;
     hair = { symbol, color: tokenBefore(i) ?? "black" };
+    break;
+  }
+  let beard = null;
+  for (const [re, symbol] of BEARD_WORDS) {
+    const i = find(re);
+    if (i < 0) continue;
+    beard = { symbol, color: tokenAround(i) ?? "black" };
     break;
   }
   let scarf = null;
@@ -236,6 +279,7 @@ function dressUp(desc) {
     cape,
     hat,
     hair,
+    beard,
     scarf,
     tie,
     glasses: /glass\w*/.test(joined),
@@ -332,6 +376,14 @@ export const PROP_ALIASES = {
   "ENV-BATTLEFIELD": "prop-env-battlefield", "BATTLEFIELD-SET": "prop-env-battlefield", "BATTLEFIELD": "prop-env-battlefield", "BATTLE": "prop-env-battlefield",
   "ENV-WAR-ROOM": "prop-env-war-room", "WAR-ROOM-SET": "prop-env-war-room", "WAR-ROOM": "prop-env-war-room", "STRATEGY-ROOM": "prop-env-war-room",
   "ENV-SEA": "prop-env-sea", "SEA-SET": "prop-env-sea", "OCEAN": "prop-env-sea", "NAVAL-SET": "prop-env-sea",
+  // Slapstick & Action VFX
+  "FIGHT-CLOUD": "prop-fight-cloud", "DUST-CLOUD": "prop-fight-cloud", "BRAWL": "prop-fight-cloud",
+  "MUD-PUDDLE": "prop-mud-puddle", "MUD": "prop-mud-puddle", "PUDDLE": "prop-mud-puddle",
+  "CLASH-SPARK": "fx-clash-spark", "SPARK": "fx-clash-spark", "CLASH": "fx-clash-spark", "IMPACT": "fx-clash-spark",
+  // Chinese Historical Environment Set
+  "ENV-CHINESE-PALACE": "prop-env-chinese-palace", "CHINESE-PALACE": "prop-env-chinese-palace",
+  "PALACE-SET": "prop-env-chinese-palace", "PALACE": "prop-env-chinese-palace",
+  "IMPERIAL-PALACE": "prop-env-chinese-palace", "HAN-PALACE": "prop-env-chinese-palace",
 };
 
 export const isEnvName = (name) => {
@@ -596,6 +648,7 @@ function actorMarkup(e, enter) {
     o.garment ? `--c-garment:${PALETTE[o.garment.color]}` : "",
     o.hat ? `--c-hat:${PALETTE[o.hat.color]}` : "",
     o.hair ? `--c-hair:${PALETTE[o.hair.color]}` : "",
+    o.beard ? `--c-beard:${PALETTE[o.beard.color]}` : "",
     o.scarf ? `--c-scarf:${PALETTE[o.scarf.color]}` : "",
     o.tie ? `--c-tie:${PALETTE[o.tie.color]}` : "",
   ].filter(Boolean).join(";");
@@ -607,6 +660,7 @@ function actorMarkup(e, enter) {
   ].join("");
   const over = [
     o.hair ? use(o.hair.symbol) : "",
+    o.beard ? use(o.beard.symbol) : "",
     o.hat ? use(o.hat.symbol) : "",
     o.glasses ? use("rig-glasses") : "",
     o.scarf ? use("rig-scarf") : "",
@@ -616,10 +670,13 @@ function actorMarkup(e, enter) {
   const limbs = ["rig-limb-idle", "rig-limb-point", "rig-limb-walk", "rig-limb-clipboard", "rig-limb-crossed", "rig-limb-panic"]
     .map((sym) => `<g id="${e.id}-limb-${sym.replace("rig-limb-","")}" opacity="${sym === defaultLimb ? 1 : 0}">${use(sym)}</g>`)
     .join("\n");
+  const isPill = o.garment?.symbol === "rig-body-pill";
+  const bodyMarkup = isPill
+    ? `${o.cape ? use(o.cape.symbol) : ""}${limbs}\n${under}`
+    : `${o.cape ? use(o.cape.symbol) : ""}${use("rig-body")}${under}\n${limbs}`;
   return `<div id="${e.id}" class="actor" style="left:${e.cx - g.half}px;top:${g.top}px;width:${g.w}px;height:${g.h}px;opacity:${hidden}">
 <svg width="${g.w}" height="${g.h}" viewBox="-160 -110 320 460" color="${PALETTE[o.head]}" style="display:block;overflow:visible;${vars}">
-${o.cape ? use(o.cape.symbol) : ""}${use("rig-body")}${under}
-${limbs}
+${bodyMarkup}
 ${use("rig-head")}
 ${layers}
 ${over}
@@ -778,10 +835,25 @@ function buildScene(s, dict, symbols, prevPositions = new Map()) {
     const L = b.L;
     const a = (k) => at(L + k);
     switch (b.verb) {
-      case "POP":
-        ops.push(`tl.fromTo("#${t.id}", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: ${at(4)}, ease: "power2.out", immediateRender: false }, ${at(L)});`);
-        ops.push(`tl.to("#${t.id}", { scale: 1, duration: ${at(2)} }, ${a(4)});`);
+      case "POP": {
+        const sym = t ? (PROP_ALIASES[t.name] ?? propSymbol(t.name)) : "";
+        if (sym === "prop-fight-cloud") {
+          ops.push(`tl.fromTo("#${t.id}", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1.15, duration: ${at(3)}, ease: "back.out(2)", immediateRender: false }, ${at(L)});`);
+          for (let k = 0; k < 10; k++) {
+            const jx = k % 2 === 0 ? 10 : -10;
+            const rot = k % 4 === 0 ? 6 : k % 4 === 2 ? -6 : 0;
+            ops.push(`tl.set("#${t.id}", { x: ${jx}, rotation: ${rot} }, ${a(3 + k * 2)});`);
+          }
+          ops.push(`tl.set("#${t.id}", { x: 0, rotation: 0 }, ${a(23)});`);
+        } else if (sym === "fx-clash-spark") {
+          ops.push(`tl.fromTo("#${t.id}", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1.4, duration: ${at(2)}, ease: "power4.out", immediateRender: false }, ${at(L)});`);
+          ops.push(`tl.to("#${t.id}", { scale: 1.8, opacity: 0, duration: ${at(4)}, ease: "power2.in" }, ${a(2)});`);
+        } else {
+          ops.push(`tl.fromTo("#${t.id}", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: ${at(4)}, ease: "power2.out", immediateRender: false }, ${at(L)});`);
+          ops.push(`tl.to("#${t.id}", { scale: 1, duration: ${at(2)} }, ${a(4)});`);
+        }
         break;
+      }
       case "STAMP":
         ops.push(`tl.fromTo("#${t.id}", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 0.96, duration: ${at(3)}, ease: "power4.in", immediateRender: false }, ${at(L)});`);
         ops.push(`tl.to("#${t.id}", { scale: 1, duration: ${at(2)}, ease: "power1.out" }, ${a(3)});`);
@@ -800,7 +872,9 @@ function buildScene(s, dict, symbols, prevPositions = new Map()) {
           for (const k of t.exprKeys) ops.push(`tl.set("#${t.id}-x-${k}", { opacity: ${k === b.expr ? 1 : 0} }, ${at(L)});`);
           t.state.expr = b.expr;
           t.poses.add(poseKey(t.state));
-          if (b.expr === "dead" || /\b(dead|collaps\w*|fall\w*|tumble\w*)\b/i.test(b.text)) {
+          if (/\b(mud|puddle|face-first|headfirst)\b/i.test(b.text)) {
+            ops.push(`tl.to("#${t.id}", { rotation: 180, y: "+=160", transformOrigin: "center center", duration: ${at(6)}, ease: "power2.in" }, ${at(L)});`);
+          } else if (b.expr === "dead" || /\b(dead|collaps\w*|fall\w*|tumble\w*)\b/i.test(b.text)) {
             const rot = t.cx < W / 2 ? 90 : -90;
             ops.push(`tl.to("#${t.id}", { rotation: ${rot}, y: "+=120", transformOrigin: "center center", duration: ${at(6)}, ease: "bounce.out" }, ${at(L)});`);
           }

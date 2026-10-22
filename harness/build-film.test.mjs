@@ -363,3 +363,57 @@ test("historical props and castle environment render cleanly with zero placehold
   assert.deepEqual(gates.errors, [], `film gates failed:\n${gates.errors.join("\n")}`);
 });
 
+test("OverSimplified Three Kingdoms rigs, historical headwear, beards, fight clouds, and mud falls render accurately", async () => {
+  const dir = longProject();
+  await compiled(dir);
+  const path = join(dir, "build", "timeline.json");
+  const tl = JSON.parse(readFileSync(path, "utf8"));
+  tl.cast["DONG ZHUO"] = "pill body in dark blue hanfu robe, warlord full beard, beaded imperial crown";
+  tl.cast["LU BU"] = "pill body in red chinese robe, pheasant plume helm";
+  tl.cast["SIMA YI"] = "pill body, black scholar hat futou, trimmed goatee";
+  tl.cast["REBEL"] = "pill body, yellow turban headband";
+  tl.props = {
+    "ENV-CHINESE-PALACE": "imperial palace court backdrop with tiered glazed roofs and red columns",
+    "FIGHT-CLOUD": "cartoon billowing fight cloud with action stars and dust",
+    "MUD-PUDDLE": "slapstick mud puddle with splashes",
+    "CLASH-SPARK": "weapon clash impact spark",
+  };
+  tl.scenes[0].cast = ["DONG ZHUO", "LU BU"];
+  tl.scenes[0].props = ["ENV-CHINESE-PALACE", "FIGHT-CLOUD", "MUD-PUDDLE", "CLASH-SPARK"];
+  tl.scenes[0].beats = [
+    { frame: 24, verb: "POP", text: "POP FIGHT-CLOUD between DONG ZHUO and LU BU" },
+    { frame: 48, verb: "POP", text: "POP CLASH-SPARK above" },
+    { frame: 72, verb: "SWAP", text: "DONG ZHUO falls in mud puddle" },
+  ];
+  writeFileSync(path, JSON.stringify(tl));
+  const res = buildFilm(dir);
+  assert.equal(res.ok, true, `build failed: ${res.errors?.join("\n")}`);
+  const s01 = readFileSync(join(dir, "film", "compositions", "s01.html"), "utf8");
+  assert.ok(s01.includes('href="#rig-body-pill"'), "inlines OverSimplified pill body rig");
+  assert.ok(s01.includes('href="#rig-hat-mianliu"'), "inlines imperial beaded crown mianliu");
+  assert.ok(s01.includes('href="#rig-helmet-lubu"'), "inlines Lu Bu pheasant plume warlord helmet");
+  assert.ok(s01.includes('href="#rig-beard-full"'), "inlines warlord full beard");
+  assert.ok(s01.includes('href="#prop-env-chinese-palace"'), "inlines Chinese palace environment set");
+  assert.ok(s01.includes('href="#prop-fight-cloud"'), "inlines Looney-tunes cartoon fight cloud");
+  assert.ok(s01.includes('href="#prop-mud-puddle"'), "inlines slapstick mud puddle");
+  assert.ok(s01.includes('href="#fx-clash-spark"'), "inlines clash spark burst");
+  assert.ok(s01.includes('rotation: 180'), "includes 180-degree upside down face-first mud defeat tumble");
+  assert.ok(s01.includes('back.out(2)'), "includes fight cloud dynamic overshoot entry");
+
+  // Also check Sima Yi and Rebel in scene 2
+  tl.scenes[1].cast = ["SIMA YI", "REBEL"];
+  tl.scenes[1].props = [];
+  tl.scenes[1].beats = [];
+  writeFileSync(path, JSON.stringify(tl));
+  const res2 = buildFilm(dir);
+  assert.equal(res2.ok, true, `scene 2 build failed: ${res2.errors?.join("\n")}`);
+  const s02 = readFileSync(join(dir, "film", "compositions", "s02.html"), "utf8");
+  assert.ok(s02.includes('href="#rig-hat-futou"'), "inlines scholar futou hat");
+  assert.ok(s02.includes('href="#rig-beard-goatee"'), "inlines trimmed strategist goatee");
+  assert.ok(s02.includes('href="#rig-hat-turban"'), "inlines yellow turban rebel headband");
+
+  const gates = checkFilm(dir);
+  assert.deepEqual(gates.errors, [], `film gates failed:\n${gates.errors.join("\n")}`);
+});
+
+
