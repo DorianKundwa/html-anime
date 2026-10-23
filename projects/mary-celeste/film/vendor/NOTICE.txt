@@ -1,0 +1,9 @@
+Vendored library shipped with this project.
+
+GSAP 3.14.2 (gsap.min.js) by GreenSock (Jack Doyle)
+Source: npm package gsap@3.14.2, file dist/gsap.min.js
+sha256: c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280
+License: GreenSock Standard "no charge" license, https://gsap.com/standard-license
+
+harness/check-film.js exempts this exact file from the banned-token and color gates.
+The exemption applies only while the bytes match the sha256 above.

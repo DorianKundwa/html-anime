@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .fill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+        .actor { position: absolute; transform-origin: 50% 50%; }
+        .env-backdrop { position: absolute; transform-origin: 50% 50%; }
+        .ttl {
+          position: absolute; top: 60px; left: 0; width: 1920px; margin: 0; text-align: center;
+          font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
+          transform-origin: 50% 50%;
+          -webkit-text-stroke: 12px #000000; paint-order: stroke fill;
+          letter-spacing: 2px;
+        }
+        .draw { stroke-dasharray: 1 1; }
+        .callout-label { pointer-events: none; }
+      </style>
+
+<div id="root" data-composition-id="s04" data-width="1920" data-height="1080">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<filter id="s04-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s04-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s04-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<symbol id="rig-body" viewBox="-160 -110 320 460">
+      <path d="M0,95 L0,240" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <path d="M3,97 L2.5,238" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M-35,320 L-62,320 M35,320 L62,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-torso" viewBox="-160 -110 320 460">
+      <path d="M-44,104 Q0,88 44,104 L52,150 L46,252 L-46,252 L-52,150 Z" fill="var(--c-garment, #F5820D)"/>
+      <path d="M18,98 L44,104 L52,150 L46,252 L24,252 Z" style="fill:var(--tone, #AC5B09)"/>
+      <path d="M-44,104 Q0,88 44,104 L52,150 L46,252 L-46,252 L-52,150 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M-44,104 Q0,88 44,104" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(4,3)"/>
+      <path d="M0,142 L0,250" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-limb-idle" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-50,200 M0,130 L50,200 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-point" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-120,112 M0,130 L50,200 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-120" cy="112" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-walk" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-40,188 M0,130 L36,188 M-40,188 L-54,298 M36,188 L22,296" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-40" cy="188" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="36" cy="188" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-clipboard" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-30,190 M0,130 L50,160 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-30" cy="190" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <!-- small clipboard icon at the raised arm's end -->
+      <rect x="46" y="138" width="36" height="46" rx="3" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="52" y="132" width="22" height="10" rx="3" fill="#4A4A4A" stroke="#000000" stroke-width="4"/>
+      <path d="M52,156 L76,156 M52,168 L70,168" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-limb-crossed" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-60,175 M0,130 L60,175 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <!-- crossing forearms -->
+      <path d="M-60,175 Q-20,192 30,175 M60,175 Q20,192 -30,175" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-60" cy="175" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="60" cy="175" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-panic" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-80,80 M0,130 L80,80 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-80" cy="80" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="80" cy="80" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-head" viewBox="-160 -110 320 460">
+      <clipPath id="rig-head-clip"><circle cx="0" cy="0" r="90"/></clipPath>
+      <circle cx="0" cy="0" r="90" style="fill:var(--tone-head, var(--tone, #9B9B9B))"/>
+      <circle cx="-12" cy="-12" r="90" fill="currentColor" clip-path="url(#rig-head-clip)"/>
+      <circle cx="0" cy="0" r="90" fill="none" stroke="#000000" stroke-width="6"/>
+      <circle cx="3" cy="-2" r="92" fill="none" stroke="#000000" stroke-width="2.5"/>
+    </symbol>
+<symbol id="rig-brows-neutral" viewBox="-160 -110 320 460">
+      <path d="M-44,-30 L-16,-30 M16,-30 L44,-30" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-eyes-neutral" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-10" r="7" fill="#000000"/>
+      <circle cx="30" cy="-10" r="7" fill="#000000"/>
+    </symbol>
+<symbol id="rig-mouth-neutral" viewBox="-160 -110 320 460">
+      <path d="M-20,34 L20,34" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-glasses" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-8" r="26" fill="none" stroke="#000000" stroke-width="5"/>
+      <circle cx="30" cy="-8" r="26" fill="none" stroke="#000000" stroke-width="5"/>
+      <path d="M-4,-12 L4,-12 M-56,-16 L-86,-26 M56,-16 L86,-26" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-magnifier" viewBox="0 0 240 260">
+      <circle cx="102" cy="98" r="66" fill="#6EB5E8" stroke="#000000" stroke-width="9"/>
+      <circle cx="102" cy="98" r="46" fill="none" stroke="#000000" stroke-width="4"/>
+      <path d="M148,148 L212,224" stroke="currentColor" stroke-width="22" stroke-linecap="round"/>
+      <path d="M148,148 L212,224" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+</defs>
+</svg>
+<div id="s04-stage" class="fill" style="background:#2D5FBF">
+
+<div id="s04-ink" class="fill">
+<div id="s04-e0" class="actor" style="left:1121.5px;top:373px;width:355px;height:510px;opacity:0">
+<svg width="355" height="510" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#1F4386;--tone-head:#D8D8D8;--c-garment:#2D5FBF">
+<use href="#rig-body" x="-160" y="-110" width="320" height="460"/><use href="#rig-torso" x="-160" y="-110" width="320" height="460"/>
+<g id="s04-e0-limb-idle" opacity="1"><use href="#rig-limb-idle" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s04-e0-limb-point" opacity="0"><use href="#rig-limb-point" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s04-e0-limb-walk" opacity="0"><use href="#rig-limb-walk" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s04-e0-limb-clipboard" opacity="0"><use href="#rig-limb-clipboard" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s04-e0-limb-crossed" opacity="0"><use href="#rig-limb-crossed" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s04-e0-limb-panic" opacity="0"><use href="#rig-limb-panic" x="-160" y="-110" width="320" height="460"/></g>
+<use href="#rig-head" x="-160" y="-110" width="320" height="460"/>
+<g id="s04-e0-x-neutral" opacity="1"><use href="#rig-brows-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-neutral" x="-160" y="-110" width="320" height="460"/></g>
+<use href="#rig-glasses" x="-160" y="-110" width="320" height="460"/>
+</svg>
+</div>
+<div id="s04-e1" class="actor" style="left:804px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#C4965A" style="display:block;overflow:visible;--tone:#89693F">
+<rect x="5" y="5" width="230" height="250" fill="#C4965A" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#F5C518">SIX-CASE-FOLDERS</text>
+</svg>
+</div>
+<div id="s04-e2" class="actor" style="left:1502px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<use href="#prop-magnifier" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s04-e3" class="actor" style="left:302px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<rect x="30" y="40" width="180" height="186" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="34" y="44" width="172" height="186" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <rect x="30" y="40" width="180" height="44" fill="#D94040" stroke="#000000" stroke-width="8"/>
+      <rect x="60" y="26" width="16" height="28" rx="4" fill="#000000"/>
+      <rect x="164" y="26" width="16" height="28" rx="4" fill="#000000"/>
+      
+</svg>
+</div>
+<div id="s04-e4" class="actor" style="left:500px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#2D5FBF" style="display:block;overflow:visible;--tone:#1F4386">
+<rect x="5" y="5" width="230" height="250" fill="#2D5FBF" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#F5C518">GLOBE</text>
+</svg>
+</div>
+<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s04-arrow0" class="draw" pathLength="1" d="M1114 657 L1182 646 M1136 631 L1182 646 L1143 675"/><path id="s04-arrow1" class="draw" pathLength="1" d="M806 703 L459 753 M505 769 L459 753 L498 724"/></svg>
+</div>
+<div id="s04-t0" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">SIX CASES</div>
+<div id="s04-t1" class="ttl" style="color:#F5C518;opacity:0;font-size:131px">REAL NAMES REAL DATES</div>
+<div id="s04-t2" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">TWO VERSIONS</div>
+</div>
+
+</div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#s04-ink", { filter: "url(#s04-boil-a)" }, f(0));
+        tl.set("#s04-ink", { filter: "url(#s04-boil-b)" }, f(24));
+        tl.set("#s04-ink", { filter: "url(#s04-boil-c)" }, f(48));
+        tl.set("#s04-ink", { filter: "url(#s04-boil-a)" }, f(72));
+        tl.set("#s04-ink", { filter: "url(#s04-boil-b)" }, f(96));
+        tl.set("#s04-ink", { filter: "url(#s04-boil-c)" }, f(120));
+        tl.set("#s04-ink", { filter: "url(#s04-boil-a)" }, f(144));
+        tl.set("#s04-ink", { filter: "url(#s04-boil-b)" }, f(168));
+        tl.set("#s04-ink", { filter: "url(#s04-boil-c)" }, f(192));
+        tl.fromTo("#s04-e1", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(0));
+        tl.to("#s04-e1", { scale: 1, duration: f(2) }, f(4));
+        tl.set("#s04-e1", { x: 8 }, f(34));
+        tl.set("#s04-e1", { x: -8 }, f(35));
+        tl.set("#s04-e1", { x: 8 }, f(36));
+        tl.set("#s04-e1", { x: -8 }, f(37));
+        tl.set("#s04-e1", { x: 8 }, f(38));
+        tl.set("#s04-e1", { x: -8 }, f(39));
+        tl.set("#s04-e1", { x: 8 }, f(40));
+        tl.set("#s04-e1", { x: -8 }, f(41));
+        tl.set("#s04-e1", { x: 0 }, f(42));
+        tl.fromTo("#s04-e0", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(55));
+        tl.to("#s04-e0", { scale: 1, duration: f(2) }, f(59));
+        tl.fromTo("#s04-e2", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(72));
+        tl.to("#s04-e2", { scale: 1, duration: f(2) }, f(76));
+        tl.fromTo("#s04-e3", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(91));
+        tl.to("#s04-e3", { scale: 1, duration: f(2) }, f(95));
+        tl.fromTo("#s04-e4", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(127));
+        tl.to("#s04-e4", { scale: 1, duration: f(2) }, f(131));
+        tl.fromTo("#s04-arrow0", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(14), ease: "power1.out" }, f(163));
+        tl.fromTo("#s04-arrow1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(14), ease: "power1.out" }, f(187));
+        tl.fromTo("#s04-t0", { opacity: 0, scale: 1.45 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(0));
+        tl.set("#s04-t0", { opacity: 0 }, f(55));
+        tl.fromTo("#s04-t1", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(55));
+        tl.set("#s04-t1", { opacity: 0 }, f(163));
+        tl.fromTo("#s04-t2", { opacity: 0, scale: 1.45 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(163));
+        window.__timelines["s04"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

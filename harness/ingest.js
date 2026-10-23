@@ -73,6 +73,7 @@ export function parseSceneSheet(md) {
   const lines = md.replace(/\u2013/g, "-").split(/\r?\n/);
   const cast = {};
   const props = {};
+  const sets = {};
   const scenes = [];
   let section = null;
   let cur = null;
@@ -84,7 +85,7 @@ export function parseSceneSheet(md) {
     if (!line || line.startsWith("```")) return;
 
     if (line.startsWith("## ")) {
-      const block = /^## (CAST|PROPS)(?: \(added\))?$/.exec(line);
+      const block = /^## (CAST|PROPS|SETS)(?: \(added\))?$/.exec(line);
       if (block) {
         section = block[1];
         cur = null;
@@ -116,9 +117,9 @@ export function parseSceneSheet(md) {
     }
 
     if (section) {
-      const def = /^([A-Z0-9-]+): (.+)$/.exec(line);
+      const def = /^([A-Za-z0-9-]+): (.+)$/.exec(line);
       if (!def) throw new IngestError(`line ${ln}: bad ${section} entry "${line}"`);
-      (section === "CAST" ? cast : props)[def[1]] = def[2];
+      (section === "CAST" ? cast : section === "SETS" ? sets : props)[def[1]] = def[2];
       return;
     }
 
@@ -136,6 +137,7 @@ export function parseSceneSheet(md) {
     let m;
     if ((m = /^CAST: (.*)$/.exec(line))) cur.cast = splitList(m[1]);
     else if ((m = /^PROPS: (.*)$/.exec(line))) cur.props = splitList(m[1]);
+    else if ((m = /^SET: (\S+)$/.exec(line))) cur.set = m[1];
     else if ((m = /^LAYOUT: (.*)$/.exec(line))) cur.layout = m[1];
     else if (line === "BEATS:") inBeats = true;
     else if ((m = /^TEXT: (.*)$/.exec(line))) {
@@ -148,7 +150,7 @@ export function parseSceneSheet(md) {
     else throw new IngestError(`line ${ln}: unknown card line "${line}"`);
   });
 
-  return { cast, props, scenes };
+  return { cast, props, sets, scenes };
 }
 
 function splitList(s) {
@@ -268,7 +270,7 @@ export function correctCues(cues, scriptText) {
 }
 
 /** Checks the sheet against the cues and the audio length. Returns every error and warning. */
-export function checkSheet({ cues, scenes, audioSeconds, cast = {}, props = {} }) {
+export function checkSheet({ cues, scenes, audioSeconds, cast = {}, props = {}, sets = {} }) {
   const errors = [];
   const warnings = [];
   const err = (msg) => errors.push(msg);
@@ -349,6 +351,7 @@ export function checkSheet({ cues, scenes, audioSeconds, cast = {}, props = {} }
     }
     for (const name of s.cast) if (!(name in cast)) warn(`${where}: CAST ${name} is not declared`);
     for (const name of s.props) if (!(name in props)) warn(`${where}: PROPS ${name} is not declared`);
+    if (s.set && !Object.keys(sets).some((k) => k.toUpperCase() === s.set.toUpperCase())) warn(`${where}: SET ${s.set} is not declared`);
   });
 
   const sum = scenes.reduce((acc, s, i) => {

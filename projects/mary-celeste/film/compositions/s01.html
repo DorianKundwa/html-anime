@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .fill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+        .actor { position: absolute; transform-origin: 50% 50%; }
+        .env-backdrop { position: absolute; transform-origin: 50% 50%; }
+        .ttl {
+          position: absolute; top: 60px; left: 0; width: 1920px; margin: 0; text-align: center;
+          font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
+          transform-origin: 50% 50%;
+          -webkit-text-stroke: 12px #000000; paint-order: stroke fill;
+          letter-spacing: 2px;
+        }
+        .draw { stroke-dasharray: 1 1; }
+        .callout-label { pointer-events: none; }
+      </style>
+
+<div id="root" data-composition-id="s01" data-width="1920" data-height="1080">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<filter id="s01-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s01-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s01-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<symbol id="prop-job-letter" viewBox="0 0 240 260">
+      <rect x="30" y="40" width="180" height="184" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="33" y="43" width="180" height="184" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M30,40 L120,130 L210,40" fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M56,148 L184,148 M56,176 L184,176 M56,204 L160,204" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="170" cy="196" r="20" fill="#D94040" stroke="#000000" stroke-width="4"/>
+    </symbol>
+</defs>
+</svg>
+<div id="s01-stage" class="fill" style="background:#4A4A4A">
+
+<div id="s01-ink" class="fill">
+<div id="s01-e0" class="actor" style="left:276px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#2D5FBF" style="display:block;overflow:visible;--tone:#1F4386">
+<rect x="5" y="5" width="230" height="250" fill="#2D5FBF" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#F5C518">GLOBE</text>
+</svg>
+</div>
+<div id="s01-e1" class="actor" style="left:628px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#F5C518" style="display:block;overflow:visible;--tone:#AC8A11">
+<rect x="5" y="5" width="230" height="250" fill="#F5C518" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#F5C518">NOTE</text>
+</svg>
+</div>
+<div id="s01-e2" class="actor" style="left:360px;top:590px;width:240px;height:260px;opacity:0">
+<svg width="240" height="260" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
+<rect x="5" y="5" width="230" height="250" fill="#8B5E3C" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#F5C518">SHIP-LOG</text>
+</svg>
+</div>
+<div id="s01-e3" class="actor" style="left:1016px;top:590px;width:240px;height:260px;opacity:0">
+<svg width="240" height="260" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<use href="#prop-job-letter" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s01-e4" class="actor" style="left:1368px;top:590px;width:240px;height:260px;opacity:0">
+<svg width="240" height="260" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
+<rect x="5" y="5" width="230" height="250" fill="#8B5E3C" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#F5C518">WALLET</text>
+</svg>
+</div>
+<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s01-draw0-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M252 541 L400 656"/></svg>
+</div>
+<div id="s01-t0" class="ttl" style="color:#F5C518;opacity:0;font-size:137px">EVERY CULTURE AGREES</div>
+<div id="s01-t1" class="ttl" style="color:#F5C518;opacity:0;font-size:125px">SOMEBODY LEAVES A NOTE</div>
+<div id="s01-t2" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">A LOG A LETTER</div>
+<div id="s01-t3" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">A WALLET A NAME</div>
+</div>
+
+</div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#s01-ink", { filter: "url(#s01-boil-a)" }, f(0));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-b)" }, f(24));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-c)" }, f(48));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-a)" }, f(72));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-b)" }, f(96));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-c)" }, f(120));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-a)" }, f(144));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-b)" }, f(168));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-c)" }, f(192));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-a)" }, f(216));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-b)" }, f(240));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-c)" }, f(264));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-a)" }, f(288));
+        tl.set("#s01-ink", { filter: "url(#s01-boil-b)" }, f(312));
+        tl.fromTo("#s01-e0", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(0));
+        tl.to("#s01-e0", { scale: 1, duration: f(2) }, f(4));
+        tl.fromTo("#s01-draw0-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(34));
+        tl.fromTo("#s01-e1", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(72));
+        tl.to("#s01-e1", { scale: 1, duration: f(2) }, f(76));
+        tl.fromTo("#s01-e1", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(101));
+        tl.fromTo("#s01-e0", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(120));
+        tl.fromTo("#s01-e1", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(125));
+        tl.fromTo("#s01-e2", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(134));
+        tl.to("#s01-e2", { scale: 1, duration: f(2) }, f(138));
+        tl.fromTo("#s01-e2", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(163));
+        tl.fromTo("#s01-e3", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(192));
+        tl.to("#s01-e3", { scale: 1, duration: f(2) }, f(196));
+        tl.fromTo("#s01-e3", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(216));
+        tl.fromTo("#s01-e4", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(240));
+        tl.to("#s01-e4", { scale: 1, duration: f(2) }, f(244));
+        tl.fromTo("#s01-e4", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(293));
+        tl.set("#s01-e4", { x: 8 }, f(317));
+        tl.set("#s01-e4", { x: -8 }, f(318));
+        tl.set("#s01-e4", { x: 8 }, f(319));
+        tl.set("#s01-e4", { x: -8 }, f(320));
+        tl.set("#s01-e4", { x: 8 }, f(321));
+        tl.set("#s01-e4", { x: -8 }, f(322));
+        tl.set("#s01-e4", { x: 8 }, f(323));
+        tl.set("#s01-e4", { x: -8 }, f(324));
+        tl.set("#s01-e4", { x: 0 }, f(325));
+        tl.fromTo("#s01-t0", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(0));
+        tl.set("#s01-t0", { opacity: 0 }, f(72));
+        tl.fromTo("#s01-t1", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(72));
+        tl.set("#s01-t1", { opacity: 0 }, f(134));
+        tl.fromTo("#s01-t2", { opacity: 0, scale: 1.38 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(134));
+        tl.set("#s01-t2", { opacity: 0 }, f(240));
+        tl.fromTo("#s01-t3", { opacity: 0, scale: 1.29 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(240));
+        window.__timelines["s01"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

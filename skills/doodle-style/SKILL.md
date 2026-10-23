@@ -58,9 +58,12 @@ band is set through the `--tone` custom property like every other shade.
 
 - Everyone stands on one ground line, `GROUND` in `harness/build-film.js` (850 px).
   A figure's feet and a prop's base touch it. Nothing important goes below 864 px,
-  where the subtitles start.
+  where the subtitles start. A figure's feet sit on the line; its box extends below
+  it by design, so check feet, not the box.
+- A falling figure (a tumble or a face-first fall) is cut short by `fallDrop` in
+  `harness/build-film.js`, so its feet stop at 864 px and never reach the subtitles.
 - The figure is drawn as big as the scene allows: one actor in the scene is drawn
-  close up (1.45), two at 1.15, three at 1.02. A prop never shrinks a person.
+  at 1.2, two at 1.0, three at 0.9. A prop never shrinks a person.
 - A size word in a LAYOUT clause ("DRYER large on the right", "NORA small on the
   left") scales that entry on top of the scene scale.
 - A LAYOUT clause that names a third (left, right, center) puts the entry there.

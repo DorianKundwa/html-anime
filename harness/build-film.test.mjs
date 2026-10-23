@@ -10,7 +10,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { compileProject } from "./compile.js";
-import { buildFilm } from "./build-film.js";
+import { buildFilm, fallDrop } from "./build-film.js";
 import { PROP_ALIASES } from "./build-film.js";
 import { checkFilm } from "./check-film.js";
 import { PALETTE } from "./palette.js";
@@ -240,6 +240,30 @@ test("a prop label on a dark background uses the spec's text colour, and a slide
   const slides = scene.split("\n").filter((l) => /tl\.fromTo\("#s01-e\d+", \{ x:/.test(l));
   assert.ok(slides.length > 0, "the scene has at least one slide");
   for (const l of slides) assert.ok(l.includes("immediateRender: false"), `slide without immediateRender: ${l}`);
+});
+
+test("actors stay above the subtitle zone (y 864) in every scene", async () => {
+  const dir = longProject();
+  await compiled(dir);
+  assert.equal(buildFilm(dir).ok, true);
+  // The rig's feet are at rig y 320, and the box spans rig y -110..350, so the feet sit at
+  // (320 + 110) / 460 of the box height. Only the feet must sit above the subtitle zone.
+  for (let k = 1; k <= SCENES; k++) {
+    const scene = readFileSync(join(dir, "film", "compositions", `s${pad(k)}.html`), "utf8");
+    for (const m of scene.matchAll(/class="actor" style="left:-?\d+px;top:(-?\d+)px;width:\d+px;height:(\d+)px/g)) {
+      const feet = Number(m[1]) + Math.round((430 / 460) * Number(m[2]));
+      assert.ok(feet <= 864, `s${pad(k)} actor feet at y ${feet} run into the subtitle zone (864)`);
+    }
+  }
+});
+
+test("a falling actor is cut short so its feet stay above the subtitle zone", () => {
+  const actor = { kind: "actor", scale: 1, crowd: 1, framing: "normal", cx: 400 };
+  // Actors are always placed with their feet on GROUND (850), whatever their scale, so only
+  // 14px remain above the caption band (864). A fall asking for more is cut to that.
+  for (const scale of [0.5, 1, 1.4]) assert.equal(fallDrop({ ...actor, scale }, 160), 14);
+  // A fall that already fits is kept as asked.
+  assert.equal(fallDrop(actor, 5), 5);
 });
 
 test("a missing timeline asks for the compile step", () => {

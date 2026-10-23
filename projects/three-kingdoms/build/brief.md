@@ -16,6 +16,10 @@ Size 1920×1080, 24 fps. Audio 20.00 s = 480 frames. All frame numbers are root 
 - white #FFFFFF
 - black #000000
 - night #1B2A4A
+- pink #F4A7B9
+- gold #D4A017
+- purple #7B4FA0
+- mint #A8E6CF
 
 ## Rules
 

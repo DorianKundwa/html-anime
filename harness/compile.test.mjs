@@ -13,6 +13,7 @@ import { compileProject, renderBrief } from "./compile.js";
 import {
   buildCaptionBlocks,
   buildTimeline,
+  checkSheet,
   correctCues,
   parseClock,
   parseSceneSheet,
@@ -66,6 +67,33 @@ test("parseClock reads m:ss, m:ss.s and h:mm:ss", () => {
   assert.equal(parseClock("0:33.5"), 33.5);
   assert.equal(parseClock("1:02:03"), 3723);
   assert.throws(() => parseClock("abc"), /bad timestamp/);
+});
+
+test("parseSceneSheet reads a SETS block and a card's SET line", () => {
+  const md = [
+    "## SETS",
+    "OPEN-SEA: flat pale sky above, cobalt sea band across the lower frame",
+    "",
+    "## S01 | 0:00-END | cues 1-1 | bg=sky",
+    "SET: OPEN-SEA",
+    "LAYOUT: one ship at center",
+    "BEATS:",
+    "- 0:00.0 POP ship at center",
+    "",
+  ].join("\n");
+  const sheet = parseSceneSheet(md);
+  assert.equal(sheet.sets["OPEN-SEA"], "flat pale sky above, cobalt sea band across the lower frame");
+  assert.equal(sheet.scenes[0].set, "OPEN-SEA");
+});
+
+test("checkSheet warns when a card's SET is not declared, and ignores case", () => {
+  const scenes = [{ n: 1, start: 0, end: "END", cueFirst: 1, cueLast: 1, bg: "sky", cast: [], props: [], layout: "x", beats: [{ t: 0, verb: "POP", text: "x", line: 1 }], texts: [], camera: "lock", out: "hard-cut", line: 1, set: "open-sea" }];
+  const cues = [{ n: 1, t: 0, text: "hello" }];
+  const ok = checkSheet({ cues, scenes, audioSeconds: 5, sets: { "OPEN-SEA": "sea" } });
+  assert.equal(ok.errors.length, 0);
+  assert.equal(ok.warnings.some((w) => /SET open-sea is not declared/.test(w)), false);
+  const missing = checkSheet({ cues, scenes, audioSeconds: 5, sets: {} });
+  assert.ok(missing.warnings.some((w) => /SET open-sea is not declared/.test(w)));
 });
 
 test("parseTranscript returns numbered cues with seconds", () => {
@@ -338,7 +366,7 @@ test("offPaletteColors flags colors outside the palette and nothing else", () =>
 test("tone variants are allowed in film/ but are not palette tokens", () => {
   const toneHexes = Object.values(TONES).join(" ");
   assert.deepEqual(offPaletteColors(toneHexes), []);
-  assert.equal(Object.keys(TONES).length, 24);
+  assert.equal(Object.keys(TONES).length, 32);
   for (const name of Object.keys(TONES)) {
     assert.ok(!(name in PALETTE), `${name} must not be a PALETTE key`);
     assert.ok(!TOKEN_NAMES.includes(name), `${name} must not be a TOKEN_NAMES entry`);
@@ -363,6 +391,17 @@ test("checkFilm passes a clean film and fails on an off-palette color", () => {
   assert.deepEqual(checkFilm(dir).errors, []);
   writeFileSync(join(dir, "film", "index.html"), '<div data-duration="20" style="color:#123456"></div>');
   assert.ok(checkFilm(dir).errors.some((e) => e.includes("#123456")));
+});
+
+test("checkFilm allows soft shadow and glow, but still bans gradients and blur", () => {
+  const dir = mkdtempSync(join(tmpdir(), "film-"));
+  mkdirSync(join(dir, "film"), { recursive: true });
+  writeFileSync(join(dir, "film", "index.html"), '<div data-duration="20" style="box-shadow:0 4px 0 #000000;filter:drop-shadow(0 0 4px #FFFFFF)"></div>');
+  assert.deepEqual(checkFilm(dir).errors, []);
+  writeFileSync(join(dir, "film", "index.html"), '<div data-duration="20" style="background:linear-gradient(#FFFFFF,#000000)"></div>');
+  assert.ok(checkFilm(dir).errors.some((e) => e.includes("gradient")));
+  writeFileSync(join(dir, "film", "index.html"), '<div data-duration="20" style="filter:blur(4px)"></div>');
+  assert.ok(checkFilm(dir).errors.some((e) => e.includes("blur(")));
 });
 
 test("checkFilm flags banned tokens and a root duration that is not the audio", () => {

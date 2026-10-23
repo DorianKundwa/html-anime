@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .cap {
+          position: absolute; left: 0; bottom: 36px; width: 1920px; text-align: center;
+          font-family: "Lato", Arial, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2;
+        }
+        .cap span {
+          display: inline-block; background: #FFFFFF; color: #000000;
+          border: 4px solid #000000; padding: 6px 18px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="captions-06" data-width="1920" data-height="1080">
+      <div id="cap101" class="cap" style="opacity:0"><span>On the night of December fifteenth, a<br>passing steamer called the Archtor notices</span></div>
+      <div id="cap102" class="cap" style="opacity:0"><span>the light is out.</span></div>
+      <div id="cap103" class="cap" style="opacity:0"><span>The steamer reports it when it reaches<br>port.</span></div>
+      <div id="cap104" class="cap" style="opacity:0"><span>That report never reaches the people who<br>needed it in time.</span></div>
+      <div id="cap105" class="cap" style="opacity:0"><span>Eleven days later, on December<br>twenty-sixth, the relief ship Hesperus</span></div>
+      <div id="cap106" class="cap" style="opacity:0"><span>arrives.</span></div>
+      <div id="cap107" class="cap" style="opacity:0"><span>There is no flag.</span></div>
+      <div id="cap108" class="cap" style="opacity:0"><span>There is no answer to the horn.</span></div>
+      <div id="cap109" class="cap" style="opacity:0"><span>Relief keeper Joseph Moore goes ashore and<br>finds the lighthouse empty.</span></div>
+      <div id="cap110" class="cap" style="opacity:0"><span>The record is dry.</span></div>
+      <div id="cap111" class="cap" style="opacity:0"><span>The log had been kept up through December<br>thirteenth.</span></div>
+      <div id="cap112" class="cap" style="opacity:0"><span>Notes for the fourteenth and fifteenth, up<br>to nine in the morning, were written on a</span></div>
+      <div id="cap113" class="cap" style="opacity:0"><span>slate, waiting to be copied in.</span></div>
+      <div id="cap114" class="cap" style="opacity:0"><span>Two sets of oilskins and sea boots were<br>missing, and Moore, who knew the routine,</span></div>
+      <div id="cap115" class="cap" style="opacity:0"><span>said the men wore those only when heading<br>down</span></div>
+      <div id="cap116" class="cap" style="opacity:0"><span>to the landings.</span></div>
+      </div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#cap101", { opacity: 1 }, f(0));
+        tl.set("#cap101", { opacity: 0 }, f(20));
+        tl.set("#cap102", { opacity: 1 }, f(20));
+        tl.set("#cap102", { opacity: 0 }, f(48));
+        tl.set("#cap103", { opacity: 1 }, f(48));
+        tl.set("#cap103", { opacity: 0 }, f(168));
+        tl.set("#cap104", { opacity: 1 }, f(168));
+        tl.set("#cap104", { opacity: 0 }, f(216));
+        tl.set("#cap105", { opacity: 1 }, f(216));
+        tl.set("#cap105", { opacity: 0 }, f(347));
+        tl.set("#cap106", { opacity: 1 }, f(347));
+        tl.set("#cap106", { opacity: 0 }, f(360));
+        tl.set("#cap107", { opacity: 1 }, f(360));
+        tl.set("#cap107", { opacity: 0 }, f(408));
+        tl.set("#cap108", { opacity: 1 }, f(408));
+        tl.set("#cap108", { opacity: 0 }, f(432));
+        tl.set("#cap109", { opacity: 1 }, f(432));
+        tl.set("#cap109", { opacity: 0 }, f(528));
+        tl.set("#cap110", { opacity: 1 }, f(528));
+        tl.set("#cap110", { opacity: 0 }, f(600));
+        tl.set("#cap111", { opacity: 1 }, f(600));
+        tl.set("#cap111", { opacity: 0 }, f(648));
+        tl.set("#cap112", { opacity: 1 }, f(648));
+        tl.set("#cap112", { opacity: 0 }, f(753));
+        tl.set("#cap113", { opacity: 1 }, f(753));
+        tl.set("#cap113", { opacity: 0 }, f(792));
+        tl.set("#cap114", { opacity: 1 }, f(792));
+        tl.set("#cap114", { opacity: 0 }, f(957));
+        tl.set("#cap115", { opacity: 1 }, f(957));
+        tl.set("#cap115", { opacity: 0 }, f(1056));
+        tl.set("#cap116", { opacity: 1 }, f(1056));
+        tl.set("#cap116", { opacity: 0 }, f(1105));
+        window.__timelines["captions-06"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

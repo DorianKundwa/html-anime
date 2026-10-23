@@ -1218,6 +1218,12 @@ function findAudio(dir) {
  * Builds the film for a compiled project. Returns { ok, errors, files }.
  * Nothing is written when there are errors.
  */
+function fallDrop(actor, maxDrop) {
+  return Math.min(maxDrop, 864 - GROUND);
+}
+
+export { fallDrop };
+
 export function buildFilm(projectDir) {
   const timelinePath = join(projectDir, "build", "timeline.json");
   if (!existsSync(timelinePath)) {

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .fill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+        .actor { position: absolute; transform-origin: 50% 50%; }
+        .env-backdrop { position: absolute; transform-origin: 50% 50%; }
+        .ttl {
+          position: absolute; top: 60px; left: 0; width: 1920px; margin: 0; text-align: center;
+          font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
+          transform-origin: 50% 50%;
+          -webkit-text-stroke: 12px #000000; paint-order: stroke fill;
+          letter-spacing: 2px;
+        }
+        .draw { stroke-dasharray: 1 1; }
+        .callout-label { pointer-events: none; }
+      </style>
+
+<div id="root" data-composition-id="s08" data-width="1920" data-height="1080">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<filter id="s08-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s08-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s08-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+
+</defs>
+</svg>
+<div id="s08-stage" class="fill" style="background:#C4965A">
+
+<div id="s08-ink" class="fill">
+<div id="s08-e0" class="actor" style="left:628px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<rect x="30" y="40" width="180" height="186" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="34" y="44" width="172" height="186" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <rect x="30" y="40" width="180" height="44" fill="#D94040" stroke="#000000" stroke-width="8"/>
+      <rect x="60" y="26" width="16" height="28" rx="4" fill="#000000"/>
+      <rect x="164" y="26" width="16" height="28" rx="4" fill="#000000"/>
+      <text class="prop-text" x="120" y="196" text-anchor="middle" font-family="Lato" font-weight="700" font-size="44" fill="#000000">1872</text>
+</svg>
+</div>
+<div id="s08-e1" class="actor" style="left:980px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#C4965A" style="display:block;overflow:visible;--tone:#89693F">
+<rect x="5" y="5" width="230" height="250" fill="#C4965A" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">ATLANTIC-MAP</text>
+</svg>
+</div>
+<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s08-draw0-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M956 541 L1104 656"/><path id="s08-draw1-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M956 541 L1104 656"/><path id="s08-draw2-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M956 541 L1104 656"/></svg>
+</div>
+<div id="s08-t0" class="ttl" style="color:#D94040;opacity:0;font-size:150px">DECEMBER 1872</div>
+<div id="s08-t1" class="ttl" style="color:#000000;opacity:0;font-size:150px">MID ATLANTIC OCEAN</div>
+<div id="s08-t2" class="ttl" style="color:#D94040;opacity:0;font-size:150px">AZORES TO PORTUGAL</div>
+</div>
+<div id="s08-wipe" class="fill" style="background:#000000"></div>
+</div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#s08-ink", { filter: "url(#s08-boil-a)" }, f(0));
+        tl.set("#s08-ink", { filter: "url(#s08-boil-b)" }, f(24));
+        tl.set("#s08-ink", { filter: "url(#s08-boil-c)" }, f(48));
+        tl.set("#s08-ink", { filter: "url(#s08-boil-a)" }, f(72));
+        tl.set("#s08-ink", { filter: "url(#s08-boil-b)" }, f(96));
+        tl.set("#s08-ink", { filter: "url(#s08-boil-c)" }, f(120));
+        tl.set("#s08-ink", { filter: "url(#s08-boil-a)" }, f(144));
+        tl.set("#s08-ink", { filter: "url(#s08-boil-b)" }, f(168));
+        tl.set("#s08-ink", { filter: "url(#s08-boil-c)" }, f(192));
+        tl.set("#s08-ink", { filter: "url(#s08-boil-a)" }, f(216));
+        tl.fromTo("#s08-e0", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(0));
+        tl.to("#s08-e0", { scale: 1, duration: f(2) }, f(4));
+        tl.fromTo("#s08-e0", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(29));
+        tl.fromTo("#s08-e1", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(36));
+        tl.to("#s08-e1", { scale: 1, duration: f(2) }, f(40));
+        tl.fromTo("#s08-draw0-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(72));
+        tl.set("#s08-e1", { x: 8 }, f(125));
+        tl.set("#s08-e1", { x: -8 }, f(126));
+        tl.set("#s08-e1", { x: 8 }, f(127));
+        tl.set("#s08-e1", { x: -8 }, f(128));
+        tl.set("#s08-e1", { x: 8 }, f(129));
+        tl.set("#s08-e1", { x: -8 }, f(130));
+        tl.set("#s08-e1", { x: 8 }, f(131));
+        tl.set("#s08-e1", { x: -8 }, f(132));
+        tl.set("#s08-e1", { x: 0 }, f(133));
+        tl.fromTo("#s08-draw1-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(175));
+        tl.fromTo("#s08-draw2-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(216));
+        tl.fromTo("#s08-t0", { opacity: 0, scale: 1.45 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(0));
+        tl.set("#s08-t0", { opacity: 0 }, f(36));
+        tl.fromTo("#s08-t1", { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(36));
+        tl.set("#s08-t1", { opacity: 0 }, f(175));
+        tl.fromTo("#s08-t2", { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(175));
+        tl.fromTo("#s08-wipe", { x: -1920 }, { x: 0, duration: f(6), ease: "none" }, f(234));
+        window.__timelines["s08"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

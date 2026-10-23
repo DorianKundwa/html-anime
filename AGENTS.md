@@ -37,9 +37,9 @@ A project is done only when all pass:
 
 ## Hard rules
 
-- Palette only, from `harness/palette.js`. No hex outside it.
+- Palette only, from `harness/palette.js`. No hex outside it. (Changed 2026-10-22: added pink, gold, purple, mint and their -dark/-light tones.)
 - Tones: a flat shade of a palette color may be used only from `TONES` in `harness/palette.js` (for example `orange-dark`), and only as a shading step on the same object. Tones are not tokens. They cannot be text colors, backgrounds or color-dip targets.
-- Zero gradients. Zero shadows, glows, textures, blurs.
+- Zero gradients. Zero textures. Zero blurs. Soft shadow and glow are allowed (changed 2026-10-22); `box-shadow`, `drop-shadow` and `text-shadow` no longer fail the gate.
 - Hard cut unless a card says `OUT: color-dip(token)` or a wipe.
 - No sakuga shot. At most 3 poses per character per scene, 5 in a scene that uses SHAKE or CROSS. A character changes pose at most once every 12 frames (half a second).
 - Determinism: no `Math.random`, `Date.now`, `async`, `setTimeout`, `repeat: -1`, or `play()` on media.

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .cap {
+          position: absolute; left: 0; bottom: 36px; width: 1920px; text-align: center;
+          font-family: "Lato", Arial, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2;
+        }
+        .cap span {
+          display: inline-block; background: #FFFFFF; color: #000000;
+          border: 4px solid #000000; padding: 6px 18px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="captions-04" data-width="1920" data-height="1080">
+      <div id="cap61" class="cap" style="opacity:0"><span>foul play, and in the end found no<br>evidence of</span></div>
+      <div id="cap62" class="cap" style="opacity:0"><span>The stains on the captain's sword turned<br>out to be rust.</span></div>
+      <div id="cap63" class="cap" style="opacity:0"><span>it.</span></div>
+      <div id="cap64" class="cap" style="opacity:0"><span>The most likely explanation is that Briggs<br>believed his ship was in danger, perhaps</span></div>
+      <div id="cap65" class="cap" style="opacity:0"><span>from the cargo or from water in the hold,<br>and</span></div>
+      <div id="cap66" class="cap" style="opacity:0"><span>ordered everyone into the lifeboat.</span></div>
+      <div id="cap67" class="cap" style="opacity:0"><span>That is a theory.</span></div>
+      <div id="cap68" class="cap" style="opacity:0"><span>The lifeboat was never found.</span></div>
+      <div id="cap69" class="cap" style="opacity:0"><span>A ship with nobody on it is unsettling.</span></div>
+      <div id="cap70" class="cap" style="opacity:0"><span>A town with everybody in it is worse.</span></div>
+      <div id="cap71" class="cap" style="opacity:0"><span>July Strasbourg.</span></div>
+      <div id="cap72" class="cap" style="opacity:0"><span>A woman known as Frau Troffea steps into<br>the street and begins to dance.</span></div>
+      <div id="cap73" class="cap" style="opacity:0"><span>No music.</span></div>
+      <div id="cap74" class="cap" style="opacity:0"><span>No occasion.</span></div>
+      <div id="cap75" class="cap" style="opacity:0"><span>She keeps going for days.</span></div>
+      <div id="cap76" class="cap" style="opacity:0"><span>The chroniclers say others joined her, and<br>that within about a month, as many as four</span></div>
+      <div id="cap77" class="cap" style="opacity:0"><span>hundred people were dancing.</span></div>
+      <div id="cap78" class="cap" style="opacity:0"><span>The city authorities considered their<br>options and decided the cure was more</span></div>
+      <div id="cap79" class="cap" style="opacity:0"><span>dancing.</span></div>
+      <div id="cap80" class="cap" style="opacity:0"><span>This did not help.</span></div>
+      <div id="cap81" class="cap" style="opacity:0"><span>Here is where the popular version and the<br>record part ways.</span></div>
+      <div id="cap82" class="cap" style="opacity:0"><span>The popular version has people dropping<br>dead by the dozen, fifteen a day.</span></div>
+      <div id="cap83" class="cap" style="opacity:0"><span>But historians point out that the accounts<br>mentioning deaths come from later</span></div>
+      </div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#cap61", { opacity: 1 }, f(0));
+        tl.set("#cap61", { opacity: 0 }, f(48));
+        tl.set("#cap62", { opacity: 1 }, f(48));
+        tl.set("#cap62", { opacity: 0 }, f(48));
+        tl.set("#cap63", { opacity: 1 }, f(48));
+        tl.set("#cap63", { opacity: 0 }, f(144));
+        tl.set("#cap64", { opacity: 1 }, f(144));
+        tl.set("#cap64", { opacity: 0 }, f(270));
+        tl.set("#cap65", { opacity: 1 }, f(270));
+        tl.set("#cap65", { opacity: 0 }, f(360));
+        tl.set("#cap66", { opacity: 1 }, f(360));
+        tl.set("#cap66", { opacity: 0 }, f(408));
+        tl.set("#cap67", { opacity: 1 }, f(408));
+        tl.set("#cap67", { opacity: 0 }, f(456));
+        tl.set("#cap68", { opacity: 1 }, f(456));
+        tl.set("#cap68", { opacity: 0 }, f(480));
+        tl.set("#cap69", { opacity: 1 }, f(480));
+        tl.set("#cap69", { opacity: 0 }, f(576));
+        tl.set("#cap70", { opacity: 1 }, f(576));
+        tl.set("#cap70", { opacity: 0 }, f(624));
+        tl.set("#cap71", { opacity: 1 }, f(624));
+        tl.set("#cap71", { opacity: 0 }, f(648));
+        tl.set("#cap72", { opacity: 1 }, f(648));
+        tl.set("#cap72", { opacity: 0 }, f(744));
+        tl.set("#cap73", { opacity: 1 }, f(744));
+        tl.set("#cap73", { opacity: 0 }, f(792));
+        tl.set("#cap74", { opacity: 1 }, f(792));
+        tl.set("#cap74", { opacity: 0 }, f(816));
+        tl.set("#cap75", { opacity: 1 }, f(816));
+        tl.set("#cap75", { opacity: 0 }, f(864));
+        tl.set("#cap76", { opacity: 1 }, f(864));
+        tl.set("#cap76", { opacity: 0 }, f(998));
+        tl.set("#cap77", { opacity: 1 }, f(998));
+        tl.set("#cap77", { opacity: 0 }, f(1032));
+        tl.set("#cap78", { opacity: 1 }, f(1032));
+        tl.set("#cap78", { opacity: 0 }, f(1143));
+        tl.set("#cap79", { opacity: 1 }, f(1143));
+        tl.set("#cap79", { opacity: 0 }, f(1152));
+        tl.set("#cap80", { opacity: 1 }, f(1152));
+        tl.set("#cap80", { opacity: 0 }, f(1176));
+        tl.set("#cap81", { opacity: 1 }, f(1176));
+        tl.set("#cap81", { opacity: 0 }, f(1272));
+        tl.set("#cap82", { opacity: 1 }, f(1272));
+        tl.set("#cap82", { opacity: 0 }, f(1368));
+        tl.set("#cap83", { opacity: 1 }, f(1368));
+        tl.set("#cap83", { opacity: 0 }, f(1440));
+        window.__timelines["captions-04"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

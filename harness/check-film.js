@@ -31,9 +31,6 @@ export function isPinnedVendor(relPath, bytes) {
 
 export const BANNED = [
   { name: "gradient", re: /gradient/i },
-  { name: "box-shadow", re: /box-shadow/ },
-  { name: "drop-shadow", re: /drop-shadow/ },
-  { name: "text-shadow", re: /text-shadow/ },
   { name: "blur(", re: /blur\(/ },
   { name: "Math.random", re: /Math\.random/ },
   { name: "Date.now", re: /Date\.now/ },

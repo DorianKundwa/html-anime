@@ -16,6 +16,10 @@ export const PALETTE = {
   white: "#FFFFFF",
   black: "#000000",
   night: "#1B2A4A",
+  pink: "#F4A7B9",
+  gold: "#D4A017",
+  purple: "#7B4FA0",
+  mint: "#A8E6CF",
 };
 
 /**
@@ -49,6 +53,14 @@ export const TONES = {
   "white-light": "#F0F0F0",
   "black-dark": "#1A1A1A",
   "black-light": "#3A3A3A",
+  "pink-dark": "#C97A90",
+  "pink-light": "#FBD3DE",
+  "gold-dark": "#9E7A10",
+  "gold-light": "#EBC766",
+  "purple-dark": "#5A3677",
+  "purple-light": "#A98BC6",
+  "mint-dark": "#7DB59B",
+  "mint-light": "#D3F3E5",
 };
 
 /** Background tokens from the scene-sheet spec. sky+ground is sky with a green strip. */

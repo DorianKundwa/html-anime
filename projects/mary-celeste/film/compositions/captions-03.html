@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .cap {
+          position: absolute; left: 0; bottom: 36px; width: 1920px; text-align: center;
+          font-family: "Lato", Arial, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2;
+        }
+        .cap span {
+          display: inline-block; background: #FFFFFF; color: #000000;
+          border: 4px solid #000000; padding: 6px 18px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="captions-03" data-width="1920" data-height="1080">
+      <div id="cap40" class="cap" style="opacity:0"><span>The sails are partly set.</span></div>
+      <div id="cap41" class="cap" style="opacity:0"><span>The cargo, more than seventeen hundred<br>barrels of industrial alcohol, is mostly</span></div>
+      <div id="cap42" class="cap" style="opacity:0"><span>fine.</span></div>
+      <div id="cap43" class="cap" style="opacity:0"><span>The lifeboat is gone.</span></div>
+      <div id="cap44" class="cap" style="opacity:0"><span>Captain Benjamin Briggs, his wife, their<br>two-year-old daughter, and seven crew</span></div>
+      <div id="cap45" class="cap" style="opacity:0"><span>members are gone with it.</span></div>
+      <div id="cap46" class="cap" style="opacity:0"><span>The last entry in the log is dated<br>November twenty-fifth.</span></div>
+      <div id="cap47" class="cap" style="opacity:0"><span>Ten days earlier.</span></div>
+      <div id="cap48" class="cap" style="opacity:0"><span>This is where the legend takes over.</span></div>
+      <div id="cap49" class="cap" style="opacity:0"><span>In</span></div>
+      <div id="cap50" class="cap" style="opacity:0"><span>a young ship's surgeon named Arthur Conan<br>Doyle wrote a short story about a ghost</span></div>
+      <div id="cap51" class="cap" style="opacity:0"><span>ship.</span></div>
+      <div id="cap52" class="cap" style="opacity:0"><span>It was fiction.</span></div>
+      <div id="cap53" class="cap" style="opacity:0"><span>He even changed the names.</span></div>
+      <div id="cap54" class="cap" style="opacity:0"><span>Readers believed it anyway, and later<br>retellings kept improving it, until the</span></div>
+      <div id="cap55" class="cap" style="opacity:0"><span>story had a hot breakfast on the table and<br>tea that was still warm.</span></div>
+      <div id="cap56" class="cap" style="opacity:0"><span>Nothing in the record supports any of<br>that.</span></div>
+      <div id="cap57" class="cap" style="opacity:0"><span>The boarding party spent hours just trying<br>to reach the ship in the first place.</span></div>
+      <div id="cap58" class="cap" style="opacity:0"><span>Nobody's tea survives that.</span></div>
+      <div id="cap59" class="cap" style="opacity:0"><span>What the record does say is odder in a<br>quieter way.</span></div>
+      <div id="cap60" class="cap" style="opacity:0"><span>A court in Gibraltar spent months<br>suspecting the crew of the Dei Gratia of</span></div>
+      <div id="cap61" class="cap" style="opacity:0"><span>foul play, and in the end found no<br>evidence of</span></div>
+      </div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#cap40", { opacity: 1 }, f(0));
+        tl.set("#cap40", { opacity: 0 }, f(120));
+        tl.set("#cap41", { opacity: 1 }, f(120));
+        tl.set("#cap41", { opacity: 0 }, f(209));
+        tl.set("#cap42", { opacity: 1 }, f(209));
+        tl.set("#cap42", { opacity: 0 }, f(216));
+        tl.set("#cap43", { opacity: 1 }, f(216));
+        tl.set("#cap43", { opacity: 0 }, f(264));
+        tl.set("#cap44", { opacity: 1 }, f(264));
+        tl.set("#cap44", { opacity: 0 }, f(363));
+        tl.set("#cap45", { opacity: 1 }, f(363));
+        tl.set("#cap45", { opacity: 0 }, f(408));
+        tl.set("#cap46", { opacity: 1 }, f(408));
+        tl.set("#cap46", { opacity: 0 }, f(480));
+        tl.set("#cap47", { opacity: 1 }, f(480));
+        tl.set("#cap47", { opacity: 0 }, f(504));
+        tl.set("#cap48", { opacity: 1 }, f(504));
+        tl.set("#cap48", { opacity: 0 }, f(600));
+        tl.set("#cap49", { opacity: 1 }, f(600));
+        tl.set("#cap49", { opacity: 0 }, f(624));
+        tl.set("#cap50", { opacity: 1 }, f(624));
+        tl.set("#cap50", { opacity: 0 }, f(714));
+        tl.set("#cap51", { opacity: 1 }, f(714));
+        tl.set("#cap51", { opacity: 0 }, f(720));
+        tl.set("#cap52", { opacity: 1 }, f(720));
+        tl.set("#cap52", { opacity: 0 }, f(744));
+        tl.set("#cap53", { opacity: 1 }, f(744));
+        tl.set("#cap53", { opacity: 0 }, f(816));
+        tl.set("#cap54", { opacity: 1 }, f(816));
+        tl.set("#cap54", { opacity: 0 }, f(882));
+        tl.set("#cap55", { opacity: 1 }, f(882));
+        tl.set("#cap55", { opacity: 0 }, f(960));
+        tl.set("#cap56", { opacity: 1 }, f(960));
+        tl.set("#cap56", { opacity: 0 }, f(1080));
+        tl.set("#cap57", { opacity: 1 }, f(1080));
+        tl.set("#cap57", { opacity: 0 }, f(1224));
+        tl.set("#cap58", { opacity: 1 }, f(1224));
+        tl.set("#cap58", { opacity: 0 }, f(1272));
+        tl.set("#cap59", { opacity: 1 }, f(1272));
+        tl.set("#cap59", { opacity: 0 }, f(1344));
+        tl.set("#cap60", { opacity: 1 }, f(1344));
+        tl.set("#cap60", { opacity: 0 }, f(1428));
+        tl.set("#cap61", { opacity: 1 }, f(1428));
+        tl.set("#cap61", { opacity: 0 }, f(1440));
+        window.__timelines["captions-03"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

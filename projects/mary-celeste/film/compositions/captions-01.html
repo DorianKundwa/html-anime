@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .cap {
+          position: absolute; left: 0; bottom: 36px; width: 1920px; text-align: center;
+          font-family: "Lato", Arial, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2;
+        }
+        .cap span {
+          display: inline-block; background: #FFFFFF; color: #000000;
+          border: 4px solid #000000; padding: 6px 18px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="captions-01" data-width="1920" data-height="1080">
+      <div id="cap0" class="cap" style="opacity:0"><span>Every culture on Earth agrees on one thing<br>about the missing.</span></div>
+      <div id="cap1" class="cap" style="opacity:0"><span>Somebody should have left a note.</span></div>
+      <div id="cap2" class="cap" style="opacity:0"><span>A ship should come with a log.</span></div>
+      <div id="cap3" class="cap" style="opacity:0"><span>A settlement should come with a letter.</span></div>
+      <div id="cap4" class="cap" style="opacity:0"><span>A man found on a beach should come with a<br>wallet, and ideally a name.</span></div>
+      <div id="cap5" class="cap" style="opacity:0"><span>But history keeps a small, stubborn<br>collection of cases where the paperwork</span></div>
+      <div id="cap6" class="cap" style="opacity:0"><span>simply stops.</span></div>
+      <div id="cap7" class="cap" style="opacity:0"><span>No note.</span></div>
+      <div id="cap8" class="cap" style="opacity:0"><span>No wallet.</span></div>
+      <div id="cap9" class="cap" style="opacity:0"><span>Just a quiet deck, an empty room, a single<br>word carved into a post.</span></div>
+      <div id="cap10" class="cap" style="opacity:0"><span>And here is the part nobody warns about.</span></div>
+      <div id="cap11" class="cap" style="opacity:0"><span>The truth behind these stories is usually<br>stranger, and quieter, than the legend.</span></div>
+      <div id="cap12" class="cap" style="opacity:0"><span>The famous version has ghosts and warm<br>cups of tea.</span></div>
+      <div id="cap13" class="cap" style="opacity:0"><span>The record has a missing lifeboat, a slate<br>with half a day written on it, and a scrap</span></div>
+      <div id="cap14" class="cap" style="opacity:0"><span>of paper that says the end.</span></div>
+      <div id="cap15" class="cap" style="opacity:0"><span>Six cases.</span></div>
+      <div id="cap16" class="cap" style="opacity:0"><span>Real names, real dates, and the exact<br>places where the legend and the record</span></div>
+      <div id="cap17" class="cap" style="opacity:0"><span>quietly go their separate ways.</span></div>
+      <div id="cap18" class="cap" style="opacity:0"><span>Here is the central claim.</span></div>
+      <div id="cap19" class="cap" style="opacity:0"><span>The creepiest mysteries in history are not<br>the ones with monsters.</span></div>
+      <div id="cap20" class="cap" style="opacity:0"><span>They are the ones where almost everything<br>is ordinary, and one piece refuses to fit.</span></div>
+      </div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#cap0", { opacity: 1 }, f(0));
+        tl.set("#cap0", { opacity: 0 }, f(72));
+        tl.set("#cap1", { opacity: 1 }, f(72));
+        tl.set("#cap1", { opacity: 0 }, f(120));
+        tl.set("#cap2", { opacity: 1 }, f(120));
+        tl.set("#cap2", { opacity: 0 }, f(192));
+        tl.set("#cap3", { opacity: 1 }, f(192));
+        tl.set("#cap3", { opacity: 0 }, f(240));
+        tl.set("#cap4", { opacity: 1 }, f(240));
+        tl.set("#cap4", { opacity: 0 }, f(336));
+        tl.set("#cap5", { opacity: 1 }, f(336));
+        tl.set("#cap5", { opacity: 0 }, f(480));
+        tl.set("#cap6", { opacity: 1 }, f(480));
+        tl.set("#cap6", { opacity: 0 }, f(504));
+        tl.set("#cap7", { opacity: 1 }, f(504));
+        tl.set("#cap7", { opacity: 0 }, f(504));
+        tl.set("#cap8", { opacity: 1 }, f(504));
+        tl.set("#cap8", { opacity: 0 }, f(528));
+        tl.set("#cap9", { opacity: 1 }, f(528));
+        tl.set("#cap9", { opacity: 0 }, f(648));
+        tl.set("#cap10", { opacity: 1 }, f(648));
+        tl.set("#cap10", { opacity: 0 }, f(720));
+        tl.set("#cap11", { opacity: 1 }, f(720));
+        tl.set("#cap11", { opacity: 0 }, f(840));
+        tl.set("#cap12", { opacity: 1 }, f(840));
+        tl.set("#cap12", { opacity: 0 }, f(912));
+        tl.set("#cap13", { opacity: 1 }, f(912));
+        tl.set("#cap13", { opacity: 0 }, f(1020));
+        tl.set("#cap14", { opacity: 1 }, f(1020));
+        tl.set("#cap14", { opacity: 0 }, f(1056));
+        tl.set("#cap15", { opacity: 1 }, f(1056));
+        tl.set("#cap15", { opacity: 0 }, f(1104));
+        tl.set("#cap16", { opacity: 1 }, f(1104));
+        tl.set("#cap16", { opacity: 0 }, f(1228));
+        tl.set("#cap17", { opacity: 1 }, f(1228));
+        tl.set("#cap17", { opacity: 0 }, f(1272));
+        tl.set("#cap18", { opacity: 1 }, f(1272));
+        tl.set("#cap18", { opacity: 0 }, f(1296));
+        tl.set("#cap19", { opacity: 1 }, f(1296));
+        tl.set("#cap19", { opacity: 0 }, f(1392));
+        tl.set("#cap20", { opacity: 1 }, f(1392));
+        tl.set("#cap20", { opacity: 0 }, f(1440));
+        window.__timelines["captions-01"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

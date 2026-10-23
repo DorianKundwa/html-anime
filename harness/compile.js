@@ -70,7 +70,7 @@ export async function compileProject(dir, { audioSeconds, log = () => {} } = {})
   const { cues, diffs, warnings: cueWarnings } = correctCues(rawCues, scriptText);
   warnings.push(...cueWarnings);
 
-  const check = checkSheet({ cues: rawCues, scenes: sheet.scenes, audioSeconds: seconds, cast: sheet.cast, props: sheet.props });
+  const check = checkSheet({ cues: rawCues, scenes: sheet.scenes, audioSeconds: seconds, cast: sheet.cast, props: sheet.props, sets: sheet.sets });
   errors.push(...check.errors);
   warnings.push(...check.warnings);
   log(`checked: ${errors.length} error(s), ${warnings.length} warning(s)\n`);
