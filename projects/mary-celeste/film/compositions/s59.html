@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .fill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+        .actor { position: absolute; transform-origin: 50% 50%; }
+        .env-backdrop { position: absolute; transform-origin: 50% 50%; }
+        .ttl {
+          position: absolute; top: 60px; left: 0; width: 1920px; margin: 0; text-align: center;
+          font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
+          transform-origin: 50% 50%;
+          -webkit-text-stroke: 12px #000000; paint-order: stroke fill;
+          letter-spacing: 2px;
+        }
+        .draw { stroke-dasharray: 1 1; }
+        .callout-label { pointer-events: none; }
+      </style>
+
+<div id="root" data-composition-id="s59" data-width="1920" data-height="1080">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<filter id="s59-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s59-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s59-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<symbol id="prop-paper" viewBox="0 0 240 260">
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <path d="M62,70 L178,70 M62,104 L178,104 M62,138 L150,138 M62,172 L178,172 M62,206 L130,206" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-teacup" viewBox="0 0 240 260">
+      <path d="M48,104 L176,104 L168,196 Q164,220 120,220 Q76,220 72,196 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M176,120 Q214,120 214,148 Q214,176 170,176" fill="none" stroke="#000000" stroke-width="8"/>
+      <path d="M48,104 L176,104 L172,132 L52,132 Z" fill="currentColor" stroke="#000000" stroke-width="5"/>
+      <path d="M96,74 Q86,52 96,32 M128,74 Q118,52 128,32" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-cloud" viewBox="0 0 240 260">
+      <path d="M56,176 A38,38 0 0 1 62,104 A48,48 0 0 1 140,74 A38,38 0 0 1 200,120 A32,32 0 0 1 192,176 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M60,180 A38,38 0 0 1 66,108 A48,48 0 0 1 142,78 A38,38 0 0 1 204,124" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+    </symbol>
+<symbol id="prop-card" viewBox="0 0 240 260">
+      <rect x="34" y="70" width="172" height="118" rx="10" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="38" y="74" width="164" height="110" rx="7" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M58,106 L142,106 M58,136 L182,136 M58,166 L120,166" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-chair" viewBox="0 0 240 260">
+      <rect x="66" y="34" width="108" height="90" rx="8" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <rect x="56" y="128" width="128" height="34" rx="6" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M70,162 L58,232 M170,162 L182,232" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+      <rect x="86" y="48" width="68" height="26" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+    </symbol>
+</defs>
+</svg>
+<div id="s59-stage" class="fill" style="background:#1B2A4A">
+
+<div id="s59-ink" class="fill">
+<div id="s59-e0" class="actor" style="left:756px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#F5C518" style="display:block;overflow:visible;--tone:#AC8A11">
+<use href="#prop-paper" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s59-e1" class="actor" style="left:302px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<use href="#prop-teacup" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s59-e2" class="actor" style="left:1185px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#4A4A4A" style="display:block;overflow:visible;--tone:#343434">
+<use href="#prop-cloud" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s59-e3" class="actor" style="left:76px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
+<use href="#prop-card" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s59-e4" class="actor" style="left:500px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<rect x="30" y="40" width="180" height="186" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="34" y="44" width="172" height="186" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <rect x="30" y="40" width="180" height="44" fill="#D94040" stroke="#000000" stroke-width="8"/>
+      <rect x="60" y="26" width="16" height="28" rx="4" fill="#000000"/>
+      <rect x="164" y="26" width="16" height="28" rx="4" fill="#000000"/>
+      <text class="prop-text" x="120" y="196" text-anchor="middle" font-family="Lato" font-weight="700" font-size="44" fill="#000000">1872</text>
+</svg>
+</div>
+<div id="s59-e5" class="actor" style="left:1537px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<path d="M50,186 A40,40 0 0 1 60,108 A50,50 0 0 1 150,78 A40,40 0 0 1 200,128 A34,34 0 0 1 192,186 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <path d="M54,190 A40,40 0 0 1 64,110 A50,50 0 0 1 152,82 A40,40 0 0 1 202,132 A34,34 0 0 1 194,190" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(3,-2)"/>
+      <circle cx="40" cy="222" r="9" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <circle cx="22" cy="244" r="5" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <text class="prop-text" x="120" y="142" text-anchor="middle" font-family="Lato" font-weight="700" font-size="64" fill="#000000">?</text>
+</svg>
+</div>
+<div id="s59-e6" class="actor" style="left:1754px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
+<use href="#prop-chair" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s59-draw0-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M1084 624 L1232 739"/><path id="s59-draw1-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M732 541 L880 656"/></svg>
+</div>
+<div id="s59-t0" class="ttl" style="color:#F5C518;opacity:0;font-size:144px">THE NOTE IS MISSING</div>
+<div id="s59-t1" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">A TEA IS INVENTED</div>
+<div id="s59-t2" class="ttl" style="color:#F5C518;opacity:0;font-size:144px">A STORM IS INVENTED</div>
+<div id="s59-t3" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">A NAME KEPT ALIVE</div>
+<div id="s59-t4" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">THE REAL QUESTION</div>
+<div id="s59-t5" class="ttl" style="color:#F5C518;opacity:0;font-size:137px">SOMEONE COMING BACK?</div>
+<div id="s59-t6" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">CAN'T STOP WRITING</div>
+</div>
+
+</div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#s59-ink", { filter: "url(#s59-boil-a)" }, f(0));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-b)" }, f(24));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-c)" }, f(48));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-a)" }, f(72));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-b)" }, f(96));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-c)" }, f(120));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-a)" }, f(144));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-b)" }, f(168));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-c)" }, f(192));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-a)" }, f(216));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-b)" }, f(240));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-c)" }, f(264));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-a)" }, f(288));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-b)" }, f(312));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-c)" }, f(336));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-a)" }, f(360));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-b)" }, f(384));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-c)" }, f(408));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-a)" }, f(432));
+        tl.set("#s59-ink", { filter: "url(#s59-boil-b)" }, f(456));
+        tl.fromTo("#s59-e0", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(0));
+        tl.to("#s59-e0", { scale: 1, duration: f(2) }, f(4));
+        tl.fromTo("#s59-e0", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(34));
+        tl.fromTo("#s59-e1", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(72));
+        tl.to("#s59-e1", { scale: 1, duration: f(2) }, f(76));
+        tl.fromTo("#s59-e2", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(96));
+        tl.to("#s59-e2", { scale: 1, duration: f(2) }, f(100));
+        tl.fromTo("#s59-draw0-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(120));
+        tl.fromTo("#s59-e3", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(144));
+        tl.to("#s59-e3", { scale: 1, duration: f(2) }, f(148));
+        tl.fromTo("#s59-e4", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(178));
+        tl.to("#s59-e4", { scale: 1, duration: f(2) }, f(182));
+        tl.fromTo("#s59-e4", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(211));
+        tl.fromTo("#s59-e1", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(240));
+        tl.fromTo("#s59-e2", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(245));
+        tl.fromTo("#s59-e3", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(250));
+        tl.fromTo("#s59-e4", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(254));
+        tl.fromTo("#s59-e5", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(278));
+        tl.to("#s59-e5", { scale: 1, duration: f(2) }, f(282));
+        tl.fromTo("#s59-e5", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(312));
+        tl.fromTo("#s59-e6", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(346));
+        tl.to("#s59-e6", { scale: 1, duration: f(2) }, f(350));
+        tl.fromTo("#s59-e0", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(384));
+        tl.set("#s59-e0", { x: 8 }, f(418));
+        tl.set("#s59-e0", { x: -8 }, f(419));
+        tl.set("#s59-e0", { x: 8 }, f(420));
+        tl.set("#s59-e0", { x: -8 }, f(421));
+        tl.set("#s59-e0", { x: 8 }, f(422));
+        tl.set("#s59-e0", { x: -8 }, f(423));
+        tl.set("#s59-e0", { x: 8 }, f(424));
+        tl.set("#s59-e0", { x: -8 }, f(425));
+        tl.set("#s59-e0", { x: 0 }, f(426));
+        tl.fromTo("#s59-draw1-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(456));
+        tl.fromTo("#s59-t0", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(0));
+        tl.set("#s59-t0", { opacity: 0 }, f(72));
+        tl.fromTo("#s59-t1", { opacity: 0, scale: 1.14 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(72));
+        tl.set("#s59-t1", { opacity: 0 }, f(96));
+        tl.fromTo("#s59-t2", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(96));
+        tl.set("#s59-t2", { opacity: 0 }, f(144));
+        tl.fromTo("#s59-t3", { opacity: 0, scale: 1.14 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(144));
+        tl.set("#s59-t3", { opacity: 0 }, f(240));
+        tl.fromTo("#s59-t4", { opacity: 0, scale: 1.14 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(240));
+        tl.set("#s59-t4", { opacity: 0 }, f(312));
+        tl.fromTo("#s59-t5", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(312));
+        tl.set("#s59-t5", { opacity: 0 }, f(384));
+        tl.fromTo("#s59-t6", { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(384));
+        window.__timelines["s59"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

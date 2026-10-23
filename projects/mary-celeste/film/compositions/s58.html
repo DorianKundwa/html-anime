@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .fill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+        .actor { position: absolute; transform-origin: 50% 50%; }
+        .env-backdrop { position: absolute; transform-origin: 50% 50%; }
+        .ttl {
+          position: absolute; top: 60px; left: 0; width: 1920px; margin: 0; text-align: center;
+          font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
+          transform-origin: 50% 50%;
+          -webkit-text-stroke: 12px #000000; paint-order: stroke fill;
+          letter-spacing: 2px;
+        }
+        .draw { stroke-dasharray: 1 1; }
+        .callout-label { pointer-events: none; }
+      </style>
+
+<div id="root" data-composition-id="s58" data-width="1920" data-height="1080">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<filter id="s58-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s58-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s58-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<symbol id="prop-boxes" viewBox="0 0 240 260">
+      <rect x="34" y="146" width="172" height="82" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M34,176 L206,176" stroke="#000000" stroke-width="5"/>
+      <rect x="60" y="70" width="120" height="68" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M60,98 L180,98" stroke="#000000" stroke-width="5"/>
+      <rect x="90" y="20" width="70" height="44" fill="currentColor" stroke="#000000" stroke-width="8"/>
+    </symbol>
+<symbol id="prop-chair" viewBox="0 0 240 260">
+      <rect x="66" y="34" width="108" height="90" rx="8" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <rect x="56" y="128" width="128" height="34" rx="6" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M70,162 L58,232 M170,162 L182,232" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+      <rect x="86" y="48" width="68" height="26" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+    </symbol>
+<symbol id="prop-paper" viewBox="0 0 240 260">
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <path d="M62,70 L178,70 M62,104 L178,104 M62,138 L150,138 M62,172 L178,172 M62,206 L130,206" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-map" viewBox="0 0 240 260">
+      <path d="M36,60 L104,36 L136,58 L206,34 L212,206 L142,230 L108,208 L40,232 Z" fill="currentColor"/>
+      <path d="M142,58 L206,34 L212,206 L142,230 Z" style="fill:var(--tone, #982D2D)"/>
+      <path d="M36,60 L104,36 L136,58 L206,34 L212,206 L142,230 L108,208 L40,232 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M36,60 L104,36 L136,58 L206,34 L212,206 L142,230 L108,208 L40,232 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <path d="M104,36 L108,208 M136,58 L142,230" stroke="#000000" stroke-width="4" fill="none"/>
+      <path d="M60,120 L92,104 M60,150 L100,132" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+</defs>
+</svg>
+<div id="s58-stage" class="fill" style="background:#1B2A4A">
+
+<div id="s58-ink" class="fill">
+<div id="s58-e0" class="actor" style="left:628px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<rect x="22" y="34" width="196" height="110" rx="8" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <rect x="26" y="38" width="188" height="102" rx="5" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M104,144 L136,144 L128,232 L112,232 Z" fill="#8B5E3C" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <text class="prop-text" x="120" y="104" text-anchor="middle" font-family="Lato" font-weight="700" font-size="44" fill="#000000">red</text>
+</svg>
+</div>
+<div id="s58-e1" class="actor" style="left:980px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#000000" style="display:block;overflow:visible;--tone:#1A1A1A">
+<use href="#prop-boxes" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s58-e2" class="actor" style="left:302px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
+<use href="#prop-chair" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s58-e3" class="actor" style="left:1361px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#F5C518" style="display:block;overflow:visible;--tone:#AC8A11">
+<use href="#prop-paper" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s58-e4" class="actor" style="left:500px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#2D5FBF" style="display:block;overflow:visible;--tone:#1F4386">
+<use href="#prop-map" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s58-draw0-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M604 541 L752 656"/><path id="s58-draw1-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M956 541 L1104 656"/><path id="s58-arrow2" class="draw" pathLength="1" d="M981 698 L460 755 M504 773 L460 755 L499 728"/><path id="s58-draw3-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M1260 624 L1408 739"/><path id="s58-draw4-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M399 624 L547 739"/><path id="s58-arrow5" class="draw" pathLength="1" d="M658 764 L1361 764 M1318 741 L1361 764 L1318 787"/><path id="s58-x0" class="draw" pathLength="1" stroke="#D94040" stroke-width="18" d="M1360.8 684.8 L1519.2 843.2"/><path id="s58-x1" class="draw" pathLength="1" stroke="#D94040" stroke-width="18" d="M1519.2 684.8 L1360.8 843.2"/></svg>
+</div>
+<div id="s58-t0" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">SIX PLACES</div>
+<div id="s58-t1" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">SIX SILENCES</div>
+<div id="s58-t2" class="ttl" style="color:#F5C518;opacity:0;font-size:137px">SOMEONE WAS SUPPOSED</div>
+<div id="s58-t3" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">TO LEAVE A NOTE</div>
+<div id="s58-t4" class="ttl" style="color:#F5C518;opacity:0;font-size:137px">EVERY CULTURE AGREES</div>
+<div id="s58-t5" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">NOT THE POINT</div>
+</div>
+
+</div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#s58-ink", { filter: "url(#s58-boil-a)" }, f(0));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-b)" }, f(24));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-c)" }, f(48));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-a)" }, f(72));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-b)" }, f(96));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-c)" }, f(120));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-a)" }, f(144));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-b)" }, f(168));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-c)" }, f(192));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-a)" }, f(216));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-b)" }, f(240));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-c)" }, f(264));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-a)" }, f(288));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-b)" }, f(312));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-c)" }, f(336));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-a)" }, f(360));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-b)" }, f(384));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-c)" }, f(408));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-a)" }, f(432));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-b)" }, f(456));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-c)" }, f(480));
+        tl.set("#s58-ink", { filter: "url(#s58-boil-a)" }, f(504));
+        tl.fromTo("#s58-e0", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(0));
+        tl.to("#s58-e0", { scale: 1, duration: f(2) }, f(4));
+        tl.set("#s58-e0", { x: 8 }, f(34));
+        tl.set("#s58-e0", { x: -8 }, f(35));
+        tl.set("#s58-e0", { x: 8 }, f(36));
+        tl.set("#s58-e0", { x: -8 }, f(37));
+        tl.set("#s58-e0", { x: 8 }, f(38));
+        tl.set("#s58-e0", { x: -8 }, f(39));
+        tl.set("#s58-e0", { x: 8 }, f(40));
+        tl.set("#s58-e0", { x: -8 }, f(41));
+        tl.set("#s58-e0", { x: 0 }, f(42));
+        tl.fromTo("#s58-draw0-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(58));
+        tl.fromTo("#s58-e0", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(72));
+        tl.fromTo("#s58-e1", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(82));
+        tl.to("#s58-e1", { scale: 1, duration: f(2) }, f(86));
+        tl.set("#s58-e1", { x: 8 }, f(130));
+        tl.set("#s58-e1", { x: -8 }, f(131));
+        tl.set("#s58-e1", { x: 8 }, f(132));
+        tl.set("#s58-e1", { x: -8 }, f(133));
+        tl.set("#s58-e1", { x: 8 }, f(134));
+        tl.set("#s58-e1", { x: -8 }, f(135));
+        tl.set("#s58-e1", { x: 8 }, f(136));
+        tl.set("#s58-e1", { x: -8 }, f(137));
+        tl.set("#s58-e1", { x: 0 }, f(138));
+        tl.fromTo("#s58-draw1-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(163));
+        tl.fromTo("#s58-e2", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(192));
+        tl.to("#s58-e2", { scale: 1, duration: f(2) }, f(196));
+        tl.fromTo("#s58-arrow2", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(14), ease: "power1.out" }, f(216));
+        tl.fromTo("#s58-e3", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(240));
+        tl.to("#s58-e3", { scale: 1, duration: f(2) }, f(244));
+        tl.fromTo("#s58-draw3-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(274));
+        tl.fromTo("#s58-e3", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(312));
+        tl.fromTo("#s58-e4", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(336));
+        tl.to("#s58-e4", { scale: 1, duration: f(2) }, f(340));
+        tl.fromTo("#s58-draw4-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(370));
+        tl.fromTo("#s58-arrow5", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(14), ease: "power1.out" }, f(384));
+        tl.fromTo("#s58-e3", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(432));
+        tl.fromTo("#s58-x0", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(8), ease: "none" }, f(456));
+        tl.fromTo("#s58-x1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(8), ease: "none" }, f(464));
+        tl.set("#s58-e1", { x: 8 }, f(504));
+        tl.set("#s58-e1", { x: -8 }, f(505));
+        tl.set("#s58-e1", { x: 8 }, f(506));
+        tl.set("#s58-e1", { x: -8 }, f(507));
+        tl.set("#s58-e1", { x: 8 }, f(508));
+        tl.set("#s58-e1", { x: -8 }, f(509));
+        tl.set("#s58-e1", { x: 8 }, f(510));
+        tl.set("#s58-e1", { x: -8 }, f(511));
+        tl.set("#s58-e1", { x: 0 }, f(512));
+        tl.fromTo("#s58-t0", { opacity: 0, scale: 1.45 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(0));
+        tl.set("#s58-t0", { opacity: 0 }, f(48));
+        tl.fromTo("#s58-t1", { opacity: 0, scale: 1.45 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(48));
+        tl.set("#s58-t1", { opacity: 0 }, f(192));
+        tl.fromTo("#s58-t2", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(192));
+        tl.set("#s58-t2", { opacity: 0 }, f(240));
+        tl.fromTo("#s58-t3", { opacity: 0, scale: 1.29 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(240));
+        tl.set("#s58-t3", { opacity: 0 }, f(384));
+        tl.fromTo("#s58-t4", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(384));
+        tl.set("#s58-t4", { opacity: 0 }, f(456));
+        tl.fromTo("#s58-t5", { opacity: 0, scale: 1.45 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(456));
+        window.__timelines["s58"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

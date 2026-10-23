@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .fill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+        .actor { position: absolute; transform-origin: 50% 50%; }
+        .env-backdrop { position: absolute; transform-origin: 50% 50%; }
+        .ttl {
+          position: absolute; top: 60px; left: 0; width: 1920px; margin: 0; text-align: center;
+          font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
+          transform-origin: 50% 50%;
+          -webkit-text-stroke: 12px #000000; paint-order: stroke fill;
+          letter-spacing: 2px;
+        }
+        .draw { stroke-dasharray: 1 1; }
+        .callout-label { pointer-events: none; }
+      </style>
+
+<div id="root" data-composition-id="s56" data-width="1920" data-height="1080">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<filter id="s56-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s56-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s56-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<symbol id="prop-boxes" viewBox="0 0 240 260">
+      <rect x="34" y="146" width="172" height="82" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M34,176 L206,176" stroke="#000000" stroke-width="5"/>
+      <rect x="60" y="70" width="120" height="68" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M60,98 L180,98" stroke="#000000" stroke-width="5"/>
+      <rect x="90" y="20" width="70" height="44" fill="currentColor" stroke="#000000" stroke-width="8"/>
+    </symbol>
+<symbol id="prop-folder" viewBox="0 0 240 260">
+      <path d="M26,64 L104,64 L120,86 L214,86 L214,210 L26,210 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,86 L214,86 L214,110 L120,110 Z" style="fill:var(--tone, #61422A)"/>
+      <rect x="56" y="132" width="96" height="20" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="prop-ship" viewBox="0 0 240 260">
+      <path d="M22,148 Q38,218 120,224 Q196,218 226,140 L188,140 L188,158 L54,158 L22,148 Z" fill="#8B5E3C" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,158 L188,158 L226,140 Q196,218 120,224 Z" style="fill:var(--tone, #61422A)"/>
+      <rect x="74" y="174" width="12" height="12" fill="#000000"/>
+      <rect x="114" y="176" width="12" height="12" fill="#000000"/>
+      <rect x="154" y="174" width="12" height="12" fill="#000000"/>
+      <line x1="78" y1="36" x2="78" y2="158" stroke="#000000" stroke-width="6"/>
+      <line x1="152" y1="26" x2="152" y2="158" stroke="#000000" stroke-width="7"/>
+      <path d="M56,48 Q78,42 100,48 L96,114 Q78,124 60,114 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M128,40 Q152,34 176,40 L172,112 Q152,122 132,112 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M152,54 L152,98 M138,76 L166,76" stroke="#D94040" stroke-width="8" stroke-linecap="round"/>
+      <path d="M10,224 Q60,206 120,224 Q180,242 230,224" fill="none" stroke="#6EB5E8" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-meter" viewBox="0 0 240 260">
+      <rect x="20" y="108" width="200" height="44" rx="8" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M28,116 L96,116 L96,144 L28,144 Z" fill="currentColor"/>
+      <path d="M104,116 L120,116 M136,116 L152,116 M168,116 L184,116" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-tower" viewBox="0 0 240 260">
+      <g fill="currentColor" stroke="#000000" stroke-width="7">
+        <rect x="52" y="164" width="136" height="34" rx="6"/>
+        <rect x="66" y="116" width="108" height="34" rx="6"/>
+        <rect x="80" y="68" width="80" height="34" rx="6"/>
+      </g>
+      <path d="M120,20 L120,64 M96,36 L144,36" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-stones" viewBox="0 0 240 260">
+      <g stroke="#000000" stroke-width="6" fill="currentColor">
+        <ellipse cx="46" cy="196" rx="28" ry="18"/>
+        <ellipse cx="82" cy="176" rx="28" ry="18"/>
+        <ellipse cx="118" cy="156" rx="28" ry="18"/>
+        <ellipse cx="154" cy="136" rx="28" ry="18"/>
+        <ellipse cx="190" cy="116" rx="28" ry="18"/>
+      </g>
+      <g font-family="Lato" font-weight="700" font-size="22" fill="#000000" text-anchor="middle">
+        <text x="46" y="203">1</text>
+        <text x="82" y="183">2</text>
+        <text x="118" y="163">3</text>
+        <text x="154" y="143">4</text>
+        <text x="190" y="123">5</text>
+      </g>
+    </symbol>
+<symbol id="prop-scroll" viewBox="0 0 240 260">
+      <path d="M46,38 L194,38 L188,212 Q120,224 52,212 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M150,38 L194,38 L188,212 L150,214 Z" style="fill:var(--tone, #D8D8D8)"/>
+      <line x1="68" y1="68" x2="172" y2="68" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="94" x2="172" y2="94" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="120" x2="172" y2="120" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="146" x2="140" y2="146" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <ellipse cx="120" cy="38" rx="76" ry="14" fill="#C4965A" stroke="#000000" stroke-width="7"/>
+      <ellipse cx="120" cy="214" rx="72" ry="14" fill="#C4965A" stroke="#000000" stroke-width="7"/>
+      <path d="M112,176 L100,230 M128,176 L140,230" stroke="#D94040" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="120" cy="176" r="20" fill="#D94040" stroke="#000000" stroke-width="5"/>
+      <circle cx="120" cy="176" r="10" fill="#982D2D"/>
+    </symbol>
+</defs>
+</svg>
+<div id="s56-stage" class="fill" style="background:#FFFFFF">
+
+<div id="s56-ink" class="fill">
+<div id="s56-e0" class="actor" style="left:452px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<use href="#prop-boxes" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s56-e1" class="actor" style="left:804px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#C4965A" style="display:block;overflow:visible;--tone:#89693F">
+<use href="#prop-folder" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s56-e2" class="actor" style="left:302px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
+<use href="#prop-ship" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s56-e3" class="actor" style="left:500px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<use href="#prop-meter" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s56-e4" class="actor" style="left:1233px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<use href="#prop-tower" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s56-e5" class="actor" style="left:1163px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#C4965A" style="display:block;overflow:visible;--tone:#89693F">
+<rect x="5" y="5" width="230" height="250" fill="#C4965A" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">CASE-FILE</text>
+</svg>
+</div>
+<div id="s56-e6" class="actor" style="left:1361px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#4A4A4A" style="display:block;overflow:visible;--tone:#343434">
+<use href="#prop-stones" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s56-e7" class="actor" style="left:1559px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#C4965A" style="display:block;overflow:visible;--tone:#89693F">
+<use href="#prop-scroll" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s56-draw0-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M428 541 L576 656"/><path id="s56-draw1-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M780 541 L928 656"/><path id="s56-arrow2" class="draw" pathLength="1" d="M460 764 L1361 764 M1318 741 L1361 764 L1318 787"/><path id="s56-draw3-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M1132 624 L1280 739"/></svg>
+</div>
+<div id="s56-t0" class="ttl" style="color:#000000;opacity:0;font-size:150px">THE GAP MATTERS</div>
+<div id="s56-t1" class="ttl" style="color:#D94040;opacity:0;font-size:150px">DIFFERENT GENRES</div>
+<div id="s56-t2" class="ttl" style="color:#000000;opacity:0;font-size:150px">ONE STORY</div>
+</div>
+
+</div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#s56-ink", { filter: "url(#s56-boil-a)" }, f(0));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-b)" }, f(24));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-c)" }, f(48));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-a)" }, f(72));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-b)" }, f(96));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-c)" }, f(120));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-a)" }, f(144));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-b)" }, f(168));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-c)" }, f(192));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-a)" }, f(216));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-b)" }, f(240));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-c)" }, f(264));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-a)" }, f(288));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-b)" }, f(312));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-c)" }, f(336));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-a)" }, f(360));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-b)" }, f(384));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-c)" }, f(408));
+        tl.set("#s56-ink", { filter: "url(#s56-boil-a)" }, f(432));
+        tl.fromTo("#s56-e0", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(0));
+        tl.to("#s56-e0", { scale: 1, duration: f(2) }, f(4));
+        tl.fromTo("#s56-draw0-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(34));
+        tl.fromTo("#s56-e0", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(72));
+        tl.fromTo("#s56-e1", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(82));
+        tl.to("#s56-e1", { scale: 1, duration: f(2) }, f(86));
+        tl.fromTo("#s56-draw1-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(120));
+        tl.fromTo("#s56-e1", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(149));
+        tl.fromTo("#s56-e2", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(168));
+        tl.to("#s56-e2", { scale: 1, duration: f(2) }, f(172));
+        tl.fromTo("#s56-e3", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(192));
+        tl.to("#s56-e3", { scale: 1, duration: f(2) }, f(196));
+        tl.fromTo("#s56-e4", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(216));
+        tl.to("#s56-e4", { scale: 1, duration: f(2) }, f(220));
+        tl.fromTo("#s56-e5", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(264));
+        tl.to("#s56-e5", { scale: 1, duration: f(2) }, f(268));
+        tl.fromTo("#s56-e6", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(276));
+        tl.to("#s56-e6", { scale: 1, duration: f(2) }, f(280));
+        tl.fromTo("#s56-e7", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(288));
+        tl.to("#s56-e7", { scale: 1, duration: f(2) }, f(292));
+        tl.fromTo("#s56-arrow2", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(14), ease: "power1.out" }, f(326));
+        tl.set("#s56-e7", { x: 8 }, f(370));
+        tl.set("#s56-e7", { x: -8 }, f(371));
+        tl.set("#s56-e7", { x: 8 }, f(372));
+        tl.set("#s56-e7", { x: -8 }, f(373));
+        tl.set("#s56-e7", { x: 8 }, f(374));
+        tl.set("#s56-e7", { x: -8 }, f(375));
+        tl.set("#s56-e7", { x: 8 }, f(376));
+        tl.set("#s56-e7", { x: -8 }, f(377));
+        tl.set("#s56-e7", { x: 0 }, f(378));
+        tl.fromTo("#s56-draw3-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(408));
+        tl.fromTo("#s56-t0", { opacity: 0, scale: 1.29 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(0));
+        tl.set("#s56-t0", { opacity: 0 }, f(72));
+        tl.fromTo("#s56-t1", { opacity: 0, scale: 1.21 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(72));
+        tl.set("#s56-t1", { opacity: 0 }, f(312));
+        tl.fromTo("#s56-t2", { opacity: 0, scale: 1.45 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(312));
+        window.__timelines["s56"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

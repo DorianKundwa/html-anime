@@ -39,7 +39,19 @@
 <filter id="s20-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
 <filter id="s20-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
 <filter id="s20-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
-
+<symbol id="prop-scroll" viewBox="0 0 240 260">
+      <path d="M46,38 L194,38 L188,212 Q120,224 52,212 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M150,38 L194,38 L188,212 L150,214 Z" style="fill:var(--tone, #D8D8D8)"/>
+      <line x1="68" y1="68" x2="172" y2="68" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="94" x2="172" y2="94" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="120" x2="172" y2="120" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="146" x2="140" y2="146" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <ellipse cx="120" cy="38" rx="76" ry="14" fill="#C4965A" stroke="#000000" stroke-width="7"/>
+      <ellipse cx="120" cy="214" rx="72" ry="14" fill="#C4965A" stroke="#000000" stroke-width="7"/>
+      <path d="M112,176 L100,230 M128,176 L140,230" stroke="#D94040" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="120" cy="176" r="20" fill="#D94040" stroke="#000000" stroke-width="5"/>
+      <circle cx="120" cy="176" r="10" fill="#982D2D"/>
+    </symbol>
 </defs>
 </svg>
 <div id="s20-stage" class="fill" style="background:#FFFFFF">
@@ -47,20 +59,25 @@
 <div id="s20-ink" class="fill">
 <div id="s20-e0" class="actor" style="left:148px;top:512px;width:312px;height:338px;opacity:0">
 <svg width="312" height="338" viewBox="0 0 240 260" color="#D94040" style="display:block;overflow:visible;--tone:#982D2D">
-<rect x="5" y="5" width="230" height="250" fill="#D94040" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">CLOSED-BOOK</text>
+<path d="M44,38 L194,28 L200,226 L48,236 Z" fill="currentColor"/>
+      <path d="M150,32 L194,28 L200,226 L154,230 Z" style="fill:var(--tone, #1F4386)"/>
+      <path d="M44,38 L194,28 L200,226 L48,236 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M44,38 L194,28 L200,226 L48,236 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <rect x="62" y="100" width="104" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <text class="prop-label" x="114" y="118" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">15 A DAY</text>
 </svg>
 </div>
 <div id="s20-e1" class="actor" style="left:1284px;top:512px;width:312px;height:338px;opacity:0">
 <svg width="312" height="338" viewBox="0 0 240 260" color="#C4965A" style="display:block;overflow:visible;--tone:#89693F">
-<rect x="5" y="5" width="230" height="250" fill="#C4965A" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">OLD-SCROLL</text>
+<use href="#prop-scroll" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <div id="s20-e2" class="actor" style="left:931px;top:678px;width:158px;height:172px;opacity:0">
 <svg width="158" height="172" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
-<rect x="5" y="5" width="230" height="250" fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">COUNTER-SIGN</text>
+<rect x="22" y="34" width="196" height="110" rx="8" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <rect x="26" y="38" width="188" height="102" rx="5" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <path d="M104,144 L136,144 L128,232 L112,232 Z" fill="#8B5E3C" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <text class="prop-text" x="120" y="104" text-anchor="middle" font-family="Lato" font-weight="700" font-size="44" fill="#000000">red</text>
 </svg>
 </div>
 <div id="s20-e3" class="actor" style="left:577px;top:678px;width:158px;height:172px;opacity:0">

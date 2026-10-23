@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .fill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+        .actor { position: absolute; transform-origin: 50% 50%; }
+        .env-backdrop { position: absolute; transform-origin: 50% 50%; }
+        .ttl {
+          position: absolute; top: 60px; left: 0; width: 1920px; margin: 0; text-align: center;
+          font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
+          transform-origin: 50% 50%;
+          -webkit-text-stroke: 12px #000000; paint-order: stroke fill;
+          letter-spacing: 2px;
+        }
+        .draw { stroke-dasharray: 1 1; }
+        .callout-label { pointer-events: none; }
+      </style>
+
+<div id="root" data-composition-id="s60" data-width="1920" data-height="1080">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<filter id="s60-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s60-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s60-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<symbol id="prop-tower" viewBox="0 0 240 260">
+      <g fill="currentColor" stroke="#000000" stroke-width="7">
+        <rect x="52" y="164" width="136" height="34" rx="6"/>
+        <rect x="66" y="116" width="108" height="34" rx="6"/>
+        <rect x="80" y="68" width="80" height="34" rx="6"/>
+      </g>
+      <path d="M120,20 L120,64 M96,36 L144,36" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-ship" viewBox="0 0 240 260">
+      <path d="M22,148 Q38,218 120,224 Q196,218 226,140 L188,140 L188,158 L54,158 L22,148 Z" fill="#8B5E3C" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,158 L188,158 L226,140 Q196,218 120,224 Z" style="fill:var(--tone, #61422A)"/>
+      <rect x="74" y="174" width="12" height="12" fill="#000000"/>
+      <rect x="114" y="176" width="12" height="12" fill="#000000"/>
+      <rect x="154" y="174" width="12" height="12" fill="#000000"/>
+      <line x1="78" y1="36" x2="78" y2="158" stroke="#000000" stroke-width="6"/>
+      <line x1="152" y1="26" x2="152" y2="158" stroke="#000000" stroke-width="7"/>
+      <path d="M56,48 Q78,42 100,48 L96,114 Q78,124 60,114 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M128,40 Q152,34 176,40 L172,112 Q152,122 132,112 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M152,54 L152,98 M138,76 L166,76" stroke="#D94040" stroke-width="8" stroke-linecap="round"/>
+      <path d="M10,224 Q60,206 120,224 Q180,242 230,224" fill="none" stroke="#6EB5E8" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-candles" viewBox="0 0 240 260">
+      <rect x="62" y="120" width="26" height="110" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <rect x="112" y="96" width="26" height="134" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <rect x="162" y="130" width="26" height="100" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <path d="M75,112 Q66,92 75,72 Q84,92 75,112 Z" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <path d="M125,88 Q116,68 125,48 Q134,68 125,88 Z" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <path d="M175,122 Q166,102 175,82 Q184,102 175,122 Z" fill="#F5C518" stroke="#000000" stroke-width="4"/>
+      <rect x="44" y="226" width="152" height="18" rx="4" fill="currentColor" stroke="#000000" stroke-width="6"/>
+    </symbol>
+</defs>
+</svg>
+<div id="s60-stage" class="fill" style="background:#1B2A4A">
+
+<div id="s60-ink" class="fill">
+<div id="s60-e0" class="actor" style="left:804px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
+<path d="M48,228 L48,96 A72,72 0 0 1 192,96 L192,228 Z" fill="#4A4A4A" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M140,42 A72,72 0 0 1 192,96 L192,228 L140,228 Z" style="fill:var(--tone, #343434)"/>
+      <path d="M48,228 L48,96 A72,72 0 0 1 192,96 L192,228 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(3,3)"/>
+      <path d="M120,68 L120,118 M102,86 L138,86" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+      
+      <path d="M22,230 Q120,208 218,230 L218,246 L22,246 Z" fill="#3A9E3A" stroke="#000000" stroke-width="6"/>
+      <line x1="80" y1="222" x2="84" y2="210" stroke="#296F29" stroke-width="4" stroke-linecap="round"/>
+      <line x1="160" y1="222" x2="156" y2="208" stroke="#296F29" stroke-width="4" stroke-linecap="round"/>
+</svg>
+</div>
+<div id="s60-e1" class="actor" style="left:401px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#000000" style="display:block;overflow:visible;--tone:#1A1A1A">
+<use href="#prop-tower" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s60-e2" class="actor" style="left:1361px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
+<use href="#prop-ship" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s60-e3" class="actor" style="left:1637px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<use href="#prop-candles" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s60-draw0-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M780 541 L928 656"/></svg>
+</div>
+<div id="s60-t0" class="ttl" style="color:#F5C518;opacity:0;font-size:150px">SOMEONE IS CARVING</div>
+<div id="s60-t1" class="ttl" style="color:#F5C518;opacity:0;font-size:125px">HOPING SOMEONE RETURNS</div>
+</div>
+
+</div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#s60-ink", { filter: "url(#s60-boil-a)" }, f(0));
+        tl.set("#s60-ink", { filter: "url(#s60-boil-b)" }, f(24));
+        tl.set("#s60-ink", { filter: "url(#s60-boil-c)" }, f(48));
+        tl.set("#s60-ink", { filter: "url(#s60-boil-a)" }, f(72));
+        tl.set("#s60-ink", { filter: "url(#s60-boil-b)" }, f(96));
+        tl.set("#s60-ink", { filter: "url(#s60-boil-c)" }, f(120));
+        tl.set("#s60-ink", { filter: "url(#s60-boil-a)" }, f(144));
+        tl.set("#s60-ink", { filter: "url(#s60-boil-b)" }, f(168));
+        tl.fromTo("#s60-e0", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(0));
+        tl.to("#s60-e0", { scale: 1, duration: f(2) }, f(4));
+        tl.fromTo("#s60-e1", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(34));
+        tl.to("#s60-e1", { scale: 1, duration: f(2) }, f(38));
+        tl.fromTo("#s60-draw0-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(62));
+        tl.fromTo("#s60-e2", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(96));
+        tl.fromTo("#s60-e3", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(125));
+        tl.to("#s60-e3", { scale: 1, duration: f(2) }, f(129));
+        tl.fromTo("#s60-t0", { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(0));
+        tl.set("#s60-t0", { opacity: 0 }, f(96));
+        tl.fromTo("#s60-t1", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(96));
+        window.__timelines["s60"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

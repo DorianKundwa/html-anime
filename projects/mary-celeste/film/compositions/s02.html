@@ -39,7 +39,30 @@
 <filter id="s02-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
 <filter id="s02-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
 <filter id="s02-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
-
+<symbol id="prop-paper" viewBox="0 0 240 260">
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <path d="M62,70 L178,70 M62,104 L178,104 M62,138 L150,138 M62,172 L178,172 M62,206 L130,206" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-purse" viewBox="0 0 240 260">
+      <path d="M40,110 Q40,86 68,86 L172,86 Q200,86 200,110 L200,206 Q200,224 182,224 L58,224 Q40,224 40,206 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M84,86 Q120,40 156,86" fill="none" stroke="#000000" stroke-width="9" stroke-linecap="round"/>
+      <rect x="106" y="140" width="28" height="24" rx="4" fill="#F5C518" stroke="#000000" stroke-width="5"/>
+    </symbol>
+<symbol id="prop-gears" viewBox="0 0 240 260">
+      <g fill="currentColor" stroke="#000000" stroke-width="7" stroke-linejoin="round">
+        <path d="M78,66 L96,58 L104,74 L122,68 L124,86 L142,88 L138,106 L154,116 L142,128 L148,144 L130,148 L124,164 L106,158 L96,172 L80,162 L64,168 L58,150 L40,146 L44,128 L28,118 L40,106 L34,90 L52,86 L58,70 Z"/>
+        <path d="M158,124 L174,118 L180,132 L196,128 L196,144 L212,150 L204,162 L214,174 L200,180 L198,196 L182,192 L174,204 L160,196 L146,200 L142,184 L126,178 L134,166 L126,152 L140,148 L144,132 Z"/>
+      </g>
+      <circle cx="92" cy="114" r="24" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <circle cx="170" cy="162" r="20" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+    </symbol>
+<symbol id="prop-chair" viewBox="0 0 240 260">
+      <rect x="66" y="34" width="108" height="90" rx="8" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <rect x="56" y="128" width="128" height="34" rx="6" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M70,162 L58,232 M170,162 L182,232" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+      <rect x="86" y="48" width="68" height="26" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+    </symbol>
 </defs>
 </svg>
 <div id="s02-stage" class="fill" style="background:#C4965A">
@@ -47,38 +70,39 @@
 <div id="s02-ink" class="fill">
 <div id="s02-e0" class="actor" style="left:452px;top:512px;width:312px;height:338px;opacity:0">
 <svg width="312" height="338" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
-<rect x="5" y="5" width="230" height="250" fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">PAPER-TRAIL</text>
+<use href="#prop-paper" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <div id="s02-e1" class="actor" style="left:80px;top:590px;width:240px;height:260px;opacity:0">
 <svg width="240" height="260" viewBox="0 0 240 260" color="#F5C518" style="display:block;overflow:visible;--tone:#AC8A11">
-<rect x="5" y="5" width="230" height="250" fill="#F5C518" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">NOTE</text>
+<use href="#prop-paper" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <div id="s02-e2" class="actor" style="left:360px;top:590px;width:240px;height:260px;opacity:0">
 <svg width="240" height="260" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
-<rect x="5" y="5" width="230" height="250" fill="#8B5E3C" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">WALLET</text>
+<use href="#prop-purse" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <div id="s02-e3" class="actor" style="left:640px;top:590px;width:240px;height:260px;opacity:0">
 <svg width="240" height="260" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
-<rect x="5" y="5" width="230" height="250" fill="#8B5E3C" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">SHIP-WHEEL</text>
+<use href="#prop-gears" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <div id="s02-e4" class="actor" style="left:840px;top:590px;width:240px;height:260px;opacity:0">
 <svg width="240" height="260" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
-<rect x="5" y="5" width="230" height="250" fill="#8B5E3C" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">EMPTY-CHAIR</text>
+<use href="#prop-chair" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <div id="s02-e5" class="actor" style="left:1192px;top:590px;width:240px;height:260px;opacity:0">
 <svg width="240" height="260" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
-<rect x="5" y="5" width="230" height="250" fill="#8B5E3C" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">CARVED-POST</text>
+<path d="M48,228 L48,96 A72,72 0 0 1 192,96 L192,228 Z" fill="#4A4A4A" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M140,42 A72,72 0 0 1 192,96 L192,228 L140,228 Z" style="fill:var(--tone, #343434)"/>
+      <path d="M48,228 L48,96 A72,72 0 0 1 192,96 L192,228 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(3,3)"/>
+      <path d="M120,68 L120,118 M102,86 L138,86" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+      
+      <path d="M22,230 Q120,208 218,230 L218,246 L22,246 Z" fill="#3A9E3A" stroke="#000000" stroke-width="6"/>
+      <line x1="80" y1="222" x2="84" y2="210" stroke="#296F29" stroke-width="4" stroke-linecap="round"/>
+      <line x1="160" y1="222" x2="156" y2="208" stroke="#296F29" stroke-width="4" stroke-linecap="round"/>
 </svg>
 </div>
 <svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s02-draw0-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M428 541 L576 656"/><path id="s02-x0" class="draw" pathLength="1" stroke="#D94040" stroke-width="18" d="M80 600 L320 840"/><path id="s02-x1" class="draw" pathLength="1" stroke="#D94040" stroke-width="18" d="M320 600 L80 840"/><path id="s02-x2" class="draw" pathLength="1" stroke="#D94040" stroke-width="18" d="M360 600 L600 840"/><path id="s02-x3" class="draw" pathLength="1" stroke="#D94040" stroke-width="18" d="M600 600 L360 840"/></svg>

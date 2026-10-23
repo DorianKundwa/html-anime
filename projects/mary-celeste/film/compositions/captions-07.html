@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .cap {
+          position: absolute; left: 0; bottom: 36px; width: 1920px; text-align: center;
+          font-family: "Lato", Arial, sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2;
+        }
+        .cap span {
+          display: inline-block; background: #FFFFFF; color: #000000;
+          border: 4px solid #000000; padding: 6px 18px;
+        }
+      </style>
+
+      <div id="root" data-composition-id="captions-07" data-width="1920" data-height="1080">
+      <div id="cap121" class="cap" style="opacity:0"><span>Years later, dramatic log entries entered<br>the story: a storm of terrible fury, the</span></div>
+      <div id="cap122" class="cap" style="opacity:0"><span>keepers praying, one of them weeping.</span></div>
+      <div id="cap123" class="cap" style="opacity:0"><span>Those entries are not part of the original<br>record.</span></div>
+      <div id="cap124" class="cap" style="opacity:0"><span>They were added to the story long after<br>the men were gone.</span></div>
+      <div id="cap125" class="cap" style="opacity:0"><span>Three men, one island, and an ocean to<br>blame.</span></div>
+      <div id="cap126" class="cap" style="opacity:0"><span>The next case had a beach.</span></div>
+      <div id="cap127" class="cap" style="opacity:0"><span>December first, 1948. Somerton Beach,<br>south of Adelaide, Australia.</span></div>
+      <div id="cap128" class="cap" style="opacity:0"><span>A well-dressed man is found slumped<br>against the seawall.</span></div>
+      <div id="cap129" class="cap" style="opacity:0"><span>No wallet.</span></div>
+      <div id="cap130" class="cap" style="opacity:0"><span>No identification.</span></div>
+      <div id="cap131" class="cap" style="opacity:0"><span>The labels have been removed from his<br>clothing.</span></div>
+      <div id="cap132" class="cap" style="opacity:0"><span>A suitcase linked to him turns up at the<br>railway station, and the labels are</span></div>
+      <div id="cap133" class="cap" style="opacity:0"><span>missing from those clothes too.</span></div>
+      <div id="cap134" class="cap" style="opacity:0"><span>It carries two printed words.</span></div>
+      <div id="cap135" class="cap" style="opacity:0"><span>Tamam Shud.</span></div>
+      <div id="cap136" class="cap" style="opacity:0"><span>Persian for ended, or finished.</span></div>
+      <div id="cap137" class="cap" style="opacity:0"><span>The scrap had been torn from the last page<br>of a copy of the Rubaiyat of Omar Khayyam.</span></div>
+      <div id="cap138" class="cap" style="opacity:0"><span>A copy with that page missing had been<br>found in a car near the beach.</span></div>
+      <div id="cap139" class="cap" style="opacity:0"><span>Nearby, a string of letters that<br>investigators took for a code.</span></div>
+      </div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#cap121", { opacity: 1 }, f(0));
+        tl.set("#cap121", { opacity: 0 }, f(94));
+        tl.set("#cap122", { opacity: 1 }, f(94));
+        tl.set("#cap122", { opacity: 0 }, f(144));
+        tl.set("#cap123", { opacity: 1 }, f(144));
+        tl.set("#cap123", { opacity: 0 }, f(216));
+        tl.set("#cap124", { opacity: 1 }, f(216));
+        tl.set("#cap124", { opacity: 0 }, f(264));
+        tl.set("#cap125", { opacity: 1 }, f(264));
+        tl.set("#cap125", { opacity: 0 }, f(360));
+        tl.set("#cap126", { opacity: 1 }, f(360));
+        tl.set("#cap126", { opacity: 0 }, f(432));
+        tl.set("#cap127", { opacity: 1 }, f(432));
+        tl.set("#cap127", { opacity: 0 }, f(576));
+        tl.set("#cap128", { opacity: 1 }, f(576));
+        tl.set("#cap128", { opacity: 0 }, f(648));
+        tl.set("#cap129", { opacity: 1 }, f(648));
+        tl.set("#cap129", { opacity: 0 }, f(672));
+        tl.set("#cap130", { opacity: 1 }, f(672));
+        tl.set("#cap130", { opacity: 0 }, f(696));
+        tl.set("#cap131", { opacity: 1 }, f(696));
+        tl.set("#cap131", { opacity: 0 }, f(744));
+        tl.set("#cap132", { opacity: 1 }, f(744));
+        tl.set("#cap132", { opacity: 0 }, f(924));
+        tl.set("#cap133", { opacity: 1 }, f(924));
+        tl.set("#cap133", { opacity: 0 }, f(984));
+        tl.set("#cap134", { opacity: 1 }, f(984));
+        tl.set("#cap134", { opacity: 0 }, f(1056));
+        tl.set("#cap135", { opacity: 1 }, f(1056));
+        tl.set("#cap135", { opacity: 0 }, f(1080));
+        tl.set("#cap136", { opacity: 1 }, f(1080));
+        tl.set("#cap136", { opacity: 0 }, f(1152));
+        tl.set("#cap137", { opacity: 1 }, f(1152));
+        tl.set("#cap137", { opacity: 0 }, f(1248));
+        tl.set("#cap138", { opacity: 1 }, f(1248));
+        tl.set("#cap138", { opacity: 0 }, f(1344));
+        tl.set("#cap139", { opacity: 1 }, f(1344));
+        tl.set("#cap139", { opacity: 0 }, f(1440));
+        window.__timelines["captions-07"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

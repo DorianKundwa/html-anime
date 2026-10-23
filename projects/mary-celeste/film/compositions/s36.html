@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .fill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+        .actor { position: absolute; transform-origin: 50% 50%; }
+        .env-backdrop { position: absolute; transform-origin: 50% 50%; }
+        .ttl {
+          position: absolute; top: 60px; left: 0; width: 1920px; margin: 0; text-align: center;
+          font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
+          transform-origin: 50% 50%;
+          -webkit-text-stroke: 12px #000000; paint-order: stroke fill;
+          letter-spacing: 2px;
+        }
+        .draw { stroke-dasharray: 1 1; }
+        .callout-label { pointer-events: none; }
+      </style>
+
+<div id="root" data-composition-id="s36" data-width="1920" data-height="1080">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<filter id="s36-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s36-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s36-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<symbol id="prop-paper" viewBox="0 0 240 260">
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <path d="M62,70 L178,70 M62,104 L178,104 M62,138 L150,138 M62,172 L178,172 M62,206 L130,206" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-car" viewBox="0 0 240 260">
+      <path d="M28,176 L52,116 Q60,98 84,98 L150,98 Q176,98 190,120 L212,152 L212,176 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M70,104 L144,104 Q160,104 170,122 L184,146 L62,146 Z" fill="#6EB5E8" stroke="#000000" stroke-width="5"/>
+      <circle cx="72" cy="186" r="30" fill="#000000"/>
+      <circle cx="72" cy="186" r="12" fill="#FFFFFF"/>
+      <circle cx="170" cy="186" r="30" fill="#000000"/>
+      <circle cx="170" cy="186" r="12" fill="#FFFFFF"/>
+      <path d="M192,150 L212,150 L212,166 L196,166 Z" style="fill:var(--tone, #982D2D)"/>
+    </symbol>
+</defs>
+</svg>
+<div id="s36-stage" class="fill" style="background:#C4965A">
+
+<div id="s36-ink" class="fill">
+<div id="s36-e0" class="actor" style="left:324px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#C4965A" style="display:block;overflow:visible;--tone:#89693F">
+<use href="#prop-paper" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s36-e1" class="actor" style="left:804px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<path d="M50,186 A40,40 0 0 1 60,108 A50,50 0 0 1 150,78 A40,40 0 0 1 200,128 A34,34 0 0 1 192,186 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <path d="M54,190 A40,40 0 0 1 64,110 A50,50 0 0 1 152,82 A40,40 0 0 1 202,132 A34,34 0 0 1 194,190" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(3,-2)"/>
+      <circle cx="40" cy="222" r="9" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <circle cx="22" cy="244" r="5" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <text class="prop-text" x="120" y="142" text-anchor="middle" font-family="Lato" font-weight="700" font-size="44" fill="#000000">ENDED</text>
+</svg>
+</div>
+<div id="s36-e2" class="actor" style="left:932px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#D94040" style="display:block;overflow:visible;--tone:#982D2D">
+<rect x="5" y="5" width="230" height="250" fill="#D94040" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">RUBAIYAT-BOOK</text>
+</svg>
+</div>
+<div id="s36-e3" class="actor" style="left:1361px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#2D5FBF" style="display:block;overflow:visible;--tone:#1F4386">
+<use href="#prop-car" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s36-e4" class="actor" style="left:1713px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<rect x="5" y="5" width="230" height="250" fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">CODE-LETTERS</text>
+</svg>
+</div>
+<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s36-draw0-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M300 541 L448 656"/><path id="s36-arrow1" class="draw" pathLength="1" d="M636 681 L932 681 M890 658 L932 681 L890 704"/><path id="s36-draw2" class="draw" pathLength="1" stroke="#3A9E3A" stroke-width="14" d="M1064 681 L1082 701 L1116 661"/><path id="s36-arrow3" class="draw" pathLength="1" d="M1240 717 L1363 746 M1327 714 L1363 746 L1316 758"/><path id="s36-draw4-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M1612 624 L1760 739"/><path id="s36-draw5-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M1612 624 L1760 739"/><text id="s36-draw5-txt" class="callout-label" x="1602" y="614" text-anchor="end" font-family="Permanent Marker, Arial, sans-serif" font-weight="400" font-size="44" fill="#000000" style="-webkit-text-stroke:4px #000000;paint-order:stroke fill">?</text></svg>
+</div>
+<div id="s36-t0" class="ttl" style="color:#000000;opacity:0;font-size:150px">TWO PRINTED WORDS</div>
+<div id="s36-t1" class="ttl" style="color:#D94040;opacity:0;font-size:150px">TAMAM SHUD</div>
+<div id="s36-t2" class="ttl" style="color:#000000;opacity:0;font-size:150px">ENDED OR FINISHED</div>
+<div id="s36-t3" class="ttl" style="color:#000000;opacity:0;font-size:150px">TORN FROM A BOOK</div>
+<div id="s36-t4" class="ttl" style="color:#D94040;opacity:0;font-size:150px">A CODE</div>
+</div>
+
+</div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#s36-ink", { filter: "url(#s36-boil-a)" }, f(0));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-b)" }, f(24));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-c)" }, f(48));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-a)" }, f(72));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-b)" }, f(96));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-c)" }, f(120));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-a)" }, f(144));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-b)" }, f(168));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-c)" }, f(192));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-a)" }, f(216));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-b)" }, f(240));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-c)" }, f(264));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-a)" }, f(288));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-b)" }, f(312));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-c)" }, f(336));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-a)" }, f(360));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-b)" }, f(384));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-c)" }, f(408));
+        tl.set("#s36-ink", { filter: "url(#s36-boil-a)" }, f(432));
+        tl.fromTo("#s36-e0", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(0));
+        tl.to("#s36-e0", { scale: 1, duration: f(2) }, f(4));
+        tl.fromTo("#s36-draw0-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(34));
+        tl.fromTo("#s36-e0", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 0.96, duration: f(3), ease: "power4.in", immediateRender: false }, f(72));
+        tl.to("#s36-e0", { scale: 1, duration: f(2), ease: "power1.out" }, f(75));
+        tl.fromTo("#s36-e1", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(108));
+        tl.to("#s36-e1", { scale: 1, duration: f(2) }, f(112));
+        tl.fromTo("#s36-e1", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(134));
+        tl.fromTo("#s36-e1", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(163));
+        tl.fromTo("#s36-e0", { x: -400, opacity: 0 }, { x: 0, opacity: 1, duration: f(12), ease: "power2.out", immediateRender: false }, f(168));
+        tl.fromTo("#s36-e2", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(178));
+        tl.to("#s36-e2", { scale: 1, duration: f(2) }, f(182));
+        tl.fromTo("#s36-arrow1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(14), ease: "power1.out" }, f(206));
+        tl.fromTo("#s36-draw2", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(8), ease: "power1.out" }, f(240));
+        tl.fromTo("#s36-e3", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(264));
+        tl.to("#s36-e3", { scale: 1, duration: f(2) }, f(268));
+        tl.fromTo("#s36-arrow3", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(14), ease: "power1.out" }, f(298));
+        tl.fromTo("#s36-e2", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(326));
+        tl.fromTo("#s36-e4", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(360));
+        tl.to("#s36-e4", { scale: 1, duration: f(2) }, f(364));
+        tl.fromTo("#s36-draw4-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(394));
+        tl.set("#s36-e4", { x: 8 }, f(422));
+        tl.set("#s36-e4", { x: -8 }, f(423));
+        tl.set("#s36-e4", { x: 8 }, f(424));
+        tl.set("#s36-e4", { x: -8 }, f(425));
+        tl.set("#s36-e4", { x: 8 }, f(426));
+        tl.set("#s36-e4", { x: -8 }, f(427));
+        tl.set("#s36-e4", { x: 8 }, f(428));
+        tl.set("#s36-e4", { x: -8 }, f(429));
+        tl.set("#s36-e4", { x: 0 }, f(430));
+        tl.fromTo("#s36-draw5-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(442));
+        tl.fromTo("#s36-draw5-txt", { opacity: 0 }, { opacity: 1, duration: f(3), ease: "power1.out" }, f(450));
+        tl.fromTo("#s36-t0", { opacity: 0, scale: 1.14 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(0));
+        tl.set("#s36-t0", { opacity: 0 }, f(72));
+        tl.fromTo("#s36-t1", { opacity: 0, scale: 1.45 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(72));
+        tl.set("#s36-t1", { opacity: 0 }, f(108));
+        tl.fromTo("#s36-t2", { opacity: 0, scale: 1.14 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(108));
+        tl.set("#s36-t2", { opacity: 0 }, f(168));
+        tl.fromTo("#s36-t3", { opacity: 0, scale: 1.21 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(168));
+        tl.set("#s36-t3", { opacity: 0 }, f(360));
+        tl.fromTo("#s36-t4", { opacity: 0, scale: 1.45 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(360));
+        window.__timelines["s36"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

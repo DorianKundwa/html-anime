@@ -63,13 +63,13 @@ const EXPRESSION_WORDS = [
   [/\b(rage|outrage\w*|livid|wrath)\b/i, "rage"],
   [/\b(evil|schem\w*|wicked|villain\w*|malic\w*|sinister)\b/i, "evil"],
   [/\b(panic\w*|terrif\w*|scream\w*|horror)\b/i, "panic"],
-  [/\b(tired|exhausted|sleepy|droop\w*|downcast|sadly)\b/i, "tired"],
+  [/\b(tired|exhausted|sleepy|droop\w*|downcast|sad\w*|sorrow\w*|grim|stern|somber)\b/i, "tired"],
   [/\b(angry|mad|furious|annoy\w*)\b/i, "angry"],
   [/\b(sly|smug|wink\w*)\b/i, "sly"],
   [/\b(sweat\w*|nervous|worr\w*)\b/i, "sweat"],
   [/\b(confus\w*|puzzl\w*|doubt\w*|unsure)\b/i, "confused"],
   [/\b(shock\w*|raise[ds]?|surpris\w*|startl\w*|wide)\b/i, "shock"],
-  [/\b(calm\w*|neutral|relax\w*|flat|normal|soft\w*|warm\w*|smil\w*|glance\w*|slide\w*|slid\w*|blink\w*|hover\w*)\b/i, "neutral"],
+  [/\b(calm\w*|neutral|relax\w*|flat|normal|soft\w*|warm\w*|smil\w*|glance\w*|slide\w*|slid\w*|blink\w*|hover\w*|look\w*|gaze\w*|eye\w*|peer\w*|stare\w*|happy|cheerful)\b/i, "neutral"],
 ];
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -384,6 +384,27 @@ export const PROP_ALIASES = {
   "ENV-CHINESE-PALACE": "prop-env-chinese-palace", "CHINESE-PALACE": "prop-env-chinese-palace",
   "PALACE-SET": "prop-env-chinese-palace", "PALACE": "prop-env-chinese-palace",
   "IMPERIAL-PALACE": "prop-env-chinese-palace", "HAN-PALACE": "prop-env-chinese-palace",
+  // Mystery & Investigation props
+  "GLOBE": "prop-map", "NOTE": "prop-paper", "SHIP-LOG": "prop-book", "WALLET": "prop-purse",
+  "PAPER-TRAIL": "prop-paper", "SHIP-WHEEL": "prop-gears", "EMPTY-CHAIR": "prop-chair",
+  "CARVED-POST": "prop-tombstone", "GHOST": "prop-cloud", "LIFEBOAT": "prop-ship",
+  "SLATE": "prop-card", "SCRAP-OF-PAPER": "prop-paper", "SIX-CASE-FOLDERS": "prop-folder",
+  "MONSTER": "prop-mind-head", "PUZZLE-GRID": "prop-boxes", "ODD-PIECE": "prop-card",
+  "THUNDER-CLOUD": "prop-cloud", "SHADOW-FIGURE": "prop-tower", "CARGO-MANIFEST": "prop-paper",
+  "WEATHER-CHART": "prop-map", "TINY-SHIP": "prop-ship", "LIGHTHOUSE": "prop-tower",
+  "MOUNTAIN": "prop-stones", "ATLANTIC-MAP": "prop-map", "DEI-GRATIA": "prop-ship",
+  "MARY-CELESTE": "prop-ship", "SAIL-PAIR": "prop-flag", "BARRELS": "prop-coin-jar",
+  "CANDLE": "prop-candles", "EMPTY-BOWL": "prop-mugs", "THERMOMETER": "prop-meter",
+  "RYE-STALKS": "prop-garlic", "SAINT-VITUS": "prop-tombstone", "POISON-BOTTLE": "prop-coin-jar",
+  "SCOTLAND-MAP": "prop-map", "STEAMER": "prop-ship", "NORTHERN-BOARD": "prop-building",
+  "HESPERUS": "prop-ship", "FLAGPOLE": "prop-tower", "SHIP-HORN": "prop-megaphone",
+  "SHORE-BOAT": "prop-ship", "PEG-RACK": "prop-shelf", "LANDING": "prop-stones",
+  "SIX-PLACES-ROW": "prop-boxes", "NAME-PLATE": "prop-card", "COUNTER-SIGN": "prop-sign",
+  "OLD-SCROLL": "prop-scroll", "CLOSED-BOOK": "prop-book", "CLIPBOARD": "prop-clipboard",
+  // Mystery Environment Sets
+  "PLAIN-ROOM": "prop-env-room", "ISLAND-NIGHT": "prop-env-sea", "NIGHT-SEA": "prop-env-sea",
+  "ISLAND-DAY": "prop-env-sea", "KEEPERS-ROOM": "prop-env-room", "OPEN-SEA": "prop-env-sea",
+  "SHIP-DECK": "prop-env-sea", "STRASBOURG-STREET": "prop-env-city",
 };
 
 export const isEnvName = (name) => {

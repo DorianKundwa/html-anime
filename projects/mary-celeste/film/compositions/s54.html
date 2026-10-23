@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Permanent Marker";
+          src: url("../fonts/permanent-marker-regular.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Lato";
+          src: url("../fonts/lato-bold.woff2") format("woff2");
+          font-weight: 700;
+          font-style: normal;
+        }
+        #root { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; }
+        .fill { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+        .actor { position: absolute; transform-origin: 50% 50%; }
+        .env-backdrop { position: absolute; transform-origin: 50% 50%; }
+        .ttl {
+          position: absolute; top: 60px; left: 0; width: 1920px; margin: 0; text-align: center;
+          font-family: "Permanent Marker", Arial, sans-serif; font-weight: 400; font-size: 110px; line-height: 1;
+          transform-origin: 50% 50%;
+          -webkit-text-stroke: 12px #000000; paint-order: stroke fill;
+          letter-spacing: 2px;
+        }
+        .draw { stroke-dasharray: 1 1; }
+        .callout-label { pointer-events: none; }
+      </style>
+
+<div id="root" data-composition-id="s54" data-width="1920" data-height="1080">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<filter id="s54-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s54-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="s54-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<symbol id="rig-cape" viewBox="-160 -110 320 460">
+      <path d="M-44,96 L-78,310 L78,310 L44,96 Z" fill="var(--c-cape, var(--c-garment, #D94040))"/>
+      <path d="M18,96 L44,96 L78,310 L48,310 Z" style="fill:var(--tone-cape, var(--tone, #982D2D))"/>
+      <path d="M-44,96 L-78,310 L78,310 L44,96 Z" fill="none" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+    </symbol>
+<symbol id="rig-body" viewBox="-160 -110 320 460">
+      <path d="M0,95 L0,240" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <path d="M3,97 L2.5,238" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M-35,320 L-62,320 M35,320 L62,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-limb-idle" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-50,200 M0,130 L50,200 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-point" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-120,112 M0,130 L50,200 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-120" cy="112" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="50" cy="200" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-walk" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-40,188 M0,130 L36,188 M-40,188 L-54,298 M36,188 L22,296" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-40" cy="188" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="36" cy="188" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-clipboard" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-30,190 M0,130 L50,160 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-30" cy="190" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <!-- small clipboard icon at the raised arm's end -->
+      <rect x="46" y="138" width="36" height="46" rx="3" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <rect x="52" y="132" width="22" height="10" rx="3" fill="#4A4A4A" stroke="#000000" stroke-width="4"/>
+      <path d="M52,156 L76,156 M52,168 L70,168" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-limb-crossed" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-60,175 M0,130 L60,175 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <!-- crossing forearms -->
+      <path d="M-60,175 Q-20,192 30,175 M60,175 Q20,192 -30,175" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-60" cy="175" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="60" cy="175" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-limb-panic" viewBox="-160 -110 320 460">
+      <path d="M0,130 L-80,80 M0,130 L80,80 M0,240 L-35,320 M0,240 L35,320" fill="none" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-80" cy="80" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <circle cx="80" cy="80" r="11" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-head" viewBox="-160 -110 320 460">
+      <clipPath id="rig-head-clip"><circle cx="0" cy="0" r="90"/></clipPath>
+      <circle cx="0" cy="0" r="90" style="fill:var(--tone-head, var(--tone, #9B9B9B))"/>
+      <circle cx="-12" cy="-12" r="90" fill="currentColor" clip-path="url(#rig-head-clip)"/>
+      <circle cx="0" cy="0" r="90" fill="none" stroke="#000000" stroke-width="6"/>
+      <circle cx="3" cy="-2" r="92" fill="none" stroke="#000000" stroke-width="2.5"/>
+    </symbol>
+<symbol id="rig-brows-neutral" viewBox="-160 -110 320 460">
+      <path d="M-44,-30 L-16,-30 M16,-30 L44,-30" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-eyes-neutral" viewBox="-160 -110 320 460">
+      <circle cx="-30" cy="-10" r="7" fill="#000000"/>
+      <circle cx="30" cy="-10" r="7" fill="#000000"/>
+    </symbol>
+<symbol id="rig-mouth-neutral" viewBox="-160 -110 320 460">
+      <path d="M-20,34 L20,34" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-brows-droop" viewBox="-160 -110 320 460">
+      <path d="M-46,-24 L-14,-40 M14,-40 L46,-24" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-eyes-tired" viewBox="-160 -110 320 460">
+      <path d="M-40,-10 Q-28,-24 -16,-10" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <path d="M16,-10 Q28,-24 40,-10" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="-28" cy="-8" r="7" fill="#000000"/>
+      <circle cx="28" cy="-8" r="7" fill="#000000"/>
+      <!-- heavy drooping upper lids in grey-dark -->
+      <path d="M-44,-14 Q-28,-2 -12,-14" fill="#343434" stroke="none"/>
+      <path d="M12,-14 Q28,-2 44,-14" fill="#343434" stroke="none"/>
+    </symbol>
+<symbol id="rig-mouth-frown" viewBox="-160 -110 320 460">
+      <path d="M-22,44 Q0,26 22,44" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+<symbol id="rig-beard-full" viewBox="-160 -110 320 460">
+      <path d="M-48,12 Q-64,74 0,118 Q64,74 48,12 Q30,30 0,30 Q-30,30 -48,12 Z" fill="var(--c-beard, #000000)" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M-40,8 Q-16,-6 0,8 Q16,-6 40,8 Q16,18 0,10 Q-16,18 -40,8 Z" fill="var(--c-beard, #000000)" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="rig-hat-cap" viewBox="-160 -110 320 460">
+      <path d="M-72,-38 Q-72,-98 0,-98 Q72,-98 72,-38 Z" fill="var(--c-hat, #D94040)"/>
+      <path d="M20,-90 Q56,-80 66,-54 L72,-38 L40,-38 L20,-68 Z" style="fill:var(--tone, #982D2D)"/>
+      <path d="M-72,-38 Q-72,-98 0,-98 Q72,-98 72,-38 Z" fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M-72,-38 L30,-38 Q92,-34 100,-18 L-72,-18 Z" fill="var(--c-hat, #D94040)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+    </symbol>
+<symbol id="prop-paper" viewBox="0 0 240 260">
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <path d="M62,70 L178,70 M62,104 L178,104 M62,138 L150,138 M62,172 L178,172 M62,206 L130,206" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
+</defs>
+</svg>
+<div id="s54-stage" class="fill" style="background:#C4965A">
+
+<div id="s54-ink" class="fill">
+<div id="s54-e0" class="actor" style="left:-127px;top:5px;width:844px;height:1214px;opacity:0">
+<svg width="844" height="1214" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#982D2D;--tone-head:#D8D8D8;--c-cape:#D94040;--tone-cape:#982D2D;--c-garment:#D94040;--c-hat:#8B5E3C;--c-beard:#8B5E3C">
+<use href="#rig-cape" x="-160" y="-110" width="320" height="460"/><use href="#rig-body" x="-160" y="-110" width="320" height="460"/><use href="#rig-cape" x="-160" y="-110" width="320" height="460"/>
+<g id="s54-e0-limb-idle" opacity="1"><use href="#rig-limb-idle" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s54-e0-limb-point" opacity="0"><use href="#rig-limb-point" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s54-e0-limb-walk" opacity="0"><use href="#rig-limb-walk" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s54-e0-limb-clipboard" opacity="0"><use href="#rig-limb-clipboard" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s54-e0-limb-crossed" opacity="0"><use href="#rig-limb-crossed" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s54-e0-limb-panic" opacity="0"><use href="#rig-limb-panic" x="-160" y="-110" width="320" height="460"/></g>
+<use href="#rig-head" x="-160" y="-110" width="320" height="460"/>
+<g id="s54-e0-x-neutral" opacity="1"><use href="#rig-brows-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-neutral" x="-160" y="-110" width="320" height="460"/></g><g id="s54-e0-x-tired" opacity="0"><use href="#rig-brows-droop" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-tired" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-frown" x="-160" y="-110" width="320" height="460"/></g>
+<use href="#rig-beard-full" x="-160" y="-110" width="320" height="460"/><use href="#rig-hat-cap" x="-160" y="-110" width="320" height="460"/>
+</svg>
+</div>
+<div id="s54-e1" class="actor" style="left:631px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<path d="M50,186 A40,40 0 0 1 60,108 A50,50 0 0 1 150,78 A40,40 0 0 1 200,128 A34,34 0 0 1 192,186 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
+      <path d="M54,190 A40,40 0 0 1 64,110 A50,50 0 0 1 152,82 A40,40 0 0 1 202,132 A34,34 0 0 1 194,190" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(3,-2)"/>
+      <circle cx="40" cy="222" r="9" fill="#FFFFFF" stroke="#000000" stroke-width="5"/>
+      <circle cx="22" cy="244" r="5" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      <text class="prop-text" x="120" y="142" text-anchor="middle" font-family="Lato" font-weight="700" font-size="44" fill="#000000">THINK</text>
+</svg>
+</div>
+<div id="s54-e2" class="actor" style="left:881px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
+<rect x="30" y="40" width="180" height="186" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <rect x="34" y="44" width="172" height="186" fill="none" stroke="#000000" stroke-width="2.5"/>
+      <rect x="30" y="40" width="180" height="44" fill="#D94040" stroke="#000000" stroke-width="8"/>
+      <rect x="60" y="26" width="16" height="28" rx="4" fill="#000000"/>
+      <rect x="164" y="26" width="16" height="28" rx="4" fill="#000000"/>
+      <text class="prop-text" x="120" y="196" text-anchor="middle" font-family="Lato" font-weight="700" font-size="44" fill="#000000">1587</text>
+</svg>
+</div>
+<div id="s54-e3" class="actor" style="left:932px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
+<path d="M48,228 L48,96 A72,72 0 0 1 192,96 L192,228 Z" fill="#4A4A4A" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M140,42 A72,72 0 0 1 192,96 L192,228 L140,228 Z" style="fill:var(--tone, #343434)"/>
+      <path d="M48,228 L48,96 A72,72 0 0 1 192,96 L192,228 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(3,3)"/>
+      <path d="M120,68 L120,118 M102,86 L138,86" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+      
+      <path d="M22,230 Q120,208 218,230 L218,246 L22,246 Z" fill="#3A9E3A" stroke="#000000" stroke-width="6"/>
+      <line x1="80" y1="222" x2="84" y2="210" stroke="#296F29" stroke-width="4" stroke-linecap="round"/>
+      <line x1="160" y1="222" x2="156" y2="208" stroke="#296F29" stroke-width="4" stroke-linecap="round"/>
+</svg>
+</div>
+<div id="s54-e4" class="actor" style="left:1284px;top:512px;width:312px;height:338px;opacity:0">
+<svg width="312" height="338" viewBox="0 0 240 260" color="#F5C518" style="display:block;overflow:visible;--tone:#AC8A11">
+<use href="#prop-paper" x="0" y="0" width="240" height="260"/>
+</svg>
+</div>
+<div id="s54-e5" class="actor" style="left:1713px;top:678px;width:158px;height:172px;opacity:0">
+<svg width="158" height="172" viewBox="0 0 240 260" color="#3A9E3A" style="display:block;overflow:visible;--tone:#296F29">
+<rect x="5" y="5" width="230" height="250" fill="#3A9E3A" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
+<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">ISLAND-ICON</text>
+</svg>
+</div>
+<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s54-draw0" class="draw" pathLength="1" stroke="#3A9E3A" stroke-width="14" d="M1416 681 L1434 701 L1468 661"/><path id="s54-draw1-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M908 541 L1056 656"/><path id="s54-draw2-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M1260 541 L1408 656"/><path id="s54-arrow3" class="draw" pathLength="1" d="M1243 699 L1713 755 M1674 727 L1713 755 L1669 772"/></svg>
+</div>
+<div id="s54-t0" class="ttl" style="color:#000000;opacity:0;font-size:150px">THINK ABOUT THAT</div>
+<div id="s54-t1" class="ttl" style="color:#D94040;opacity:0;font-size:150px">THE MAN</div>
+<div id="s54-t2" class="ttl" style="color:#000000;opacity:0;font-size:150px">THREE YEARS HOME</div>
+<div id="s54-t3" class="ttl" style="color:#000000;opacity:0;font-size:150px">SIMPLY A MESSAGE</div>
+<div id="s54-t4" class="ttl" style="color:#D94040;opacity:0;font-size:150px">NOTHING CRYPTIC</div>
+<div id="s54-t5" class="ttl" style="color:#000000;opacity:0;font-size:150px">THE HONEST NOTE</div>
+<div id="s54-t6" class="ttl" style="color:#D94040;opacity:0;font-size:150px">IT DID NOT HELP</div>
+</div>
+<div id="s54-dip" class="fill" style="opacity:0;background:#2D5FBF"></div>
+</div>
+
+      <script>
+        const f = (n) => n / 24;
+        const tl = gsap.timeline({ paused: true });
+        tl.set("#s54-ink", { filter: "url(#s54-boil-a)" }, f(0));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-b)" }, f(24));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-c)" }, f(48));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-a)" }, f(72));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-b)" }, f(96));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-c)" }, f(120));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-a)" }, f(144));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-b)" }, f(168));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-c)" }, f(192));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-a)" }, f(216));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-b)" }, f(240));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-c)" }, f(264));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-a)" }, f(288));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-b)" }, f(312));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-c)" }, f(336));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-a)" }, f(360));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-b)" }, f(384));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-c)" }, f(408));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-a)" }, f(432));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-b)" }, f(456));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-c)" }, f(480));
+        tl.set("#s54-ink", { filter: "url(#s54-boil-a)" }, f(504));
+        tl.fromTo("#s54-e0", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(0));
+        tl.to("#s54-e0", { scale: 1, duration: f(2) }, f(4));
+        tl.fromTo("#s54-e1", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(14));
+        tl.to("#s54-e1", { scale: 1, duration: f(2) }, f(18));
+        tl.set("#s54-e0-x-neutral", { opacity: 0 }, f(43));
+        tl.set("#s54-e0-x-tired", { opacity: 1 }, f(43));
+        tl.fromTo("#s54-e1", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(58));
+        tl.fromTo("#s54-e2", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(77));
+        tl.to("#s54-e2", { scale: 1, duration: f(2) }, f(81));
+        tl.fromTo("#s54-e2", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(110));
+        tl.fromTo("#s54-e3", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(144));
+        tl.to("#s54-e3", { scale: 1, duration: f(2) }, f(148));
+        tl.fromTo("#s54-e4", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(178));
+        tl.to("#s54-e4", { scale: 1, duration: f(2) }, f(182));
+        tl.fromTo("#s54-draw0", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(8), ease: "power1.out" }, f(211));
+        tl.set("#s54-e0-x-neutral", { opacity: 1 }, f(245));
+        tl.set("#s54-e0-x-tired", { opacity: 0 }, f(245));
+        tl.fromTo("#s54-e1", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(288));
+        tl.fromTo("#s54-draw1-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(326));
+        tl.fromTo("#s54-draw2-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(10), ease: "power1.out" }, f(384));
+        tl.fromTo("#s54-e5", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(432));
+        tl.to("#s54-e5", { scale: 1, duration: f(2) }, f(436));
+        tl.fromTo("#s54-arrow3", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: f(14), ease: "power1.out" }, f(451));
+        tl.set("#s54-e0-x-neutral", { opacity: 0 }, f(480));
+        tl.set("#s54-e0-x-tired", { opacity: 1 }, f(480));
+        tl.set("#s54-e3", { x: 8 }, f(504));
+        tl.set("#s54-e3", { x: -8 }, f(505));
+        tl.set("#s54-e3", { x: 8 }, f(506));
+        tl.set("#s54-e3", { x: -8 }, f(507));
+        tl.set("#s54-e3", { x: 8 }, f(508));
+        tl.set("#s54-e3", { x: -8 }, f(509));
+        tl.set("#s54-e3", { x: 8 }, f(510));
+        tl.set("#s54-e3", { x: -8 }, f(511));
+        tl.set("#s54-e3", { x: 0 }, f(512));
+        tl.fromTo("#s54-t0", { opacity: 0, scale: 1.21 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(0));
+        tl.set("#s54-t0", { opacity: 0 }, f(58));
+        tl.fromTo("#s54-t1", { opacity: 0, scale: 1.45 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(58));
+        tl.set("#s54-t1", { opacity: 0 }, f(77));
+        tl.fromTo("#s54-t2", { opacity: 0, scale: 1.21 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(77));
+        tl.set("#s54-t2", { opacity: 0 }, f(168));
+        tl.fromTo("#s54-t3", { opacity: 0, scale: 1.21 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(168));
+        tl.set("#s54-t3", { opacity: 0 }, f(288));
+        tl.fromTo("#s54-t4", { opacity: 0, scale: 1.29 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(288));
+        tl.set("#s54-t4", { opacity: 0 }, f(384));
+        tl.fromTo("#s54-t5", { opacity: 0, scale: 1.29 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(384));
+        tl.set("#s54-t5", { opacity: 0 }, f(480));
+        tl.fromTo("#s54-t6", { opacity: 0, scale: 1.29 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(480));
+        tl.fromTo("#s54-dip", { opacity: 0 }, { opacity: 1, duration: f(6), ease: "none" }, f(522));
+        window.__timelines["s54"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

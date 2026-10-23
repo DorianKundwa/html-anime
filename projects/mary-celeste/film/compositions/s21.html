@@ -99,21 +99,49 @@
 <symbol id="rig-brows-droop" viewBox="-160 -110 320 460">
       <path d="M-46,-24 L-14,-40 M14,-40 L46,-24" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
     </symbol>
-<symbol id="rig-eyes-sweat" viewBox="-160 -110 320 460">
-      <circle cx="-30" cy="-10" r="7" fill="#000000"/>
-      <circle cx="30" cy="-10" r="7" fill="#000000"/>
-      <path d="M62,-62 Q52,-44 62,-36 Q72,-44 62,-62Z" fill="#2D5FBF" stroke="#000000" stroke-width="3"/>
+<symbol id="rig-eyes-tired" viewBox="-160 -110 320 460">
+      <path d="M-40,-10 Q-28,-24 -16,-10" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <path d="M16,-10 Q28,-24 40,-10" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="-28" cy="-8" r="7" fill="#000000"/>
+      <circle cx="28" cy="-8" r="7" fill="#000000"/>
+      <!-- heavy drooping upper lids in grey-dark -->
+      <path d="M-44,-14 Q-28,-2 -12,-14" fill="#343434" stroke="none"/>
+      <path d="M12,-14 Q28,-2 44,-14" fill="#343434" stroke="none"/>
     </symbol>
 <symbol id="rig-mouth-frown" viewBox="-160 -110 320 460">
       <path d="M-22,44 Q0,26 22,44" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-scroll" viewBox="0 0 240 260">
+      <path d="M46,38 L194,38 L188,212 Q120,224 52,212 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M150,38 L194,38 L188,212 L150,214 Z" style="fill:var(--tone, #D8D8D8)"/>
+      <line x1="68" y1="68" x2="172" y2="68" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="94" x2="172" y2="94" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="120" x2="172" y2="120" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="146" x2="140" y2="146" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
+      <ellipse cx="120" cy="38" rx="76" ry="14" fill="#C4965A" stroke="#000000" stroke-width="7"/>
+      <ellipse cx="120" cy="214" rx="72" ry="14" fill="#C4965A" stroke="#000000" stroke-width="7"/>
+      <path d="M112,176 L100,230 M128,176 L140,230" stroke="#D94040" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="120" cy="176" r="20" fill="#D94040" stroke="#000000" stroke-width="5"/>
+      <circle cx="120" cy="176" r="10" fill="#982D2D"/>
+    </symbol>
+<symbol id="prop-mugs" viewBox="0 0 240 260">
+      <path d="M56,120 L56,196 Q56,216 78,216 L124,216 Q146,216 146,196 L146,120 Z" fill="#FFFFFF" stroke="#000000" stroke-width="7"/>
+      <path d="M146,138 Q180,138 180,162 Q180,186 146,186" fill="none" stroke="#000000" stroke-width="7"/>
+      <path d="M56,120 L146,120 L146,140 L56,140 Z" fill="currentColor" stroke="#000000" stroke-width="5"/>
+      <path d="M78,92 Q70,72 78,56 Q86,72 78,92 Z" fill="#6EB5E8" stroke="#000000" stroke-width="3"/>
+    </symbol>
+<symbol id="prop-meter" viewBox="0 0 240 260">
+      <rect x="20" y="108" width="200" height="44" rx="8" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M28,116 L96,116 L96,144 L28,144 Z" fill="currentColor"/>
+      <path d="M104,116 L120,116 M136,116 L152,116 M168,116 L184,116" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
     </symbol>
 </defs>
 </svg>
 <div id="s21-stage" class="fill" style="background:#C4965A">
 
 <div id="s21-ink" class="fill">
-<div id="s21-e0" class="actor" style="left:332px;top:453px;width:296px;height:425px;opacity:0">
-<svg width="296" height="425" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8;--tone-head:#D8D8D8">
+<div id="s21-e0" class="actor" style="left:310px;top:510px;width:340px;height:489px;opacity:0">
+<svg width="340" height="489" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8;--tone-head:#D8D8D8">
 <use href="#rig-body" x="-160" y="-110" width="320" height="460"/>
 <g id="s21-e0-limb-idle" opacity="1"><use href="#rig-limb-idle" x="-160" y="-110" width="320" height="460"/></g>
 <g id="s21-e0-limb-point" opacity="0"><use href="#rig-limb-point" x="-160" y="-110" width="320" height="460"/></g>
@@ -122,12 +150,12 @@
 <g id="s21-e0-limb-crossed" opacity="0"><use href="#rig-limb-crossed" x="-160" y="-110" width="320" height="460"/></g>
 <g id="s21-e0-limb-panic" opacity="0"><use href="#rig-limb-panic" x="-160" y="-110" width="320" height="460"/></g>
 <use href="#rig-head" x="-160" y="-110" width="320" height="460"/>
-<g id="s21-e0-x-neutral" opacity="1"><use href="#rig-brows-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-neutral" x="-160" y="-110" width="320" height="460"/></g><g id="s21-e0-x-sweat" opacity="0"><use href="#rig-brows-droop" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-sweat" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-frown" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s21-e0-x-neutral" opacity="1"><use href="#rig-brows-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-neutral" x="-160" y="-110" width="320" height="460"/></g><g id="s21-e0-x-tired" opacity="0"><use href="#rig-brows-droop" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-tired" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-frown" x="-160" y="-110" width="320" height="460"/></g>
 
 </svg>
 </div>
-<div id="s21-e1" class="actor" style="left:691px;top:453px;width:296px;height:425px;opacity:0">
-<svg width="296" height="425" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8;--tone-head:#D8D8D8">
+<div id="s21-e1" class="actor" style="left:654px;top:510px;width:340px;height:489px;opacity:0">
+<svg width="340" height="489" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8;--tone-head:#D8D8D8">
 <use href="#rig-body" x="-160" y="-110" width="320" height="460"/>
 <g id="s21-e1-limb-idle" opacity="1"><use href="#rig-limb-idle" x="-160" y="-110" width="320" height="460"/></g>
 <g id="s21-e1-limb-point" opacity="0"><use href="#rig-limb-point" x="-160" y="-110" width="320" height="460"/></g>
@@ -140,25 +168,22 @@
 
 </svg>
 </div>
-<div id="s21-e2" class="actor" style="left:160px;top:678px;width:158px;height:172px;opacity:0">
+<div id="s21-e2" class="actor" style="left:130px;top:678px;width:158px;height:172px;opacity:0">
 <svg width="158" height="172" viewBox="0 0 240 260" color="#C4965A" style="display:block;overflow:visible;--tone:#89693F">
-<rect x="5" y="5" width="230" height="250" fill="#C4965A" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">OLD-SCROLL</text>
+<use href="#prop-scroll" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
-<div id="s21-e3" class="actor" style="left:642px;top:678px;width:158px;height:172px;opacity:0">
+<div id="s21-e3" class="actor" style="left:672px;top:678px;width:158px;height:172px;opacity:0">
 <svg width="158" height="172" viewBox="0 0 240 260" color="#4A4A4A" style="display:block;overflow:visible;--tone:#343434">
-<rect x="5" y="5" width="230" height="250" fill="#4A4A4A" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">EMPTY-BOWL</text>
+<use href="#prop-mugs" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
-<div id="s21-e4" class="actor" style="left:1002px;top:678px;width:158px;height:172px;opacity:0">
+<div id="s21-e4" class="actor" style="left:1017px;top:678px;width:158px;height:172px;opacity:0">
 <svg width="158" height="172" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
-<rect x="5" y="5" width="230" height="250" fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">THERMOMETER</text>
+<use href="#prop-meter" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
-<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s21-draw0" class="draw" pathLength="1" stroke="#3A9E3A" stroke-width="14" d="M215 764 L233 784 L267 744"/></svg>
+<svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s21-draw0" class="draw" pathLength="1" stroke="#3A9E3A" stroke-width="14" d="M185 764 L203 784 L237 744"/></svg>
 </div>
 <div id="s21-t0" class="ttl" style="color:#000000;opacity:0;font-size:150px">SOLIDLY DOCUMENTED</div>
 <div id="s21-t1" class="ttl" style="color:#D94040;opacity:0;font-size:150px">FAMINE AND DISEASE</div>
@@ -202,7 +227,7 @@
         tl.to("#s21-e4", { scale: 1, duration: f(2) }, f(162));
         tl.fromTo("#s21-e4", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(178));
         tl.set("#s21-e0-x-neutral", { opacity: 0 }, f(197));
-        tl.set("#s21-e0-x-sweat", { opacity: 1 }, f(197));
+        tl.set("#s21-e0-x-tired", { opacity: 1 }, f(197));
         tl.set("#s21-e1", { x: 8 }, f(216));
         tl.set("#s21-e1", { x: -8 }, f(217));
         tl.set("#s21-e1", { x: 8 }, f(218));

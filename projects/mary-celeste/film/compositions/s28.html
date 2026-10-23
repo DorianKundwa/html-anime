@@ -125,13 +125,40 @@
       <path d="M-72,-38 Q-72,-98 0,-98 Q72,-98 72,-38 Z" fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
       <path d="M-72,-38 L30,-38 Q92,-34 100,-18 L-72,-18 Z" fill="var(--c-hat, #D94040)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
     </symbol>
+<symbol id="prop-ship" viewBox="0 0 240 260">
+      <path d="M22,148 Q38,218 120,224 Q196,218 226,140 L188,140 L188,158 L54,158 L22,148 Z" fill="#8B5E3C" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M120,158 L188,158 L226,140 Q196,218 120,224 Z" style="fill:var(--tone, #61422A)"/>
+      <rect x="74" y="174" width="12" height="12" fill="#000000"/>
+      <rect x="114" y="176" width="12" height="12" fill="#000000"/>
+      <rect x="154" y="174" width="12" height="12" fill="#000000"/>
+      <line x1="78" y1="36" x2="78" y2="158" stroke="#000000" stroke-width="6"/>
+      <line x1="152" y1="26" x2="152" y2="158" stroke="#000000" stroke-width="7"/>
+      <path d="M56,48 Q78,42 100,48 L96,114 Q78,124 60,114 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M128,40 Q152,34 176,40 L172,112 Q152,122 132,112 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M152,54 L152,98 M138,76 L166,76" stroke="#D94040" stroke-width="8" stroke-linecap="round"/>
+      <path d="M10,224 Q60,206 120,224 Q180,242 230,224" fill="none" stroke="#6EB5E8" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-tower" viewBox="0 0 240 260">
+      <g fill="currentColor" stroke="#000000" stroke-width="7">
+        <rect x="52" y="164" width="136" height="34" rx="6"/>
+        <rect x="66" y="116" width="108" height="34" rx="6"/>
+        <rect x="80" y="68" width="80" height="34" rx="6"/>
+      </g>
+      <path d="M120,20 L120,64 M96,36 L144,36" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-megaphone" viewBox="0 0 240 260">
+      <path d="M44,104 L206,52 L206,196 L44,150 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <rect x="24" y="100" width="30" height="56" rx="8" fill="currentColor" stroke="#000000" stroke-width="7"/>
+      <path d="M70,150 L70,216 L104,216 L104,150 Z" fill="currentColor" stroke="#000000" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M186,60 L186,44 M200,70 L216,58 M186,188 L186,204" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
 </defs>
 </svg>
 <div id="s28-stage" class="fill" style="background:#6EB5E8">
 
 <div id="s28-ink" class="fill">
-<div id="s28-e0" class="actor" style="left:923.5px;top:373px;width:355px;height:510px;opacity:0">
-<svg width="355" height="510" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8;--tone-head:#D8D8D8;--c-garment:#FFFFFF;--c-hat:#8B5E3C;--c-beard:#000000">
+<div id="s28-e0" class="actor" style="left:911.5px;top:421px;width:429px;height:616px;opacity:0">
+<svg width="429" height="616" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8;--tone-head:#D8D8D8;--c-garment:#FFFFFF;--c-hat:#8B5E3C;--c-beard:#000000">
 <use href="#rig-body" x="-160" y="-110" width="320" height="460"/><use href="#rig-torso" x="-160" y="-110" width="320" height="460"/>
 <g id="s28-e0-limb-idle" opacity="1"><use href="#rig-limb-idle" x="-160" y="-110" width="320" height="460"/></g>
 <g id="s28-e0-limb-point" opacity="0"><use href="#rig-limb-point" x="-160" y="-110" width="320" height="460"/></g>
@@ -146,32 +173,27 @@
 </div>
 <div id="s28-e1" class="actor" style="left:148px;top:512px;width:312px;height:338px;opacity:0">
 <svg width="312" height="338" viewBox="0 0 240 260" color="#000000" style="display:block;overflow:visible;--tone:#1A1A1A">
-<rect x="5" y="5" width="230" height="250" fill="#000000" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">HESPERUS</text>
+<use href="#prop-ship" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <div id="s28-e2" class="actor" style="left:1108px;top:512px;width:312px;height:338px;opacity:0">
 <svg width="312" height="338" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
-<rect x="5" y="5" width="230" height="250" fill="#FFFFFF" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">LIGHTHOUSE</text>
+<use href="#prop-tower" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <div id="s28-e3" class="actor" style="left:1460px;top:512px;width:312px;height:338px;opacity:0">
 <svg width="312" height="338" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
-<rect x="5" y="5" width="230" height="250" fill="#8B5E3C" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">FLAGPOLE</text>
+<use href="#prop-tower" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <div id="s28-e4" class="actor" style="left:500px;top:512px;width:312px;height:338px;opacity:0">
 <svg width="312" height="338" viewBox="0 0 240 260" color="#F5C518" style="display:block;overflow:visible;--tone:#AC8A11">
-<rect x="5" y="5" width="230" height="250" fill="#F5C518" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">SHIP-HORN</text>
+<use href="#prop-megaphone" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
-<div id="s28-e5" class="actor" style="left:740px;top:678px;width:158px;height:172px;opacity:0">
+<div id="s28-e5" class="actor" style="left:715px;top:678px;width:158px;height:172px;opacity:0">
 <svg width="158" height="172" viewBox="0 0 240 260" color="#C4965A" style="display:block;overflow:visible;--tone:#89693F">
-<rect x="5" y="5" width="230" height="250" fill="#C4965A" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#000000">SHORE-BOAT</text>
+<use href="#prop-ship" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s28-arrow0" class="draw" pathLength="1" d="M460 681 L1108 681 M1066 658 L1108 681 L1066 704"/><path id="s28-draw1-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M1436 541 L1584 656"/><path id="s28-draw2-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M476 541 L624 656"/><path id="s28-draw3-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M1084 541 L1232 656"/><text id="s28-draw3-txt" class="callout-label" x="1074" y="531" text-anchor="end" font-family="Permanent Marker, Arial, sans-serif" font-weight="400" font-size="44" fill="#000000" style="-webkit-text-stroke:4px #000000;paint-order:stroke fill">?</text></svg>

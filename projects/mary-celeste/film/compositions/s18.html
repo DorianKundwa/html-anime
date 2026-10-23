@@ -103,13 +103,6 @@
 <symbol id="rig-mouth-neutral" viewBox="-160 -110 320 460">
       <path d="M-20,34 L20,34" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
     </symbol>
-<symbol id="rig-eyes-sly" viewBox="-160 -110 320 460">
-      <circle cx="-30" cy="-10" r="7" fill="#000000"/>
-      <path d="M18,-10 Q30,-20 42,-10" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round"/>
-    </symbol>
-<symbol id="rig-mouth-smile" viewBox="-160 -110 320 460">
-      <path d="M-24,30 Q0,50 24,30" fill="none" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
-    </symbol>
 <symbol id="rig-brows-droop" viewBox="-160 -110 320 460">
       <path d="M-46,-24 L-14,-40 M14,-40 L46,-24" fill="none" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
     </symbol>
@@ -143,8 +136,8 @@
 <div id="s18-stage" class="fill" style="background:#C4965A">
 
 <div id="s18-ink" class="fill">
-<div id="s18-e0" class="actor" style="left:610.5px;top:-89px;width:699px;height:1005px;opacity:0">
-<svg width="699" height="1005" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#C97A90;--tone-head:#D8D8D8;--c-garment:#F4A7B9;--c-hair:#000000;--c-scarf:#D94040">
+<div id="s18-e0" class="actor" style="left:538px;top:5px;width:844px;height:1214px;opacity:0">
+<svg width="844" height="1214" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#C97A90;--tone-head:#D8D8D8;--c-garment:#F4A7B9;--c-hair:#000000;--c-scarf:#D94040">
 <use href="#rig-body" x="-160" y="-110" width="320" height="460"/><use href="#rig-torso" x="-160" y="-110" width="320" height="460"/>
 <g id="s18-e0-limb-idle" opacity="1"><use href="#rig-limb-idle" x="-160" y="-110" width="320" height="460"/></g>
 <g id="s18-e0-limb-point" opacity="0"><use href="#rig-limb-point" x="-160" y="-110" width="320" height="460"/></g>
@@ -153,7 +146,7 @@
 <g id="s18-e0-limb-crossed" opacity="0"><use href="#rig-limb-crossed" x="-160" y="-110" width="320" height="460"/></g>
 <g id="s18-e0-limb-panic" opacity="0"><use href="#rig-limb-panic" x="-160" y="-110" width="320" height="460"/></g>
 <use href="#rig-head" x="-160" y="-110" width="320" height="460"/>
-<g id="s18-e0-x-neutral" opacity="1"><use href="#rig-brows-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-neutral" x="-160" y="-110" width="320" height="460"/></g><g id="s18-e0-x-sly" opacity="0"><use href="#rig-brows-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-sly" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-smile" x="-160" y="-110" width="320" height="460"/></g><g id="s18-e0-x-sweat" opacity="0"><use href="#rig-brows-droop" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-sweat" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-frown" x="-160" y="-110" width="320" height="460"/></g>
+<g id="s18-e0-x-neutral" opacity="1"><use href="#rig-brows-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-neutral" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-neutral" x="-160" y="-110" width="320" height="460"/></g><g id="s18-e0-x-sweat" opacity="0"><use href="#rig-brows-droop" x="-160" y="-110" width="320" height="460"/><use href="#rig-eyes-sweat" x="-160" y="-110" width="320" height="460"/><use href="#rig-mouth-frown" x="-160" y="-110" width="320" height="460"/></g>
 <use href="#rig-hair-bun" x="-160" y="-110" width="320" height="460"/><use href="#rig-scarf" x="-160" y="-110" width="320" height="460"/>
 </svg>
 </div>
@@ -213,8 +206,7 @@
         tl.set("#s18-e0", { x: 8 }, f(64));
         tl.set("#s18-e0", { x: -8 }, f(65));
         tl.set("#s18-e0", { x: 0 }, f(66));
-        tl.set("#s18-e0-x-neutral", { opacity: 0 }, f(86));
-        tl.set("#s18-e0-x-sly", { opacity: 1 }, f(86));
+        tl.set("#s18-e0-x-neutral", { opacity: 1 }, f(86));
         tl.set("#s18-e0-x-sweat", { opacity: 0 }, f(86));
         tl.fromTo("#s18-e2", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(120));
         tl.to("#s18-e2", { scale: 1, duration: f(2) }, f(124));
@@ -234,7 +226,6 @@
         tl.set("#s18-e0", { x: -8 }, f(209));
         tl.set("#s18-e0", { x: 0 }, f(210));
         tl.set("#s18-e0-x-neutral", { opacity: 0 }, f(221));
-        tl.set("#s18-e0-x-sly", { opacity: 0 }, f(221));
         tl.set("#s18-e0-x-sweat", { opacity: 1 }, f(221));
         tl.fromTo("#s18-t0", { opacity: 0, scale: 1.29 }, { opacity: 1, scale: 1, duration: f(3), ease: "power2.out" }, f(0));
         tl.set("#s18-t0", { opacity: 0 }, f(120));

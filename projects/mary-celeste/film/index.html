@@ -19,8 +19,11 @@
       data-fps="24"
       data-width="1920"
       data-height="1080"
-      data-duration="346.041667"
+      data-duration="785.083333"
     >
+      <!-- Cinematic letterbox framing in the style of Kokuyo -->
+      <div id="letterbox-top" style="position: absolute; top: 0; left: 0; width: 1920px; height: 44px; background: #000000; z-index: 5; pointer-events: none;"></div>
+      <div id="letterbox-bottom" style="position: absolute; bottom: 0; left: 0; width: 1920px; height: 26px; background: #000000; z-index: 5; pointer-events: none;"></div>
       <div id="s01-clip" class="clip" data-composition-id="s01" data-composition-src="compositions/s01.html" data-start="0" data-duration="14" data-track-index="1" data-width="1920" data-height="1080"></div>
       <div id="s02-clip" class="clip" data-composition-id="s02" data-composition-src="compositions/s02.html" data-start="14" data-duration="13" data-track-index="1" data-width="1920" data-height="1080"></div>
       <div id="s03-clip" class="clip" data-composition-id="s03" data-composition-src="compositions/s03.html" data-start="27" data-duration="17" data-track-index="1" data-width="1920" data-height="1080"></div>
@@ -50,15 +53,53 @@
       <div id="s27-clip" class="clip" data-composition-id="s27" data-composition-src="compositions/s27.html" data-start="297" data-duration="12" data-track-index="1" data-width="1920" data-height="1080"></div>
       <div id="s28-clip" class="clip" data-composition-id="s28" data-composition-src="compositions/s28.html" data-start="309" data-duration="13" data-track-index="1" data-width="1920" data-height="1080"></div>
       <div id="s29-clip" class="clip" data-composition-id="s29" data-composition-src="compositions/s29.html" data-start="322" data-duration="11" data-track-index="1" data-width="1920" data-height="1080"></div>
-      <div id="s30-clip" class="clip" data-composition-id="s30" data-composition-src="compositions/s30.html" data-start="333" data-duration="13.041667" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s30-clip" class="clip" data-composition-id="s30" data-composition-src="compositions/s30.html" data-start="333" data-duration="13" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s31-clip" class="clip" data-composition-id="s31" data-composition-src="compositions/s31.html" data-start="346" data-duration="11" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s32-clip" class="clip" data-composition-id="s32" data-composition-src="compositions/s32.html" data-start="357" data-duration="14" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s33-clip" class="clip" data-composition-id="s33" data-composition-src="compositions/s33.html" data-start="371" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s34-clip" class="clip" data-composition-id="s34" data-composition-src="compositions/s34.html" data-start="378" data-duration="13" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s35-clip" class="clip" data-composition-id="s35" data-composition-src="compositions/s35.html" data-start="391" data-duration="10" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s36-clip" class="clip" data-composition-id="s36" data-composition-src="compositions/s36.html" data-start="401" data-duration="19" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s37-clip" class="clip" data-composition-id="s37" data-composition-src="compositions/s37.html" data-start="420" data-duration="19" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s38-clip" class="clip" data-composition-id="s38" data-composition-src="compositions/s38.html" data-start="439" data-duration="18" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s39-clip" class="clip" data-composition-id="s39" data-composition-src="compositions/s39.html" data-start="457" data-duration="9" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s40-clip" class="clip" data-composition-id="s40" data-composition-src="compositions/s40.html" data-start="466" data-duration="9" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s41-clip" class="clip" data-composition-id="s41" data-composition-src="compositions/s41.html" data-start="475" data-duration="15" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s42-clip" class="clip" data-composition-id="s42" data-composition-src="compositions/s42.html" data-start="490" data-duration="12" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s43-clip" class="clip" data-composition-id="s43" data-composition-src="compositions/s43.html" data-start="502" data-duration="13" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s44-clip" class="clip" data-composition-id="s44" data-composition-src="compositions/s44.html" data-start="515" data-duration="17" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s45-clip" class="clip" data-composition-id="s45" data-composition-src="compositions/s45.html" data-start="532" data-duration="13" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s46-clip" class="clip" data-composition-id="s46" data-composition-src="compositions/s46.html" data-start="545" data-duration="5" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s47-clip" class="clip" data-composition-id="s47" data-composition-src="compositions/s47.html" data-start="550" data-duration="19" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s48-clip" class="clip" data-composition-id="s48" data-composition-src="compositions/s48.html" data-start="569" data-duration="4" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s49-clip" class="clip" data-composition-id="s49" data-composition-src="compositions/s49.html" data-start="573" data-duration="19" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s50-clip" class="clip" data-composition-id="s50" data-composition-src="compositions/s50.html" data-start="592" data-duration="17" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s51-clip" class="clip" data-composition-id="s51" data-composition-src="compositions/s51.html" data-start="609" data-duration="12" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s52-clip" class="clip" data-composition-id="s52" data-composition-src="compositions/s52.html" data-start="621" data-duration="17" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s53-clip" class="clip" data-composition-id="s53" data-composition-src="compositions/s53.html" data-start="638" data-duration="20" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s54-clip" class="clip" data-composition-id="s54" data-composition-src="compositions/s54.html" data-start="658" data-duration="22" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s55-clip" class="clip" data-composition-id="s55" data-composition-src="compositions/s55.html" data-start="680" data-duration="22" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s56-clip" class="clip" data-composition-id="s56" data-composition-src="compositions/s56.html" data-start="702" data-duration="19" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s57-clip" class="clip" data-composition-id="s57" data-composition-src="compositions/s57.html" data-start="721" data-duration="15" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s58-clip" class="clip" data-composition-id="s58" data-composition-src="compositions/s58.html" data-start="736" data-duration="22" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s59-clip" class="clip" data-composition-id="s59" data-composition-src="compositions/s59.html" data-start="758" data-duration="20" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div id="s60-clip" class="clip" data-composition-id="s60" data-composition-src="compositions/s60.html" data-start="778" data-duration="7.083333" data-track-index="1" data-width="1920" data-height="1080"></div>
       <div id="captions-01-clip" class="clip" data-track-kind="captions" data-composition-id="captions-01" data-composition-src="compositions/captions-01.html" data-start="0" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
       <div id="captions-02-clip" class="clip" data-track-kind="captions" data-composition-id="captions-02" data-composition-src="compositions/captions-02.html" data-start="60" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
       <div id="captions-03-clip" class="clip" data-track-kind="captions" data-composition-id="captions-03" data-composition-src="compositions/captions-03.html" data-start="120" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
       <div id="captions-04-clip" class="clip" data-track-kind="captions" data-composition-id="captions-04" data-composition-src="compositions/captions-04.html" data-start="180" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
       <div id="captions-05-clip" class="clip" data-track-kind="captions" data-composition-id="captions-05" data-composition-src="compositions/captions-05.html" data-start="240" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
-      <div id="captions-06-clip" class="clip" data-track-kind="captions" data-composition-id="captions-06" data-composition-src="compositions/captions-06.html" data-start="300" data-duration="46.041667" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="captions-06-clip" class="clip" data-track-kind="captions" data-composition-id="captions-06" data-composition-src="compositions/captions-06.html" data-start="300" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="captions-07-clip" class="clip" data-track-kind="captions" data-composition-id="captions-07" data-composition-src="compositions/captions-07.html" data-start="360" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="captions-08-clip" class="clip" data-track-kind="captions" data-composition-id="captions-08" data-composition-src="compositions/captions-08.html" data-start="420" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="captions-09-clip" class="clip" data-track-kind="captions" data-composition-id="captions-09" data-composition-src="compositions/captions-09.html" data-start="480" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="captions-10-clip" class="clip" data-track-kind="captions" data-composition-id="captions-10" data-composition-src="compositions/captions-10.html" data-start="540" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="captions-11-clip" class="clip" data-track-kind="captions" data-composition-id="captions-11" data-composition-src="compositions/captions-11.html" data-start="600" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="captions-12-clip" class="clip" data-track-kind="captions" data-composition-id="captions-12" data-composition-src="compositions/captions-12.html" data-start="660" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="captions-13-clip" class="clip" data-track-kind="captions" data-composition-id="captions-13" data-composition-src="compositions/captions-13.html" data-start="720" data-duration="60" data-track-index="2" data-width="1920" data-height="1080"></div>
+      <div id="captions-14-clip" class="clip" data-track-kind="captions" data-composition-id="captions-14" data-composition-src="compositions/captions-14.html" data-start="780" data-duration="5.083333" data-track-index="2" data-width="1920" data-height="1080"></div>
 
-      <audio id="narration" src="narration.mp3" data-start="0" data-duration="346.041667"></audio>
+      <audio id="narration" src="narration.mp3" data-start="0" data-duration="785.083333"></audio>
     </div>
   </body>
 </html>

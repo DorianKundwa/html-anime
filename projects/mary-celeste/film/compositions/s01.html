@@ -39,12 +39,30 @@
 <filter id="s01-boil-a" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
 <filter id="s01-boil-b" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
 <filter id="s01-boil-c" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<symbol id="prop-map" viewBox="0 0 240 260">
+      <path d="M36,60 L104,36 L136,58 L206,34 L212,206 L142,230 L108,208 L40,232 Z" fill="currentColor"/>
+      <path d="M142,58 L206,34 L212,206 L142,230 Z" style="fill:var(--tone, #982D2D)"/>
+      <path d="M36,60 L104,36 L136,58 L206,34 L212,206 L142,230 L108,208 L40,232 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M36,60 L104,36 L136,58 L206,34 L212,206 L142,230 L108,208 L40,232 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <path d="M104,36 L108,208 M136,58 L142,230" stroke="#000000" stroke-width="4" fill="none"/>
+      <path d="M60,120 L92,104 M60,150 L100,132" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+<symbol id="prop-paper" viewBox="0 0 240 260">
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
+      <path d="M38,26 L202,26 L202,234 L38,234 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <path d="M62,70 L178,70 M62,104 L178,104 M62,138 L150,138 M62,172 L178,172 M62,206 L130,206" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
+    </symbol>
 <symbol id="prop-job-letter" viewBox="0 0 240 260">
       <rect x="30" y="40" width="180" height="184" fill="#FFFFFF" stroke="#000000" stroke-width="8"/>
       <rect x="33" y="43" width="180" height="184" fill="none" stroke="#000000" stroke-width="2.5"/>
       <path d="M30,40 L120,130 L210,40" fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
       <path d="M56,148 L184,148 M56,176 L184,176 M56,204 L160,204" stroke="#000000" stroke-width="6" stroke-linecap="round"/>
       <circle cx="170" cy="196" r="20" fill="#D94040" stroke="#000000" stroke-width="4"/>
+    </symbol>
+<symbol id="prop-purse" viewBox="0 0 240 260">
+      <path d="M40,110 Q40,86 68,86 L172,86 Q200,86 200,110 L200,206 Q200,224 182,224 L58,224 Q40,224 40,206 Z" fill="currentColor" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M84,86 Q120,40 156,86" fill="none" stroke="#000000" stroke-width="9" stroke-linecap="round"/>
+      <rect x="106" y="140" width="28" height="24" rx="4" fill="#F5C518" stroke="#000000" stroke-width="5"/>
     </symbol>
 </defs>
 </svg>
@@ -53,20 +71,22 @@
 <div id="s01-ink" class="fill">
 <div id="s01-e0" class="actor" style="left:276px;top:512px;width:312px;height:338px;opacity:0">
 <svg width="312" height="338" viewBox="0 0 240 260" color="#2D5FBF" style="display:block;overflow:visible;--tone:#1F4386">
-<rect x="5" y="5" width="230" height="250" fill="#2D5FBF" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#F5C518">GLOBE</text>
+<use href="#prop-map" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <div id="s01-e1" class="actor" style="left:628px;top:512px;width:312px;height:338px;opacity:0">
 <svg width="312" height="338" viewBox="0 0 240 260" color="#F5C518" style="display:block;overflow:visible;--tone:#AC8A11">
-<rect x="5" y="5" width="230" height="250" fill="#F5C518" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#F5C518">NOTE</text>
+<use href="#prop-paper" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <div id="s01-e2" class="actor" style="left:360px;top:590px;width:240px;height:260px;opacity:0">
 <svg width="240" height="260" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
-<rect x="5" y="5" width="230" height="250" fill="#8B5E3C" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#F5C518">SHIP-LOG</text>
+<path d="M44,38 L194,28 L200,226 L48,236 Z" fill="currentColor"/>
+      <path d="M150,32 L194,28 L200,226 L154,230 Z" style="fill:var(--tone, #1F4386)"/>
+      <path d="M44,38 L194,28 L200,226 L48,236 Z" fill="none" stroke="#000000" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M44,38 L194,28 L200,226 L48,236 Z" fill="none" stroke="#000000" stroke-width="2.5" transform="translate(4,-3)"/>
+      <rect x="62" y="100" width="104" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+      
 </svg>
 </div>
 <div id="s01-e3" class="actor" style="left:1016px;top:590px;width:240px;height:260px;opacity:0">
@@ -76,8 +96,7 @@
 </div>
 <div id="s01-e4" class="actor" style="left:1368px;top:590px;width:240px;height:260px;opacity:0">
 <svg width="240" height="260" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
-<rect x="5" y="5" width="230" height="250" fill="#8B5E3C" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#F5C518">WALLET</text>
+<use href="#prop-purse" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s01-draw0-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M252 541 L400 656"/></svg>

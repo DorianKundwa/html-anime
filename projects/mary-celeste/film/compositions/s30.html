@@ -113,13 +113,42 @@
       <path d="M-72,-38 Q-72,-98 0,-98 Q72,-98 72,-38 Z" fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
       <path d="M-72,-38 L30,-38 Q92,-34 100,-18 L-72,-18 Z" fill="var(--c-hat, #D94040)" stroke="#000000" stroke-width="6" stroke-linejoin="round"/>
     </symbol>
+<symbol id="prop-shelf" viewBox="0 0 240 260">
+      <rect x="26" y="24" width="188" height="212" fill="currentColor" stroke="#000000" stroke-width="8"/>
+      <path d="M26,24 L214,24 L214,60 L26,60 Z" style="fill:var(--tone, #61422A)"/>
+      <path d="M26,88 L214,88 M26,150 L214,150 M26,212 L214,212" stroke="#000000" stroke-width="7"/>
+      <g fill="#FFFFFF" stroke="#000000" stroke-width="4">
+        <rect x="42" y="38" width="26" height="44"/>
+        <rect x="76" y="38" width="26" height="44"/>
+        <rect x="110" y="38" width="26" height="44"/>
+        <rect x="42" y="100" width="26" height="44"/>
+        <rect x="76" y="100" width="26" height="44"/>
+        <rect x="42" y="162" width="26" height="44"/>
+      </g>
+    </symbol>
+<symbol id="prop-stones" viewBox="0 0 240 260">
+      <g stroke="#000000" stroke-width="6" fill="currentColor">
+        <ellipse cx="46" cy="196" rx="28" ry="18"/>
+        <ellipse cx="82" cy="176" rx="28" ry="18"/>
+        <ellipse cx="118" cy="156" rx="28" ry="18"/>
+        <ellipse cx="154" cy="136" rx="28" ry="18"/>
+        <ellipse cx="190" cy="116" rx="28" ry="18"/>
+      </g>
+      <g font-family="Lato" font-weight="700" font-size="22" fill="#000000" text-anchor="middle">
+        <text x="46" y="203">1</text>
+        <text x="82" y="183">2</text>
+        <text x="118" y="163">3</text>
+        <text x="154" y="143">4</text>
+        <text x="190" y="123">5</text>
+      </g>
+    </symbol>
 </defs>
 </svg>
 <div id="s30-stage" class="fill" style="background:#8B5E3C">
 
 <div id="s30-ink" class="fill">
-<div id="s30-e0" class="actor" style="left:8px;top:127px;width:538px;height:773px;opacity:0">
-<svg width="538" height="773" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8;--tone-head:#D8D8D8;--c-garment:#FFFFFF;--c-hat:#8B5E3C;--c-beard:#000000">
+<div id="s30-e0" class="actor" style="left:-86px;top:200px;width:650px;height:934px;opacity:0">
+<svg width="650" height="934" viewBox="-160 -110 320 460" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8;--tone-head:#D8D8D8;--c-garment:#FFFFFF;--c-hat:#8B5E3C;--c-beard:#000000">
 <use href="#rig-body" x="-160" y="-110" width="320" height="460"/><use href="#rig-torso" x="-160" y="-110" width="320" height="460"/>
 <g id="s30-e0-limb-idle" opacity="1"><use href="#rig-limb-idle" x="-160" y="-110" width="320" height="460"/></g>
 <g id="s30-e0-limb-point" opacity="0"><use href="#rig-limb-point" x="-160" y="-110" width="320" height="460"/></g>
@@ -134,11 +163,10 @@
 </div>
 <div id="s30-e1" class="actor" style="left:1284px;top:512px;width:312px;height:338px;opacity:0">
 <svg width="312" height="338" viewBox="0 0 240 260" color="#8B5E3C" style="display:block;overflow:visible;--tone:#61422A">
-<rect x="5" y="5" width="230" height="250" fill="#8B5E3C" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#F5C518">PEG-RACK</text>
+<use href="#prop-shelf" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
-<div id="s30-e2" class="actor" style="left:563px;top:590px;width:240px;height:260px;opacity:0">
+<div id="s30-e2" class="actor" style="left:601px;top:590px;width:240px;height:260px;opacity:0">
 <svg width="240" height="260" viewBox="0 0 240 260" color="#FFFFFF" style="display:block;overflow:visible;--tone:#D8D8D8">
 <path d="M50,186 A40,40 0 0 1 60,108 A50,50 0 0 1 150,78 A40,40 0 0 1 200,128 A34,34 0 0 1 192,186 Z" fill="#FFFFFF" stroke="#000000" stroke-width="6"/>
       <path d="M54,190 A40,40 0 0 1 64,110 A50,50 0 0 1 152,82 A40,40 0 0 1 202,132 A34,34 0 0 1 194,190" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round" transform="translate(3,-2)"/>
@@ -149,8 +177,7 @@
 </div>
 <div id="s30-e3" class="actor" style="left:881px;top:678px;width:158px;height:172px;opacity:0">
 <svg width="158" height="172" viewBox="0 0 240 260" color="#C4965A" style="display:block;overflow:visible;--tone:#89693F">
-<rect x="5" y="5" width="230" height="250" fill="#C4965A" stroke="#000000" stroke-width="10" stroke-linejoin="round"/>
-<text x="120" y="-14" text-anchor="middle" font-family="Lato" font-weight="700" font-size="22" fill="#F5C518">LANDING</text>
+<use href="#prop-stones" x="0" y="0" width="240" height="260"/>
 </svg>
 </div>
 <svg class="fill" viewBox="0 0 1920 1080" fill="none" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="overflow:visible"><path id="s30-draw0-line" class="draw" pathLength="1" stroke="#F5C518" stroke-width="8" d="M1260 541 L1408 656"/><path id="s30-arrow1" class="draw" pathLength="1" d="M1286 708 L1038 751 M1084 765 L1038 751 L1076 721"/></svg>
@@ -178,7 +205,6 @@
         tl.set("#s30-ink", { filter: "url(#s30-boil-b)" }, f(240));
         tl.set("#s30-ink", { filter: "url(#s30-boil-c)" }, f(264));
         tl.set("#s30-ink", { filter: "url(#s30-boil-a)" }, f(288));
-        tl.set("#s30-ink", { filter: "url(#s30-boil-b)" }, f(312));
         tl.fromTo("#s30-e1", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1.06, duration: f(4), ease: "power2.out", immediateRender: false }, f(0));
         tl.to("#s30-e1", { scale: 1, duration: f(2) }, f(4));
         tl.fromTo("#s30-e1", { scale: 1.08 }, { scale: 1, duration: f(2), ease: "power1.out" }, f(38));
